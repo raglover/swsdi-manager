@@ -4,9 +4,19 @@
       <%= link_to "SWSDI", root_path, class: 'navbar-brand' %>
     </div>
     <ul class="nav navbar-nav">
-      <li><%= link_to "About Us". info_about_path %></li>
-      <li><%= link_to "Privacy". info_privacy_path %></li>
+      <li><%= link_to "About Us", info_about_path %></li>
+      <li><%= link_to "Privacy", info_privacy_path %></li>
       <li><%= link_to "License", info_license_path %></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+        <li class="navbar-text"><span class="glyphicon glyphicon-user">&nbsp</span><%= current_user.email %></li>
+        <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+        <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+      <% else %>      
+        <li><%= link_to "Log In", new_user_session_path %></li>
+        <li><%= link_to "Log In with Facebook", user_omniauth_authorize_path(:facebook) %></li>
+      <% end %>
     </ul>
   </div>
 </nav>
