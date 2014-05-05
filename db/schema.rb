@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140505073103) do
+ActiveRecord::Schema.define(version: 20140505125842) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -50,6 +50,26 @@ ActiveRecord::Schema.define(version: 20140505073103) do
     t.string   "last_name"
     t.string   "image"
     t.string   "gender"
+    t.string   "address"
+    t.string   "school"
+    t.integer  "grade"
+    t.string   "phone_number"
+    t.string   "parent_first"
+    t.string   "parent_last"
+    t.string   "parent_relationship"
+    t.string   "parent_email"
+    t.string   "parent_phone"
+    t.string   "tshirt_size"
+    t.string   "nickname"
+    t.string   "coach_first"
+    t.string   "coach_last"
+    t.string   "coach_email"
+    t.datetime "birthday"
+    t.string   "address_line1"
+    t.string   "address_line2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

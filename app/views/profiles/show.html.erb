@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 well">
+      <div class="media">
+        <img src="<%= @user.image %>" alt="User image" class="media-object pull-left img-circle" height=100 width=100/>
+        <div class="media-body">
+          <h2 class="media-heading"><%= @user.first_name %> <%= @user.last_name %></h2>
+          <p>Nickname: <% if (@user.nickname.nil?) %> None <% else %> <%= @user.nickname %> <% end %>, Gender: <%= @user.gender %>, Grade: <%= @user.grade %></p>
+          <p>Birthday: <%= @user.birthday.to_s %></p>
+        </div>
+      </div>
+      <div class="row">
+        <p>&nbsp;</p>
+        <p class="col-md-4"><%= link_to "Edit My Profile", edit_user_registration_path, :class => "btn btn-primary" %></p>
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <h3>Other important information:</h3>
+      <dl class="dl-horizontal">
+        <dt>Phone Number:</dt>
+        <dd><%= @user.phone_number %></dd>
+        <dt>Email:</dt>
+        <dd><%= @user.email %></dd>
+        <dt>Address:</dt>
+        <dd>
+          <address>
+            <strong>Home Address</strong><br />
+            <%= @user.address_line1 %><br />
+            <%= @user.address_line2 %><br />
+            <%= @user.city %>, <%= @user.state %> <%= @user.zip %>
+          </address>
+        </dd>
+        <dt>Parent Name:</dt>
+        <dd><%= @user.parent_first %> <%= @user.parent_last %></dd>
+        <dt>Parent Relationship:</dt>
+        <dd><%= @user.parent_relationship %></dd>
+        <dt>Parent Email:</dt>
+        <dd><%= @user.parent_email %></dd>
+        <dt>Parent Phone:</dt>
+        <dd><%= @user.parent_phone %></dd>
+        <dt>Coach Name:</dt>
+        <dd><%= @user.coach_first %> <%= @user.coach_last %></dd>
+        <dt>Coach Email:</dt>
+        <dd><%= @user.coach_email %></dd>
+      </dl>
+    </div>
+  </div>
+</div>
