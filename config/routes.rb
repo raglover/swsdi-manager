@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  get 'info/about'
+  get 'info/privacy'
+  get 'info/license'
+
   devise_for :admins
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
@@ -6,7 +11,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  #root 'welcome#index'
+  root 'info#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
