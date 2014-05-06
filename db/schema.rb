@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140506080233) do
+ActiveRecord::Schema.define(version: 20140506081700) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20140506080233) do
     t.datetime "updated_at"
   end
 
+  create_table "check_out_permissions", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "relationship"
+    t.string   "phone_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "registration_id"
+  end
+
   create_table "debate_records", force: true do |t|
     t.string   "tournament_name"
     t.integer  "prelim_wins"
@@ -52,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140506080233) do
     t.string   "division"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "registration_id"
   end
 
   create_table "events", force: true do |t|
@@ -79,6 +90,10 @@ ActiveRecord::Schema.define(version: 20140506080233) do
     t.string   "itinerary"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "has_allergies"
+    t.boolean  "has_dietary_restrictions"
+    t.string   "allergies"
+    t.string   "dietary_restrictions"
   end
 
   create_table "users", force: true do |t|
