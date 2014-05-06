@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140506075826) do
+ActiveRecord::Schema.define(version: 20140506080233) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -38,6 +38,18 @@ ActiveRecord::Schema.define(version: 20140506075826) do
     t.string   "location"
     t.datetime "app_start_date"
     t.datetime "app_end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "debate_records", force: true do |t|
+    t.string   "tournament_name"
+    t.integer  "prelim_wins"
+    t.integer  "prelim_losses"
+    t.boolean  "reached_outrounds"
+    t.string   "outround_reached"
+    t.string   "location"
+    t.string   "division"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
