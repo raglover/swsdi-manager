@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140506073832) do
+ActiveRecord::Schema.define(version: 20140506075826) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -50,6 +50,21 @@ ActiveRecord::Schema.define(version: 20140506073832) do
     t.integer  "price_resident"
     t.integer  "price_commuter"
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "registrations", force: true do |t|
+    t.string   "camper_type"
+    t.string   "event_id"
+    t.string   "event_partner_req"
+    t.boolean  "has_competed"
+    t.string   "comments"
+    t.string   "roommate_req"
+    t.boolean  "has_laptop"
+    t.boolean  "needs_pickup"
+    t.boolean  "needs_dropoff"
+    t.string   "itinerary"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
