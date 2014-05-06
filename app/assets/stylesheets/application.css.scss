@@ -12,5 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
+ //= require foundation_and_overrides
+
  */
-@import 'bootstrap';
+
+@import "foundation_and_overrides";
