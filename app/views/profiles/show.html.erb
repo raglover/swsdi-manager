@@ -1,49 +1,69 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-5 well">
-      <div class="media">
-        <img src="<%= @user.image %>" alt="User image" class="media-object pull-left img-circle" height=100 width=100/>
-        <div class="media-body">
-          <h2 class="media-heading"><%= @user.first_name %> <%= @user.last_name %></h2>
-          <p>Nickname: <% if (@user.nickname.nil?) %> None <% else %> <%= @user.nickname %> <% end %>, Gender: <%= @user.gender %>, Grade: <%= @user.grade %></p>
-          <p>Birthday: <%= @user.birthday.to_s %></p>
-        </div>
-      </div>
+<div class="row" data-equalizer>
+  <div class="panel small-12 large-6 columns radius" data-equalizer-watch >
       <div class="row">
-        <p>&nbsp;</p>
-        <p class="col-md-4"><%= link_to "Edit My Profile", edit_user_registration_path, :class => "btn btn-primary" %></p>
-      </div>
-
+        <div class="small-3 large-3 columns">
+          <% if @user.image.nil? %>
+            <%= image_tag "mystery-man.png", class: "th left" %>
+          <% else %>
+            <img src="<%= @user.image %>" alt="User image" class="th left" width=100 height=100 />
+          <% end %>
+        </div>
+        <div class="small-9 large-9 columns">  
+          <h3><%= @user.first_name %> <%= @user.last_name %></h2>
+          <div class="panel callout"><p>Welcome to SWSDI! Please fill out any missing profile fields before applying using the "Edit My Profile" button below.</p></div>
+          <ul id="userinfo" class="inline-list">
+            <li><i class="fa fa-comment-o"></i>: <% if (@user.nickname.nil?) %> None <% else %> <%= @user.nickname %> <% end %></li>
+            <li><i class="fa fa-female"></i>/<i class="fa fa-male"></i>: <%= @user.gender.capitalize %></li>
+            <li><i class="fa fa-calendar"></i>: <%= @user.grade %></li>
+          </ul>
+          <ul id="userinfo2" class="inline-list"> 
+            <li><i class="fa fa-gift"></i>: <%= @user.birthday.strftime("%B %d, %Y") %></li>
+            <li><i class="fa fa-signal"></i>: <%= @user.tshirt_size %></li>
+          </ul>
+        </div> 
     </div>
-    <div class="col-md-6">
-      <h3>Other important information:</h3>
-      <dl class="dl-horizontal">
-        <dt>Phone Number:</dt>
-        <dd><%= @user.phone_number %></dd>
-        <dt>Email:</dt>
-        <dd><%= @user.email %></dd>
-        <dt>Address:</dt>
-        <dd>
-          <address>
-            <strong>Home Address</strong><br />
-            <%= @user.address_line1 %><br />
-            <%= @user.address_line2 %><br />
-            <%= @user.city %>, <%= @user.state %> <%= @user.zip %>
-          </address>
-        </dd>
-        <dt>Parent Name:</dt>
-        <dd><%= @user.parent_first %> <%= @user.parent_last %></dd>
-        <dt>Parent Relationship:</dt>
-        <dd><%= @user.parent_relationship %></dd>
-        <dt>Parent Email:</dt>
-        <dd><%= @user.parent_email %></dd>
-        <dt>Parent Phone:</dt>
-        <dd><%= @user.parent_phone %></dd>
-        <dt>Coach Name:</dt>
-        <dd><%= @user.coach_first %> <%= @user.coach_last %></dd>
-        <dt>Coach Email:</dt>
-        <dd><%= @user.coach_email %></dd>
-      </dl>
+    <div class="row container">
+      <div class="small-5 large-5 columns">
+        <%= link_to "Edit My Profile", edit_user_registration_path, :class => "button primary" %>
+      </div>
+    </div>  
+  </div>
+  <div class="small-12 large-6 columns" data-equalizer-watch >
+    <h4>Contact Information:</h4>
+    <dl class="tabs" data-tab>
+      <dd class="active"><a href="#personal">Student</a></dd>
+      <dd><a href="#parents">Parent</a></dd>
+      <dd><a href="#coach">Coach</a></dd>
+    </dl>
+    <div class="tabs-content">
+      <div class="content active" id="personal">
+        <ul class="no-bullet">
+          <li><i class="fa fa-phone"></i>: <%= @user.phone_number %></li>
+          <li><i class="fa fa-envelope-o"></i>: <%= mail_to @user.email %></li>
+          <li>
+            <address>
+              <i class="fa fa-home"></i> <strong>Home Address</strong><br />
+              <%= @user.address_line1 %><br />
+              <%= @user.address_line2 %><br />
+              <%= @user.city %>, <%= @user.state %> <%= @user.zip %>
+            </address>
+          </li>
+        </ul>
+      </div>
+      <div class="content" id="parents">
+        <ul class="no-bullet">
+          <li>Parent Name: <%= @user.parent_first %> <%= @user.parent_last %></li>
+          <li>Relationship: <%= @user.parent_relationship %></li>
+          <li><i class="fa fa-envelope-o"></i>: <%= mail_to @user.parent_email %> </li>
+          <li><i class="fa fa-phone"></i>: <%= @user.parent_phone %></li>
+        </ul>
+      </div>
+      <div class="content" id="coach">
+        <ul class="no-bullet">
+          <li>Coach Name: <%= @user.coach_first %> <%= @user.coach_last %></li>
+          <li><i class="fa fa-envelope-o"></i>: <%= mail_to @user.coach_email %></li>
+        </ul>  
+      </div>
     </div>
   </div>
 </div>

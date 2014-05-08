@@ -1,22 +1,33 @@
-<nav class="navbar navbar-static-top navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <%= link_to "SWSDI", root_path, class: 'navbar-brand' %>
-    </div>
-    <ul class="nav navbar-nav">
+<nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><%= link_to "SWSDI", root_path %></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <% if user_signed_in? %>
+        <li class="navbar-text"><%= link_to profile_path(current_user.id) do %>
+          <i class="fa fa-user"></i> <%= current_user.first_name %> <%= current_user.last_name %>  
+        <% end %></li>
+        <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+        <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+      <% else %>      
+        <li><%= link_to user_omniauth_authorize_path(:facebook), class: "button tiny" do %>
+            <i class="fa fa-facebook-square"></i> Login With Facebook
+        <% end %></li>
+        <li><%= link_to "Log In", new_user_session_path %></li>
+      <% end %>
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
       <li><%= link_to "About Us", info_about_path %></li>
       <li><%= link_to "Privacy", info_privacy_path %></li>
       <li><%= link_to "License", info_license_path %></li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <% if user_signed_in? %>
-        <li class="navbar-text"><span class="glyphicon glyphicon-user">&nbsp</span><%= current_user.first_name %> <%= current_user.last_name %></li>
-        <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-        <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-      <% else %>      
-        <li><%= link_to "Log In", new_user_session_path %></li>
-        <li><%= link_to "Log In with Facebook", user_omniauth_authorize_path(:facebook) %></li>
-      <% end %>
-    </ul>
-  </div>
+  </section>
 </nav>
