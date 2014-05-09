@@ -1,0 +1,18 @@
+<fieldset>
+  <legend>Parent Information</legend>
+  <div class="small-12 large-4 columns">
+    <%= f.text_field :parent_first, placeholder: "Parent First Name" %>
+  </div>
+  <div class="small-12 large-4 columns">
+    <%= f.text_field :parent_last, placeholder: "Parent Last Name" %>
+  </div>
+  <div class="small-12 large-4 columns">
+    <%= f.text_field :parent_phone, placeholder: "Parent Phone Number" %>
+  </div>
+  <div class="small-12 large-6 columns">
+    <%= f.email_field :parent_email, placeholder: "Parent Email" %>
+  </div>
+  <div class="small-12 large-6 columns">
+    <%= f.select :parent_relationship, options_for_select([['Mother', 'mother'], ['Father', 'father'], ['Guardian', 'guardian']], f.object.parent_relationship || 'mother') %>
+  </div>
+</fieldset>

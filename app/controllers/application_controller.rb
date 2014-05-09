@@ -12,5 +12,11 @@ class ApplicationController < ActionController::Base
                   :address_line1, :address_line2, :city, :state, :zip, 
                   :parent_first, :parent_last,:parent_phone, :parent_relationship, :parent_email, 
                   :coach_first, :coach_last, :coach_email)}
+
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name, :last_name, :email, :password, :password_confirmation, 
+                  :nickname, :gender, :phone_number, :birthday, :school, :grade, :tshirt_size, 
+                  :address_line1, :address_line2, :city, :state, :zip, 
+                  :parent_first, :parent_last,:parent_phone, :parent_relationship, :parent_email, 
+                  :coach_first, :coach_last, :coach_email)}
   end
 end

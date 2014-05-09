@@ -9,21 +9,21 @@
           <% end %>
         </div>
         <div class="small-9 large-9 columns">  
-          <h3><%= @user.first_name %> <%= @user.last_name %></h2>
+          <h3><% if (@user.nickname.blank?) %><%= @user.first_name %><% else %><%= @user.nickname %><% end %> <%= @user.last_name %></h2>
           <div class="panel callout"><p>Welcome to SWSDI! Please fill out any missing profile fields before applying using the "Edit My Profile" button below.</p></div>
           <ul id="userinfo" class="inline-list">
-            <li><i class="fa fa-comment-o"></i>: <% if (@user.nickname.nil?) %> None <% else %> <%= @user.nickname %> <% end %></li>
+            <li><i class="fa fa-comment-o"></i>: <% if (@user.nickname.blank?) %> <%= @user.first_name %> <% else %> <%= @user.nickname %> <% end %></li>
             <li><i class="fa fa-female"></i>/<i class="fa fa-male"></i>: <%= @user.gender.capitalize %></li>
             <li><i class="fa fa-calendar"></i>: <%= @user.grade %></li>
           </ul>
           <ul id="userinfo2" class="inline-list"> 
-            <li><i class="fa fa-gift"></i>: <%= @user.birthday.strftime("%B %d, %Y") %></li>
+            <li><i class="fa fa-gift"></i>: <% if (!@user.birthday.nil?) %> <%= @user.birthday.strftime("%B %d, %Y") %> <% else %> None Listed<% end %></li>
             <li><i class="fa fa-signal"></i>: <%= @user.tshirt_size %></li>
           </ul>
         </div> 
     </div>
     <div class="row container">
-      <div class="small-5 large-5 columns">
+      <div class="small-5 large-5 columns right">
         <%= link_to "Edit My Profile", edit_user_registration_path, :class => "button primary" %>
       </div>
     </div>  
@@ -44,7 +44,9 @@
             <address>
               <i class="fa fa-home"></i> <strong>Home Address</strong><br />
               <%= @user.address_line1 %><br />
-              <%= @user.address_line2 %><br />
+              <% if(!@user.address_line2.nil? && @user.address_line2 != "") %>  
+                <%= @user.address_line2 %><br />
+              <% end %>
               <%= @user.city %>, <%= @user.state %> <%= @user.zip %>
             </address>
           </li>
