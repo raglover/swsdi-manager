@@ -7,7 +7,7 @@
     <%= render 'personalinfo', :f => f  %>
     <%= render 'parentinfo', :f => f  %>
     <%= render 'coachinfo', :f => f  %>
-    <div><%= f.submit "Sign up" %></div>
+    <div><%= f.submit "Sign up", class: "button primary" %></div>
   <% end %>
 
   <%= render "devise/shared/links" %>

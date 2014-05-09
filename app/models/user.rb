@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
       user.last_name = auth.info.last_name
       user.image = auth.info.image
       user.gender = auth.extra.raw_info.gender
-      user.birthday = auth.extra.raw_info.birthday
+      user.birthday = Date.strptime(auth.extra.raw_info.birthday, '%m/%d/%Y')
     end
   end
 
