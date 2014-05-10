@@ -1,0 +1,29 @@
+<div class="panel small-12 large-6 columns radius" data-equalizer-watch >
+    <div class="row">
+      <div class="small-3 large-3 columns">
+        <% if @user.image.nil? %>
+          <%= image_tag "mystery-man.png", class: "th left" %>
+        <% else %>
+          <img src="<%= @user.image %>" alt="User image" class="th left" width=100 height=100 />
+        <% end %>
+      </div>
+      <div class="small-9 large-9 columns">  
+        <h3><% if (@user.nickname.blank?) %><%= @user.first_name %><% else %><%= @user.nickname %><% end %> <%= @user.last_name %></h2>
+        <div class="welcome-box"><p>Welcome to SWSDI! Please fill out any missing profile fields before applying using the "Edit My Profile" button below.</p></div>
+        <ul id="userinfo" class="inline-list">
+          <li><i class="fa fa-comment-o has-tip" data-tooltip title="Prefers to be called"></i>: <% if (@user.nickname.blank?) %> <%= @user.first_name %> <% else %> <%= @user.nickname %> <% end %></li>
+          <li><span class="has-tip" data-tooltip title="Gender"><i class="fa fa-female"></i><i class="fa fa-male"></i></span>: <%= @user.gender.capitalize %></li>
+          <li><i class="fa fa-calendar has-tip" data-tooltip title="Grade in Fall"></i>: <%= @user.grade %>th Grade</li>
+        </ul>
+        <ul id="userinfo2" class="inline-list"> 
+          <li><i class="fa fa-gift has-tip" data-tooltip title="Birthday!"></i>: <% if (!@user.birthday.nil?) %> <%= @user.birthday.strftime("%B %d, %Y") %> <% else %> None Listed<% end %></li>
+          <li><i class="fa fa-text-height has-tip" data-tooltip title="T-shirt Size"></i>: <%= @user.tshirt_size.upcase %></li>
+        </ul>
+        <ul id="userinfo3" class="inline-list">
+          <li><strong><i class="fa fa-linux has-tip" data-tooltip title="Spirit Animals are Awesome"></i></strong>: <% if @user.spirit_animal.blank? %>You're Boring!<% else %><%= @user.spirit_animal %>!<% end %></li>
+      </div> 
+  </div>
+  <div class="row small-12 large-5 columns right">
+    <%= link_to "Edit My Profile", edit_user_registration_path, :class => "button primary" %>
+  </div>
+</div>

@@ -26,7 +26,7 @@
       <%= f.select :tshirt_size, options_for_select([['Small', 'sm'], ['Medium', 'med'], ['Large', 'lg'], ['XLarge', 'xl'], ['XXL', '2xl'], ['3XL', '3xl']], f.object.tshirt_size || 'sm'), placeholder: "T-shirt Size" %>
     </div>
     <div class="small-12 large-12 columns">
-      <%= f.label :address_line1, "Home Address" %>
+      <%= f.label :address_line1, "Address" %>
       <%= f.text_field :address_line1, placeholder: "Address Line 1" %>
     </div>
     <div class="small-12 large-12 columns">

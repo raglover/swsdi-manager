@@ -1,0 +1,40 @@
+<div class="small-12 large-6 columns" data-equalizer-watch >
+  <h4>Contact Information:</h4>
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#personal">Student</a></dd>
+    <dd><a href="#parents">Parent</a></dd>
+    <dd><a href="#coach">Coach</a></dd>
+  </dl>
+  <div class="tabs-content">
+    <div class="content active" id="personal">
+      <ul class="no-bullet">
+        <li><i class="fa fa-phone"></i>: <%= @user.phone_number %></li>
+        <li><i class="fa fa-envelope-o"></i>: <%= mail_to @user.email %></li>
+        <li>
+          <address>
+            <i class="fa fa-home"></i> <strong>Address</strong><br />
+            <%= @user.address_line1 %><br />
+            <% if(!@user.address_line2.nil? && @user.address_line2 != "") %>  
+              <%= @user.address_line2 %><br />
+            <% end %>
+            <%= @user.city %>, <%= @user.state %> <%= @user.zip %>
+          </address>
+        </li>
+      </ul>
+    </div>
+    <div class="content" id="parents">
+      <ul class="no-bullet">
+        <li>Parent Name: <%= @user.parent_first %> <%= @user.parent_last %></li>
+        <li>Relationship: <%= @user.parent_relationship %></li>
+        <li><i class="fa fa-envelope-o"></i>: <%= mail_to @user.parent_email %> </li>
+        <li><i class="fa fa-phone"></i>: <%= @user.parent_phone %></li>
+      </ul>
+    </div>
+    <div class="content" id="coach">
+      <ul class="no-bullet">
+        <li>Coach Name: <%= @user.coach_first %> <%= @user.coach_last %></li>
+        <li><i class="fa fa-envelope-o"></i>: <%= mail_to @user.coach_email %></li>
+      </ul>  
+    </div>
+  </div>
+</div>

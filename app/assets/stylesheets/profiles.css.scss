@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#userinfo > li > *, #userinfo2 > li > * {
+#userinfo > li > *, #userinfo2 > li > *, #userinfo3 > li > * {
   display: inline-block;
+}
+
+#userinfo, #userinfo2, #userinfo3 {
+  i.fa-male {
+    color: powderblue;
+  }
+  i.fa-female {
+    color: pink;
+  }
+  i.fa-gift {
+    color: darkred;
+  }
 }
