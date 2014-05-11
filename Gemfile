@@ -10,6 +10,7 @@ gem 'sass-rails', '~> 4.0.3'
 # Use Foundation Rails and Compass for layout
 gem 'foundation-rails'
 gem 'compass-rails'
+
 # Use Font Awesome Sass for icon font
 gem 'font-awesome-sass'
 # Use Uglifier as compressor for JavaScript assets
