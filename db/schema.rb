@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140511004410) do
+ActiveRecord::Schema.define(version: 20140511114022) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -31,6 +31,33 @@ ActiveRecord::Schema.define(version: 20140511004410) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
+  create_table "camp_applications", force: true do |t|
+    t.integer  "user_id"
+    t.string   "camper_type"
+    t.string   "event_partner_req"
+    t.boolean  "has_competed"
+    t.text     "comments"
+    t.string   "roommate_req"
+    t.boolean  "has_laptop"
+    t.boolean  "needs_pickup"
+    t.boolean  "needs_dropoff"
+    t.text     "itinerary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "has_allergies"
+    t.boolean  "has_dietary_restrictions"
+    t.string   "allergies"
+    t.text     "dietary_restrictions"
+  end
+
+  create_table "camp_applications_events", id: false, force: true do |t|
+    t.integer "camp_application_id", null: false
+    t.integer "event_id",            null: false
+  end
+
+  add_index "camp_applications_events", ["camp_application_id"], name: "index_camp_applications_events_on_camp_application_id"
+  add_index "camp_applications_events", ["event_id"], name: "index_camp_applications_events_on_event_id"
+
   create_table "camps", force: true do |t|
     t.datetime "start_date"
     t.datetime "end_date"
@@ -40,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140511004410) do
     t.datetime "app_end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active"
   end
 
   create_table "check_out_permissions", force: true do |t|
@@ -79,25 +107,6 @@ ActiveRecord::Schema.define(version: 20140511004410) do
   end
 
   add_index "events", ["camp_id"], name: "index_events_on_camp_id"
-
-  create_table "registrations", force: true do |t|
-    t.string   "camper_type"
-    t.string   "event_id"
-    t.string   "event_partner_req"
-    t.boolean  "has_competed"
-    t.string   "comments"
-    t.string   "roommate_req"
-    t.boolean  "has_laptop"
-    t.boolean  "needs_pickup"
-    t.boolean  "needs_dropoff"
-    t.string   "itinerary"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "has_allergies"
-    t.boolean  "has_dietary_restrictions"
-    t.string   "allergies"
-    t.string   "dietary_restrictions"
-  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
