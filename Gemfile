@@ -7,8 +7,9 @@ gem 'rails', '4.1.0'
 gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
-# Use Foundation Rails for layout
+# Use Foundation Rails and Compass for layout
 gem 'foundation-rails'
+gem 'compass-rails'
 # Use Font Awesome Sass for icon font
 gem 'font-awesome-sass'
 # Use Uglifier as compressor for JavaScript assets

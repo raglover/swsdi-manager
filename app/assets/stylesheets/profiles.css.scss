@@ -7,13 +7,15 @@
 }
 
 #userinfo, #userinfo2, #userinfo3 {
-  i.fa-male {
+  .fa-male {
     color: powderblue;
+    @include single-text-shadow(0px,0px,1px,false,#000000);
   }
-  i.fa-female {
+  .fa-female {
     color: pink;
+    @include single-text-shadow(0px,0px,1px,false,#000000);
   }
-  i.fa-gift {
+  .fa-gift {
     color: darkred;
   }
 }
