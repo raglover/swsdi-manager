@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'profiles/index'
+ get 'profiles/index'
 
   get 'profiles/show'
 
