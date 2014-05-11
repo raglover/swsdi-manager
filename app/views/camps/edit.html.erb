@@ -1,0 +1,7 @@
+<div class="row">
+  <h1>Edit <%= @camp.name %>
+  <%= form_for @camp, method: :put do |f| %>
+    <%= render 'campinfo', :f => f %>
+    <%= f.submit "Update Camp", class: "button primary small-6 large-6 columns" %>
+  <% end %>
+</div>

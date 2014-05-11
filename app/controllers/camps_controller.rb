@@ -21,8 +21,12 @@ class CampsController < ApplicationController
     end
   end
 
+  def edit
+    @camp = Camp.find_by_id(params[:id])
+  end
+
   def update
-    @camp = Camp.find_by_id
+    @camp = Camp.find_by_id(params[:id])
     if @camp.update(camp_params)
       flash[:notice] = "Camp updated successfully!"
       redirect_to @camp
@@ -37,8 +41,8 @@ class CampsController < ApplicationController
 private
 
   def camp_params
-    params.require(:camp).permit(:name, :location, :start_date, :end_date, :app_start_date, :app_end_date, :active,
-      :events_attributes[:name, :start_date, :end_date, :session, :price_resident, :price_commuter, :description])
+    params.require(:camp).permit(:name, :location, :start_date, :end_date, :app_start_date, :app_end_date, :active)
+      #:events_attributes[:name, :start_date, :end_date, :session, :price_resident, :price_commuter, :description])
   end
 
 end

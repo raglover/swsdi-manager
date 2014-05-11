@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140511114022) do
+ActiveRecord::Schema.define(version: 20140511124740) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -77,8 +77,10 @@ ActiveRecord::Schema.define(version: 20140511114022) do
     t.string   "phone_num"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "registration_id"
+    t.integer  "camp_application_id"
   end
+
+  add_index "check_out_permissions", ["camp_application_id"], name: "index_check_out_permissions_on_camp_application_id"
 
   create_table "debate_records", force: true do |t|
     t.string   "tournament_name"
@@ -90,8 +92,10 @@ ActiveRecord::Schema.define(version: 20140511114022) do
     t.string   "division"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "registration_id"
+    t.integer  "camp_application_id"
   end
+
+  add_index "debate_records", ["camp_application_id"], name: "index_debate_records_on_camp_application_id"
 
   create_table "events", force: true do |t|
     t.string   "name"

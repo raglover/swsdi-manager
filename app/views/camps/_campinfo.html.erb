@@ -1,0 +1,30 @@
+<fieldset>
+  <legend>Camp Information</legend>
+  <div class="row">
+    <div class="small-12 large-6 columns">
+      <%= f.label :name, "Camp Name" %>
+      <%= f.text_field :name, placeholder: "Camp Name" %>
+    </div>
+    <div class="small-12 large-6 columns">
+      <%= f.label :location, "Camp Location" %>
+      <%= f.text_field :location, placeholder: "Camp Location" %>
+    </div>
+    <div class="small-12 large-6 columns">
+      <%= f.label :start_date, "Camp Start Date" %>
+      <%= f.date_select :start_date, {order: [:month, :day, :year]}, {:class => "small-4 large-4 columns"} %>
+    </div>
+    <div class="small-12 large-6 columns">
+      <%= f.label :end_date, "Camp End Date" %>
+      <%= f.date_select :end_date, {order: [:month, :day, :year]}, {:class => "small-4 large-4 columns"} %>
+    </div>
+    <div class="small-12 large-6 columns">
+      <%= f.label :app_start_date, "Application Start Date" %>
+      <%= f.date_select :app_start_date, {order: [:month, :day, :year]}, {:class => "small-4 large-4 columns"} %>
+    </div>
+    <div class="small-12 large-6 columns">
+      <%= f.label :app_end_date, "Application End Date" %>
+      <%= f.date_select :app_end_date, {order: [:month, :day, :year]}, {:class => "small-4 large-4 columns"} %>
+    </div>
+    <%= f.check_box :active  %><%= f.label :active, "Active Camp" %>
+  </div>
+</fieldset>
