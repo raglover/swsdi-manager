@@ -1,20 +1,26 @@
 <div class="row" data-equalizer>
-  <% @events.each do |event| %>
-  <div class="small-12 large-6 columns" data-equalizer-watch >
-    <div class="panel callout">
-      <h3 class="subheader"><%= event.name %></h3>  
-      <h4 class="subheader"><small><%= event.description %></small></h3>
-      <div class="row">
-        <ul class="no-bullet small-6 large-6 columns">
-          <li>Session: <%= event.event_session %></li>
-          <li>Applicants: <%= event.camp_applications.count %></li>
-        </ul>
-        <ul class="no-bullet small-6 large-6 columns">
-          <li><strong>Resident Price:</strong> <i class="fa fa-dollar"></i><%= event.price_resident %></li>
-          <li><strong>Commuter Price:</strong> <i class="fa fa-dollar"></i><%= event.price_commuter %></li>
-        </ul>
+  <% if !@events.blank? %>
+    <% @events.each do |event| %>
+    <div class="small-12 large-6 columns" data-equalizer-watch >
+      <div class="panel callout">
+        <h3 class="subheader"><%= event.name %></h3>  
+        <h4 class="subheader"><small><%= event.description %></small></h3>
+        <div class="row">
+          <ul class="no-bullet small-6 large-6 columns">
+            <li>Session: <%= event.camp_session.name %></li>
+            <li>Applicants: <%= event.camp_applications.count %></li>
+          </ul>
+          <ul class="no-bullet small-6 large-6 columns">
+            <li><strong>Resident Price:</strong> <i class="fa fa-dollar"></i><%= event.price_resident %></li>
+            <li><strong>Commuter Price:</strong> <i class="fa fa-dollar"></i><%= event.price_commuter %></li>
+          </ul>
+        </div>
       </div>
     </div>
+    <% end %>
+  <% else %>
+  <div class="alert-box info">
+    No events currently exist. Edit the camp to add some!
   </div>
   <% end %>
 </div>

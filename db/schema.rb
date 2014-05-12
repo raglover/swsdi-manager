@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140512160128) do
+ActiveRecord::Schema.define(version: 20140512211104) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -118,10 +118,11 @@ ActiveRecord::Schema.define(version: 20140512160128) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "camp_id"
-    t.string   "event_session"
+    t.integer  "camp_session_id"
   end
 
   add_index "events", ["camp_id"], name: "index_events_on_camp_id"
+  add_index "events", ["camp_session_id"], name: "index_events_on_camp_session_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

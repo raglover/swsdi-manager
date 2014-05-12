@@ -30,4 +30,9 @@ form a.remove_fields i.fa-times {
     padding-top: 15px;
     @include text-shadow(3px 3px 0px #000);
   }
+  &:active {
+    padding-left: 5px;
+    padding-top: 18px;
+    @include text-shadow(0px 0px 0px #fff);
+  }
 }

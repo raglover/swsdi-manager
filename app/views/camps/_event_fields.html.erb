@@ -12,8 +12,8 @@
     </div>
     <div class="row">
       <div class="small-12 large-4 columns">
-        <%= f.label :event_session, "Camp Session" %>
-        <%= f.select :event_session, options_for_select([['Session A', 'A'], ['Session B', 'B'], ['Session C', 'C']], f.object.event_session || 'A') %>
+        <%= f.label :camp_session_id, "Camp Session" %>
+        <%= f.collection_select :camp_session_id, @csessions, :id, :name, prompt: true  %>
       </div>
       <div class="small-12 large-4 columns">
         <%= f.label :price_resident, "Price for Residents" %>
