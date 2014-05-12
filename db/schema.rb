@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140511163916) do
+ActiveRecord::Schema.define(version: 20140512160128) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -58,6 +58,19 @@ ActiveRecord::Schema.define(version: 20140511163916) do
   add_index "camp_applications_events", ["camp_application_id"], name: "index_camp_applications_events_on_camp_application_id"
   add_index "camp_applications_events", ["event_id"], name: "index_camp_applications_events_on_event_id"
 
+  create_table "camp_sessions", force: true do |t|
+    t.string   "name"
+    t.datetime "session_start"
+    t.datetime "session_end"
+    t.integer  "camp_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "shortname"
+  end
+
+  add_index "camp_sessions", ["camp_id"], name: "index_camp_sessions_on_camp_id"
+  add_index "camp_sessions", ["id"], name: "index_camp_sessions_on_id"
+
   create_table "camps", force: true do |t|
     t.datetime "start_date"
     t.datetime "end_date"
@@ -99,8 +112,6 @@ ActiveRecord::Schema.define(version: 20140511163916) do
 
   create_table "events", force: true do |t|
     t.string   "name"
-    t.datetime "start_date"
-    t.datetime "end_date"
     t.integer  "price_resident"
     t.integer  "price_commuter"
     t.string   "description"

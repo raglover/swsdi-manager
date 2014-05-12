@@ -12,10 +12,12 @@ class CampsController < ApplicationController
   def new
     @camp = Camp.new
     @events = @camp.events.build
+    @csession = @camp.camp_sessions.build
   end
 
   def edit
     @events = @camp.events.all
+    @csession = @camp.camp_sessions.all ||= @camp.camp_sessions.build
   end
   
   def create
@@ -31,6 +33,7 @@ class CampsController < ApplicationController
 
   def update
     @events = @camp.events.all
+    @csession = @camp.camp_sessions.all
     if @camp.update(camp_params)
       flash[:notice] = "Camp updated successfully!"
       redirect_to @camp
@@ -52,6 +55,7 @@ private
 
   def camp_params
     params.require(:camp).permit(:name, :location, :start_date, :end_date, :app_start_date, :app_end_date, :active,
+      :camp_sessions_attributes => [:id, :name, :shortname, :session_start, :session_end, '_destroy'],
       :events_attributes => [:id, :name, :start_date, :end_date, :event_session, :price_resident, :price_commuter, :description, :camp_id, '_destroy'])
   end
 

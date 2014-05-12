@@ -1,5 +1,8 @@
 class Camp < ActiveRecord::Base
 
   has_many :events
+  has_many :camp_sessions
+
+  accepts_nested_attributes_for :camp_sessions, allow_destroy: true
   accepts_nested_attributes_for :events, allow_destroy: true
 end
