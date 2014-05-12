@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'profiles/index'
+ get 'profiles/index'
 
   get 'profiles/show'
 
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :profiles
+  resources :camps
   
   # Example resource route with options:
   #   resources :products do

@@ -2,6 +2,9 @@
 @import "foundation_and_overrides";
 @import "compass";
 @import "profiles";
+@import "camps";
+
+
 
 
 .container {
@@ -14,4 +17,22 @@
     $bg: #ECFFEE,
     $adjust: true
   )
+}
+
+form a.remove_fields i.fa-times {
+  color: red;
+  padding-top: 13px;
+  font-size: 3em;
+  font-weight: bold;
+  @include text-shadow(5px 5px 0px #000);
+  &:hover {
+    padding-left: 2px;
+    padding-top: 15px;
+    @include text-shadow(3px 3px 0px #000);
+  }
+  &:active {
+    padding-left: 5px;
+    padding-top: 18px;
+    @include text-shadow(0px 0px 0px #fff);
+  }
 }

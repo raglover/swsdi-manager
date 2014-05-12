@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -10,6 +10,7 @@ gem 'sass-rails', '~> 4.0.3'
 # Use Foundation Rails and Compass for layout
 gem 'foundation-rails'
 gem 'compass-rails'
+
 # Use Font Awesome Sass for icon font
 gem 'font-awesome-sass'
 # Use Uglifier as compressor for JavaScript assets
@@ -47,3 +48,4 @@ gem 'omniauth-facebook'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'railroady', group: [:development, :test]

@@ -1,7 +1,9 @@
 <div class="row">
   <div class="panel">
-    <h1>Welcome to SWSDI Registration</h1>
-    <p>We look forward to having you </p>
+    <h1>Welcome to Registration for <%= @camp.name %></h1>
+    <h3><%= @camp.start_date.strftime("%B %d") %> - <%= @camp.end_date.strftime("%B %d, %Y") %></h3>
+    <h4>at <%= @camp.location %></h4>
+    <p>Registration closes on <%= @camp.app_end_date.strftime("%B %d, %Y") %>, so be sure to reserve your spot! We look forward to having you.</p>
     <p><a href="#" class="button large radius" role="button">Learn More!</a></p>
   </div>
 </div>

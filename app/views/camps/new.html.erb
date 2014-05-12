@@ -1,0 +1,9 @@
+<div class="row">
+  <h1>New Camp</h1>
+  <%= form_for @camp do |f| %>
+    <%= render 'campinfo', :f => f %>
+    <div class="row">
+      <%= f.submit "Create Camp", class: "button primary small-6 large-6 columns" %>
+    </div>
+  <% end %>
+</div>
