@@ -6,7 +6,7 @@ class CampsController < ApplicationController
   end
 
   def show
-    @events = @camp.events.all
+    @events = @camp.events.all.order(:event_session)
   end
 
   def new
