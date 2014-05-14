@@ -1,0 +1,12 @@
+<%= simple_form_for(@camp_application) do |f| %>
+  <%= f.error_notification %>
+  <fieldset>
+    <legend>Application</legend>
+    <% @sessions.each do |session| %>
+      <h4><strong><%= session.name %></strong></h4>
+      <% events = session.events %>
+      <%= f.association :events, collection: events %>
+    <% end %>
+    <%= f.button :submit %>    
+  </fieldset>
+<% end %>
