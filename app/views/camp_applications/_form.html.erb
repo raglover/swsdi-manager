@@ -5,7 +5,7 @@
     <% @sessions.each do |session| %>
       <h4><strong><%= session.name %></strong></h4>
       <% events = session.events %>
-      <%= f.association :events, collection: events %>
+      <%= f.association :events, collection: events, :multiple => true %>
     <% end %>
     <%= f.button :submit %>    
   </fieldset>
