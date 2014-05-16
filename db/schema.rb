@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514144649) do
+ActiveRecord::Schema.define(version: 20140516015155) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20140514144649) do
     t.boolean  "has_allergies"
     t.boolean  "has_dietary_restrictions"
     t.string   "allergies"
-    t.text     "dietary_restrictions"
+    t.string   "dietary_restrictions"
     t.integer  "camp_id"
   end
 

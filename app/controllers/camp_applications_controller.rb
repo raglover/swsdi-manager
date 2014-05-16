@@ -27,8 +27,9 @@ class CampApplicationsController < ApplicationController
   def edit
     @debate_records = @camp_application.debate_records.all
     @check_outs = @camp_application.check_out_permissions.all
-    @camp = Camp.where( camp_id: params[:camp_id] )
+    @camp = Camp.find_by_id( @camp_application.camp_id )
     @events = @camp_application.events.all
+    @sessions = @camp.camp_sessions.all
   end
 
   # POST /camp_applications
@@ -79,11 +80,11 @@ class CampApplicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def camp_application_params
-      params[:camper_type, :event_partner_req, :has_competed, :comments, :roommate_req, :has_laptop, 
+      params.require(:camp_application).permit(:camper_type, :event_partner_req, :has_competed, :comments, :roommate_req, :has_laptop, 
         :needs_pickup, :needs_dropoff, :itinerary, :has_allergies, :allergies, :has_dietary_restrictions, :dietary_restrictons,
-        :camp_id, 
-        :debate_records_attributes[:id, :tournament_name, :prelim_wins, :prelim_losses, :reached_outrounds, 
-          :outround_reached, :location, :division, '_destroy'], 
-        :check_out_permissions_attributes[:id, :first_name, :last_name, :relationship, :phone_num, '_destroy']]
+        :camp_id, :event_ids => [],
+        :debate_records_attributes => [:id, :tournament_name, :prelim_wins, :prelim_losses, :reached_outrounds, 
+          :outround_reached, :location, :division, :_destroy], 
+        :check_out_permissions_attributes => [:id, :first_name, :last_name, :relationship, :phone_num, :_destroy])
     end
 end

@@ -1,5 +1,6 @@
-<h1>New camp_application</h1>
+<div class="row">
+  <h3>Apply for <%= @camp.name %></h3>
+  <%= render 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', camp_applications_path %>
+  <%= link_to 'Back', camp_applications_path %>
+</div>
