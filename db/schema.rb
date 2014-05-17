@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140516015155) do
+ActiveRecord::Schema.define(version: 20140517003313) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20140516015155) do
     t.string   "allergies"
     t.string   "dietary_restrictions"
     t.integer  "camp_id"
+    t.boolean  "is_approved"
   end
 
   add_index "camp_applications", ["camp_id"], name: "index_camp_applications_on_camp_id"
