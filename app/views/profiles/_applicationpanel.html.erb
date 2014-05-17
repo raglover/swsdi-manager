@@ -1,0 +1,40 @@
+<div class="small-12 large-6 columns appbox" data-equalizer-watch>
+  <h4>Available Applications:</h4>
+  <% @camps.each do |camp| %>
+    <%= link_to "Apply for #{camp.name}", new_camp_application_path( :params => {:camp_id => camp.id}), class: "button primary" %>
+  <% end %>  
+</div>
+<div class="small-12 large-6 columns appbox" data-equalizer-watch>
+  <h4>My Applications</h4>
+  <% @user.camp_applications.each do |application| %>
+    <div class="apppanel radius">
+      <div class="row">
+        <div class="small-4 large-4 columns">
+          <i class="fa fa-gavel"></i> <%= application.camp.name %>
+        </div> 
+        <div class="small-1 small-offset-4 large-1 large-offset-4 columns">
+          <%= link_to camp_application_path(application) do  %>
+            <i class="fa fa-eye has-tip" data-tooltip title="View Application"></i>
+          <% end %>
+        </div>
+        <div class="small-1 large-1 columns">
+          <%= link_to edit_camp_application_path(application) do  %>
+            <i class="fa fa-edit has-tip" data-tooltip title="Edit Application"></i>
+          <% end %>        
+        </div>
+        <div class="small-1 large-1 columns">
+          <%= link_to edit_camp_application_path(application) do  %>
+            <i class="fa fa-file has-tip" data-tooltip title="Download Information Packet"></i>
+          <% end %>        
+        </div>
+        <div class="small-1 large-1 columns">
+          <%  if application.is_approved?  %>
+            <i class="fa fa-check-circle has-tip" data-tooltip title="Your Application has been approved!"></i>
+          <% else %>
+            <i class="fa fa-times-circle has-tip" data-tooltip title="Application Pending Approval"></i>
+          <% end %>        
+        </div>
+      </div>
+    </div>
+  <% end %>  
+</div>

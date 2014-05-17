@@ -40,6 +40,48 @@ img.bg {
   )
 }
 
+.appbox {
+  color: #fff;
+  @include panel (
+    $bg: #6992A8,
+    $adjust: false
+  ){}
+  h4 {
+    color: #fff;
+  }
+  .apppanel {
+    @include panel (
+      $bg: #A09E9E,
+      $adjust: false
+    ){}
+    .has-tip {
+      color: #fff;
+      border-bottom: none;
+      cursor: pointer;
+      &:hover {
+        color: #FFD19A;
+        transition: color 150ms ease-out;
+      }
+    }
+    .fa-times-circle {
+      color: darken(red, 10%);
+      &:hover {
+        color: darken(red, 20%);
+        cursor: help;
+        transition: color 150ms ease-out;
+      }
+    }
+    .fa-check-circle {
+      color: darken(green, 10%);
+      &:hover {
+        color: darken(green, 20%);
+        cursor: help;
+        transition: color 150ms ease-out;
+      }
+    } 
+  }
+}
+
 form a.remove_fields i.fa-times {
   color: red;
   padding-top: 13px;
