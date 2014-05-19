@@ -1,31 +1,46 @@
 <fieldset>
   <legend>User Information</legend>
   <div class="row">
-    <div class="small-12 large-4 columns">  
-      <%= f.text_field :first_name, placeholder: "First Name" %>
+    <div class="small-3 large-3 columns">
+      <% if controller.action_name == "new" %>
+        <%= image_tag 'fallback/default.png' %>
+      <% else %>
+        <%= display_user_avatar(current_user) %>
+      <% end %>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
     </div>
-    <div class="small-12 large-4 columns">
-      <%= f.text_field :last_name, placeholder: "Last Name" %>
-    </div>
-    <div class="small-12 large-4 columns">
-      <%= f.text_field :nickname, placeholder: "Name you prefer to be called" %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="small-12 large-6 columns">
-      <%= f.email_field :email, placeholder: "Email Address" %>
-    </div>
-    <div class="small-12 large-6 columns">
-      <%= f.text_field :spirit_animal, placeholder: "Your Spirit Animal" %>
-    </div>
-  </div>
-  <% if controller.action_name == 'new' || f.object.encrypted_password.present? %>
-    <div class="row">
-      <div class="small-12 large-6 columns">
-        <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
+    <div class="small-9 large-9 columns">
+      <div class="row">
+        <div class="small-12 large-4 columns">  
+          <%= f.text_field :first_name, placeholder: "First Name" %>
+        </div>
+        <div class="small-12 large-4 columns">
+          <%= f.text_field :last_name, placeholder: "Last Name" %>
+        </div>
+        <div class="small-12 large-4 columns">
+          <%= f.text_field :nickname, placeholder: "Name you prefer to be called" %>
+        </div>
       </div>
-      <div class="small-12 large-6 columns">
-        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Verify Password" %>
+      <div class="row">
+        <div class="small-12 large-6 columns">
+          <%= f.email_field :email, placeholder: "Email Address" %>
+        </div>
+        <div class="small-12 large-6 columns">
+          <%= f.text_field :spirit_animal, placeholder: "Your Spirit Animal" %>
+        </div>
+      </div>
+      <% if controller.action_name == 'new' %>
+        <div class="row">
+          <div class="small-12 large-6 columns">
+            <%= f.label :password, "Change your Password:" %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
+          </div>
+          <div class="small-12 large-6 columns">
+            <%= f.label :password_confirmation, "Enter your password again to change it:" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Verify Password" %>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>

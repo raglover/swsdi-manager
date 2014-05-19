@@ -39,6 +39,10 @@ gem 'omniauth-facebook'
 # Use SimpleForm to build forms
 gem 'simple_form'
 
+# Use MiniMagick and Carrierwave for avatar uploads
+gem 'mini_magick'
+gem 'carrierwave'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

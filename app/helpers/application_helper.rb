@@ -11,11 +11,18 @@ module ApplicationHelper
         link_to(name, '#', class: "add_fields button tiny primary", data: {id: id, fields: fields.gsub("\n", "")})
     end
 
-## Defining some collections as helpers for use in forms. There's probably a better way.
+## This is a helper for displaying the user avatar correctly.
 
-    def yesno
-        ["Yes", "No"]
+    def display_user_avatar(user)
+        unless user.image.nil?
+            image_tag(user.image_url(:thumb))
+        else
+            image_tag(user.default_url, width: 150, height: 150)
+        end
     end
+
+
+## Defining some collections as helpers for use in forms. There's probably a better way.
 
     def divisions
         ["Novice", "JV", "Varsity/Open"]

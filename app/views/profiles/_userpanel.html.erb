@@ -1,11 +1,7 @@
 <div class="panel small-12 large-6 columns radius" data-equalizer-watch >
     <div class="row">
       <div class="small-3 large-3 columns">
-        <% if @user.image.nil? %>
-          <%= image_tag "mystery-man.png", class: "th left" %>
-        <% else %>
-          <img src="<%= @user.image %>" alt="User image" class="th left" width=100 height=100 />
-        <% end %>
+        <%= display_user_avatar(@user) %>
       </div>
       <div class="small-9 large-9 columns">  
         <h3><% if (@user.nickname.blank?) %><%= @user.first_name %><% else %><%= @user.nickname %><% end %> <%= @user.last_name %></h2>
@@ -24,6 +20,7 @@
       </div> 
   </div>
   <div class="row small-12 large-5 columns right">
-    <%= link_to "Edit My Profile", edit_user_registration_path, :class => "button primary" %>
+    <%= link_to "Edit My Profile", edit_user_registration_path, :class => "button primary" %><br />
+    <%= link_to "Change Password", edit_user_password_path, :class => "button tiny" %>
   </div>
 </div>
