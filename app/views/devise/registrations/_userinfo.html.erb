@@ -19,7 +19,7 @@
       <%= f.text_field :spirit_animal, placeholder: "Your Spirit Animal" %>
     </div>
   </div>
-  <% if f.object.encrypted_password.present? %>
+  <% if controller.action_name == 'new' || f.object.encrypted_password.present? %>
     <div class="row">
       <div class="small-12 large-6 columns">
         <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
