@@ -1,0 +1,5 @@
+class RoomAssignment
+
+
+
+end
