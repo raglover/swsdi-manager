@@ -7,7 +7,7 @@
       <% else %>
         <%= display_user_avatar(current_user) %>
       <% end %>
-      <%= f.label :image, "Upload an Image" %>
+      <%= f.label :image, "Upload an Avatar Image" %>
       <%= f.file_field :image %>
       <%= f.label :remote_image_url, "Or add one from a URL" %>
       <%= f.text_field :remote_image_url %>

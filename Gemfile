@@ -38,6 +38,7 @@ gem 'rspec-rails', group: :development, group: :test
 gem 'factory_girl_rails', group: :development, group: :test
 gem 'shoulda', group: :development, group: :test
 gem 'capybara', group: :development, group: :test
+
 # Use Devise and Facebook for Authentication
 gem 'devise'
 gem 'omniauth-facebook'

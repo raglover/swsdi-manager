@@ -1,5 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
 
+
   def update
     @user = User.find(current_user.id)
 
@@ -18,6 +19,7 @@ class RegistrationsController < Devise::RegistrationsController
       render "edit"
     end
   end
+
 
   private
 
