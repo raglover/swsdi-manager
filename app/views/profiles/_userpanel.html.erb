@@ -4,9 +4,9 @@
         <%= display_user_avatar(@user) %>
       </div>
       <div class="small-9 large-9 columns">  
-        <h3><% if (@user.nickname.blank?) %><%= @user.first_name %><% else %><%= @user.nickname %><% end %> <%= @user.last_name %></h2>
+        <h3><%= @user.full_name %></h2>
         <ul id="userinfo" class="inline-list">
-          <li><i class="fa fa-comment-o has-tip" data-tooltip title="Prefers to be called"></i>: <% if (@user.nickname.blank?) %> <%= @user.first_name %> <% else %> <%= @user.nickname %> <% end %></li>
+          <li><i class="fa fa-comment-o has-tip" data-tooltip title="Prefers to be called"></i>: <%= !@user.nickname ? @user.first_name : @user.nickname %></li>
           <li><span class="has-tip" data-tooltip title="Gender"><i class="fa fa-female"></i><i class="fa fa-male"></i></span>: <%= @user.gender.capitalize %></li>
           <li><i class="fa fa-calendar has-tip" data-tooltip title="Grade in Fall"></i>: <%= @user.grade %>th Grade</li>
         </ul>

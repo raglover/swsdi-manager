@@ -23,23 +23,6 @@ module ApplicationHelper
         end
     end
 
-## And this one for displaying the full username, with nickname if available.
-
-    def display_full_username(user)
-        unless user.nickname.blank?
-            user.nickname + " " + user.last_name
-        else
-            user.first_name + " " + user.last_name
-        end
-    end
-
-
-## And this is for setting the user's current age using their birthday.
-
-    def user_age(dob)
-        now = Time.now.utc.to_date
-        now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
-    end
 
 ## Defining some collections as helpers for use in forms. There's probably a better way.
 
