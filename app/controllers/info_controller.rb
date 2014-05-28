@@ -1,6 +1,6 @@
 class InfoController < ApplicationController
   def index
-    @camp = Camp.where(active: true).first
+    @camp = Camp.registration_open.first
   end
 
   def about

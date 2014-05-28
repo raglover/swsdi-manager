@@ -1,6 +1,7 @@
 class CampsController < ApplicationController
   before_action :set_camp, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_admin!
+  
   def index
     @camps = Camp.all
   end
