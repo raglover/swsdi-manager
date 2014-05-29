@@ -3,12 +3,15 @@ require 'requests_helper'
 
 describe "UserProfilePage" do
   
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(:complete_user) }
+  before(:each) do
+    login_valid(user)
+    visit profile_path(user)
+  end
 
   context "the user's avatar" do
+
     it "displays a default avatar if none is set." do
-      login_valid(user)
-      visit profile_path(user)
       expect(page.find('#userpanel img')['src']).to have_content('thumb_default.png')
     end
 
@@ -19,23 +22,56 @@ describe "UserProfilePage" do
       expect(page.find('#userpanel img')['src']).to have_content('facebook')
     end
 
-    xit "displays the user's uploaded avatar image if they have one" do
-      # TODO: Come back and test this with other Carrierwave tests, later on.
-      # avatar_user = FactoryGirl.create(:user, image: 'testimage.jpg')
-      # login_valid avatar_user
-      # visit profile_path(avatar_user)
-      # expect(page.find('#userpanel img')['src']).to have_content('testimage.jpg')
-    end
+    # xit "displays the user's uploaded avatar image if they have one" do
+    #   # TODO: Come back and test this with other Carrierwave tests, later on.
+    #   # avatar_user = FactoryGirl.create(:user, image: 'testimage.jpg')
+    #   # login_valid avatar_user
+    #   # visit profile_path(avatar_user)
+    #   # expect(page.find('#userpanel img')['src']).to have_content('testimage.jpg')
+    # end
   end
+  
+  context "the users profile" do
+  
+    it "shows the user's contact information" do
+      expect(page).to have_content(user.address_line1)
+    end
+  
+    it "shows the user's personal information" do
+      expect(page).to have_content(user.tshirt_size.upcase)
+    end
 
-  it "shows the user's contact information" 
-  it "shows the user's personal information"
-  it "shows the parent contact information"
-  it "shows the coach's contact information"
-  it "allows users to register for open camps"
-  it "shows the user their registrations"
-  it "allows users to edit their own registrations"
-  it "shows the user their registration acceptance status"
-  it "allows users to edit their own profile information"
-  it "allows users to change their own password"
+    it "shows the parent contact information" do
+      expect(page).to have_content(user.parent_phone)
+    end
+
+    it "shows the coach's contact information" do
+      expect(page).to have_content(user.coach_email)
+    end
+
+    it "allows users to edit their own profile information" do
+      click_link "Edit My Profile"
+      fill_in "Your Spirit Animal", with: ""
+      within 'form#edit_user' do
+        click_on('Update')
+      end
+      expect(page).to have_content("You're Boring!")
+    end
+
+    it "allows normal users to change their own password" do
+      click_link "Edit My Profile"
+      fill_in "Current Password", with: user.password
+      fill_in "New Password", with: "newpassword"
+      fill_in "Verify Password", with: "newpassword"
+      within 'form#edit_user' do
+        click_on('Update')
+      end
+      expect(page).to have_content("You updated your account successfully")
+    end
+  
+    # it "allows users to register for open camps"
+    # it "shows the user their registrations"
+    # it "allows users to edit their own registrations"
+    # it "shows the user their registration acceptance status"
+  end
 end

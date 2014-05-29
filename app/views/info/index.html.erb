@@ -1,20 +1,24 @@
 <div class="row">
   <div class="panel">
-    <h1>Welcome to Registration for <%= @camp.name %></h1>
-    <h3><%= @camp.start_date.strftime("%B %d") %> - <%= @camp.end_date.strftime("%B %d, %Y") %></h3>
-    <h4>at <%= @camp.location %></h4>
-    <p>Registration closes on <%= @camp.app_end_date.strftime("%B %d, %Y") %>, so be sure to reserve your spot! We look forward to having you.</p>
-    <p>
-      <%= link_to new_user_registration_path, class: "button large radius" do %>
-          <i class="fa fa-trophy"></i> Begin Registration!
-      <% end %>
-      
-      OR
+    <% if @camp %>
+      <h1>Welcome to Registration for <%= @camp.name %></h1>
+      <h3><%= @camp.start_date.strftime("%B %d") %> - <%= @camp.end_date.strftime("%B %d, %Y") %></h3>
+      <h4>at <%= @camp.location %></h4>
+      <p>Registration closes on <%= @camp.app_end_date.strftime("%B %d, %Y") %>, so be sure to reserve your spot! We look forward to having you.</p>
+      <p>
+        <%= link_to new_user_registration_path, class: "button large radius" do %>
+            <i class="fa fa-trophy"></i> Begin Registration!
+        <% end %>
+        
+        OR
 
-      <%= link_to user_omniauth_authorize_path(:facebook), class: "button large radius" do %>
-            <i class="fa fa-facebook-square"></i> Sign Up With Facebook
-      <% end %>
-    </p>
-    <p><small><strong>Note* Using Facebook to sign up will NOT allow us to make posts for you, etc. It just allows us to use Facebook as a login mechanism (no need for a password, yay!), and grabs some basic information (Your name, your birthday, your email address, your gender, and your profile picture) to use to help build your user profile. We do not share this information with ANYBODY, nor do we plan to. Ever.</strong></small></p>
+        <%= link_to user_omniauth_authorize_path(:facebook), class: "button large radius" do %>
+              <i class="fa fa-facebook-square"></i> Sign Up With Facebook
+        <% end %>
+      </p>
+      <p><small><strong>Note* Using Facebook to sign up will NOT allow us to make posts for you, etc. It just allows us to use Facebook as a login mechanism (no need for a password, yay!), and grabs some basic information (Your name, your birthday, your email address, your gender, and your profile picture) to use to help build your user profile. We do not share this information with ANYBODY, nor do we plan to. Ever.</strong></small></p>
+    <% else %>
+      <h1>This app needs to be setup!</h1>
+    <% end %>
   </div>
 </div>

@@ -5,7 +5,7 @@
       <% if controller.action_name == "new" %>
         <%= image_tag 'fallback/default.png' %>
       <% else %>
-        <%= display_user_avatar(current_user) %>
+        <%= display_user_avatar(@user) %>
       <% end %>
       <%= f.label :image, "Upload an Avatar Image" %>
       <%= f.file_field :image %>
@@ -33,18 +33,33 @@
           <%= f.text_field :spirit_animal, placeholder: "Your Spirit Animal" %>
         </div>
       </div>
-      <% if controller.action_name == 'new' %>
+      <% if (controller.action_name == "edit" || controller.action_name == "update") && f.object.encrypted_password.present? %>
         <div class="row">
-          <div class="small-12 large-6 columns">
-            <%= f.label :password, "Change your Password:" %>
-            <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
+          <div class="small-12 large-4 columns">
+            <%= f.label :current_password, "Enter your current Password" %>
+            <%= f.password_field :current_password, autocomplete: "off", placeholder: "Current Password" %>
           </div>
-          <div class="small-12 large-6 columns">
-            <%= f.label :password_confirmation, "Enter your password again to change it:" %>
-            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Verify Password" %>
+          <div class="small-12 large-4 columns">
+            <%= f.label :password, "Change your Password:" %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: "New Password" %>
+          </div>
+          <div class="small-12 large-4 columns">
+            <%= f.label :password_confirmation, "Verify Password:" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Verify New Password" %>
           </div>
         </div>
+      <% elsif controller.action_name == "new" && f.object.encrypted_password.present? %>
+        <div class="row">
+           <div class="small-12 large-6 columns">
+             <%= f.label :password, "Password:" %>
+             <%= f.password_field :password, autocomplete: "off", placeholder: "New Password" %>
+           </div>
+           <div class="small-12 large-6 columns">
+             <%= f.label :password_confirmation, "Enter your password" %>
+             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Verify New Password" %>
+           </div>
+         </div>
+        <% end %>
       </div>
     </div>
-  <% end %>
 </fieldset>
