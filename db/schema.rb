@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140528101210) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -35,10 +38,10 @@ ActiveRecord::Schema.define(version: 20140528101210) do
     t.datetime "locked_at"
   end
 
-  add_index "admins", ["confirmation_token"], name: "index_admins_on_confirmation_token", unique: true
-  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
-  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  add_index "admins", ["unlock_token"], name: "index_admins_on_unlock_token", unique: true
+  add_index "admins", ["confirmation_token"], name: "index_admins_on_confirmation_token", unique: true, using: :btree
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
+  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+  add_index "admins", ["unlock_token"], name: "index_admins_on_unlock_token", unique: true, using: :btree
 
   create_table "camp_applications", force: true do |t|
     t.integer  "user_id"
@@ -62,15 +65,15 @@ ActiveRecord::Schema.define(version: 20140528101210) do
     t.string   "interp_type"
   end
 
-  add_index "camp_applications", ["camp_id"], name: "index_camp_applications_on_camp_id"
+  add_index "camp_applications", ["camp_id"], name: "index_camp_applications_on_camp_id", using: :btree
 
   create_table "camp_applications_events", id: false, force: true do |t|
     t.integer "camp_application_id", null: false
     t.integer "event_id",            null: false
   end
 
-  add_index "camp_applications_events", ["camp_application_id"], name: "index_camp_applications_events_on_camp_application_id"
-  add_index "camp_applications_events", ["event_id"], name: "index_camp_applications_events_on_event_id"
+  add_index "camp_applications_events", ["camp_application_id"], name: "index_camp_applications_events_on_camp_application_id", using: :btree
+  add_index "camp_applications_events", ["event_id"], name: "index_camp_applications_events_on_event_id", using: :btree
 
   create_table "camp_sessions", force: true do |t|
     t.string   "name"
@@ -82,8 +85,8 @@ ActiveRecord::Schema.define(version: 20140528101210) do
     t.string   "shortname"
   end
 
-  add_index "camp_sessions", ["camp_id"], name: "index_camp_sessions_on_camp_id"
-  add_index "camp_sessions", ["id"], name: "index_camp_sessions_on_id"
+  add_index "camp_sessions", ["camp_id"], name: "index_camp_sessions_on_camp_id", using: :btree
+  add_index "camp_sessions", ["id"], name: "index_camp_sessions_on_id", using: :btree
 
   create_table "camps", force: true do |t|
     t.datetime "start_date"
@@ -107,7 +110,7 @@ ActiveRecord::Schema.define(version: 20140528101210) do
     t.integer  "camp_application_id"
   end
 
-  add_index "check_out_permissions", ["camp_application_id"], name: "index_check_out_permissions_on_camp_application_id"
+  add_index "check_out_permissions", ["camp_application_id"], name: "index_check_out_permissions_on_camp_application_id", using: :btree
 
   create_table "debate_records", force: true do |t|
     t.string   "tournament_name"
@@ -122,7 +125,7 @@ ActiveRecord::Schema.define(version: 20140528101210) do
     t.integer  "camp_application_id"
   end
 
-  add_index "debate_records", ["camp_application_id"], name: "index_debate_records_on_camp_application_id"
+  add_index "debate_records", ["camp_application_id"], name: "index_debate_records_on_camp_application_id", using: :btree
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -135,8 +138,8 @@ ActiveRecord::Schema.define(version: 20140528101210) do
     t.integer  "camp_session_id"
   end
 
-  add_index "events", ["camp_id"], name: "index_events_on_camp_id"
-  add_index "events", ["camp_session_id"], name: "index_events_on_camp_session_id"
+  add_index "events", ["camp_id"], name: "index_events_on_camp_id", using: :btree
+  add_index "events", ["camp_session_id"], name: "index_events_on_camp_session_id", using: :btree
 
   create_table "rooms", force: true do |t|
     t.integer  "camp_id"
@@ -197,7 +200,7 @@ ActiveRecord::Schema.define(version: 20140528101210) do
     t.string   "fb_image"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
