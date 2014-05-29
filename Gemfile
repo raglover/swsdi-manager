@@ -30,17 +30,17 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development, group: :test
-
 # Set up rspec, factorygirl, shoulda, and capybara for testing.
-gem 'spring-commands-rspec', group: :development, group: :test
-gem 'guard-rspec', group: :development, group: :test
-gem 'rb-fsevent', group: :development, group: :test
-gem 'rspec-rails', group: :development, group: :test
-gem 'factory_girl_rails', group: :development, group: :test
-gem 'shoulda', group: :development, group: :test
-gem 'capybara', group: :development, group: :test
-
+group :test, :development do
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'guard-rspec' 
+  gem 'rb-fsevent'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'shoulda'
+  gem 'capybara'
+end
 # Use Devise and Facebook for Authentication
 gem 'devise'
 gem 'omniauth-facebook'
