@@ -2,8 +2,7 @@ Rails.application.routes.draw do
 
   resources :camp_applications
 
- get 'profiles/index'
-
+  get 'profiles/index'
   get 'profiles/show'
 
   get 'info/about'
