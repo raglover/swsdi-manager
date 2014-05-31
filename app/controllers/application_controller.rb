@@ -7,7 +7,10 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    profile_path(current_user)
+    case resource
+    when User then profile_path(current_user)
+    when Admin then admins_index_path
+    end
   end
 
   def configure_permitted_parameters
