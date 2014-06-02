@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'requests_helper'
 
-describe "UserProfilePage" do
+describe "UserProfilePage", type: :feature do
   
   let(:user) { FactoryGirl.create(:complete_user) }
   before(:each) do
