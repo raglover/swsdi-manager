@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    @camps = Camp.registration_open
     if params[:id].nil?
       @user = current_user
     else

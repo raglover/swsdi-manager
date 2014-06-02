@@ -1,6 +1,95 @@
 // Place all the styles related to the Profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#userpanel {
+  color: #fff;
+  @include panel (
+    $bg: #888888,
+    $adjust: true
+  ){}
+  h3 {
+    color: #fff;
+  }
+  .has-tip {
+    color: #fff;
+    border-bottom: none;
+  }
+  p {
+    color: #fff;
+  }
+  img {
+    border-radius: 100px;
+    margin-bottom: 10px;
+    border-color: #fff;
+    border-width: 2px;
+    border-style: solid;
+  }
+}
+
+#contactbox {
+  color: #fff;
+  @include panel (
+    $bg: #666,
+    $adjust: true
+  ){}
+  h3 {
+    color: #fff;
+  }
+}
+
+.welcome-box {
+  @include panel (
+    $bg: #CCECDB,
+    $adjust: true
+  )
+}
+
+
+.appbox {
+  color: #fff;
+  @include panel (
+    $bg: #6992A8,
+    $adjust: false
+  ){}
+  h4 {
+    color: #fff;
+  }
+  .apppanel {
+    @include panel (
+      $bg: #A09E9E,
+      $adjust: false
+    ){}
+    border-color: #fff;
+    border-width: 2px;
+    .has-tip {
+      color: #fff;
+      border-bottom: none;
+      cursor: pointer;
+      &:hover {
+        color: #FFD19A;
+        transition: color 150ms ease-out;
+      }
+    }
+    .fa-times-circle {
+      color: darken(red, 10%);
+      &:hover {
+        color: darken(red, 20%);
+        cursor: help;
+        transition: color 150ms ease-out;
+      }
+    }
+    .fa-check-circle {
+      color: darken(green, 10%);
+      &:hover {
+        color: darken(green, 20%);
+        cursor: help;
+        transition: color 150ms ease-out;
+      }
+    } 
+  }
+}
+
+
 #userinfo > li > *, #userinfo2 > li > *, #userinfo3 > li > * {
   display: inline-block;
 }
@@ -14,7 +103,7 @@
     color: pink;
     @include single-text-shadow(0px,0px,1px,false,#000000);
   }
-  .fa-gift {
+  .has-tip.fa-gift {
     color: darkred;
   }
 }

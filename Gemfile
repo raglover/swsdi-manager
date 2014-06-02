@@ -4,7 +4,10 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
+# Use Postgresql as the database for Active Record
+gem 'pg'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Foundation Rails and Compass for layout
@@ -12,7 +15,7 @@ gem 'foundation-rails'
 gem 'compass-rails'
 
 # Use Font Awesome Sass for icon font
-gem 'font-awesome-sass'
+gem 'font-awesome-sass', '~> 4.1.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -30,7 +33,20 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+# Set up rspec, factorygirl, shoulda, and capybara for testing.
+group :test, :development do
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'guard-rspec' 
+  gem 'rb-fsevent'
+  gem 'rspec-rails', '~> 3.0.0.rc1'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'shoulda'
+  gem 'faker'
+  gem 'capybara'
+end
+
+gem 'pry-rails', group: :development
 
 # Use Devise and Facebook for Authentication
 gem 'devise'
@@ -38,6 +54,10 @@ gem 'omniauth-facebook'
 
 # Use SimpleForm to build forms
 gem 'simple_form'
+
+# Use MiniMagick and Carrierwave for avatar uploads
+gem 'mini_magick'
+gem 'carrierwave'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

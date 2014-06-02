@@ -33,12 +33,6 @@ img.bg {
   padding-bottom: 50px;
 }
 
-.welcome-box {
-  @include panel (
-    $bg: #ECFFEE,
-    $adjust: true
-  )
-}
 
 form a.remove_fields i.fa-times {
   color: red;

@@ -1,6 +1,8 @@
 class CampApplicationsController < ApplicationController
   before_action :set_camp_application, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  before_action :authenticate_admin!, only: [:index]
+  
   # GET /camp_applications
   # GET /camp_applications.json
   def index
@@ -39,7 +41,7 @@ class CampApplicationsController < ApplicationController
 
     respond_to do |format|
       if @camp_application.save
-        format.html { redirect_to @camp_application, notice: 'Camp application was successfully completed!' }
+        format.html { redirect_to profile_path(current_user), notice: 'Camp application was successfully completed!' }
         format.json { render :show, status: :created, location: @camp_application }
       else
         format.html { render :new }
@@ -53,7 +55,7 @@ class CampApplicationsController < ApplicationController
   def update
     respond_to do |format|
       if @camp_application.update(camp_application_params)
-        format.html { redirect_to @camp_application, notice: 'Camp application was successfully updated!' }
+        format.html { redirect_to profile_path(current_user), notice: 'Camp application was successfully updated!' }
         format.json { render :show, status: :ok, location: @camp_application }
       else
         format.html { render :edit }
@@ -80,9 +82,9 @@ class CampApplicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def camp_application_params
-      params.require(:camp_application).permit(:camper_type, :event_partner_req, :has_competed, :comments, :roommate_req, :has_laptop, 
-        :needs_pickup, :needs_dropoff, :itinerary, :has_allergies, :allergies, :has_dietary_restrictions, :dietary_restrictons,
-        :camp_id, :event_ids => [],
+      params.require(:camp_application).permit(:interp_type, :camper_type, :event_partner_req, :has_competed, :comments, :roommate_req, :has_laptop, 
+        :needs_pickup, :needs_dropoff, :itinerary, :has_allergies, :allergies, :has_dietary_restrictions, :dietary_restrictions,
+        :camp_id, :user_id, :event_ids => [],
         :debate_records_attributes => [:id, :tournament_name, :prelim_wins, :prelim_losses, :reached_outrounds, 
           :outround_reached, :location, :division, :_destroy], 
         :check_out_permissions_attributes => [:id, :first_name, :last_name, :relationship, :phone_num, :_destroy])

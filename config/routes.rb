@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'admins/index'
+
+  get 'admins/show'
+
   resources :camp_applications
 
- get 'profiles/index'
-
+  get 'profiles/index'
   get 'profiles/show'
 
   get 'info/about'
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
   get 'info/license'
 
   devise_for :admins
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations: "registrations"}
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

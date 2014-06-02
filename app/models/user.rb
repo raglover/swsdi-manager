@@ -6,6 +6,31 @@ class User < ActiveRecord::Base
 
   has_many :camp_applications
 
+  mount_uploader :image, AvatarUploader
+
+  validates :gender, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :parent_email, presence: true
+
+  def full_name
+    if self.nickname.blank?
+      "#{self.first_name} #{self.last_name}"
+    else
+      "#{self.nickname} #{self.last_name}"
+    end
+  end
+
+  def age
+    if self.birthday.present?
+      dob = self.birthday
+      now = Time.now.utc.to_date
+      now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+    else
+      "No Birthday Entered"
+    end
+  end
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
@@ -13,7 +38,7 @@ class User < ActiveRecord::Base
       user.email = auth.info.email
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
-      user.image = auth.info.image
+      user.fb_image = auth.info.image
       user.gender = auth.extra.raw_info.gender
       user.birthday = Date.strptime(auth.extra.raw_info.birthday, '%m/%d/%Y')
     end
