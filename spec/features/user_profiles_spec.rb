@@ -5,6 +5,7 @@ describe "UserProfilePage", type: :feature do
   
   let(:user) { FactoryGirl.create(:complete_user) }
   before(:each) do
+    FactoryGirl.create(:camp)
     login_valid(user)
     visit profile_path(user)
   end
@@ -69,9 +70,46 @@ describe "UserProfilePage", type: :feature do
       expect(page).to have_content("You updated your account successfully")
     end
   
-    # it "allows users to register for open camps"
-    # it "shows the user their registrations"
-    # it "allows users to edit their own registrations"
-    # it "shows the user their registration acceptance status"
+    describe "allows users to register for open camps" do
+      before(:each) do
+        click_link "Apply"
+        first(".check_boxes").click
+        select 'Yes', from: "Competed Previously"
+        select 'Yes', from: "Have a Laptop"
+        select 'Resident', from: "Resident or Commuter"
+        fill_in 'Roommate Preference', with: "#{Faker::Name.name}"
+        fill_in 'Tournament name', with: "Jim Fountain Classic"
+        fill_in 'Location', with: "McClintock High School"
+        select 'Varsity', from: "Division"
+        fill_in 'W', with: 3
+        fill_in 'L', with: 1
+        select "Yes", from: "Outrounds"
+        select "Finals", from: "Latest"
+        select "No", from: "from the airport"
+        select "No", from: "at the airport"
+        fill_in "First name", with: "#{Faker::Name.first_name}"
+        fill_in "Last name", with: "#{Faker::Name.last_name}"
+        fill_in "Relationship", with: "Mother"
+        fill_in "Phone num", with: "#{Faker::PhoneNumber.phone_number}"
+        select "No", from: "Do you have any allergies?"
+        select "No", from: "Do you have any dietary restrictions?"
+        click_on "Create Camp application"
+      end
+      
+      it "shows the user their registrations" do
+        expect(page).to have_selector("i.fa-gavel")
+      end
+
+      it "shows the user their registration acceptance status" do 
+        expect(page).to have_selector("i.fa-times-circle")
+      end
+
+      it "allows users to edit their own registrations" do  
+        click_on "edit"
+        select "No", from: "Have a Laptop"
+        click_button "Update Camp application"
+        expect(page).to have_content("Camp application was successfully updated!")
+      end
+    end
   end
 end

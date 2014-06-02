@@ -39,12 +39,15 @@ group :test, :development do
   gem 'spring-commands-rspec'
   gem 'guard-rspec' 
   gem 'rb-fsevent'
-  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'rspec-rails', '~> 3.0.0.rc1'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda'
   gem 'faker'
   gem 'capybara'
 end
+
+gem 'pry-rails', group: :development
+
 # Use Devise and Facebook for Authentication
 gem 'devise'
 gem 'omniauth-facebook'
