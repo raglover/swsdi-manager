@@ -17,6 +17,7 @@ describe "UserProfilePage", type: :feature do
     end
 
     it "displays the user's facebook avatar if oauth provider is facebook" do
+      click_on "Log Out"
       fb_user = FactoryGirl.create(:user, provider: 'facebook', fb_image: 'https://www.facebook.com/thisisanimage')
       login_valid fb_user
       visit profile_path(fb_user)
@@ -68,6 +69,12 @@ describe "UserProfilePage", type: :feature do
         click_on('Update')
       end
       expect(page).to have_content("You updated your account successfully")
+    end
+
+    it "does not allow users to view other user profiles" do
+      other_user = FactoryGirl.create(:user)
+      visit profile_path(other_user)
+      expect(page).to have_content("You are not authorized to view that resource")
     end
   
     describe "allows users to register for open camps" do
