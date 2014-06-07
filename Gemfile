@@ -43,7 +43,7 @@ group :test, :development do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda'
   gem 'faker'
-  gem 'capybara'
+  gem 'capybara', github: 'jnicklas/capybara', branch: 'master' # '2.2.1'
 end
 
 gem 'pry-rails', group: :development
