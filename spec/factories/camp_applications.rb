@@ -13,5 +13,16 @@ FactoryGirl.define do
     is_approved false
   end
 
+  factory :app_with_records, parent: :camp_application do
+    after(:build) do |app|
+        app.debate_records << FactoryGirl.build(:debate_record)
+    end
+  end
 
+  #TODO: This should be moved to a separate factory file.
+  factory :debate_record do
+    tournament_name "Awesome Tournament"
+  end
+
+    
 end

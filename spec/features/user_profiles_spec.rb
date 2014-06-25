@@ -111,7 +111,7 @@ describe "UserProfilePage", type: :feature do
         expect(page).to have_selector("i.fa-times-circle")
       end
 
-      it "allows users to edit their own registrations" do  
+      xit "allows users to edit their own registrations" do  
         click_on "edit"
         select "No", from: "Have a Laptop"
         click_button "Update Camp application"
