@@ -9,8 +9,6 @@ class CampApplication < ActiveRecord::Base
   accepts_nested_attributes_for :debate_records, allow_destroy: true
   accepts_nested_attributes_for :check_out_permissions, allow_destroy: true
 
-  validates :has_laptop, presence: true
-
   validate :conditional_debate_presence 
 
   def has_competed?

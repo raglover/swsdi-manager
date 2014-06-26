@@ -8,7 +8,6 @@ describe CampApplication do
   end
 
   it { should have_many :debate_records }
-  it { should validate_presence_of :has_laptop }
 
   describe '#has_competed' do
     let (:application) { FactoryGirl.build :camp_application }

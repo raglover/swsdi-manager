@@ -44,6 +44,7 @@ group :test, :development do
   gem 'shoulda'
   gem 'faker'
   gem 'capybara', github: 'jnicklas/capybara', branch: 'master' # '2.2.1'
+  gem 'launchy'
 end
 
 gem 'pry-rails', group: :development
