@@ -8,6 +8,10 @@ describe CampApplication do
   end
 
   it { should have_many :debate_records }
+  it { should have_many :check_out_permissions }
+  it { should belong_to :user }
+  it { should belong_to :camp }
+  it { should have_and_belong_to_many :events }
 
   describe '#has_competed' do
     let (:application) { FactoryGirl.build :camp_application }
@@ -19,15 +23,11 @@ describe CampApplication do
         expect(application).not_to be_valid
       end
 
-      it "should be valid" do
+      it "should be valid with records" do
         with_records.has_competed = true
         expect(with_records).to be_valid
       end
     end
-
-    context 'has not competed before' do
-    end
   end
-
 
 end
