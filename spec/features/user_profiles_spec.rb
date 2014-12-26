@@ -79,7 +79,7 @@ describe "UserProfilePage", type: :feature do
   
     describe "allows users to register for open camps" do
       before(:each) do
-        click_link "Apply"
+        first(:link, "Apply").click
         first(".check_boxes").click
         select 'Yes', from: "Competed Previously"
         select 'Yes', from: "Have a Laptop"
