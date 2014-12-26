@@ -12,6 +12,8 @@ class CampApplicationsController < ApplicationController
   # GET /camp_applications/1
   # GET /camp_applications/1.json
   def show
+    @camp = @camp_application.camp
+    @user = @camp_application.user
     @debate_records = @camp_application.debate_records.all
     @check_outs = @camp_application.check_out_permissions.all
   end
