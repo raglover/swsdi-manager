@@ -20,7 +20,7 @@ describe 'User' do
   describe "#age" do
     it "returns the age of the user in years." do
       user = FactoryGirl.create(:user, birthday: '1999-09-17 00:00:00' )
-      expect(user.age).to eq(14)
+      expect(user.age).to eq(15)
     end
   end
 
