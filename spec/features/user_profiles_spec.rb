@@ -118,10 +118,10 @@ describe "UserProfilePage", type: :feature do
         expect(page).to have_content("Camp application was successfully updated!")
       end
 
-      # it "allows users to view their registration information" do
-      #   find('a>i.fa-graduation-cap').click 
-      #   expect(page).to have_content("Application for")
-      # end
+      it "allows users to view their registration information" do
+        find("a.view_app").click
+        expect(page).to have_content("Application for")
+      end
     end
   end
 end

@@ -28,6 +28,44 @@
 			<% end %>
 		</dl>
 		<div class="small-12 large-12 columns">
+			<h4 class="small-12 large-12 columns">Debate Records</h4>
+			<table class="small-12 large-12 columns">
+				<tr>
+					<th>Tournament</th>
+					<th>Location</th>
+					<th>Division</th>
+					<th>W</th>
+					<th>L</th>
+					<th>Last Outround</th>
+				</tr>
+				<% @debate_records.each do |record| %>
+					<tr>
+						<td><%= record.tournament_name %></td>
+						<td><%= record.location  %></td>
+						<td><%= record.division  %></td>
+						<td><%= record.prelim_wins  %></td>
+						<td><%= record.prelim_losses  %></td>
+						<td><%= record.outround_reached  %></td>
+					</tr>
+				<% end %>
+			</table>
+			<h4 class="small-12 large-12 columns">Authorized Check-out Names</h4>
+			<table class="small-12 large-12 columns">
+				<tr>
+					<th>Name</th>
+					<th>Relationship</th>
+					<th>Phone Number</th>
+				</tr>
+				<% @check_outs.each do |person| %>
+					<tr>
+						<td><%= person.first_name + " " + person.last_name %></td>
+						<td><%= person.relationship  %></td>
+						<td><%= person.phone_num  %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+		<div class="small-12 large-12 columns">
 			<%= link_to 'Edit', edit_camp_application_path(@camp_application), class: "button primary" %> 
 		</div>
 	</div>

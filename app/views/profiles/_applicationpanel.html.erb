@@ -13,7 +13,7 @@
           <i class="fa fa-gavel"></i> <%= application.camp.name %>
         </div> 
         <div class="small-1 small-offset-2 large-1 large-offset-4 columns">
-          <%= link_to camp_application_path(application) do  %>
+          <%= link_to camp_application_path(application), class: "view_app" do  %>
             <i class="fa fa-graduation-cap has-tip" data-tooltip title="View Application"></i>
           <% end %>
         </div>
