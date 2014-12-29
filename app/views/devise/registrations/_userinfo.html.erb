@@ -48,14 +48,14 @@
             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Verify New Password" %>
           </div>
         </div>
-      <% elsif controller.action_name == "new" && f.object.encrypted_password.present? %>
+      <% elsif controller.action_name == "new" && f.object.password_required? %>
         <div class="row">
            <div class="small-12 large-6 columns">
              <%= f.label :password, "Password:" %>
              <%= f.password_field :password, autocomplete: "off", placeholder: "New Password" %>
            </div>
            <div class="small-12 large-6 columns">
-             <%= f.label :password_confirmation, "Enter your password" %>
+             <%= f.label :password_confirmation, "Verify password" %>
              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Verify New Password" %>
            </div>
          </div>
