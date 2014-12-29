@@ -48,7 +48,7 @@
             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Verify New Password" %>
           </div>
         </div>
-      <% elsif controller.action_name == "new" && f.object.password_required? %>
+      <% elsif (controller.action_name == "new" || controller.action_name == "create") && f.object.password_required?  %>
         <div class="row">
            <div class="small-12 large-6 columns">
              <%= f.label :password, "Password:" %>

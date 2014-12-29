@@ -1,7 +1,7 @@
 class CampApplicationsController < ApplicationController
   before_action :set_camp_application, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!
-  # before_action :authenticate_admin!, only: [:index]
+  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_admin!, only: [:index]
   
   # GET /camp_applications
   # GET /camp_applications.json
