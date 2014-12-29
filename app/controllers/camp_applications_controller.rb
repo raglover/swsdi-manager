@@ -16,6 +16,9 @@ class CampApplicationsController < ApplicationController
     @user = @camp_application.user
     @debate_records = @camp_application.debate_records.all
     @check_outs = @camp_application.check_out_permissions.all
+    if (@user != current_user)
+      redirect_to profile_path(current_user), alert: "You are not authorized to view that resource!"
+    end
   end
 
   # GET /camp_applications/new
