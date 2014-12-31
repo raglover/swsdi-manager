@@ -1,4 +1,4 @@
-class RegistrationMailer < ApplicationMailer::Base
+class RegistrationMailer < ActionMailer::Base
 	default from: 'info@swsdi.org'
 
 	def student_email(user, camp)
