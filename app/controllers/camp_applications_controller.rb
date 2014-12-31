@@ -50,7 +50,7 @@ class CampApplicationsController < ApplicationController
     if (!user.coach_email.blank?)
       RegistrationMailer.coach_email(user,camp).deliver_later
     end
-    RegistrationMailer.admin_email.deliver_later
+    RegistrationMailer.admin_email(user,camp).deliver_later
 
     respond_to do |format|
       if @camp_application.save
