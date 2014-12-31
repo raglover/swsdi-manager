@@ -29,7 +29,7 @@ Tempe AZ, 85285<br />
 The second thing we wanted you to be aware of is that we offer a team discount.
 </p>
 <p>
-If four or more of your students register to attend our camp by <%= @camp.discount_deadline %>,
+If four or more of your students register to attend our camp by <%= @camp.discount_deadline.strftime("%B %d, %Y") %>,
 then all of your campers will recieve a $100 discount off of the cost of tuition.
 </p>
 <p>
