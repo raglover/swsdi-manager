@@ -36,8 +36,10 @@ module Swsdiapp
             routing_specs: false,
             controller_specs: true,
             request_specs: true
-        g.fixture_replacement :factory_girl, dir: "spec/factoreis"
+        g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
+
+    config.active_record.raise_in_transactional_callbacks = true
 
   end
 end
