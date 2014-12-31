@@ -1,0 +1,59 @@
+<h4>Hello <%= @user.first_name  %>,</h4>
+
+<p>
+Thank you for registering for <%= @camp.name %>! We look forward
+to seeing you at camp this summer!
+</p>
+<p>
+<strong>**BE SURE TO CAREFULLY READ THIS EMAIL!**</strong> 
+</p>
+<p>
+Important next steps to complete your application:
+<hr />
+</p>
+<p>
+Please download the <%= link_to "document packet", @url %> this 
+packet contains important information, and some documents that 
+require signatures. 
+</p>
+<p>
+Please have your parent fill out those documents (an email has
+also been sent to them!), and sign them. 
+</p>
+<p>
+We require an application fee of <strong>$50</strong>. Make out a check payable
+to: <strong>Southwest Speech and Debate Institute.</strong> The 
+application fee is non-refundable, but it will be applied to your 
+tuition.
+</p>
+<p>
+Then, place the check and the signed forms in an envelope, and 
+mail them to:
+</p>
+<p>
+SWSDI<br />
+P.O. Box 25404<br />
+Tempe AZ, 85283<br />
+</p>
+<p>
+When we have recieved your forms and application fee, we will
+verify your registration is complete. We will send an email to
+notify you that your registration is verified.
+</p>
+<p>
+We will also let you know if there is missing, or incomplete 
+information that we require from you, so that you are able to
+provide that information as needed.
+</p>
+<p>
+If you have any questions, please send an email to <%= mail_to 'info@swsdi.org' %>
+and one of our staff members will be delighted to help you.
+</p>
+<p>
+Thank you again for registering for <%= @camp.name %>. We're hopeful
+that this year will be our best camp ever. We'll see you in July!
+</p>
+<p>
+Cheers, <br />
+The SWSDI Staff
+</p>

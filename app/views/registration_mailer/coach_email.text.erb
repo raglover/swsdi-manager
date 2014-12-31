@@ -1,0 +1,41 @@
+Hello Coach <%= @user.coach_last %>!
+
+Your student, <%= @user.first_name + " " + @user.last_name %> has 
+registered to attend <%= @camp.name %> Speech and Debate Camp this 
+summer. We are very excited to provide a great debate camp experience
+for <%= @user.first_name %>. 
+
+We wanted to send you an email to let you know about a couple of things:
+
+First, in an effort to provide the best possible outcomes for our students,
+we like to ask if the coach would provide any comments or recommendations
+to help us effectively target those areas which will maximize the student's
+success. 
+
+If you would please download the form from this link: <%= @url %> fill it
+out, and send it along to us, we would be grateful. You can fill it out
+electronically, and email it back to us at info@swsdi.org, or you can 
+mail it to the following address:
+
+SWSDI
+P.O. Box 25404
+Tempe AZ, 85285
+
+The second thing we wanted you to be aware of is that we offer a team discount.
+
+If four or more of your students register to attend our camp by <%= @camp.discount_deadline %>,
+then all of your campers will recieve a $100 discount off of the cost of tuition.
+
+At SWSDI, we're interested in building competitors who not only take their 
+competition seriously, but who take their roles in the community seriously. Our
+students experience great competitive success, but they also build skills and
+experience that helps them to take an active role in team leadership.
+
+If you have any questions, please feel free to email us at info@swsdi.org, and one
+of our staff members will get back to you as soon as possible.
+
+Thank you for your time. We look forward to having <%= @user.first_name %> at
+camp this summer!
+
+Cheers,
+The SWSDI Staff

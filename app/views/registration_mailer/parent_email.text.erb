@@ -1,23 +1,29 @@
-Hello <%= @user.first_name  %>,
+Hello <%= @user.parent_first  %>,
 
-Thank you for registering for <%= @camp.name %>! We look forward
-to seeing you at camp this summer!
+Your student, <%= @user.first_name %>, has registered to come to
+<%= @camp.name %> this coming summer. Hopefully this email doesn't
+come as a complete surprise! 
+
+In order to complete the application process, we need some things
+from you. 
 
 **BE SURE TO CAREFULLY READ THIS EMAIL!** 
 
-Important next steps to complete your application:
----------------------------------------------------------
+Important next steps to complete your student's application:
+------------------------------------------------------------
 
 Please download the document packet at <%= @url %>
 this packet contains important information, and some documents 
 that require signatures. 
 
-Please have your parent fill out those documents (an email has
-also been sent to them!), and sign them. 
+Please fill out those documents, and sign them. They include a
+signed list of permissions for who can check your student out of
+camp, and our standard medical release form so that we can get
+treatment for your student if they become ill at camp. 
 
-We require an application fee of $50. Make out a check payable
+We also require an application fee of $50. Make out a check payable
 to: Southwest Speech and Debate Institute. The application fee
-is non-refundable, but it will be applied to your tuition.
+is non-refundable, but it will be applied to your student's tuition.
 
 Then, place the check and the signed forms in an envelope, and 
 mail them to:
@@ -27,8 +33,8 @@ P.O. Box 25404
 Tempe AZ, 85285
 
 When we have recieved your forms and application fee, we will
-verify your registration is complete. We will send an email to
-notify you that your registration is verified.
+verify your student's registration is complete. We will send an 
+email to notify you that the registration is verified.
 
 We will also let you know if there is missing, or incomplete 
 information that we require from you, so that you are able to
@@ -37,8 +43,9 @@ provide that information as needed.
 If you have any questions, please send an email to info@swsdi.org
 and one of our staff members will be delighted to help you.
 
-Thank you again for registering for <%= @camp.name %>. We're hopeful
-that this year will be our best camp ever. We'll see you in July!
+We would like to thank you for sending <%= @user.first_name %> to
+<%= @camp.name %>. We look forward to seeing <%= @user.first_name %>
+this summer!
 
 Cheers,
 The SWSDI Staff

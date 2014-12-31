@@ -1,0 +1,65 @@
+<h4>Hello <%= @user.parent_first  %>,</h4>
+<p>
+Your student, <%= @user.first_name %>, has registered to come to
+<%= @camp.name %> this coming summer. Hopefully this email doesn't
+come as a complete surprise! 
+</p>
+<p>
+In order to complete the application process, we need some things
+from you. 
+</p>
+<p>
+<strong>**BE SURE TO CAREFULLY READ THIS EMAIL!**</strong>
+</p>
+<p>
+Important next steps to complete your student's application:
+<hr />
+</p>
+<p>
+Please download the <%= link_to 'document packet',  @url %>
+this packet contains important information, and some documents 
+that require signatures. 
+</p>
+<p>
+Please fill out those documents, and sign them. They include a
+signed list of permissions for who can check your student out of
+camp, and our standard medical release form so that we can get
+treatment for your student if they become ill at camp. 
+</p>
+<p>
+We also require an application fee of <strong>$50</strong>. Make out a check payable
+to: <strong>Southwest Speech and Debate Institute</strong>. The application fee
+is non-refundable, but it will be applied to your student's tuition.
+</p>
+<p>
+Then, place the check and the signed forms in an envelope, and 
+mail them to:
+</p>
+<p>
+SWSDI<br />
+P.O. Box 25404<br />
+Tempe AZ, 85285<br />
+</p>
+<p>
+When we have recieved your forms and application fee, we will
+verify your student's registration is complete. We will send an 
+email to notify you that the registration is verified.
+</p>
+<p>
+We will also let you know if there is missing, or incomplete 
+information that we require from you, so that you are able to
+provide that information as needed.
+</p>
+<p>
+If you have any questions, please send an email to <%= mail_to 'info@swsdi.org' %>
+and one of our staff members will be delighted to help you.
+</p>
+<p>
+We would like to thank you for sending <%= @user.first_name %> to
+<%= @camp.name %>. We look forward to seeing <%= @user.first_name %>
+this summer!
+</p>
+<p>
+Cheers,<br />
+The SWSDI Staff
+</p>
