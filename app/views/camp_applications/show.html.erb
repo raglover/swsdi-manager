@@ -1,4 +1,72 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_camp_application_path(@camp_application) %> |
-<%= link_to 'Back', camp_applications_path %>
+<div class="row">
+	<h3><%= @camp.name %> Application for <%= @user.full_name %></h3>
+	<div class="panel small-12 large-12 columns">
+		<dl class="small-12 large-6 columns">
+			<% @camp_application.events.each do |event| %>
+				<dt>Events:</dt><dd><%= event.name %></dd>
+				<% if event.name == "Interp" %>
+					<dt>Interp Type:</dt><dd><%= @camp_application.interp_type %></dd>
+				<% end %>
+			<%  end  %>
+			<dt>Camper Type:</dt><dd><%= @camp_application.camper_type  %></dd>
+			<dt>Competed Before?</dt><dd><%= yes_no(@camp_application.has_competed)  %></dd>
+			<dt>Has Laptop?</dt><dd><%= yes_no(@camp_application.has_laptop)  %></dd>
+			<dt>Partner Request:</dt><dd><%= check_for_content(@camp_application.event_partner_req)  %></dd>
+			<dt>Roommate Request:</dt><dd><%= check_for_content(@camp_application.roommate_req)  %></dd>
+		</dl>
+		<dl class="small-12 large-6 columns">
+			<dt>Airport Pickup?</dt><dd><%= yes_no(@camp_application.needs_pickup)  %></dd>
+			<dt>Airport Dropoff?</dt><dd><%= yes_no(@camp_application.needs_dropoff)  %></dd>
+			<dt>Itinerary:</dt><dd><%= check_for_content(@camp_application.itinerary)  %></dd>
+			<dt>Allergies?</dt><dd><%= yes_no(@camp_application.has_allergies)  %></dd>
+			<% if @camp_application.has_allergies %>
+				<dt>Allergy Information:</dt><dd><%= @camp_application.allergies  %></dd>
+			<% end %>
+			<dt>Dietary Restrictions?</dt><dd><%= yes_no(@camp_application.has_dietary_restrictions) %></dd>
+			<% if @camp_application.has_dietary_restrictions %>
+				<dt>Diet Info:</dt><dd><%= @camp_application.dietary_restrictions %></dd>
+			<% end %>
+		</dl>
+		<div class="small-12 large-12 columns">
+			<h4 class="small-12 large-12 columns">Debate Records</h4>
+			<table class="small-12 large-12 columns">
+				<tr>
+					<th>Tournament</th>
+					<th>Location</th>
+					<th>Division</th>
+					<th>W</th>
+					<th>L</th>
+					<th>Last Outround</th>
+				</tr>
+				<% @debate_records.each do |record| %>
+					<tr>
+						<td><%= record.tournament_name %></td>
+						<td><%= record.location  %></td>
+						<td><%= record.division  %></td>
+						<td><%= record.prelim_wins  %></td>
+						<td><%= record.prelim_losses  %></td>
+						<td><%= record.outround_reached  %></td>
+					</tr>
+				<% end %>
+			</table>
+			<h4 class="small-12 large-12 columns">Authorized Check-out Names</h4>
+			<table class="small-12 large-12 columns">
+				<tr>
+					<th>Name</th>
+					<th>Relationship</th>
+					<th>Phone Number</th>
+				</tr>
+				<% @check_outs.each do |person| %>
+					<tr>
+						<td><%= person.first_name + " " + person.last_name %></td>
+						<td><%= person.relationship  %></td>
+						<td><%= person.phone_num  %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+		<div class="small-12 large-12 columns">
+			<%= link_to 'Edit', edit_camp_application_path(@camp_application), class: "button primary" %> 
+		</div>
+	</div>
+</div>

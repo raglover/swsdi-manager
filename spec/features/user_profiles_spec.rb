@@ -17,6 +17,7 @@ describe "UserProfilePage", type: :feature do
     end
 
     it "displays the user's facebook avatar if oauth provider is facebook" do
+      click_on "Log Out"
       fb_user = FactoryGirl.create(:user, provider: 'facebook', fb_image: 'https://www.facebook.com/thisisanimage')
       login_valid fb_user
       visit profile_path(fb_user)
@@ -69,10 +70,16 @@ describe "UserProfilePage", type: :feature do
       end
       expect(page).to have_content("You updated your account successfully")
     end
+
+    it "does not allow users to view other user profiles" do
+      other_user = FactoryGirl.create(:user)
+      visit profile_path(other_user)
+      expect(page).to have_content("You are not authorized to view that resource")
+    end
   
     describe "allows users to register for open camps" do
       before(:each) do
-        click_link "Apply"
+        first(:link, "Apply").click
         first(".check_boxes").click
         select 'Yes', from: "Competed Previously"
         select 'Yes', from: "Have a Laptop"
@@ -104,11 +111,16 @@ describe "UserProfilePage", type: :feature do
         expect(page).to have_selector("i.fa-times-circle")
       end
 
-      it "allows users to edit their own registrations" do  
+     it "allows users to edit their own registrations" do  
         click_on "edit"
         select "No", from: "Have a Laptop"
         click_button "Update Camp application"
         expect(page).to have_content("Camp application was successfully updated!")
+      end
+
+      it "allows users to view their registration information" do
+        find("a.view_app").click
+        expect(page).to have_content("Application for")
       end
     end
   end

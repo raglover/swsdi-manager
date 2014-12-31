@@ -9,5 +9,18 @@ class CampApplication < ActiveRecord::Base
   accepts_nested_attributes_for :debate_records, allow_destroy: true
   accepts_nested_attributes_for :check_out_permissions, allow_destroy: true
 
+  validate :conditional_debate_presence 
+
+  def has_competed?
+    has_competed == true
+  end
+
+  private
+
+    def conditional_debate_presence
+      return unless has_competed
+      return if (debate_records.length > 0) && has_competed?
+      errors.add :base, 'Debate Record Required.'
+    end
 
 end

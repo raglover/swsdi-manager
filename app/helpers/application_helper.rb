@@ -24,6 +24,24 @@ module ApplicationHelper
     end
 
 
+## A Helper for converting booleans into Yes or No answers
+
+    def yes_no(bool_val)
+        if bool_val
+            return "Yes"
+        else
+            return "No"
+        end
+    end
+
+    def check_for_content(content)
+        if !content || content == ""
+            return "None"
+        else
+            return content
+        end
+    end
+
 ## Defining some collections as helpers for use in forms. There's probably a better way.
 
     def divisions

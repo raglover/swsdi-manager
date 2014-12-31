@@ -14,7 +14,7 @@ FactoryGirl.define do
     session_end 6.weeks.from_now
 
     events {
-      Array(5..10).sample.times.map do
+      Array(2..5).sample.times.map do
         FactoryGirl.create(:event)
       end
     }

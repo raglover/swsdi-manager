@@ -1,6 +1,6 @@
 class CampApplicationsController < ApplicationController
   before_action :set_camp_application, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :authenticate_admin!, only: [:index]
   
   # GET /camp_applications
@@ -12,8 +12,13 @@ class CampApplicationsController < ApplicationController
   # GET /camp_applications/1
   # GET /camp_applications/1.json
   def show
+    @camp = @camp_application.camp
+    @user = @camp_application.user
     @debate_records = @camp_application.debate_records.all
     @check_outs = @camp_application.check_out_permissions.all
+    if (@user != current_user)
+      redirect_to profile_path(current_user), alert: "You are not authorized to view that resource!"
+    end
   end
 
   # GET /camp_applications/new
