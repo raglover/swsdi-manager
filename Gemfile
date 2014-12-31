@@ -50,6 +50,7 @@ group :test, :development do
 end
 
 gem 'pry-rails', group: :development
+gem 'letter_opener', group: :development
 
 # Use Devise and Facebook for Authentication
 gem 'devise'
