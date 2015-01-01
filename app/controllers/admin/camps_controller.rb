@@ -1,4 +1,4 @@
-class CampsController < ApplicationController
+class Admin::CampsController < ApplicationController
   before_action :set_camp, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin!
   
@@ -25,7 +25,7 @@ class CampsController < ApplicationController
 
     if @camp.save
       flash[:notice] = "A New Camp has been created sucessfully!"
-      redirect_to @camp
+      redirect_to [:admin, @camp]
     else
       render :new
     end
@@ -36,7 +36,7 @@ class CampsController < ApplicationController
     @csessions = @camp.camp_sessions.all
     if @camp.update(camp_params)
       flash[:notice] = "Camp updated successfully!"
-      redirect_to @camp
+      redirect_to [:admin, @camp]
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class CampsController < ApplicationController
 
   def destroy
     @camp.destroy
-    redirect_to camp_url, notice: 'Camp was successfully destroyed'
+    redirect_to admin_camp_url, notice: 'Camp was successfully destroyed'
   end
 
 private

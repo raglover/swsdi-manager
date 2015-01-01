@@ -1,6 +1,6 @@
 <div class="row">
   <h1>Edit <%= @camp.name %></h1>
-  <%= form_for @camp, method: :put do |f| %>
+  <%= form_for @camp, url: {action: "update"}, method: :put do |f| %>
     <%= render 'campinfo', :f => f %>
     <%= f.fields_for :events do |builder| %>
       <%= render 'event_fields', f: builder  %>

@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'admins/index'
+  namespace :admin do
+    get 'dashboard/index'
+    get 'admins/index'
+    get 'admins/show'
+    resources :camps
+  end
 
-  get 'admins/show'
 
   resources :camp_applications
 
@@ -13,7 +17,8 @@ Rails.application.routes.draw do
   get 'info/privacy'
   get 'info/license'
 
-  devise_for :admins
+  devise_for :admins, controllers: { sessions: "admin/sessions", registrations: "admin/registrations", 
+    confirmations: "admin/confirmations", passwords: "admin/passwords" }
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations: "registrations"}
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -31,8 +36,6 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :profiles
-  resources :camps
-  
   # Example resource route with options:
   #   resources :products do
   #     member do
