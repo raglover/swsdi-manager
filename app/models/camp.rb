@@ -16,6 +16,22 @@ class Camp < ActiveRecord::Base
   scope :active, -> {where(active: true)} 
   scope :registration_open, -> {active.where( "DATE(app_start_date) <= ? AND DATE(app_end_date) >= ?", Time.zone.now, Time.zone.now )}
 
+  def session_application_counts
+    count = {}
+    sessions = self.camp_sessions
+    sessions.each() do |session|
+      events = session.events
+      appcnt = 0
+      events.each() do |event|
+        name = session.name
+        appcnt += event.camp_applications.count
+        tmpcnt = Hash.new
+        tmpcnt[name] = appcnt
+        count.merge!(tmpcnt)
+      end
+    end
+    return count
+  end
 
   private
     def start_date_in_future
