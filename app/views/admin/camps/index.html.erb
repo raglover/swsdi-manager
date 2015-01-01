@@ -2,7 +2,7 @@
   <div class="small-12 large-12 columns">
     <h1>Camps:</h1>
     <% @camps.each do |camp| %>
-      <%= link_to camp.name, camp %>
+      <%= link_to camp.name, admin_camp_path(camp) %>
     <% end %>
   </div>
 </div>
