@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'admins/index'
     get 'admins/show'
     resources :camps
+    resources :camp_apps, only: [:index, :show, :edit, :update, :destroy]
   end
 
 
