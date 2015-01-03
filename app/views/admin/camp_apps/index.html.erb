@@ -3,34 +3,7 @@
 	<% @camp_apps.each do |app| %>
 		<div class="panel large-12 small-12 columns">
 			<span class="small-2 large-2 columns"><%= link_to "#{app.user.full_name}", admin_camp_app_path(app) %></span>
-			<span class="small-4 large-4 columns appstatus">
-				<% if app.med_forms %>
-					<i class="fa fa-ambulance enabled"></i>
-				<% else %>
-					<i class="fa fa-ambulance disabled"></i>
-				<% end %>
-				<% if app.app_fee %>
-					<i class="fa fa-usd enabled"></i>
-				<% else %>
-					<i class="fa fa-usd disabled"></i>
-				<% end %>
-				<% if app.checkout_form %>
-					<i class="fa fa-file-text enabled"></i>
-				<% else %>
-					<i class="fa fa-file-text disabled"></i>
-				<% end %>
-				<% if app.incomplete %>
-					<i class="fa fa-pencil-square-o enabled"></i>
-				<% else %>
-					<i class="fa fa-pencil-square-o disabled"></i>
-				<% end %>
-				<% if app.is_approved %>
-					<i class="fa fa-check enabled"></i>
-				<% else %>
-					<i class="fa fa-check disabled"></i>
-				<% end %>
-			</span>
-
+			<%= render 'statusicons', app: app %>
 		</div>
 	<% end %>
 </div>

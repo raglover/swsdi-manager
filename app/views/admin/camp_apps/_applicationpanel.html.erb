@@ -1,0 +1,66 @@
+<div class="panel small-12 large-12 columns">
+  <dl class="small-12 large-6 columns">
+    <% @camp_app.events.each do |event| %>
+      <dt>Events:</dt><dd><%= event.name %></dd>
+      <% if event.name == "Interp" %>
+        <dt>Interp Type:</dt><dd><%= @camp_app.interp_type %></dd>
+      <% end %>
+    <%  end  %>
+    <dt>Camper Type:</dt><dd><%= @camp_app.camper_type  %></dd>
+    <dt>Competed Before?</dt><dd><%= yes_no(@camp_app.has_competed)  %></dd>
+    <dt>Has Laptop?</dt><dd><%= yes_no(@camp_app.has_laptop)  %></dd>
+    <dt>Partner Request:</dt><dd><%= check_for_content(@camp_app.event_partner_req)  %></dd>
+    <dt>Roommate Request:</dt><dd><%= check_for_content(@camp_app.roommate_req)  %></dd>
+  </dl>
+  <dl class="small-12 large-6 columns">
+    <dt>Airport Pickup?</dt><dd><%= yes_no(@camp_app.needs_pickup)  %></dd>
+    <dt>Airport Dropoff?</dt><dd><%= yes_no(@camp_app.needs_dropoff)  %></dd>
+    <dt>Itinerary:</dt><dd><%= check_for_content(@camp_app.itinerary)  %></dd>
+    <dt>Allergies?</dt><dd><%= yes_no(@camp_app.has_allergies)  %></dd>
+    <% if @camp_app.has_allergies %>
+      <dt>Allergy Information:</dt><dd><%= @camp_app.allergies  %></dd>
+    <% end %>
+    <dt>Dietary Restrictions?</dt><dd><%= yes_no(@camp_app.has_dietary_restrictions) %></dd>
+    <% if @camp_app.has_dietary_restrictions %>
+      <dt>Diet Info:</dt><dd><%= @camp_app.dietary_restrictions %></dd>
+    <% end %>
+  </dl>
+  <div class="small-12 large-12 columns">
+    <h4 class="small-12 large-12 columns">Debate Records</h4>
+    <table class="small-12 large-12 columns">
+      <tr>
+        <th>Tournament</th>
+        <th>Location</th>
+        <th>Division</th>
+        <th>W</th>
+        <th>L</th>
+        <th>Last Outround</th>
+      </tr>
+      <% @camp_app.debate_records.each do |record| %>
+        <tr>
+          <td><%= record.tournament_name %></td>
+          <td><%= record.location  %></td>
+          <td><%= record.division  %></td>
+          <td><%= record.prelim_wins  %></td>
+          <td><%= record.prelim_losses  %></td>
+          <td><%= record.outround_reached  %></td>
+        </tr>
+      <% end %>
+    </table>
+    <h4 class="small-12 large-12 columns">Authorized Check-out Names</h4>
+    <table class="small-12 large-12 columns">
+      <tr>
+        <th>Name</th>
+        <th>Relationship</th>
+        <th>Phone Number</th>
+      </tr>
+      <% @camp_app.check_out_permissions.each do |person| %>
+        <tr>
+          <td><%= person.first_name + " " + person.last_name %></td>
+          <td><%= person.relationship  %></td>
+          <td><%= person.phone_num  %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

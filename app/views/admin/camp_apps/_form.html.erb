@@ -1,0 +1,70 @@
+<%= simple_form_for @camp_app, 
+    url: { controller: "/admin/camp_apps", action: "update" },
+    html: { method: :put } do |f| %>
+  <%= f.error_notification %>
+  <fieldset>
+    <legend>Camp Application</legend>
+    <div class="row">
+      <h5 class="small-12 large-12 columns">Please select one two-week event, or up to one event from each of the first and second weeks.</h5>
+      <% @sessions.each do |session| %>
+        <% events = session.events %>
+        <%= f.association :events, collection: events, as: :check_boxes, wrapper_html: {class: 'small-12 large-4 columns'}, label: session.name+" Events" %>
+      <% end %>
+    </div>
+    <div class="row">
+      <%= f.input :interp_type, collection: ['Duo', 'Dramatic', 'Humor'], wrapper_html: { class: 'small-3 large-3 columns'}, label: "Interp event (if selected)" %>
+      <%= f.input :has_competed, :as => :select, wrapper_html: { class: 'small-5 large-3 columns' }, label: "Competed Previously?" %>
+      <%= f.input :has_laptop, :as => :select, wrapper_html: { class: 'small-4 large-2 columns' }, label: "Have a Laptop?" %>
+      <%= f.input :event_partner_req, wrapper_html: { class: 'small-4 large-4 columns' }, label: "Partner Preference (if necessary)" %>
+      <%= f.input :camper_type, collection: ['Resident', 'Commuter'], wrapper_html: {class: "small-4 large-6 columns"}, label: "Resident or Commuter?" %>
+      <%= f.input :roommate_req, wrapper_html: { class: 'small-6 large-6 columns' }, label: "Roommate Preference (optional)" %>
+    </div>
+    <div class="row">
+      <div class="small-12 large-12 columns">
+        <fieldset>
+          <legend>Debate Record</legend>
+          <h6>If you debated during the previous season, please add your records from each tournament you attended.</h6>
+          <%= f.simple_fields_for :debate_records do |builder| %>
+            <%= render 'debate_record_fields', f: builder %>
+          <% end %>
+          <%= link_to_add_fields "Add Tournament", f, :debate_records  %>
+        </fieldset>
+      </div>
+    </div>
+    <div class="row">
+      <%= f.input :needs_pickup, :as => :select, wrapper_html: { class: 'small-6 large-6 columns' }, label: "Will you need to be picked up from the airport?" %>
+      <%= f.input :needs_dropoff, :as => :select, wrapper_html: { class: 'small-6 large-6 columns' }, label: "Will you need to be dropped off at the airport?" %>
+      <%= f.input :itinerary, wrapper_html: { class: 'small-12 large-12 columns' }, label: "Please provide an itinerary for your travel." %>
+    </div>
+    <div class="row">
+      <div class="small-12 large-12 columns">
+        <fieldset>
+          <legend>Check Out Permissions</legend>
+          <h6>Please list the people who have permission to check you out of camp.</h6>
+          <%= f.simple_fields_for :check_out_permissions do |builder| %>
+            <%= render 'check_out_permission_fields', f: builder %>
+          <% end %>
+          <%= link_to_add_fields "Add Contact", f, :check_out_permissions  %>
+        </fieldset>
+      </div>
+    </div>
+    <div class="row">
+      <fieldset>
+        <legend>Application Status Options</legend>
+        <%= f.input :med_forms, label: "Med Form Recieved" %>
+        <%= f.input :checkout_form, label: "Checkout Form Recieved" %>
+        <%= f.input :app_fee, label: "Application Fee Recieved" %>
+        <%= f.input :incomplete, label: "Application Missing Info" %>
+        <%= f.input :is_approved, label: "Application Approved" %>
+        <%= f.input :missing_info, label: "Which information is missing?" %>
+      </fieldset>
+    </div>
+    <div class="row">
+      <%= f.input :has_allergies, :as => :select, wrapper_html: { class: 'small-6 large-6 columns' }, label: "Do you have any allergies?" %>
+      <%= f.input :has_dietary_restrictions, :as => :select, wrapper_html: { class: 'small-6 large-6 columns' }, label: "Do you have any dietary restrictions?" %>
+      <%= f.input :allergies, wrapper_html: { class: 'small-6 large-6 columns' }, label: "Please list any allergies" %>
+      <%= f.input :dietary_restrictions, wrapper_html: { class: 'small-6 large-6 columns' }, label: "Please list any dietary restrictions" %>
+    </div>
+    <%= f.button :submit %>    
+  </fieldset>
+<% end %>

@@ -7,12 +7,30 @@ class Admin::CampAppsController < ApplicationController
 	end
 
 	def show
+		@camp_app = CampApplication.find_by_id(params[:id])
+		@user = @camp_app.user
 	end
 
 	def edit
+		@camp_app = CampApplication.find_by_id(params[:id])
+		@debate_records = @camp_app.debate_records.all
+    @check_outs = @camp_app.check_out_permissions.all
+    @camp = Camp.find_by_id( @camp_app.camp_id )
+    @events = @camp_app.events.all
+    @sessions = @camp.camp_sessions.all
 	end
 
 	def update
+		@camp_app = CampApplication.find_by_id(params[:id])
+		respond_to do |format|
+      if @camp_app.update(camp_application_params)
+        format.html { redirect_to admin_camp_app_path(@camp_app), notice: 'Camp application was successfully updated!' }
+        format.json { render :show, status: :ok, location: @camp_app }
+      else
+        format.html { render :edit }
+        format.json { render json: @camp_app.errors, status: :unprocessable_entity }
+      end
+    end
 	end
 
 	def destroy

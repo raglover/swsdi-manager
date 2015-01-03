@@ -1,0 +1,13 @@
+<fieldset>
+  <legend>Contact</legend>
+  <div class="row">
+    <%= f.input :first_name, wrapper_html: { class: "small-6 large-3 columns"} %>
+    <%= f.input :last_name, wrapper_html: { class: "small-6 large-3 columns"} %>
+    <%= f.input :relationship, wrapper_html: { class: "small-6 large-2 columns"} %>
+    <%= f.input :phone_num, wrapper_html: { class: "small-6 large-3 columns"} %>
+    <%= f.hidden_field :_destroy %>
+    <%= link_to '#', class: "remove_fields" do %>
+      <i class="fa fa-times"></i>
+    <% end %>
+  </div>
+</fieldset>

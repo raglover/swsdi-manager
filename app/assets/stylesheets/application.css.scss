@@ -56,19 +56,19 @@ form a.remove_fields i.fa-times {
   .disabled {
     color: gray;
   }
-  .fa-ambulance .enabled {
+  .fa-ambulance.enabled {
     color: red;
   }
-  .fa-usd .enabled {
+  .fa-usd.enabled {
     color: green;
   }
-  .fa-file-text .enabled {
+  .fa-file-text.enabled {
     color: blue;
   }
-  .fa-pencil-square-o .enabled {
+  .fa-pencil-square-o.enabled {
     color: red;
   }
-  .fa-check .enabled {
+  .fa-check.enabled {
     color: green;
   }
 }
