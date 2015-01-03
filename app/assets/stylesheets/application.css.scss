@@ -52,6 +52,14 @@ form a.remove_fields i.fa-times {
   }
 }
 
+.statusdisp {
+  i {
+    padding-left: 3px;
+  }
+  span {
+    padding-top: 10px;
+  }
+}
 .appstatus {
   .disabled {
     color: gray;

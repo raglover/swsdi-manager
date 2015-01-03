@@ -24,6 +24,9 @@ class Admin::CampAppsController < ApplicationController
 		@camp_app = CampApplication.find_by_id(params[:id])
 		respond_to do |format|
       if @camp_app.update(camp_application_params)
+        if @camp_app.is_approved
+          RegistrationMailer.verification_email(@camp_app.user, @camp_app.camp, @camp_app).deliver_later
+        end
         format.html { redirect_to admin_camp_app_path(@camp_app), notice: 'Camp application was successfully updated!' }
         format.json { render :show, status: :ok, location: @camp_app }
       else

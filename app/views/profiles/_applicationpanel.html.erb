@@ -28,11 +28,21 @@
           <% end %>        
         </div>
         <div class="small-1 large-1 columns">
-          <%  if application.is_approved?  %>
-            <i class="fa fa-check-circle has-tip" data-tooltip title="Your Application has been approved!"></i>
-          <% else %>
-            <i class="fa fa-times-circle has-tip" data-tooltip title="Application Pending Approval"></i>
-          <% end %>        
+          <%= link_to camp_application_path(application), method: :delete do %>
+            <i class="fa fa-times-circle has-tip" data-tooltip title="Delete App"></i>
+          <% end %>
+        </div>
+        <div class="row statusdisp">
+          <div class="small-12 large-12 columns">
+            <span class="small-6 large-6 columns">Application Status:</span>
+            <%= render 'statusicons', app: application %>
+          </div>
+          <% if application.incomplete %>
+            <div class="small-12 large-12 columns">
+              <span class="small-4 large-4 columns">Missing Info:</span>
+              <span class="small-8 large-8 columns"><%= application.missing_info %></span>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
