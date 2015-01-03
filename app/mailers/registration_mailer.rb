@@ -32,4 +32,12 @@ class RegistrationMailer < ActionMailer::Base
 			subject: "New Application submitted for #{@camp.name} - #{@user.first_name} #{@user.last_name}")
 	end
 
+	def verification_email(user, camp, camp_app)
+		@user = user
+		@camp = camp
+		@camp_app = camp_app
+		mail(to: [@user.email, @user.parent_email],
+			subject: "#{@user.first_name}'s #{@camp.name} Registration has been verified!")
+	end
+
 end

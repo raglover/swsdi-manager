@@ -1,0 +1,36 @@
+<h4>Congratulations, <%= @user.first_name %>!</h4>
+
+<p>
+Your application for <%= @camp.name %> has been verified and approved!
+</p>
+<p>
+This means that we've recieved all of your documents, and your $50 
+application fee. Thank you and your <%= @user.parent_relationship %> for sending those back to us.
+</p>
+<% if @camp_app.incomplete %>
+<p>
+<strong>We are still missing the following information from you:</strong>
+</p>
+
+<p><%= @camp_app.missing_info %></p>
+
+<% end %>
+<p>
+You can make changes to your application and your profile information
+by logging into your account at <a href="https://registration.swsdi.org">SWSDI Reigstration</a>.
+</p>
+<p>
+Please keep us updated about any relevant changes, especially to 
+things like your travel itenerary, if you have one. 
+</p>
+<p>
+As camp draws nearer, we will be in touch about tuition and fees,
+and anything else you might need to know about camp. 
+</p>
+<p>
+We look forward to seeing you in July!
+</p>
+<p>
+Cheers, <br />
+-The SWSDI Staff
+</p>

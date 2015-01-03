@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231140547) do
+ActiveRecord::Schema.define(version: 20150101162858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,11 @@ ActiveRecord::Schema.define(version: 20141231140547) do
     t.integer  "camp_id"
     t.boolean  "is_approved"
     t.string   "interp_type",              limit: 255
+    t.boolean  "med_forms"
+    t.boolean  "app_fee"
+    t.boolean  "checkout_form"
+    t.boolean  "incomplete"
+    t.text     "missing_info"
   end
 
   add_index "camp_applications", ["camp_id"], name: "index_camp_applications_on_camp_id", using: :btree

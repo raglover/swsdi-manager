@@ -1,0 +1,9 @@
+<div class="row">
+	<h2><%= @camp.name %> Applications</h2>
+	<% @camp_apps.each do |app| %>
+		<div class="panel large-12 small-12 columns">
+			<span class="small-2 large-2 columns"><%= link_to "#{app.user.full_name}", admin_camp_app_path(app) %></span>
+			<%= render 'statusicons', app: app %>
+		</div>
+	<% end %>
+</div>

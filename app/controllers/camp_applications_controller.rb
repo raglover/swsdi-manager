@@ -1,7 +1,6 @@
 class CampApplicationsController < ApplicationController
   before_action :set_camp_application, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index]
-  before_action :authenticate_admin!, only: [:index]
   
   # GET /camp_applications
   # GET /camp_applications.json
@@ -47,7 +46,7 @@ class CampApplicationsController < ApplicationController
     camp = @camp_application.camp
     RegistrationMailer.student_email(user,camp).deliver_later
     RegistrationMailer.parent_email(user,camp).deliver_later
-    if (!user.coach_email.blank?)
+    if (user.coach_email.present?)
       RegistrationMailer.coach_email(user,camp).deliver_later
     end
     RegistrationMailer.admin_email(user,camp).deliver_later
@@ -82,7 +81,7 @@ class CampApplicationsController < ApplicationController
   def destroy
     @camp_application.destroy
     respond_to do |format|
-      format.html { redirect_to camp_applications_url, notice: 'Camp application was successfully destroyed.' }
+      format.html { redirect_to profile_path(current_user), notice: 'Camp application was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

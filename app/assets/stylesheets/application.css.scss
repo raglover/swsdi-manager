@@ -52,3 +52,32 @@ form a.remove_fields i.fa-times {
   }
 }
 
+.statusdisp {
+  i {
+    padding-left: 3px;
+  }
+  span {
+    padding-top: 10px;
+  }
+}
+.appstatus {
+  .disabled {
+    color: gray;
+  }
+  .fa-ambulance.enabled {
+    color: red;
+  }
+  .fa-usd.enabled {
+    color: green;
+  }
+  .fa-file-text.enabled {
+    color: blue;
+  }
+  .fa-pencil-square-o.enabled {
+    color: red;
+  }
+  .fa-check.enabled {
+    color: green;
+  }
+}
+

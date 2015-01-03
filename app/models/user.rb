@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:facebook]
 
-  has_many :camp_applications
+  has_many :camp_applications, dependent: :destroy
 
   mount_uploader :image, AvatarUploader
 
@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email

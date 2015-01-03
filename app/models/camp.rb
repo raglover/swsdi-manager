@@ -1,8 +1,8 @@
 class Camp < ActiveRecord::Base
 
-  has_many :events
-  has_many :camp_sessions
-  has_many :camp_applications
+  has_many :events, dependent: :destroy
+  has_many :camp_sessions, dependent: :destroy
+  has_many :camp_applications, dependent: :destroy
 
   accepts_nested_attributes_for :camp_sessions, allow_destroy: true
   accepts_nested_attributes_for :events, allow_destroy: true
@@ -12,10 +12,27 @@ class Camp < ActiveRecord::Base
   validates :name, presence: true
   validates :location, presence: true
   validates :start_date, presence: true
+  validates :discount_deadline, presence: :true
 
   scope :active, -> {where(active: true)} 
   scope :registration_open, -> {active.where( "DATE(app_start_date) <= ? AND DATE(app_end_date) >= ?", Time.zone.now, Time.zone.now )}
 
+  def session_application_counts
+    count = {}
+    sessions = self.camp_sessions
+    sessions.each() do |session|
+      events = session.events
+      appcnt = 0
+      events.each() do |event|
+        name = session.name
+        appcnt += event.camp_applications.count
+        tmpcnt = Hash.new
+        tmpcnt[name] = appcnt
+        count.merge!(tmpcnt)
+      end
+    end
+    return count
+  end
 
   private
     def start_date_in_future
