@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:facebook]
 
-  has_many :camp_applications
+  has_many :camp_applications, dependent: :destroy
 
   mount_uploader :image, AvatarUploader
 
