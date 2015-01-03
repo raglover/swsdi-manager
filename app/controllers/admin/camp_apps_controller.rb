@@ -4,6 +4,7 @@ class Admin::CampAppsController < ApplicationController
 	def index
 		@camp = Camp.registration_open.first
 		@camp_apps = @camp.camp_applications
+    @index_page = true
 	end
 
 	def show

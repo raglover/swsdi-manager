@@ -1,4 +1,7 @@
-<span class="small-4 large-4 columns appstatus">
+<span class="small-3 large-3 columns appstatus">
+  <% if defined? @index_page %>
+    App Status:
+  <% end %>
   <% if app.med_forms %>
     <i class="fa fa-ambulance enabled" data-tooltip title="Health Form Rec'd."></i>
   <% else %>
@@ -13,6 +16,9 @@
     <i class="fa fa-file-text enabled" data-tooltip title="Checkout Form Rec'd."></i>
   <% else %>
     <i class="fa fa-file-text disabled"data-tooltip title="Need Checkout Form"></i>
+  <% end %>
+  <% if (app.needs_pickup || app.needs_dropoff) %>
+    <i class="fa fa-plane enabled" data-tooltip title="Airport Trip"></i>
   <% end %>
   <% if app.incomplete %>
     <i class="fa fa-pencil-square-o enabled" data-tooltip title="Missing Info"></i>
