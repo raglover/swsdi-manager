@@ -8,6 +8,9 @@
     <%  end  %>
     <dt>Camper Type:</dt><dd><%= @camp_app.camper_type  %></dd>
     <dt>Competed Before?</dt><dd><%= yes_no(@camp_app.has_competed)  %></dd>
+    <dt>Experience:</dt>
+      <dd><%= @camp_app.years_in_event %> Years in Event<br />
+          <%= @camp_app.number_of_tournaments %> Tournaments Attended</dd>
     <dt>Has Laptop?</dt><dd><%= yes_no(@camp_app.has_laptop)  %></dd>
     <dt>Partner Request:</dt><dd><%= check_for_content(@camp_app.event_partner_req)  %></dd>
     <dt>Roommate Request:</dt><dd><%= check_for_content(@camp_app.roommate_req)  %></dd>
