@@ -69,8 +69,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { host: 'smtp.mandrillapp.com',
                                          port: '587',
-                                         user_name: ENV['MANDRILL_USER'],
-                                         password: ENV['MANDRILL_PASS'],
+                                         user_name: Rails.application.secrets.mandrill_username,
+                                         password: Rails.application.secrets.mandrill_api_key,
                                          authentication: :login,
                                          domain: 'swsdi.org'}
 
