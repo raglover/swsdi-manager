@@ -11,4 +11,5 @@ class InfoController < ApplicationController
 
   def license
   end
+
 end

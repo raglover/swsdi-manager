@@ -9,6 +9,10 @@ gem 'responders', '~> 2.0'
 # Use Postgresql as the database for Active Record
 gem 'pg'
 
+# Use Unicorn as the production server
+gem 'unicorn'
+gem 'mina'
+gem 'mina-unicorn', :require => false
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 gem 'sass', '3.2.19'

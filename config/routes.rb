@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   get 'info/privacy'
   get 'info/license'
 
+
 end

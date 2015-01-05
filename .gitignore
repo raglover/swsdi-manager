@@ -19,3 +19,10 @@
 /tmp
 /public/uploads/tmp
 /public/uploads/user
+
+# Ignore database and secrets yml files
+/config/database.yml
+/config/secrets.yml
+
+# Ignore documents
+/public/documents
