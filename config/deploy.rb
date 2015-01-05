@@ -12,8 +12,8 @@ require 'mina/unicorn'
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :domain, '104.236.132.77'
-set :deploy_to, '/home/deployer/swsdi-manager/'
-set :repository, 'git://github.com/raglover/swsdi-manager'
+set :deploy_to, '/home/deployer/swsdi-manager'
+set :repository, 'https://github.com/raglover/swsdi-manager.git'
 set :branch, 'master'
 set :user, 'deployer'
 set :forward_agent, true
