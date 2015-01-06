@@ -17,10 +17,11 @@ class RegistrationMailer < ActionMailer::Base
 			subject: "Your Student #{@user.first_name} has registered for #{@camp.name} - Next Steps")
 	end
 
-	def coach_email(user, camp)
+	def coach_email(user, camp, app)
 		@user = user
 		@camp = camp
-		@url = 'https://register.swsdi.org/documents/coachpacket2015.pdf'
+		@id = app.uuid
+		@url = "https://register.swsdi.org/coach_comments/new/?id=#{@id}"
 		mail(to: @user.email, 
 			subject: "Your Student #{@user.first_name} has registered for #{@camp.name} - Next Steps")
 	end

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
   resources :profiles
   resources :camp_applications
+  resources :coach_comments, only: [:new, :create]
 
   get 'info/about'
   get 'info/privacy'

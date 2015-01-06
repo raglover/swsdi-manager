@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104125508) do
+ActiveRecord::Schema.define(version: 20150106171029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20150104125508) do
     t.text     "missing_info"
     t.integer  "years_in_event"
     t.integer  "number_of_tournaments"
+    t.string   "uuid",                                 null: false
   end
 
   add_index "camp_applications", ["camp_id"], name: "index_camp_applications_on_camp_id", using: :btree
@@ -119,6 +120,17 @@ ActiveRecord::Schema.define(version: 20150104125508) do
   end
 
   add_index "check_out_permissions", ["camp_application_id"], name: "index_check_out_permissions_on_camp_application_id", using: :btree
+
+  create_table "coach_comments", force: :cascade do |t|
+    t.text     "strengths"
+    t.text     "weaknesses"
+    t.text     "goals"
+    t.integer  "camp_application_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "coach_comments", ["camp_application_id"], name: "index_coach_comments_on_camp_application_id", using: :btree
 
   create_table "debate_records", force: :cascade do |t|
     t.string   "tournament_name",     limit: 255

@@ -14,10 +14,14 @@ class User < ActiveRecord::Base
   validates :parent_email, presence: true
 
   def full_name
+    "#{self.pref_first_name} #{self.last_name}"
+  end
+
+  def pref_first_name
     if self.nickname.blank?
-      "#{self.first_name} #{self.last_name}"
+      "#{self.first_name}"
     else
-      "#{self.nickname} #{self.last_name}"
+      "#{self.nickname}"
     end
   end
 

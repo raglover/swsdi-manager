@@ -46,9 +46,6 @@ class CampApplicationsController < ApplicationController
     camp = @camp_application.camp
     RegistrationMailer.student_email(user,camp).deliver_later
     RegistrationMailer.parent_email(user,camp).deliver_later
-    if (user.coach_email.present?)
-      RegistrationMailer.coach_email(user,camp).deliver_later
-    end
     RegistrationMailer.admin_email(user,camp).deliver_later
 
     respond_to do |format|
