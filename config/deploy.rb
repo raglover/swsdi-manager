@@ -12,8 +12,8 @@ require 'mina/unicorn'
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :domain, '104.236.132.77'
-set :deploy_to, '/home/deployer/swsdi-manager/'
-set :repository, 'git://github.com/raglover/swsdi-manager'
+set :deploy_to, '/home/deployer/swsdi-manager'
+set :repository, 'https://github.com/raglover/swsdi-manager.git'
 set :branch, 'master'
 set :user, 'deployer'
 set :forward_agent, true
@@ -25,7 +25,7 @@ set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'log', 'config/secrets,yml']
+set :shared_paths, ['config/database.yml', 'log', 'config/secrets.yml']
 
 # Optional settings:
 #   set :user, 'foobar'    # Username in the server to SSH to.
@@ -57,6 +57,9 @@ task :setup => :environment do
 
   queue! %[touch "#{deploy_to}/shared/config/secrets.yml"]
   queue %[echo "-----> Be sure to edit '#{deploy_to}/shared/config/secrets.yml'."]
+
+  queue! %[mkdir -p "#{deploy_to}/shared/pids/"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/pids"]
 end
 
 desc "Deploys the current version to the server."

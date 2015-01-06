@@ -17,11 +17,11 @@
       </div>
       <div class="small-12 large-4 columns">
         <%= f.label :price_resident, "Price for Residents" %>
-        <%= f.number_field :price_resident, in: 800..1300, step: 10  %>
+        <%= f.number_field :price_resident, in: 600..1300, step: 5  %>
       </div>
       <div class="small-12 large-4 columns">
         <%= f.label :price_commuter, "Price for Commuters" %>
-        <%= f.number_field :price_commuter, in: 600..900, step: 10  %>
+        <%= f.number_field :price_commuter, in: 600..900, step: 5  %>
       </div>
     </div>
     <%= f.hidden_field :_destroy %>

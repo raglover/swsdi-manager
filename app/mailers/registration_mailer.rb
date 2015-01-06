@@ -20,7 +20,7 @@ class RegistrationMailer < ActionMailer::Base
 	def coach_email(user, camp)
 		@user = user
 		@camp = camp
-		@url = 'https://register.swsdi.org/documents/returnpacket2015.pdf'
+		@url = 'https://register.swsdi.org/documents/coachpacket2015.pdf'
 		mail(to: @user.email, 
 			subject: "Your Student #{@user.first_name} has registered for #{@camp.name} - Next Steps")
 	end
@@ -28,7 +28,7 @@ class RegistrationMailer < ActionMailer::Base
 	def admin_email(user, camp)
 		@user = user
 		@camp = camp
-		mail(to: "Susan Seep <sseep@swsdi.org>, Richie Glover <rglover@swsdi.org>", 
+		mail(to: "Susan Seep <susan@swsdi.org>, Richie Glover <richard@swsdi.org>", 
 			subject: "New Application submitted for #{@camp.name} - #{@user.first_name} #{@user.last_name}")
 	end
 

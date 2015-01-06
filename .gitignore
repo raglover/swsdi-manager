@@ -27,6 +27,6 @@
 # Ignore documents
 /public/documents
 
-# Ignore sublime project and workspace
-*.sublime-project
+# Ignore sublime project files
 *.sublime-workspace
+*.sublime-project
