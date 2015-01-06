@@ -1,0 +1,23 @@
+<div class="row">
+	<h2>Coach Recommendation for <%= @camp_app.user.full_name %></h2>
+
+	<div class="panel small-12 large-12 columns">
+		<p>Hello, Coach <%= @camp_app.user.coach_last %>!</p>
+		<p>Thanks for taking the time to provide us with some information about <%= @camp_app.user.pref_first_name %>.</p>
+		<p>We use this information to better tailor our instruction, so that we can guarantee the camp experience is as
+		useful for <%= @camp_app.user.pref_first_name %>, and for your team, as possible. Please give an honest assessment.
+		<%= @camp_app.user.pref_first_name %> will not see this information, as it is for coaching use only.</p>
+	</div>
+
+	<%= simple_form_for(@coach_comment) do |f| %>
+		<fieldset>
+			<legend>Please answer the following questions:</legend>
+			<%= f.input :strengths, wrapper_html: { class: 'small-12 large-12 columns'}, label: "What strengths does #{@camp_app.user.pref_first_name} display?" %>
+			<%= f.input :weaknesses, wrapper_html: { class: 'small-12 large-12 columns'}, label: "What are some of #{@camp_app.user.pref_first_name}'s weaknesses?" %>
+			<%= f.input :goals, wrapper_html: { class: 'small-12 large-12 columns'}, label: "What goals do you have for #{@camp_app.user.pref_first_name}'s camp experience?" %>
+			<%= f.hidden_field :app_id, :value => @camp_app.uuid %> 
+			<%= f.button :submit %>
+		</fieldset>
+	<% end %>
+
+</div>

@@ -1,5 +1,8 @@
 class CampApplication < ActiveRecord::Base
 
+  before_create :build_uuid
+  after_create :send_coach_email
+
   has_and_belongs_to_many :events
   has_many :debate_records, dependent: :destroy
   has_many :check_out_permissions, dependent: :destroy
@@ -23,4 +26,14 @@ class CampApplication < ActiveRecord::Base
       errors.add :base, 'Debate Record Required.'
     end
 
+    def build_uuid
+      self.uuid = SecureRandom.uuid
+    end
+
+    def send_coach_email
+      user = self.user
+      if user.coach_email.present?
+        RegistrationMailer.coach_email(user,camp,self).deliver_later
+      end
+    end
 end

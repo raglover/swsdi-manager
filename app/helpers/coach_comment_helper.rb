@@ -1,0 +1,2 @@
+module CoachCommentHelper
+end
