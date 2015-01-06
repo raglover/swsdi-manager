@@ -67,12 +67,12 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { host: 'swsdi.org' }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { host: 'smtp.mandrillapp.com',
+  config.action_mailer.smtp_settings = { address: 'smtp.mandrillapp.com',
                                          port: '587',
                                          user_name: Rails.application.secrets.mandrill_username,
                                          password: Rails.application.secrets.mandrill_api_key,
                                          authentication: :login,
-                                         domain: 'swsdi.org'}
+                                         domain: 'register.swsdi.org',}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
