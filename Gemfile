@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 gem 'responders', '~> 2.0'
+gem 'web-console', '~>2.0', group: :development
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use Postgresql as the database for Active Record
