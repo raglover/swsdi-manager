@@ -2,6 +2,11 @@ class CoachCommentsController < ApplicationController
   def new
   	@camp_app = CampApplication.where(uuid: params[:id]).first
   	@coach_comment = CoachComment.new
+    if @camp_app.present?
+      render :new
+    else
+      render :no_matching_app
+    end
   end
 
   def create
@@ -12,7 +17,7 @@ class CoachCommentsController < ApplicationController
 
   	respond_to do |format|
   	  if @coach_comment.save
- 		format.html { redirect_to root_path, notice: 'Thank you for your comments!' }
+ 		    format.html { redirect_to root_path, notice: 'Thank you for your comments!' }
       else
         format.html { render :new }
       end

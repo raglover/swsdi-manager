@@ -8,7 +8,7 @@ class CampApplication < ActiveRecord::Base
   has_many :check_out_permissions, dependent: :destroy
   belongs_to :user, :foreign_key => 'user_id'
   belongs_to :camp, :foreign_key => 'camp_id'
-  has_one :coach_comment
+  has_one :coach_comment, dependent: :destroy
 
   accepts_nested_attributes_for :debate_records, allow_destroy: true
   accepts_nested_attributes_for :check_out_permissions, allow_destroy: true
