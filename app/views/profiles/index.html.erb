@@ -9,9 +9,12 @@
             <%= display_user_avatar(user) %>
           </div>
           <div class="small-3 large-3 columns">
-            <h5><%= link_to "#{user.full_name}", profile_path(user)  %></h5>
+            <h5><%= user.full_name %></h5>
           </div>
-          <div class="small-1 large-1 small-offset-4 large-offset-4 columns">
+          <div class="small-3 large-3 columns">
+            <h5><%= user.school %></h5>
+          </div>
+          <div class="small-1 large-1 small-offset-1 large-offset-1 columns">
             <i class="fa fa-graduation-cap has-tip" data-tooltip title="# of Applications"></i>: <%= user.camp_applications.count %>
           </div>
           <div class="small-1 large-1 columns">
