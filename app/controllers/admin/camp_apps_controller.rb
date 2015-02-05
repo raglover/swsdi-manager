@@ -4,7 +4,7 @@ class Admin::CampAppsController < ApplicationController
 	def index
 		@camp = Camp.registration_open.first
 		@camp_apps = @camp.camp_applications
-    @index_page = true
+    	@index_page = true
 	end
 
 	def show
@@ -15,10 +15,10 @@ class Admin::CampAppsController < ApplicationController
 	def edit
 		@camp_app = CampApplication.find_by_id(params[:id])
 		@debate_records = @camp_app.debate_records.all
-    @check_outs = @camp_app.check_out_permissions.all
-    @camp = Camp.find_by_id( @camp_app.camp_id )
-    @events = @camp_app.events.all
-    @sessions = @camp.camp_sessions.all
+    	@check_outs = @camp_app.check_out_permissions.all
+    	@camp = Camp.find_by_id( @camp_app.camp_id )
+    	@events = @camp_app.events.all
+    	@sessions = @camp.camp_sessions.all
 	end
 
 	def update
