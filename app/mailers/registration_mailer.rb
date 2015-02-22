@@ -22,7 +22,7 @@ class RegistrationMailer < ActionMailer::Base
 		@camp = camp
 		@id = app.uuid
 		@url = "https://register.swsdi.org/coach_comments/new/?id=#{@id}"
-		mail(to: @user.email, 
+		mail(to: @user.coach_email, 
 			subject: "Your Student #{@user.first_name} has registered for #{@camp.name} - Next Steps")
 	end
 
