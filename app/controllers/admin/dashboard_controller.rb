@@ -7,6 +7,7 @@ class Admin::DashboardController < ApplicationController
   	@user_count = User.all.count
   	@app_count = @camp.camp_applications.count
   	@sessions_count = @camp.session_application_counts.sort
+  	@profile = current_admin.admin_profile
   end
 
 end
