@@ -4,6 +4,7 @@ class InfoController < ApplicationController
   end
 
   def about
+  	@staff = AdminProfile.all
   end
 
   def privacy
