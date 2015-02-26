@@ -1,0 +1,10 @@
+<div class="row">
+  <h2>Create Admin Profile</h2>
+
+  <%= form_for(@profile, url: admin_admin_profiles_path, html: { multipart: true }) do |f| %>
+    <%= render 'userinfo', :f => f  %>
+    <%= render 'personalinfo', :f => f  %>
+    <div><%= f.submit "Create Profile", class: "button primary" %></div>
+  <% end %>
+
+</div>

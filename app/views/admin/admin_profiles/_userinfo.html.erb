@@ -1,0 +1,37 @@
+<fieldset>
+  <legend>User Information</legend>
+  <div class="row">
+    <div class="small-3 large-3 columns">
+      <% if controller.action_name == "new" %>
+        <%= image_tag 'fallback/default.png' %>
+      <% else %>
+        <%= image_tag(@profile.image_url(:thumb)) %>
+      <% end %>
+      <%= f.label :image, "Upload an Avatar Image" %>
+      <%= f.file_field :image %>
+      <%= f.label :remote_image_url, "Or add one from a URL" %>
+      <%= f.text_field :remote_image_url %>
+      <%= f.hidden_field :image_cache %>
+    </div>
+    <div class="small-9 large-9 columns">
+      <div class="row">
+        <div class="small-12 large-4 columns">  
+          <%= f.text_field :first_name, placeholder: "First Name" %>
+        </div>
+        <div class="small-12 large-4 columns">
+          <%= f.text_field :last_name, placeholder: "Last Name" %>
+        </div>
+        <div class="small-12 large-4 columns">
+          <%= f.text_field :nickname, placeholder: "Name you prefer to be called" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 large-6 columns">
+          <%= f.text_field :school_affiliation, placeholder: "Your School Affiliation" %>
+        </div>
+        <div class="small-12 large-6 columns">
+          <%= f.text_field :spirit_animal, placeholder: "Your Spirit Animal" %>
+        </div>
+      </div>
+    </div>
+</fieldset>

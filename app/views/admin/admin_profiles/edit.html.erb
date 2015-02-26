@@ -1,0 +1,13 @@
+<div class="row">
+  <h2>Edit Admin Profile</h2>
+
+  <%= form_for(@profile, url: admin_admin_profile_path, html: { multipart: true, method: :put }) do |f| %>
+
+      <%= render 'userinfo', :f => f  %>
+      <%= render 'personalinfo', :f => f  %>
+
+      <%= f.submit "Update", class: "button primary small-6 large-centered columns" %>
+  <% end %>
+  </div>
+  <div class="row"><%= link_to "Back", :back %></div>
+</div>
