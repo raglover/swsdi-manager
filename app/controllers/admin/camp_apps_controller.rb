@@ -22,8 +22,8 @@ class Admin::CampAppsController < ApplicationController
 	end
 
 	def update
-		@camp_app = CampApplication.find_by_id(params[:id])
-		respond_to do |format|
+	  @camp_app = CampApplication.find_by_id(params[:id])
+	  respond_to do |format|
       if @camp_app.update(camp_application_params)
         if @camp_app.is_approved
           RegistrationMailer.verification_email(@camp_app.user, @camp_app.camp, @camp_app).deliver_later
