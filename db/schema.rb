@@ -11,10 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150106171029) do
+ActiveRecord::Schema.define(version: 20150224050702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admin_profiles", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "bio"
+    t.integer  "admin_id"
+    t.string   "image"
+    t.string   "nickname"
+    t.string   "school_affiliation"
+    t.string   "spirit_animal"
+    t.datetime "birthday"
+    t.string   "phone"
+    t.string   "address_line1"
+    t.string   "address_line2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "admin_profiles", ["admin_id"], name: "index_admin_profiles_on_admin_id", using: :btree
+
+  create_table "admin_profiles_events", force: :cascade do |t|
+    t.integer "admin_profile_id"
+    t.integer "event_id"
+  end
+
+  add_index "admin_profiles_events", ["admin_profile_id"], name: "index_admin_profiles_events_on_admin_profile_id", using: :btree
+  add_index "admin_profiles_events", ["event_id"], name: "index_admin_profiles_events_on_event_id", using: :btree
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
