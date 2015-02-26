@@ -4,7 +4,7 @@ class InfoController < ApplicationController
   end
 
   def about
-  	@staff = AdminProfile.all
+  	@staff = AdminProfile.order(last_name: :desc)
   end
 
   def privacy
