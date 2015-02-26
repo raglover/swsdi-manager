@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'info/about'
   get 'info/privacy'
   get 'info/license'
+  get 'profiles/send_reminder_email/:id', to: 'profiles#send_reminder_email'
 
 
 end

@@ -41,4 +41,11 @@ class RegistrationMailer < ActionMailer::Base
 			subject: "#{@user.first_name}'s #{@camp.name} Registration has been verified!")
 	end
 
+	def reminder_email(user, camp)
+		@user = user
+		@camp = camp
+		mail(to: @user.email,
+			subject: "#{@user.first_name}, Please finish registering for SWSDI!")
+	end
+
 end

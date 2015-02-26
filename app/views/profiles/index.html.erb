@@ -9,22 +9,45 @@
             <%= display_user_avatar(user) %>
           </div>
           <div class="small-3 large-3 columns">
-            <h5><%= user.full_name %></h5>
+            <% if user.camp_applications.first %>
+              <p>
+              <%= link_to admin_camp_app_path(user.camp_applications.first) do %>
+                <%= user.full_name %>
+              <% end %>
+              </p>
+              <p><%= user.email %></p>
+            <% else %>
+              <p><%= user.full_name %></p>
+              <p><%= user.email %></p>
+            <% end %>
           </div>
           <div class="small-3 large-3 columns">
-            <h5><%= user.school %></h5>
+            <p><%= user.school %></p>
           </div>
-          <div class="small-1 large-1 small-offset-1 large-offset-1 columns">
-            <i class="fa fa-graduation-cap has-tip" data-tooltip title="# of Applications"></i>: <%= user.camp_applications.count %>
-          </div>
-          <div class="small-1 large-1 columns">
-            <i class="fa fa-calendar has-tip" data-tooltip title="Age"></i>: <%= user.age %>
-          </div>
-          <div class="small-2 large-2 columns">
-            <i class="fa fa-university has-tip" data-tooltip title="Grade"></i>: <%= user.grade %>th
-          </div>
-          <div class="small-4 large-4 small-offset-8 large-offset-8 columns">
-            <i class="fa fa-linux has-tip" data-tooltip title="Sprit Animal"></i>: <%= user.spirit_animal %>
+          <div class="small-12 large-4 columns">
+            <div class="row">
+              <div class="small-4 large-4 columns">
+                <p><i class="fa fa-graduation-cap has-tip" data-tooltip title="# of Applications"></i>: <%= user.camp_applications.count %><p>
+              </div>
+              <div class="small-4 large-4 columns">
+                <p><i class="fa fa-calendar has-tip" data-tooltip title="Age"></i>: <%= user.age %></p>
+              </div>
+              <div class="small-4 large-4 columns">
+                <p><i class="fa fa-university has-tip" data-tooltip title="Grade"></i>: <%= user.grade %>th</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-6 large-6 columns">
+                <p><i class="fa fa-linux has-tip" data-tooltip title="Sprit Animal"></i>: <%= user.spirit_animal %></p>
+              </div>
+              <div class="small-6 large-6 columns">
+                <% if user.needs_reminding? %>
+                  <p><%= link_to "Send Reminder", controller: "profiles", action: "send_reminder_email", id: user.id %></p>
+                <% else %>
+                  Taken Care of!
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
