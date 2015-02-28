@@ -22,7 +22,7 @@
             <% end %>
           </div>
           <div class="small-3 large-3 columns">
-            <p><%= user.school %></p>
+            <p><%= user.school.titleize %></p>
           </div>
           <div class="small-12 large-4 columns">
             <div class="row">
@@ -38,7 +38,7 @@
             </div>
             <div class="row">
               <div class="small-6 large-6 columns">
-                <p><i class="fa fa-linux has-tip" data-tooltip title="Sprit Animal"></i>: <%= user.spirit_animal %></p>
+                <p><i class="fa fa-linux has-tip" data-tooltip title="Sprit Animal"></i>: <%= spirit_animal(user) %></p>
               </div>
               <div class="small-6 large-6 columns">
                 <% if user.needs_reminding? %>
