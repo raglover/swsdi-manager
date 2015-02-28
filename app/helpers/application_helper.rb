@@ -24,6 +24,30 @@ module ApplicationHelper
     end
 
 
+## A Helper for presenting spirit animal info
+
+    def spirit_animal(user)
+        if user.spirit_animal
+            user.spirit_animal
+        else
+            if user == current_user || user == current_admin
+                return "You're Boring!"
+            else
+                return "Ughhhh, Boring!"
+            end
+        end
+    end
+
+## Returns Experience level
+
+    def experience_level(app)
+        if app.has_competed
+            return "Clinic"
+        else
+            return "Lab"
+        end
+    end
+
 ## A Helper for converting booleans into Yes or No answers
 
     def yes_no(bool_val)

@@ -1,0 +1,24 @@
+<div class="panel callout small-12 large-3 columns">
+	<dl>
+		<dt>Current Admin:</dd>
+    		<%= image_tag(@profile.image_url(:thumb)) %>
+		<dd><%= @profile.full_name %><br /><%= current_admin.email %></dt>
+		<dt>Spirit Animal:</dt>
+		<dd><%= @profile.spirit_animal %></dd>
+		<dt>Birthday:</dt>
+		<dd><%= @profile.birthday.strftime('%b %e, %Y') %></dd>
+		<dt>Phone Number:</dt>
+		<dd><%= @profile.phone %></dd>
+		<dt>Address:</dt>
+		<dd>
+			<%= @profile.address_line1 %><br />
+			<%= @profile.address_line2 %><br />
+			<%= @profile.city %>, <%= @profile.state %> <%= @profile.zip %>
+		</dd>
+		<dt>Sign In Count:</dt>
+		<dd><%= current_admin.sign_in_count  %></dd>
+		<dt>Last Signed In:</dt>
+		<dd><%= current_admin.last_sign_in_at.strftime('%b %e, %Y %l:%M %p (%Z)')  %></dd>
+	</dl>
+	<%= link_to "Edit Profile", edit_admin_admin_profile_path(@profile), {class: "button tiny primary"} %>
+</div>

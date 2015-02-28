@@ -3,6 +3,7 @@
 @import "compass";
 @import "profiles";
 @import "camps";
+@import "info";
 
 img.bg {
   /* Set rules to fill background */
@@ -86,6 +87,16 @@ form a.remove_fields i.fa-times {
 a {
   h1, h2, h3, h4, h5 {
     color: $primary-color;
+  }
+}
+#facebook {
+  h4 {
+    a {
+      color: darken($primary-color, 20%);
+      &:hover {
+        color: lighten($primary-color, 10%);
+      }
+    }
   }
 }
 
