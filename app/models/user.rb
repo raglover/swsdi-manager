@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates :parent_email, presence: true
 
   def full_name
-    "#{self.pref_first_name} #{self.last_name}"
+    "#{self.pref_first_name.capitalize} #{self.last_name.capitalize}"
   end
 
   def pref_first_name

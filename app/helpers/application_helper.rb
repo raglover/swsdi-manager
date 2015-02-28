@@ -27,8 +27,8 @@ module ApplicationHelper
 ## A Helper for presenting spirit animal info
 
     def spirit_animal(user)
-        if user.spirit_animal
-            user.spirit_animal
+        if !user.spirit_animal.blank?
+            user.spirit_animal.titleize
         else
             if user == current_user || user == current_admin
                 return "You're Boring!"
