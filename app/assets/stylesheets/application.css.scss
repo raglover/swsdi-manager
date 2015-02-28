@@ -89,4 +89,14 @@ a {
     color: $primary-color;
   }
 }
+#facebook {
+  h4 {
+    a {
+      color: darken($primary-color, 20%);
+      &:hover {
+        color: lighten($primary-color, 10%);
+      }
+    }
+  }
+}
 

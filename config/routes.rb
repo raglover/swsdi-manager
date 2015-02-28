@@ -8,11 +8,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboard/index'
+    get 'dashboard/event_facebook/:id', to: 'dashboard#event_facebook'
     get 'admins/index'
     get 'admins/show'
     resources :camps
     resources :camp_apps, only: [:index, :show, :edit, :update, :destroy]
-    resources :admin_profiles, only: [:new, :create, :edit, :update, :destroy]
+    resources :admin_profiles, only: [:new, :show, :create, :edit, :update, :destroy]
   end
   resources :profiles
   resources :camp_applications
