@@ -33,7 +33,7 @@ module ApplicationHelper
             if user == current_user || user == current_admin
                 return "You're Boring!"
             else
-                return "Ughhhh, Boring!"
+                return "Ughhh, Boring!"
             end
         end
     end
