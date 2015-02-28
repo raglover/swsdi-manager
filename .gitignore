@@ -17,8 +17,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-/public/uploads/tmp
-/public/uploads/user
+/public/uploads/
 
 # Ignore database and secrets yml files
 /config/database.yml
