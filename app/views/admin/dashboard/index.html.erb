@@ -2,56 +2,7 @@
 	<div class="small-12 large-12 columns panel">
 		<h2>Administration Dashboard</h2>
 		<hr />
-		<div class="panel callout small-12 large-3 columns">
-			<dl>
-				<dt>Current Admin:</dd>
-        		<%= image_tag(@profile.image_url(:thumb)) %>
-				<dd><%= @profile.full_name %><br /><%= current_admin.email %></dt>
-				<dt>Spirit Animal:</dt>
-				<dd><%= @profile.spirit_animal %></dd>
-				<dt>Birthday:</dt>
-				<dd><%= @profile.birthday.strftime('%b %e, %Y') %></dd>
-				<dt>Phone Number:</dt>
-				<dd><%= @profile.phone %></dd>
-				<dt>Address:</dt>
-				<dd>
-					<%= @profile.address_line1 %><br />
-					<%= @profile.address_line2 %><br />
-					<%= @profile.city %>, <%= @profile.state %> <%= @profile.zip %>
-				</dd>
-				<dt>Sign In Count:</dt>
-				<dd><%= current_admin.sign_in_count  %></dd>
-				<dt>Last Signed In:</dt>
-				<dd><%= current_admin.last_sign_in_at.strftime('%b %e, %Y %l:%M %p (%Z)')  %></dd>
-			</dl>
-			<%= link_to "Edit Profile", edit_admin_admin_profile_path(@profile), {class: "button tiny primary"} %>
-		</div>
-		<div class="panel callout small-12 large-8 offset-1 columns">
-			<h3>Information for <%= @camp.name %></h3>
-			<hr />
-			<ul class="small-12 large-6 columns no-bullet">
-				<li>
-					<strong><i class="fa fa-users"></i> User Count:</strong> <%= @user_count %>
-				</li>
-				<li>
-					<strong><i class="fa fa-file-o"></i> Application Count:</strong> <%= @app_count %>
-				</li>
-				<% @sessions_count.each do |name, val| %>
-					<li><strong><i class="fa fa-calendar"></i> <%= name %> Applicants:</strong> <%= val %>
-					</li>
-				<% end %>
-			</ul>
-			<ul class="small-12 large-6 columns no-bullet">
-				<li>
-					<%= link_to "View Camp Info", admin_camp_path(@camp), {class: "button tiny primary"}  %>
-				</li>
-				<li>
-					<%= link_to "Manage Users", profiles_path, {class: "button tiny primary"} %>
-				</li>
-				<li>
-					<%= link_to "Manage Applications", admin_camp_apps_path, {class: "button tiny primary"}  %>
-				</li>
-			</ul>
-		</div>
+		<%= render 'profile' %>
+		<%= render 'campinfo' %>
 	</div>
 </div>
