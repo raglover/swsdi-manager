@@ -1,0 +1,15 @@
+
+<h4>Event Information:</h4>
+<ul class="small-block-grid-1 large-block-grid-2">
+  <% @events.each do |event| %>
+    <li>
+      <h5><%= event.name %></h5>
+      <dl>
+        <dt>Description:</dt>
+        <dd><%= event.description %></dd>
+        <dt>Number of Appicants: <%= event.camp_applications.count %></dt>
+      </dl>
+      <%= link_to "View Campers", admin_path(event), {class: "button tiny primary"} %>
+    </li>
+  <% end %>
+</ul>
