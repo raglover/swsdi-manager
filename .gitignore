@@ -30,3 +30,6 @@
 # Ignore sublime project files
 *.sublime-workspace
 *.sublime-project
+
+# Codekit Config file
+config.codekit
