@@ -4,7 +4,7 @@
     		<%= image_tag(@profile.image_url(:thumb)) %>
 		<dd><%= @profile.full_name %><br /><%= current_admin.email %></dt>
 		<dt>Spirit Animal:</dt>
-		<dd><%= @profile.spirit_animal %></dd>
+		<dd><%= spirit_animal(@profile) %></dd>
 		<dt>Birthday:</dt>
 		<dd><%= @profile.birthday.strftime('%b %e, %Y') %></dd>
 		<dt>Phone Number:</dt>
