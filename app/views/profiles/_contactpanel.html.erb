@@ -17,7 +17,7 @@
             <% if(!@user.address_line2.blank?) %>  
               <%= @user.address_line2.titleize %><br />
             <% end %>
-            <%= @user.city.titleize %>, <%= @user.state.uppercase %> <%= @user.zip %>
+            <%= @user.city.titleize %>, <%= @user.state.upcase %> <%= @user.zip %>
           </address>
         </li>
       </ul>
