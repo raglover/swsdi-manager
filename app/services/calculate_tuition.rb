@@ -27,10 +27,8 @@ class CalculateTuition
   private
 
     def res_base_cost
-      event_cost = 0
-      @camp_app.events.each do |event|
-        event_cost += event.price_resident
-      end
+      eventfees = @camp_app.events.pluck(:price_resident)
+      event_cost = eventfees.reduce(0){|sum, value| sum + value}
       if event_cost > @max_res_tuition
         return @max_res_tuition
       else
@@ -39,10 +37,8 @@ class CalculateTuition
     end
 
     def com_base_cost
-      event_cost = 0
-      @camp_app.events.each do |event|
-        event_cost += event.price_commuter
-      end
+      eventfees = @camp_app.events.pluck(:price_commuter)
+      event_cost = eventfees.reduce(0){|sum, value| sum + value}
       if event_cost > @max_com_tuition
         return @max_com_tuition
       else
@@ -67,13 +63,8 @@ class CalculateTuition
     end
 
     def subtract_payments(balance)
-      payments = @camp_app.payments.all
-      total_pmt = 0.0
-      if !payments.blank?
-        payments.each do |pmt|
-          total_pmt += pmt.amount
-        end
-      end
+      payments = @camp_app.payments.pluck(:amount)
+      total_pmt = payments.reduce(0.0){|sum, value| sum + value}
       balance = balance - total_pmt
       return balance
     end
