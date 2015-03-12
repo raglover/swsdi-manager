@@ -7,6 +7,7 @@ class CalculateTuition
     @max_com_tuition = 880
     @airport_fee = 20
     @app_fee = 50
+    @team_scholarship_disc = 100
   end
 
   def total_owed
@@ -66,6 +67,14 @@ class CalculateTuition
     end
 
     def subtract_payments(balance)
+      payments = @camp_app.payments.all
+      total_pmt = 0.0
+      if !payments.blank?
+        payments.each do |pmt|
+          total_pmt += pmt.amount
+        end
+      end
+      balance = balance - total_pmt
       return balance
     end
 
