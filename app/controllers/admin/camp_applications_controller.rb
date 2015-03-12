@@ -1,4 +1,4 @@
-class Admin::CampAppsController < ApplicationController
+class Admin::CampApplicationsController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index

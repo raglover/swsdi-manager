@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312055108) do
+ActiveRecord::Schema.define(version: 20150312154127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -193,11 +193,11 @@ ActiveRecord::Schema.define(version: 20150312055108) do
 
   create_table "payments", force: :cascade do |t|
     t.decimal  "amount",              precision: 6, scale: 2, null: false
-    t.string   "type"
     t.text     "note"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
     t.integer  "camp_application_id",                         null: false
+    t.string   "pmt_type"
   end
 
   add_index "payments", ["camp_application_id"], name: "index_payments_on_camp_application_id", using: :btree

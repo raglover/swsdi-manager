@@ -1,0 +1,12 @@
+<ul class="inline-list">
+  <li>
+    <%= link_to edit_admin_camp_application_payment_path(@camp_app, pmt.id) do %>
+      <i class="fa fa-edit has-tip" data-tooltip title="Edit Payment"></i>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to admin_camp_application_payment_path(@camp_app, pmt), method: :delete do %>
+      <i class="fa fa-times-circle has-tip" data-tooltip title="Delete Payment"></i>
+    <% end %>  
+  </li>
+</ul>

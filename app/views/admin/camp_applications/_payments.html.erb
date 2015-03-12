@@ -1,3 +1,4 @@
+<div class="row">
 <table class="small-12 large-12 columns">
   <h4>Tuition, Fees, and Payments</h4>
   <thead>
@@ -23,8 +24,8 @@
     <% end %>
     <% @payments.each do |pmt| %>
       <tr>
-        <td><strong><%= pmt.type %></strong></td>
-        <td>$<%= pmt.amount %></td>
+        <td><strong><%= pmt.pmt_type %></strong></td>
+        <td>-$<%= pmt.amount.to_i %></td>
       </tr>
     <% end %>
     <tr>
@@ -37,3 +38,6 @@
     </tr>
   </tbody>
 </table>
+<%= link_to "View Detail", admin_camp_application_payments_path(@camp_app), {class: "button tiny primary"} %>
+<%= link_to "Add Payment", new_admin_camp_application_payment_path(@camp_app), {class: "button tiny primary"} %>
+</div>

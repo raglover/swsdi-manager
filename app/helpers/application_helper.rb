@@ -75,6 +75,10 @@ module ApplicationHelper
     def outrounds
         ["Triples", "Doubles", "Octos", "Quarters", "Semis", "Finals"]
     end
+
+    def pmt_opts
+        ["Credit Card", "Check", "Cash", "Financial Aid"]
+    end
     
     def us_states
         [

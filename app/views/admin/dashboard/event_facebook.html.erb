@@ -6,7 +6,7 @@
       <% @apps.each do |app| %>
         <li>
           <%= display_user_avatar(app.user) %>
-          <h4><%= link_to app.user.full_name, admin_camp_app_path(app) %></h4>
+          <h4><%= link_to app.user.full_name, admin_camp_application_path(app) %></h4>
           <ul class="no-bullet">
             <li><i class="fa fa-university"></i>: <%= app.user.school.titleize %></li>
             <li><i class="fa fa-calendar"></i>: <%= app.user.grade %>th Grade</li>

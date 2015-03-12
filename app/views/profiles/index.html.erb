@@ -11,7 +11,7 @@
           <div class="small-3 large-3 columns">
             <% if user.camp_applications.first %>
               <p>
-              <%= link_to admin_camp_app_path(user.camp_applications.first) do %>
+              <%= link_to admin_camp_application_path(user.camp_applications.first) do %>
                 <%= user.full_name %>
               <% end %>
               </p>
