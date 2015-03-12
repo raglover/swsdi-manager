@@ -5,7 +5,7 @@ class CreatePayments < ActiveRecord::Migration
       t.string :type
       t.text :note
       t.timestamps null: false
+      t.integer :camp_application_id, null: false, index: true
     end
-    add_reference :payments, :camp_applications, index: true
   end
 end

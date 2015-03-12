@@ -2,13 +2,23 @@ class CalculateTuition
 
   def initialize(camp_app)
     @camp_app = camp_app
-    @user = camp_app.user
     @max_res_tuition = 1095
     @max_com_tuition = 880
     @airport_fee = 20
     @app_fee = 50
-    @team_scholarship_disc = 100
   end
+
+  def airport_fee
+    @airport_fee
+  end
+
+  def base_tuition
+    if @camp_app.camper_type == "Resident"
+      return res_base_cost
+    elsif @camp_app.camper_type == "Commuter"
+      return com_base_cost
+    end
+  end   
 
   def total_owed
     if @camp_app.camper_type == "Resident"

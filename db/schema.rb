@@ -192,15 +192,15 @@ ActiveRecord::Schema.define(version: 20150312055108) do
   add_index "events", ["camp_session_id"], name: "index_events_on_camp_session_id", using: :btree
 
   create_table "payments", force: :cascade do |t|
-    t.decimal  "amount",               precision: 6, scale: 2, null: false
+    t.decimal  "amount",              precision: 6, scale: 2, null: false
     t.string   "type"
     t.text     "note"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.integer  "camp_applications_id"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.integer  "camp_application_id",                         null: false
   end
 
-  add_index "payments", ["camp_applications_id"], name: "index_payments_on_camp_applications_id", using: :btree
+  add_index "payments", ["camp_application_id"], name: "index_payments_on_camp_application_id", using: :btree
 
   create_table "rooms", force: :cascade do |t|
     t.integer  "camp_id"
