@@ -1,4 +1,6 @@
 <div class="row">
   <h3>New Payment for <%= @camp_app.user.full_name %></h3>
-  <%= render 'form' %>
+  <%= simple_form_for([:admin, :camp_application, @payment]) do |f| %>
+    <%= render 'form', f: f %>
+  <% end %>
 </div>

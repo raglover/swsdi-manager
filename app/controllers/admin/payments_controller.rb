@@ -7,10 +7,6 @@ class Admin::PaymentsController < ApplicationController
     @tuition = CalculateTuition.new(@camp_app)
   end
 
-  def show
-    @payment = @camp_app.payments.find(params[:id])
-  end
-
   def new
     @payment = @camp_app.payments.build
   end
