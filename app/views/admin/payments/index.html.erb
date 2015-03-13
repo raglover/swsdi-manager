@@ -1,0 +1,56 @@
+<div class="row">
+  <table class="small-12 large-12 columns">
+    <h4>Tuition, Fees, and Payments for <%= @camp_app.user.full_name %></h4>
+    <thead>
+      <th width="20%">Type</th>
+      <th width="40%">Notes</th>
+      <th width="20%">Amount</th>
+      <th width="20%">Tools</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Base Tuition Cost</strong></td>
+        <td></td>
+        <td>$<%= @tuition.base_tuition %></td>
+        <td></td>
+      </tr>
+      <% if @camp_app.needs_pickup || @camp_app.needs_dropoff %>
+        <tr>
+          <td><strong>Airport Fee</strong></td>
+          <td></td>
+          <td>$<%= @tuition.airport_fee %></td>
+          <td></td>
+        </tr>
+      <% end %>
+      <% if @camp_app.app_fee %>
+        <tr>
+          <td><strong>App Fee Paid</strong></td>
+          <td></td>
+          <td>-$50</td>
+          <td></td>
+        </tr>
+      <% end %>
+      <% @payments.each do |pmt| %>
+        <tr>
+          <td><strong><%= pmt.pmt_type %></strong></td>
+          <td><%= pmt.note %></td>
+          <td>-$<%= pmt.amount %></td>
+          <td><%= render partial: 'buttons', locals: {pmt: pmt} %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong>Total Due:</strong></td>
+        <td></td>
+        <td>$<%= @tuition.current_balance.to_i %></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to "Add New Payment", new_admin_camp_application_payment_path, { class: "button" } %>
+</div>

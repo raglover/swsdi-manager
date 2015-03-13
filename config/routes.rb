@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     get 'admins/index'
     get 'admins/show'
     resources :camps
-    resources :camp_apps, only: [:index, :show, :edit, :update, :destroy]
+    resources :camp_applications, only: [:index, :show, :edit, :update, :destroy] do
+      resources :payments, except: [:show]
+    end
     resources :admin_profiles, only: [:new, :show, :create, :edit, :update, :destroy]
   end
   resources :profiles

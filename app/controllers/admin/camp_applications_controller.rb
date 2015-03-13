@@ -1,4 +1,4 @@
-class Admin::CampAppsController < ApplicationController
+class Admin::CampApplicationsController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
@@ -10,6 +10,8 @@ class Admin::CampAppsController < ApplicationController
 	def show
 		@camp_app = CampApplication.find_by_id(params[:id])
 		@user = @camp_app.user
+    @tuition = CalculateTuition.new(@camp_app)
+    @payments = @camp_app.payments
 	end
 
 	def edit

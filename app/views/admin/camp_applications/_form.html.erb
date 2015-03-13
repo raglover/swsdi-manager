@@ -1,6 +1,4 @@
-<%= simple_form_for @camp_app, 
-    url: { controller: "/admin/camp_apps", action: "update" },
-    html: { method: :put } do |f| %>
+<%= simple_form_for([:admin, @camp_app]) do |f| %>
   <%= f.error_notification %>
   <fieldset>
     <legend>Camp Application</legend>

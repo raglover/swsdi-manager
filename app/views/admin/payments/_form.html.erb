@@ -1,0 +1,7 @@
+<fieldset>
+  <legend>Payment</legend>
+  <%= f.input :pmt_type, label: 'Payment Type', collection: pmt_opts, wrapper_html: { class: "small-12 large-4 columns" } %>
+  <%= f.input :note, label: 'Payment Notes', wrapper_html: { class: "small-12 large-4 columns" } %>
+  <%= f.input :amount, label: 'Payment Amount (in dollars)', wrapper_html: { class: "small-12 large-4 columns" } %>
+</fieldset>
+<%= f.button :submit, "Enter Payment" %>

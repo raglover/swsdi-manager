@@ -1,0 +1,43 @@
+<div class="row">
+<table class="small-12 large-12 columns">
+  <h4>Tuition, Fees, and Payments</h4>
+  <thead>
+    <th width="80%">Line Item</th>
+    <th width="20%">Amount</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Base Tuition Cost</strong></td>
+      <td>$<%= @tuition.base_tuition %></td>
+    </tr>
+    <% if @camp_app.needs_pickup || @camp_app.needs_dropoff %>
+      <tr>
+        <td><strong>Airport Fee</strong></td>
+        <td>$<%= @tuition.airport_fee %></td>
+      </tr>
+    <% end %>
+    <% if @camp_app.app_fee %>
+      <tr>
+        <td><strong>App Fee Paid</strong></td>
+        <td>-$50</td>
+      </tr>
+    <% end %>
+    <% @payments.each do |pmt| %>
+      <tr>
+        <td><strong><%= pmt.pmt_type %></strong></td>
+        <td>-$<%= pmt.amount.to_i %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><strong>Total Due:</strong></td>
+      <td>$<%= @tuition.current_balance.to_i %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to "View Detail", admin_camp_application_payments_path(@camp_app), {class: "button tiny primary"} %>
+<%= link_to "Add Payment", new_admin_camp_application_payment_path(@camp_app), {class: "button tiny primary"} %>
+</div>
