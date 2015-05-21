@@ -14,6 +14,7 @@ module ApplicationHelper
 ## This is a helper for displaying the user avatar correctly.
 
     def display_user_avatar(user)
+	binding.pry
         if !user.fb_image.blank?
             image_tag(user.fb_image)
         elsif !user.image.nil?

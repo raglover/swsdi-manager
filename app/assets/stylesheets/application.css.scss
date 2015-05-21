@@ -8,9 +8,9 @@
 // colors
 
 $black: #000;
-$white: $fff;
+$white: #fff;
 $red: #f00;
-$grey: #808080;
+$gray: #808080;
 $green: #008000;
 $blue: #00f;
 $purple: #080080;
@@ -126,7 +126,7 @@ a {
       &:hover {
         color: lighten($primary-color, 10%);
       }
-      
+
     }
   }
 }
