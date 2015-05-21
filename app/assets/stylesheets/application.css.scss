@@ -1,101 +1,132 @@
-@import "font-awesome";
-@import "foundation_and_overrides";
-@import "compass";
-@import "profiles";
-@import "camps";
-@import "info";
+@import 'font-awesome';
+@import 'foundation_and_overrides';
+@import 'compass';
+@import 'profiles';
+@import 'camps';
+@import 'info';
 
-img.bg {
-  /* Set rules to fill background */
+// colors
+
+$black: #000;
+$white: $fff;
+$red: #f00;
+$grey: #808080;
+$green: #008000;
+$blue: #00f;
+$purple: #080080;
+
+
+.bg {
+  // Set rules to fill background
+  height: auto;
+  left: 0;
   min-height: 100%;
   min-width: 1024px;
-  
-  /* Set up proportionate scaling */
-  width: 100%;
-  height: auto;
-  
-  /* Set up positioning */
+  opacity: .5;
   position: fixed;
   top: 0;
-  left: 0;
-  opacity: 0.5;
+  width: 100%;
   z-index: -2;
 }
 
-@media screen and (max-width: 1024px) { /* Specific to this particular image */
-  img.bg {
+@media screen and (max-width: 1024px) { // Specific to this particular image 
+  .bg {
     left: 50%;
-    margin-left: -512px;   /* 50% */
+    margin-left: -512px;
   }
 }
 
 .container {
-  padding-top: 20px;
   padding-bottom: 50px;
+  padding-top: 20px;
 }
 
 
-form a.remove_fields i.fa-times {
-  color: red;
-  padding-top: 13px;
+.remove-fields .fa-times {
+  @include text-shadow(5px 5px 0 $black);
+  color: $red;
   font-size: 3em;
   font-weight: bold;
-  @include text-shadow(5px 5px 0px #000);
+  padding-top: 13px;
+
+
   &:hover {
+    @include text-shadow(3px 3px 0 $black);
     padding-left: 2px;
     padding-top: 15px;
-    @include text-shadow(3px 3px 0px #000);
   }
+
   &:active {
+    @include text-shadow(0 0 0 $white);
     padding-left: 5px;
     padding-top: 18px;
-    @include text-shadow(0px 0px 0px #fff);
   }
+
 }
 
 .statusdisp {
+  
   i {
     padding-left: 3px;
   }
+
   span {
     padding-top: 10px;
   }
+
 }
+
 .appstatus {
+  
   .disabled {
-    color: gray;
+    color: $gray;
   }
+
   .fa-ambulance.enabled {
-    color: red;
+    color: $red;
   }
+
   .fa-usd.enabled {
-    color: green;
+    color: $green;
   }
+
   .fa-file-text.enabled {
-    color: blue;
+    color: $blue;
   }
+
   .fa-plane.enabled {
-    color: purple;
+    color: $purple;
   }
+
   .fa-pencil-square-o.enabled {
-    color: red;
+    color: $red;
   }
+
   .fa-check.enabled {
-    color: green;
+    color: $green;
   }
+
 }
+
 a {
-  h1, h2, h3, h4, h5 {
+  h1, 
+  h2, 
+  h3, 
+  h4, 
+  h5 {
     color: $primary-color;
   }
 }
+
 #facebook {
   h4 {
     a {
       color: darken($primary-color, 20%);
+
       &:hover {
         color: lighten($primary-color, 10%);
       }
+      
     }
   }
 }
