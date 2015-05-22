@@ -8,7 +8,7 @@ module ApplicationHelper
         fields = f.fields_for(association, new_object, child_index: id) do |builder|
             render(association.to_s.singularize + "_fields", f: builder)
         end
-        link_to(name, '#', class: "add_fields button tiny primary", data: {id: id, fields: fields.gsub("\n", "")})
+        link_to(name, '#', class: "add-fields button tiny primary", data: {id: id, fields: fields.gsub("\n", "")})
     end
 
 ## This is a helper for displaying the user avatar correctly.
