@@ -30,7 +30,7 @@ class Admin::CampApplicationsController < ApplicationController
         if @camp_app.is_approved
           RegistrationMailer.verification_email(@camp_app.user, @camp_app.camp, @camp_app).deliver_later
         end
-        format.html { redirect_to admin_camp_app_path(@camp_app), notice: 'Camp application was successfully updated!' }
+        format.html { redirect_to admin_camp_application_path(@camp_app), notice: 'Camp application was successfully updated!' }
         format.json { render :show, status: :ok, location: @camp_app }
       else
         format.html { render :edit }
