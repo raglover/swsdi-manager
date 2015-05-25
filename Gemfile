@@ -59,7 +59,7 @@ gem 'letter_opener', group: :development
 
 # Use Devise and Facebook for Authentication
 gem 'devise'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '~> 2.0.1'
 
 # Use SimpleForm to build forms
 gem 'simple_form'
