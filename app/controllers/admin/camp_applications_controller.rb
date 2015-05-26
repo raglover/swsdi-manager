@@ -1,5 +1,6 @@
 class Admin::CampApplicationsController < ApplicationController
 	before_action :authenticate_admin!
+  before_filter :set_up_camp_app, only: [:edit, :update]
 
 	def index
 		@camp = Camp.registration_open.first
@@ -15,16 +16,9 @@ class Admin::CampApplicationsController < ApplicationController
 	end
 
 	def edit
-		@camp_app = CampApplication.find_by_id(params[:id])
-		@debate_records = @camp_app.debate_records.all
-    	@check_outs = @camp_app.check_out_permissions.all
-    	@camp = Camp.find_by_id( @camp_app.camp_id )
-    	@events = @camp_app.events.all
-    	@sessions = @camp.camp_sessions.all
 	end
 
 	def update
-	  @camp_app = CampApplication.find_by_id(params[:id])
 	  respond_to do |format|
       if @camp_app.update(camp_application_params)
         if @camp_app.is_approved
@@ -43,6 +37,15 @@ class Admin::CampApplicationsController < ApplicationController
 	end
 
 	private
+
+    def set_up_camp_app
+      @camp_app = CampApplication.find_by_id(params[:id])
+      @debate_records = @camp_app.debate_records.all
+      @check_outs = @camp_app.check_out_permissions.all
+      @camp = Camp.find_by_id( @camp_app.camp_id )
+      @events = @camp_app.events.all
+      @sessions = @camp.camp_sessions.all
+    end
 
 		def camp_application_params
 			params.require(:camp_application).permit(:interp_type, :camper_type, :event_partner_req, :has_competed, :comments, :roommate_req, :has_laptop, 

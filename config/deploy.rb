@@ -15,7 +15,7 @@ require 'mina/unicorn'
 set :domain, '104.236.132.77'
 
 # Staging Deployment:
-# set :domain, '192.168.0.104'
+#set :domain, '192.168.0.103'
 
 set :deploy_to, '/home/deployer/swsdi-manager'
 set :repository, 'https://github.com/raglover/swsdi-manager.git'

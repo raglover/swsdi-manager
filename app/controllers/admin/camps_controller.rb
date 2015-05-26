@@ -56,7 +56,7 @@ private
   def camp_params
     params.require(:camp).permit(:name, :location, :start_date, :end_date, :app_start_date, :app_end_date, :discount_deadline, :active,
       :camp_sessions_attributes => [:id, :name, :shortname, :session_start, :session_end, '_destroy'],
-      :events_attributes => [:id, :name, :start_date, :end_date, :camp_session_id, :price_resident, :price_commuter, :description, :camp_id, '_destroy'])
+      :events_attributes => [:id, :name, :start_date, :end_date, :camp_session_id, :price_resident, :price_commuter, :description, :camp_id, :event_type, '_destroy'])
   end
 
 end
