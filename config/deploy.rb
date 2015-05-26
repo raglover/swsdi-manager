@@ -12,10 +12,10 @@ require 'mina/unicorn'
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 # Production Deployment:
-#set :domain, '104.236.132.77'
+set :domain, '104.236.132.77'
 
 # Staging Deployment:
-set :domain, '192.168.0.103'
+#set :domain, '192.168.0.103'
 
 set :deploy_to, '/home/deployer/swsdi-manager'
 set :repository, 'https://github.com/raglover/swsdi-manager.git'
