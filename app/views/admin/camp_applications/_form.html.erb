@@ -65,6 +65,7 @@
       <%= f.input :allergies, wrapper_html: { class: 'small-6 large-6 columns' }, label: "Please list any allergies" %>
       <%= f.input :dietary_restrictions, wrapper_html: { class: 'small-6 large-6 columns' }, label: "Please list any dietary restrictions" %>
     </div>
+    <%= f.error :base %>
     <%= f.button :submit %>    
   </fieldset>
 <% end %>
