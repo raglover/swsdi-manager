@@ -25,8 +25,19 @@ class CampApplication < ActiveRecord::Base
 
     def conditional_debate_presence
       return unless has_competed
-      return if (debate_records.length > 0) && has_competed?
+      return if (debate_records.length > 0) && has_competed? && (check_event_types)
+      return if (debate_records.length >= 0) && has_competed? && (!check_event_types)
       errors.add :base, 'Debate Record Required.'
+    end
+
+    def check_event_types
+      check = true
+      evs = self.events.event_names
+      evs.each do |ev|
+        ck = Event.debate_events.event_names.include?(ev)
+        return ck if ck == check
+      end
+      return false
     end
 
     def build_uuid
