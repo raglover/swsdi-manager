@@ -1,13 +1,17 @@
 <fieldset>
   <div class="row">
     <div class="row">
-      <div class="small-12 large-6 columns">
+      <div class="small-12 large-4 columns">
         <%= f.label :name, "Event Name" %>
         <%= f.text_field :name, placeholder: "Event Name" %>
       </div>
-      <div class="small-12 large-6 columns">
+      <div class="small-12 large-4 columns">
         <%= f.label :description, "Event Description" %>
         <%= f.text_field :description, placeholder: "Event Description" %>
+      </div>
+      <div class="small-12 large-4 columns">
+        <%= f.label :event_type, "Event Type" %>
+        <%= f.select :event_type, options: [["Debate", "debate"], ["Speech", "speech"]] %>
       </div>  
     </div>
     <div class="row">
