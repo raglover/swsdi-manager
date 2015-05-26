@@ -1,5 +1,7 @@
 <%= simple_form_for([:admin, @camp_app]) do |f| %>
   <%= f.error_notification %>
+  <%= f.error :base, class: "alert-box alert" %>
+
   <fieldset>
     <legend>Camp Application</legend>
     <div class="row">
