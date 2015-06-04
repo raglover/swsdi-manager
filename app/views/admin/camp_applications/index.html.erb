@@ -1,23 +1,20 @@
 <div class="row">
 	<h2><%= @camp.name %> Applications</h2>
-  <div class="panel large-12 small-12 columns">
-    <%= render 'searchform' %>
-  </div>
-	<% @users.each do |user| %>
+	<% @camp_apps.each do |app| %>
 		<div class="panel large-12 small-12 columns">
-			<span class="small-2 large-2 columns"><%= link_to "#{user.full_name}", admin_camp_application_path(user.camp_applications) %></span>
-      <span class="small-1 large-1 columns"><i class="fa fa-university" data-tooltip title="<%= user.school %>"></i> <%= user.grade %></span>
-      <% user.camp_applications.each do |app| %>
+			<span class="small-2 large-2 columns"><%= link_to "#{app.user.full_name}", admin_camp_application_path(app) %></span>
+      <span class="small-1 large-1 columns"><i class="fa fa-university" data-tooltip title="<%= app.user.school %>"></i> <%= app.user.grade %></span>
+      <span class="small-3 large-3 columns">
         <% app.events.each do |event| %>
-        <span class="small-3 large-3 columns">
-            <%= event.name %>
-        </span>
-        <span class="small-3 large-3 columns">Session:
-            <%= event.camp_session.shortname + " " %>
-        </span>
+          <%= event.name + " | " %>
         <% end %>
+      </span>
+      <span class="small-3 large-3 columns">Session(s):
+        <% app.events.each do |event| %>
+          <%= event.camp_session.shortname + " " %>
+        <% end %>
+      </span>
 			<%= render 'statusicons', app: app %>
-	  <% end %>
-    </div>
+		</div>
 	<% end %>
 </div>
