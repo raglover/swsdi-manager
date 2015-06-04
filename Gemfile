@@ -52,10 +52,15 @@ group :test, :development do
   gem 'faker'
   gem 'capybara', github: 'jnicklas/capybara', branch: 'master' # '2.2.1'
   gem 'launchy'
+  gem 'railroady'
 end
 
-gem 'pry-rails', group: :development
-gem 'letter_opener', group: :development
+group :development do
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'letter_opener'
+end
 
 # Use Devise and Facebook for Authentication
 gem 'devise'
@@ -71,16 +76,5 @@ gem 'carrierwave'
 # Add Sucker Punch for background work
 gem 'sucker_punch', '~> 1.0'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
-gem 'railroady', group: [:development, :test]
+# Add ransack for searching and sorting stuff
+gem 'ransack'
