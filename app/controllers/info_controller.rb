@@ -1,6 +1,7 @@
 class InfoController < ApplicationController
+  before_filter :set_camp, only: [:index]
+
   def index
-    @camp = Camp.registration_open.first
   end
 
   def about
