@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+  get 'reports/financial'
+  end
+
+  namespace :admin do
+  get 'reports/shuttle'
+  end
+
+  namespace :admin do
+  get 'reports/status'
+  end
+
   root 'info#index'
 
   devise_for :admins, controllers: { sessions: "admin/sessions", registrations: "admin/registrations", 
