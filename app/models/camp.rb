@@ -16,6 +16,7 @@ class Camp < ActiveRecord::Base
 
   scope :active, -> {where(active: true)} 
   scope :registration_open, -> {active.where( "DATE(app_start_date) <= ? AND DATE(app_end_date) >= ?", Time.zone.now, Time.zone.now )}
+  scope :registration_closed, -> {active.where( "DATE(app_end_date) <= ?", Time.zone.now)}
 
   def session_application_counts
     count = {}
@@ -33,6 +34,7 @@ class Camp < ActiveRecord::Base
     end
     return count
   end
+
 
   private
     def start_date_in_future

@@ -1,9 +1,9 @@
 class Admin::CampApplicationsController < ApplicationController
 	before_action :authenticate_admin!
   before_filter :set_up_camp_app, only: [:edit, :update]
+  before_filter :set_camp, only: [:index]
 
 	def index
-		@camp = Camp.registration_open.first
 		@camp_apps = @camp.camp_applications
     	@index_page = true
 	end
