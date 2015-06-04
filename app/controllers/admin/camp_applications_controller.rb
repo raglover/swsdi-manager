@@ -4,8 +4,8 @@ class Admin::CampApplicationsController < ApplicationController
   before_filter :set_camp, only: [:index]
 
 	def index
-		@camp_apps = @camp.camp_applications
-    	@index_page = true
+		@camp_apps = @camp.camp_applications.all.order(updated_at: :asc)
+    @index_page = true
 	end
 
 	def show

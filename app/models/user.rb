@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :image, AvatarUploader
 
+  default_scope { order(:last_name, :first_name) }
+
   validates :gender, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true

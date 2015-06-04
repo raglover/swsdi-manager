@@ -3,7 +3,8 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!, :only => [:show]
 
   def index
-    @users = User.all
+    @search = User.ransack(params[:q])
+    @users = @search.result.includes(:camp_applications)
   end
 
   def show
