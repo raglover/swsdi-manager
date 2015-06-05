@@ -86,8 +86,4 @@ class User < ActiveRecord::Base
     write_attribute :school, val.downcase
   end
 
-  def cleanup_school
-    update_attribute :school, self.school.downcase
-  end
-
 end
