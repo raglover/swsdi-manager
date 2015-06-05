@@ -1,0 +1,14 @@
+<div class="row">
+  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+  <%= form_for(resource, as: resource_name, url: admin_user_edit_path(resource), html: { multipart: true, method: :put }) do |f| %>
+    <%= devise_error_messages! %>
+      <%= render 'userinfo', :f => f  %>
+      <%= render 'personalinfo', :f => f  %>
+      <%= render 'parentinfo', :f => f  %>
+      <%= render 'coachinfo', :f => f  %>
+      <%= f.submit "Update", class: "button primary small-6 large-centered columns" %>
+  <% end %>
+  </div>
+  <div class="row"><%= link_to "Back", :back %></div>
+</div>
