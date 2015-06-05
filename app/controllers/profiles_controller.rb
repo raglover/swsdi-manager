@@ -4,9 +4,6 @@ class ProfilesController < ApplicationController
 
   def index
     @users = User.all
-    @users.each do |user|
-      user.cleanup_school
-    end
   end
 
   def show
