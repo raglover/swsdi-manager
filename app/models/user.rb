@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :parent_email, presence: true
 
+
   def full_name
     "#{self.pref_first_name.capitalize} #{self.last_name.capitalize}"
   end
@@ -78,4 +79,13 @@ class User < ActiveRecord::Base
       super
     end
   end
+
+  def school=(val)
+    write_attribute :school, val.downcase
+  end
+
+  def cleanup_school
+    update_attribute :school, self.school.downcase
+  end
+
 end
