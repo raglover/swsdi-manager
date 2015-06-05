@@ -9,6 +9,7 @@
       <%= render 'coachinfo', :f => f  %>
       <%= f.submit "Update", class: "button primary small-6 large-centered columns" %>
   <% end %>
+   <%= button_to "Remove Account", admin_user_delete_path(resource), data: { confirm: "Are you sure?" }, class: "button tiny alert small-4 large-centered columns", method: :delete %>
   </div>
   <div class="row"><%= link_to "Back", :back %></div>
 </div>

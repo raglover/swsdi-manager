@@ -1,2 +1,10 @@
-<h1>Admin::Reports#financial</h1>
-<p>Find me in app/views/admin/reports/financial.html.erb</p>
+<div class="row">
+  <div class="panel small-12 large-6 columns">
+    <h3>Team Discount Eligibility Report:</h3>
+    <p>Each number represents the number of applicants for the school who beat the discount deadline.</p>
+    <ul>
+      <% @schools.each do |school| %>
+        <li><%= school[0].titleize %> - <%= school[1].count %></li>
+      <% end %>
+  </div>
+</div>

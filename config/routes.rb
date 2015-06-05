@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'admin-edit/:id', controller: 'registrations', action: 'admin_edit', as: 'admin_user_edit'
     put 'admin-edit/:id', controller: 'registrations', action: 'admin_update_user'
+    delete 'admin-edit/:id', controller: 'registrations', action: 'admin_remove_user', as: 'admin_user_delete'
   end
 
   namespace :admin do
