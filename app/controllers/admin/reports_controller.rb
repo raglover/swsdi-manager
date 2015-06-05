@@ -10,8 +10,16 @@ class Admin::ReportsController < ApplicationController
   end
 
   def shuttle
+    @students = User.with_apps
+                    .where('camp_applications.camp_id = ?', @camp.id)
+                    .where('camp_applications.needs_pickup = ? OR camp_applications.needs_dropoff = ?', true, true)
   end
 
   def status
+    @residents = User.with_apps
+                     .where('camp_applications.camper_type = ?', "Resident")
+                     .order(:gender, :grade, :school)
+    @commuters = User.with_apps
+                     .where('camp_applications.camper_type = ?', "Commuter")
   end
 end

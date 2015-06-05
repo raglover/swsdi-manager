@@ -1,10 +1,27 @@
 <div class="row">
   <div class="panel small-12 large-6 columns">
     <h3>Team Discount Eligibility Report:</h3>
-    <p>Each number represents the number of applicants for the school who beat the discount deadline.</p>
-    <ul>
-      <% @schools.each do |school| %>
-        <li><%= school[0].titleize %> - <%= school[1].count %></li>
+    <p>Each number represents the number of applicants for the school who beat the discount deadline. Teams eligible for the discount are noted in <strong>BOLD</strong>. Click the team name to see the student's application date.</p>
+    <dl class="accordion" data-accordion >
+      <% @schools.each_with_index do |school, index| %>
+        <dd class="accordion-navigation" >
+          <% if school[1].count >= 4 %>
+            <a href="<%= "#panel" + index.to_s %>"><strong><%= school[0].titleize %> - <%= school[1].count %></strong></a>
+          <% else %>
+            <a href="<%= "#panel" + index.to_s %>"><%= school[0].titleize %> - <%= school[1].count %></a>
+          <% end %>
+            <div id="<%= "panel" + index.to_s %>" class="content">
+              <ul>
+              <% school[1].each do |user| %>
+                <li><%= user.full_name %>'s App Date: <%= user.camp_applications.first.created_at.strftime("%B %d, %Y") %></li>
+              <% end %>
+              </ul>
+            </div>
+        </dd>
       <% end %>
+    </dl>
+  </div>
+  <div class="panel small-12 large-6 columns">
+    <h3>More Stuff Coming Soon!</h3>
   </div>
 </div>
