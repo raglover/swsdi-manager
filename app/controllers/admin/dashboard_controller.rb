@@ -1,7 +1,7 @@
 class Admin::DashboardController < ApplicationController
   
   before_action :authenticate_admin!
-  before_filter :set_camp, only: [:index]
+  before_filter :set_camp
 
   def index
   	@user_count = User.all.count
