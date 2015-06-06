@@ -34,6 +34,9 @@ class Admin::CampApplicationsController < ApplicationController
 	end
 
 	def destroy
+    @camp_app = CampApplication.find_by_id(params[:id])
+    @camp_app.destroy!
+    redirect_to admin_camp_applications_path, notice: 'Application was successfully destroyed.'
 	end
 
 	private
