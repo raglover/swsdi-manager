@@ -1,6 +1,10 @@
+<%= render 'admin/shared/admin_tools' %>
 <div class="row">
-  <h3>Current Users:</h3>
-  <p>Number of Users: <%= @users.count %></p>
+  <div class="small-12 large-12 columns">
+    <h3>Current Users:</h3>
+    <p>Number of Users: <%= @users.count %></p>
+    <%= render 'toolbar' %>
+  </div>
   <% @users.each do |user| %>
     <div class="small-12 large-12 columns">
       <div class="appbox">
@@ -22,7 +26,8 @@
             <% end %>
           </div>
           <div class="small-3 large-3 columns">
-            <p><%= user.school.titleize %></p>
+            <p><%= user.school.titleize %></p><br />
+            <%= link_to 'Edit this User', admin_user_edit_path(user), class: "button tiny primary" %>
           </div>
           <div class="small-12 large-4 columns">
             <div class="row">

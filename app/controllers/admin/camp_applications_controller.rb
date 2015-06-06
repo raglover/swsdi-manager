@@ -1,11 +1,11 @@
 class Admin::CampApplicationsController < ApplicationController
 	before_action :authenticate_admin!
   before_filter :set_up_camp_app, only: [:edit, :update]
-  before_filter :set_camp, only: [:index]
+  before_filter :set_camp, only: [:index, :show]
 
 	def index
-		@camp_apps = @camp.camp_applications
-    	@index_page = true
+		@camp_apps = @camp.camp_applications.all.order(updated_at: :asc)
+    @index_page = true
 	end
 
 	def show
@@ -34,6 +34,9 @@ class Admin::CampApplicationsController < ApplicationController
 	end
 
 	def destroy
+    @camp_app = CampApplication.find_by_id(params[:id])
+    @camp_app.destroy!
+    redirect_to admin_camp_applications_path, notice: 'Application was successfully destroyed.'
 	end
 
 	private

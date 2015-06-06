@@ -21,6 +21,26 @@ class CampApplication < ActiveRecord::Base
     has_competed == true
   end
 
+  def arrival_date
+    dates = []
+    self.events.each do |event|
+      dates << event.camp_session.session_start
+      dates << event.camp_session.session_end
+    end
+    dates.sort!
+    dates.first
+  end
+
+  def departure_date
+    dates = []
+    self.events.each do |event|
+      dates << event.camp_session.session_start
+      dates << event.camp_session.session_end
+    end
+    dates.sort!
+    dates.last
+  end
+
   private
 
     def conditional_debate_presence
