@@ -1,5 +1,6 @@
 class Admin::PaymentsController < ApplicationController
   before_action :set_camp_app
+  before_action :set_camp, only: [:index, :show]
   before_action :authenticate_admin!
 
   def index

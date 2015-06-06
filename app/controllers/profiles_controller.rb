@@ -1,10 +1,11 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_admin!, :only => [:index, :send_reminder_email]
   before_action :authenticate_user!, :only => [:show]
+  before_action :set_camp, only: [:index]
 
   def index
     @search = User.ransack(params[:q])
-    @users = @search.result.includes(:camp_applications)
+    @users = @search.result.includes(:camp_applications).order(:school)
   end
 
   def show

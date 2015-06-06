@@ -108,6 +108,7 @@ $purple: #080080;
 
 }
 
+
 a {
   h1, 
   h2, 
@@ -115,6 +116,15 @@ a {
   h4, 
   h5 {
     color: $primary-color;
+  }
+
+  i.fa.fa-times-circle.delete {
+    color: $red;
+    font-size: 25px;
+  
+    &:hover {
+      color: darken($red, 25%);
+    }
   }
 }
 

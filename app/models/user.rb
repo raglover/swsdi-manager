@@ -8,7 +8,9 @@ class User < ActiveRecord::Base
 
   mount_uploader :image, AvatarUploader
 
-  default_scope { order(:last_name, :first_name) }
+  # default_scope { order(:last_name, :first_name) }
+
+  scope :with_apps, -> { joins(:camp_applications) }
 
   validates :gender, presence: true
   validates :first_name, presence: true
