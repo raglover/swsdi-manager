@@ -9,6 +9,7 @@
       <Row>
         <Cell><Data ss:Type="String">Last Name</Data></Cell>
         <Cell><Data ss:Type="String">First Name</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
         <Cell><Data ss:Type="String">Gender</Data></Cell>
         <Cell><Data ss:Type="String">Grade</Data></Cell>
         <Cell><Data ss:Type="String">School</Data></Cell>
@@ -18,6 +19,7 @@
       <Row>
         <Cell><Data ss:Type="String"><%= student.last_name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.first_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.email %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.gender %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.grade %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.school.titleize %></Data></Cell>
@@ -31,6 +33,7 @@
       <Row>
         <Cell><Data ss:Type="String">Last Name</Data></Cell>
         <Cell><Data ss:Type="String">First Name</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
         <Cell><Data ss:Type="String">Events</Data></Cell>
         <Cell><Data ss:Type="String">Arrival Date</Data></Cell>
         <Cell><Data ss:Type="String">Departure Date</Data></Cell>
@@ -39,6 +42,7 @@
       <Row>
         <Cell><Data ss:Type="String"><%= student.last_name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.first_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.email %></Data></Cell>
         <% student.camp_applications.each do |app| %>
           <Cell><Data ss:Type="String">
             <% app.events.each do |event| %>

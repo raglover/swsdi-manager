@@ -13,7 +13,7 @@
       </tr>
       <% @residents.each do |resident| %>
         <tr>
-          <td><%= resident.full_name %></td>
+          <td><%= mail_to resident.email, resident.full_name %></td>
           <td><%= resident.gender %></td>
           <td><%= resident.grade %></td>
           <td><%= resident.school.titleize %></td>
@@ -32,7 +32,7 @@
       </tr>
       <% @commuters.each do |commuter| %>
         <tr>
-          <td><%= commuter.full_name %></td>
+          <td><%= mail_to commuter.email, commuter.full_name %></td>
           <% commuter.camp_applications.each do |app| %>
             <td>
               <% app.events.each do |event| %>
