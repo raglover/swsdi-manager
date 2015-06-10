@@ -8,6 +8,29 @@ class Admin::CampApplicationsController < ApplicationController
     @index_page = true
 	end
 
+  def new
+    @users = User.all
+    @camp_app = CampApplication.new
+    @debate_records = @camp_app.debate_records.build
+    @check_outs = @camp_app.check_out_permissions.build
+    @camp = Camp.find_by_id( params[:camp_id] )
+    @sessions = @camp.camp_sessions.all 
+  end
+
+  def create
+    @camp_app = CampApplication.new(camp_application_params)
+
+    respond_to do |format|
+      if @camp_app.save
+        format.html { redirect_to admin_camp_applications_path, notice: 'Camp application was successfully completed!' }
+        format.json { render :show, status: :created, location: @camp_app }
+      else
+        format.html { render :new }
+        format.json { render json: @camp_app.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 	def show
 		@camp_app = CampApplication.find_by_id(params[:id])
 		@user = @camp_app.user

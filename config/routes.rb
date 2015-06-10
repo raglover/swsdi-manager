@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get 'reports/financial'
 
     resources :camps
-    resources :camp_applications, only: [:index, :show, :edit, :update, :destroy] do
+    resources :camp_applications, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :payments, except: [:show]
     end
     resources :admin_profiles, only: [:new, :show, :create, :edit, :update, :destroy]

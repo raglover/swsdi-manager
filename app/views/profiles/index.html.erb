@@ -4,6 +4,7 @@
     <h3>Current Users:</h3>
     <p>Number of Users: <%= @users.count %></p>
     <%= render 'toolbar' %>
+    <%= link_to 'Add Application', "/admin/camp_applications/new?camp_id=#{@camp.id}", class: "button tiny primary" %>
   </div>
   <% @users.each do |user| %>
     <div class="small-12 large-12 columns">

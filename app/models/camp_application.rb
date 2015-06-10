@@ -1,7 +1,7 @@
 class CampApplication < ActiveRecord::Base
 
   before_create :build_uuid
-  after_create :send_coach_email
+  after_create :send_coach_email, :send_reg_emails
 
   has_and_belongs_to_many :events
   has_many :debate_records, dependent: :destroy
@@ -62,6 +62,14 @@ class CampApplication < ActiveRecord::Base
 
     def build_uuid
       self.uuid = SecureRandom.uuid
+    end
+
+    def send_reg_emails
+      user = self.user
+      camp = self.camp
+      RegistrationMailer.student_email(user,camp).deliver_later
+      RegistrationMailer.parent_email(user,camp).deliver_later
+      RegistrationMailer.admin_email(user,camp).deliver_later
     end
 
     def send_coach_email

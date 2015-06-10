@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
   before_action :set_camp, only: [:index]
 
   def index
+    @camp = Camp.where(active: true).first
     @search = User.ransack(params[:q])
     @users = @search.result.includes(:camp_applications).order(:school)
   end
