@@ -65,5 +65,40 @@
       </Row>
     <% end %>
     </Table>
-  </Worksheet>  
+  </Worksheet>
+  <Worksheet ss:Name="Emails">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Last Name</Data></Cell>
+        <Cell><Data ss:Type="String">First Name</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Parent Name</Data></Cell>
+        <Cell><Data ss:Type="String">Parent Email</Data></Cell>
+        <Cell><Data ss:Type="String">Coach Name</Data></Cell>
+        <Cell><Data ss:Type="String">Coach Email</Data></Cell>
+      </Row>
+    <% @commuters.each do |student| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= student.last_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.first_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.parent_first %> <%= student.parent_last %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.parent_email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.coach_first %> <%= student.coach_last %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.coach_email %></Data></Cell>
+      </Row>
+    <% end %>
+    <% @residents.each do |student| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= student.last_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.first_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.parent_first %> <%= student.parent_last %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.parent_email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.coach_first %> <%= student.coach_last %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.coach_email %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>   
 </Workbook>
