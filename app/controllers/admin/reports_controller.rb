@@ -1,5 +1,6 @@
 class Admin::ReportsController < ApplicationController
   before_filter :set_camp
+  before_action :authenticate_admin!
 
   def financial
     schools = User.with_apps

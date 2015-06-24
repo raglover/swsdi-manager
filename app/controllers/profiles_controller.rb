@@ -15,6 +15,9 @@ class ProfilesController < ApplicationController
       redirect_to root_path, alert: "You are not authorized to view that resource!"
     else
       @user = current_user
+      @camp_app = @user.camp_applications.first
+      @tuition = CalculateTuition.new(@camp_app)
+      @payments = @camp_app.payments
     end
   end
 

@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     resources :admin_profiles, only: [:new, :show, :create, :edit, :update, :destroy]
   end
   resources :profiles
-  resources :camp_applications
+  resources :camp_applications do
+    resources :payments, only: [:index]
+  end
   resources :coach_comments, only: [:new, :create]
 
   get 'info/about'
