@@ -4,6 +4,7 @@ class Admin::CampsController < ApplicationController
   
   def index
     @camps = Camp.all
+    authorize @camp
   end
 
   def show
@@ -13,6 +14,7 @@ class Admin::CampsController < ApplicationController
   def new
     @camp = Camp.new
     @csession = @camp.camp_sessions.build
+    authorize @camp
   end
 
   def edit
@@ -22,7 +24,7 @@ class Admin::CampsController < ApplicationController
   
   def create
     @camp = Camp.new(camp_params)
-
+    authorize @camp
     if @camp.save
       flash[:notice] = "A New Camp has been created sucessfully!"
       redirect_to [:admin, @camp]
@@ -51,6 +53,7 @@ private
 
   def set_camp
     @camp = Camp.find(params[:id])
+    authorize @camp
   end
 
   def camp_params
