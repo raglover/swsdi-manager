@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
     @camp = Camp.where(active: true).first
     @search = User.ransack(params[:q])
     @users = @search.result.includes(:camp_applications).order(:school)
+    authorize @users
   end
 
   def show

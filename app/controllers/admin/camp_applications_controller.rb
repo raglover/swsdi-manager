@@ -6,6 +6,7 @@ class Admin::CampApplicationsController < ApplicationController
 	def index
 		@camp_apps = @camp.camp_applications.all.order(updated_at: :asc)
     @index_page = true
+    authorize @camp_apps
 	end
 
   def new
@@ -14,12 +15,13 @@ class Admin::CampApplicationsController < ApplicationController
     @debate_records = @camp_app.debate_records.build
     @check_outs = @camp_app.check_out_permissions.build
     @camp = Camp.find_by_id( params[:camp_id] )
-    @sessions = @camp.camp_sessions.all 
+    @sessions = @camp.camp_sessions.all
+    authorize @camp_app 
   end
 
   def create
     @camp_app = CampApplication.new(camp_application_params)
-
+    authorize @camp_app
     respond_to do |format|
       if @camp_app.save
         format.html { redirect_to admin_camp_applications_path, notice: 'Camp application was successfully completed!' }
@@ -36,6 +38,7 @@ class Admin::CampApplicationsController < ApplicationController
 		@user = @camp_app.user
     @tuition = CalculateTuition.new(@camp_app)
     @payments = @camp_app.payments
+    authorize @camp_app
 	end
 
 	def edit
@@ -58,6 +61,7 @@ class Admin::CampApplicationsController < ApplicationController
 
 	def destroy
     @camp_app = CampApplication.find_by_id(params[:id])
+    authorize @camp_app
     @camp_app.destroy!
     redirect_to admin_camp_applications_path, notice: 'Application was successfully destroyed.'
 	end
@@ -71,6 +75,7 @@ class Admin::CampApplicationsController < ApplicationController
       @camp = Camp.find_by_id( @camp_app.camp_id )
       @events = @camp_app.events.all
       @sessions = @camp.camp_sessions.all
+      authorize @camp_app
     end
 
 		def camp_application_params

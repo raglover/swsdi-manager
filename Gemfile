@@ -66,6 +66,9 @@ end
 gem 'devise'
 gem 'omniauth-facebook', '~> 2.0.1'
 
+# Use Pundit for Authorization
+gem 'pundit'
+
 # Use SimpleForm to build forms
 gem 'simple_form'
 
@@ -78,3 +81,4 @@ gem 'sucker_punch', '~> 1.0'
 
 # Add ransack for searching and sorting stuff
 gem 'ransack'
+
