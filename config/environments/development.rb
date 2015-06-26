@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'swsdi.org' }
+  config.action_mailer.default_url_options = { host: 'register.swsdi.org' }
   config.action_mailer.delivery_method = :letter_opener
   # Don't care if the mailer can't send.
 

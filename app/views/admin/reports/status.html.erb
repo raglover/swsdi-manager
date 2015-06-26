@@ -1,0 +1,49 @@
+<%= render 'admin/shared/admin_tools' %>
+<div class="row">
+  <div class="panel small-12 large-12 columns">
+    <h3>Residents:</h3>
+    <hr />
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Grade</th>
+        <th>School</th>
+        <th>Roommate Request</th>
+      </tr>
+      <% @residents.each do |resident| %>
+        <tr>
+          <td><%= mail_to resident.email, resident.full_name %></td>
+          <td><%= resident.gender %></td>
+          <td><%= resident.grade %></td>
+          <td><%= resident.school.titleize %></td>
+          <td><%= resident.camp_applications.first.roommate_req %></td>
+        </tr>
+      <% end %>
+    </table>
+    <h3>Commuters:</h3>
+    <hr />
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Events</th>
+        <th>Arrival Date</th>
+        <th>Departure Date </th>
+      </tr>
+      <% @commuters.each do |commuter| %>
+        <tr>
+          <td><%= mail_to commuter.email, commuter.full_name %></td>
+          <% commuter.camp_applications.each do |app| %>
+            <td>
+              <% app.events.each do |event| %>
+                <%= event.name %>
+              <% end %>
+            </td>
+            <td><%= app.arrival_date.strftime("%B %d") %></td>
+            <td><%= app.departure_date.strftime("%B %d") %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

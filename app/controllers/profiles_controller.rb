@@ -1,10 +1,12 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_admin!, :only => [:index, :send_reminder_email]
   before_action :authenticate_user!, :only => [:show]
+  before_action :set_camp, only: [:index]
 
   def index
+    @camp = Camp.where(active: true).first
     @search = User.ransack(params[:q])
-    @users = @search.result.includes(:camp_applications)
+    @users = @search.result.includes(:camp_applications).order(:school)
   end
 
   def show
@@ -13,6 +15,9 @@ class ProfilesController < ApplicationController
       redirect_to root_path, alert: "You are not authorized to view that resource!"
     else
       @user = current_user
+      @camp_app = @user.camp_applications.first
+      @tuition = CalculateTuition.new(@camp_app)
+      @payments = @camp_app.payments
     end
   end
 

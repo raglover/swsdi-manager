@@ -38,6 +38,14 @@ module ApplicationHelper
         end
     end
 
+## Re-formats a phone number string properly
+    def display_phone_number(phone_num)
+        phone_num.gsub!(/\-|\s/, "")
+        num = phone_num.to_i
+        number_to_phone(num)
+    end
+
+
 ## Returns Experience level
 
     def experience_level(app)

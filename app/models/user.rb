@@ -8,12 +8,15 @@ class User < ActiveRecord::Base
 
   mount_uploader :image, AvatarUploader
 
-  default_scope { order(:last_name, :first_name) }
+  # default_scope { order(:last_name, :first_name) }
+
+  scope :with_apps, -> { joins(:camp_applications) }
 
   validates :gender, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :parent_email, presence: true
+
 
   def full_name
     "#{self.pref_first_name.capitalize} #{self.last_name.capitalize}"
@@ -80,4 +83,9 @@ class User < ActiveRecord::Base
       super
     end
   end
+
+  def school=(val)
+    write_attribute :school, val.downcase
+  end
+
 end

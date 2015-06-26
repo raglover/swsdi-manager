@@ -1,7 +1,15 @@
 <%= simple_form_for([:admin, @camp_app]) do |f| %>
   <%= f.error_notification %>
   <%= f.error :base, class: "alert-box alert" %>
-
+  
+  <% if controller.action_name == 'new' %>
+    <fieldset>
+      <legend>Please select a user:</legend>
+      <div class="row">
+        <%= f.input :user_id, collection: @users, label_method: :full_name, value_method: :id %>
+      </div>
+    </fieldset>
+  <% end %>
   <fieldset>
     <legend>Camp Application</legend>
     <div class="row">
@@ -67,6 +75,7 @@
       <%= f.input :allergies, wrapper_html: { class: 'small-6 large-6 columns' }, label: "Please list any allergies" %>
       <%= f.input :dietary_restrictions, wrapper_html: { class: 'small-6 large-6 columns' }, label: "Please list any dietary restrictions" %>
     </div>
+    <%= f.input :camp_id, as: :hidden, input_html: {value: @camp.id} %>
     <%= f.button :submit %>    
   </fieldset>
 <% end %>

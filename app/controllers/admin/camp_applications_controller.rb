@@ -1,12 +1,35 @@
 class Admin::CampApplicationsController < ApplicationController
 	before_action :authenticate_admin!
   before_filter :set_up_camp_app, only: [:edit, :update]
-  before_filter :set_camp, only: [:index]
+  before_filter :set_camp, only: [:index, :show]
 
 	def index
 		@camp_apps = @camp.camp_applications.all.order(updated_at: :asc)
     @index_page = true
 	end
+
+  def new
+    @users = User.all
+    @camp_app = CampApplication.new
+    @debate_records = @camp_app.debate_records.build
+    @check_outs = @camp_app.check_out_permissions.build
+    @camp = Camp.find_by_id( params[:camp_id] )
+    @sessions = @camp.camp_sessions.all 
+  end
+
+  def create
+    @camp_app = CampApplication.new(camp_application_params)
+
+    respond_to do |format|
+      if @camp_app.save
+        format.html { redirect_to admin_camp_applications_path, notice: 'Camp application was successfully completed!' }
+        format.json { render :show, status: :created, location: @camp_app }
+      else
+        format.html { render :new }
+        format.json { render json: @camp_app.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
 	def show
 		@camp_app = CampApplication.find_by_id(params[:id])
@@ -34,6 +57,9 @@ class Admin::CampApplicationsController < ApplicationController
 	end
 
 	def destroy
+    @camp_app = CampApplication.find_by_id(params[:id])
+    @camp_app.destroy!
+    redirect_to admin_camp_applications_path, notice: 'Application was successfully destroyed.'
 	end
 
 	private
