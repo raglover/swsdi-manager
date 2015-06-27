@@ -85,7 +85,9 @@ class User < ActiveRecord::Base
   end
 
   def school=(val)
-    write_attribute :school, val.downcase
+    if val
+      write_attribute :school, val.downcase
+    end
   end
 
 end
