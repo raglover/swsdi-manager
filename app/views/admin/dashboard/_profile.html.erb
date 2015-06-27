@@ -20,5 +20,6 @@
 		<dt>Last Signed In:</dt>
 		<dd><%= current_admin.last_sign_in_at.strftime('%b %e, %Y %l:%M %p (%Z)')  %></dd>
 	</dl>
+	<%= link_to "Change Password", edit_admin_registration_path, {class: "button tiny primary"} %>
 	<%= link_to "Edit Profile", edit_admin_admin_profile_path(@profile), {class: "button tiny primary"} %>
 </div>

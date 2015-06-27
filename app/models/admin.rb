@@ -6,12 +6,19 @@ class Admin < ActiveRecord::Base
 
   has_one :admin_profile
 
+  scope :board, -> {where("role = 'board' OR role = 'super'")}
+  scope :counselors, -> {where("role = 'counselor' OR role = 'slc'")}
+
   def super_admin?
     role == 'super'
   end
 
   def board_member?
     role == 'board'
+  end
+
+  def slc?
+    role == 'slc'
   end
 
   def counselor?

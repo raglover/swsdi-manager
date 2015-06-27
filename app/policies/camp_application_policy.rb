@@ -7,7 +7,7 @@ class CampApplicationPolicy
   end
 
   def index?
-    user.super_admin? || user.board_member?
+    user.super_admin? || user.board_member? || user.slc?
   end
 
   def show?
@@ -27,7 +27,7 @@ class CampApplicationPolicy
   end
 
   def update?
-    user.super_admin? || user.board_member?
+    user.super_admin? || user.board_member? || user.slc?
   end
 
   def destroy?
