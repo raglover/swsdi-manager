@@ -4,7 +4,7 @@ class Admin::AdminProfilesController < ApplicationController
 
 	def new
 		@profile = AdminProfile.new
-		@admins = Admin.all
+		@admin = current_admin
 	end
 
 	def edit
@@ -13,7 +13,7 @@ class Admin::AdminProfilesController < ApplicationController
 
 	def create
 		@profile = AdminProfile.new(admin_profile_params)
-		@admin = Admin.find_by_id(admin_profile_params[:admin_id])
+		@profile.admin_id = current_admin.id
 		respond_to do |format|
 			if @profile.save
 				format.html { redirect_to admin_dashboard_index_path, notice: 'Your Profile has been Created!' }

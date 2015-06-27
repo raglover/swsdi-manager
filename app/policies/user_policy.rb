@@ -7,7 +7,7 @@ class UserPolicy
   end
 
   def index?
-    @user.super_admin? || @user.board_member?
+    @user.super_admin? || @user.board_member? || @user.slc?
   end
 
 end

@@ -2,27 +2,52 @@
   <div class="panel small-12 large-12 columns">
     <h2>Meet The SWSDI Board:</h2>
     <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-2" data-equalizer>
-        <% @staff.each do |member| %>
+        <% @board.each do |member| %>
         	<li class="card" data-equalizer-watch>
         		<div class="row">
     	    		<div class="small-3 large-3 columns">
-    	    			<%= image_tag(member.image_url(:thumb)) %>
+    	    			<%= image_tag(member.admin_profile.image_url(:thumb)) %>
     	    		</div>
     	    		<h3 class="small-9 large-9 columns">
-    	    			<%= member.full_name %>
+    	    			<%= member.admin_profile.full_name %>
     	    		</h3>
     	    		<h5 class="small-9 large-9 columns">
-    	    			<%= member.school_affiliation %>
+    	    			<%= member.admin_profile.school_affiliation %>
     	    		</h5>
         		</div>
                 <hr />
         		<div class="row">
         			<dl class="small-12 large-12 columns">
         				<dt>Staff Bio:</dt>
-        				<dd><%= member.bio %></dd>
+        				<dd><%= member.admin_profile.bio %></dd>
         			</dl>
         		</div>
         	</li>
+        <% end %>
+    </ul>
+    <h2>Meet The SWSDI Staff:</h2>
+    <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-2" data-equalizer>
+        <% @counselors.each do |member| %>
+            <li class="card" data-equalizer-watch>
+                <div class="row">
+                    <div class="small-3 large-3 columns">
+                        <%= image_tag(member.admin_profile.image_url(:thumb)) %>
+                    </div>
+                    <h3 class="small-9 large-9 columns">
+                        <%= member.admin_profile.full_name %>
+                    </h3>
+                    <h5 class="small-9 large-9 columns">
+                        <%= member.admin_profile.school_affiliation %>
+                    </h5>
+                </div>
+                <hr />
+                <div class="row">
+                    <dl class="small-12 large-12 columns">
+                        <dt>Staff Bio:</dt>
+                        <dd><%= member.admin_profile.bio %></dd>
+                    </dl>
+                </div>
+            </li>
         <% end %>
     </ul>
   </div>
