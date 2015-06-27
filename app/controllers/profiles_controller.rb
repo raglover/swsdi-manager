@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
       @user = current_user
       @camp_app = @user.camp_applications.first
       @tuition = CalculateTuition.new(@camp_app)
-      @payments = @camp_app.payments
+      @payments = @camp_app ? @camp_app.payments : nil
     end
   end
 
