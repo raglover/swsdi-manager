@@ -11,10 +11,6 @@ Rails.application.routes.draw do
     delete 'admin-edit/:id', controller: 'registrations', action: 'admin_remove_user', as: 'admin_user_delete'
   end
 
-  devise_scope :admin do
-    get 'admins/sign_up', to: "admin/registrations#new"
-  end
-
   namespace :admin do
     get 'dashboard/index'
     get 'dashboard/event_facebook/:id', to: 'dashboard#event_facebook'
