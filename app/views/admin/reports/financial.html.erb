@@ -23,6 +23,17 @@
     </dl>
   </div>
   <div class="panel small-12 large-6 columns">
-    <h3>More Stuff Coming Soon!</h3>
+    <h3>Financial Reporting:</h3>
+    <dl>
+    <dt>Total Tutition and Fees:</dt>
+    <dd><%= number_to_currency(@totals.total_owed) %></dd>
+    <dt>Total Money Received:</dt>
+    <dd><%= number_to_currency(@totals.total_money_received) %></dd>
+    <dt>Total Financial Aid:</dt>
+    <dd><%= number_to_currency(@totals.total_financial_aid) %></dd>
+    <dt>Total Paid:</dt>
+    <dd><%= number_to_currency(@totals.total_paid) %></dd>
+    <dt>Current Balance Due:</dt>
+    <dd><%= number_to_currency(@totals.total_owed - @totals.total_paid) %></dd>
   </div>
 </div>

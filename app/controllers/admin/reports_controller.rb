@@ -8,6 +8,7 @@ class Admin::ReportsController < ApplicationController
                 .where('camp_applications.created_at <= ?', @camp.discount_deadline)
                 .group_by{|i| i.school.downcase}
     @schools = schools.sort
+    @totals = FinancialReport.new(@camp)
     authorize :report, :financial?
   end
 
