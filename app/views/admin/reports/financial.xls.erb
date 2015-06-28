@@ -7,28 +7,37 @@
   <Worksheet ss:Name="Financial Info">
     <Table>
       <Row>
-        <Cell><Data ss:Type="String">Name</Data></Cell>
-        <Cell><Data ss:Type="String">Pickup</Data></Cell>
-        <Cell><Data ss:Type="String">Dropoff</Data></Cell>
-        <Cell><Data ss:Type="String">Itinerary</Data></Cell>
-        <Cell><Data ss:Type="String">Arrival Date</Data></Cell>
-        <Cell><Data ss:Type="String">Departure Date</Data></Cell>
-        <Cell><Data ss:Type="String">Student Phone</Data></Cell>
-        <Cell><Data ss:Type="String">Parent Phone</Data></Cell>
+        <Cell><Data ss:Type="String">Last Name</Data></Cell>
+        <Cell><Data ss:Type="String">First Name</Data></Cell>
+        <Cell><Data ss:Type="String">Total Owed</Data></Cell>
+        <Cell><Data ss:Type="String">Paid</Data></Cell>
+        <Cell><Data ss:Type="String">Financial Aid</Data></Cell>
+        <Cell><Data ss:Type="String">Balance Owed</Data></Cell>
       </Row>
     <% @students.each do |student| %>
       <Row>
-        <Cell><Data ss:Type="String"><%= student.full_name %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= student.camp_applications.first.needs_pickup %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= student.camp_applications.first.needs_dropoff %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= student.camp_applications.first.itinerary %></Data></Cell>
-        <% student.camp_applications.each do |app| %>
-          <Cell><Data ss:Type="String"><%= app.arrival_date.strftime("%B %d") %></Data></Cell>
-          <Cell><Data ss:Type="String"><%= app.departure_date.strftime("%B %d") %></Data></Cell>
-        <% end %>
-        <Cell><Data ss:Type="String"><%= display_phone_number(student.phone_number) %></Data></Cell><Cell><Data ss:Type="String"><%= display_phone_number(student.phone_number) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.user.first_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.user.last_name %></Data></Cell>
+        <% tuition = CalculateTuition.new(student) %>
+        <Cell><Data ss:Type="Number"><%= tuition.total_owed %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= tuition.total_paid %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= tuition.financial_aid %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= tuition.current_balance %></Data></Cell>
       </Row>
     <% end %>
+    <Row></Row>
+    <Row>
+      <Cell><Data ss:Type="String">Total Owed</Data></Cell>
+      <Cell><Data ss:Type="Number"><%= @totals.total_owed %></Data></Cell>
+      <Cell><Data ss:Type="String">Total Paid</Data></Cell>
+      <Cell><Data ss:Type="Number"><%= @totals.total_paid %></Data></Cell>
+      <Cell><Data ss:Type="String">Total Money</Data></Cell>
+      <Cell><Data ss:Type="Number"><%= @totals.total_money_received %></Data></Cell>
+      <Cell><Data ss:Type="String">Total Financial Aid</Data></Cell>
+      <Cell><Data ss:Type="Number"><%= @totals.total_financial_aid %></Data></Cell>
+      <Cell><Data ss:Type="String">Current Balance Due</Data></Cell>
+      <Cell><Data ss:Type="Number"><%= @totals.total_owed - @totals.total_paid %></Data></Cell>
+    </Row>
     </Table>
   </Worksheet>
 </Workbook>
