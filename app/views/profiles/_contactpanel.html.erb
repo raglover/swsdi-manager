@@ -38,52 +38,54 @@
       </ul>  
     </div>
   </div>
-  <% if !@camp_app.camper_type.blank? %>
-  <div class="row">
-  <table class="small-12 large-12 columns">
-    <h4>Tuition, Fees, and Payments</h4>
-    <thead>
-      <th width="80%">Line Item</th>
-      <th width="20%">Amount</th>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Base Tuition Cost</strong></td>
-        <td>$<%= @tuition.base_tuition %></td>
-      </tr>
-      <% if @camp_app.needs_pickup || @camp_app.needs_dropoff %>
-        <tr>
-          <td><strong>Airport Fee</strong></td>
-          <td>$<%= @tuition.airport_fee %></td>
-        </tr>
-      <% end %>
-      <% if @camp_app.app_fee %>
-        <tr>
-          <td><strong>App Fee Paid</strong></td>
-          <td>-$50</td>
-        </tr>
-      <% end %>
-      <% @payments.each do |pmt| %>
-        <tr>
-          <td><strong><%= pmt.pmt_type %></strong></td>
-          <td>-$<%= pmt.amount.to_i %></td>
-        </tr>
-      <% end %>
-      <tr>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>Total Due:</strong></td>
-        <td>$<%= @tuition.current_balance.to_i %></td>
-      </tr>
-    </tbody>
-  </table>
-  <%= link_to "View Detail", camp_application_payments_path(@camp_app), {class: "button tiny primary"} %>
-  </div>
-  <% else %>
+  <% if @camp_app %>
+    <% if !@camp_app.camper_type.blank? %>
     <div class="row">
-      <h5>Please select "Resident" or "Commuter" to calculate fees.</h5>
+    <table class="small-12 large-12 columns">
+      <h4>Tuition, Fees, and Payments</h4>
+      <thead>
+        <th width="80%">Line Item</th>
+        <th width="20%">Amount</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Base Tuition Cost</strong></td>
+          <td><%= number_to_currency(@tuition.base_tuition) %></td>
+        </tr>
+        <% if @camp_app.needs_pickup || @camp_app.needs_dropoff %>
+          <tr>
+            <td><strong>Airport Fee</strong></td>
+            <td><%= number_to_currency(@tuition.airport_fee) %></td>
+          </tr>
+        <% end %>
+        <% if @camp_app.app_fee %>
+          <tr>
+            <td><strong>App Fee Paid</strong></td>
+            <td>-<%= number_to_currency(50) %></td>
+          </tr>
+        <% end %>
+        <% @payments.each do |pmt| %>
+          <tr>
+            <td><strong><%= pmt.pmt_type %></strong></td>
+            <td>-<%= number_to_currency(pmt.amount) %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><strong>Total Due:</strong></td>
+          <td><%= number_to_currency(@tuition.current_balance) %></td>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to "View Detail", camp_application_payments_path(@camp_app), {class: "button tiny primary"} %>
     </div>
+    <% else %>
+      <div class="row">
+        <h5>Please select "Resident" or "Commuter" to calculate fees.</h5>
+      </div>
+    <% end %>
   <% end %>
 </div>

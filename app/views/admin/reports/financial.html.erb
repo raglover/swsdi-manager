@@ -1,6 +1,43 @@
 <%= render 'admin/shared/admin_tools' %>
-<div class="row">
-  <div class="panel small-12 large-6 columns">
+<div class="row" data-equalizer>
+  <div class="panel small-12 large-6 columns" data-equalizer-watch >
+    <h3>Financial Reporting:</h3>
+    <p>These numbers are best estimates. Please reconcile properly with the bank statement.</p>
+    <dl>
+      <dt>Total Tutition and Fees:</dt>
+      <dd><%= number_to_currency(@totals.total_owed) %></dd>
+      <dt>Total Money Received:</dt>
+      <dd><%= number_to_currency(@totals.total_money_received) %></dd>
+      <dt>Total Financial Aid:</dt>
+      <dd><%= number_to_currency(@totals.total_financial_aid) %></dd>
+      <dt>Total Paid:</dt>
+      <dd><%= number_to_currency(@totals.total_paid) %></dd>
+      <dt>Current Balance Due:</dt>
+      <dd><%= number_to_currency(@totals.total_owed - @totals.total_paid) %></dd>
+    </dl>
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Owed</th>
+        <th>Paid</th>
+        <th>Fin. Aid</th>
+        <th>Bal. Due</th>
+      </thead>
+      <tbody>
+      <% @students.each do |student| %>
+        <% tuition = CalculateTuition.new(student) %>
+        <tr>
+          <td><%= link_to student.user.full_name, admin_camp_application_path(student) %></td>
+          <td><%= number_to_currency(tuition.total_owed) %></td>
+          <td><%= number_to_currency(tuition.total_paid) %></td>
+          <td><%= number_to_currency(tuition.financial_aid) %></td>
+          <td><%= number_to_currency(tuition.current_balance) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel small-12 large-6 columns" data-equalizer-watch >
     <h3>Team Discount Eligibility Report:</h3>
     <p>Each number represents the number of applicants for the school who beat the discount deadline. Teams eligible for the discount are noted in <strong>BOLD</strong>. Click the team name to see the student's application date.</p>
     <dl class="accordion" data-accordion >
@@ -21,8 +58,5 @@
         </dd>
       <% end %>
     </dl>
-  </div>
-  <div class="panel small-12 large-6 columns">
-    <h3>More Stuff Coming Soon!</h3>
   </div>
 </div>

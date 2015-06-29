@@ -12,6 +12,19 @@ class CalculateTuition
     @airport_fee
   end
 
+  def financial_aid
+    finaid = @camp_app.payments.where(pmt_type: "Financial Aid").pluck(:amount)
+    finaid.reduce(0){|sum, val| sum + val}
+  end
+
+  def total_paid
+    paid = @camp_app.payments.where.not(pmt_type: "Financial Aid").pluck(:amount)
+    if @camp_app.app_fee
+      paid << @app_fee
+    end
+    paid.reduce(0){|sum, val| sum + val}
+  end
+
   def base_tuition
     if @camp_app.camper_type == "Resident"
       return res_base_cost
@@ -66,7 +79,7 @@ class CalculateTuition
 
     def subtract_app_fee(total)
       if @camp_app.app_fee
-        return total - @app_fee
+        return total ? total - @app_fee : 0
       else
         return total
       end
@@ -75,7 +88,7 @@ class CalculateTuition
     def subtract_payments(balance)
       payments = @camp_app.payments.pluck(:amount)
       total_pmt = payments.reduce(0.0){|sum, value| sum + value}
-      balance = balance - total_pmt
+      balance =  balance ? balance - total_pmt : 0
       return balance
     end
 

@@ -10,27 +10,27 @@
       <tr>
         <td><strong>Base Tuition Cost</strong></td>
         <td></td>
-        <td>$<%= @tuition.base_tuition %></td>
+        <td><%= number_to_currency(@tuition.base_tuition) %></td>
       </tr>
       <% if @camp_app.needs_pickup || @camp_app.needs_dropoff %>
         <tr>
           <td><strong>Airport Fee</strong></td>
           <td></td>
-          <td>$<%= @tuition.airport_fee %></td>
+          <td><%= number_to_currency(@tuition.airport_fee) %></td>
         </tr>
       <% end %>
       <% if @camp_app.app_fee %>
         <tr>
           <td><strong>App Fee Paid</strong></td>
           <td></td>
-          <td>-$50</td>
+          <td>-<%= number_to_currency(50) %></td>
         </tr>
       <% end %>
       <% @payments.each do |pmt| %>
         <tr>
           <td><strong><%= pmt.pmt_type %></strong></td>
           <td><%= pmt.note %></td>
-          <td>-$<%= pmt.amount %></td>
+          <td>-<%= number_to_currency(pmt.amount) %></td>
         </tr>
       <% end %>
       <tr>
@@ -41,7 +41,7 @@
       <tr>
         <td><strong>Total Due:</strong></td>
         <td></td>
-        <td>$<%= @tuition.current_balance.to_i %></td>
+        <td><%= number_to_currency(@tuition.current_balance) %></td>
       </tr>
     </tbody>
   </table>
