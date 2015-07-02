@@ -4,7 +4,8 @@ class Admin::CampApplicationsController < ApplicationController
   before_filter :set_camp, only: [:index, :show]
 
 	def index
-		@camp_apps = @camp.camp_applications.all.order(updated_at: :asc)
+		@camp_apps = @camp.camp_applications.where(med_forms: true).includes(:user).order("users.last_name")
+    @unconfirmed = @camp.camp_applications.where("med_forms = false OR med_forms IS null").includes(:user).order("users.last_name")
     @index_page = true
     authorize @camp_apps
 	end
