@@ -4,7 +4,7 @@
 
 This is an application for handling registration and camp management business for the Southwest Speech and Debate Institute. 
 
-It has tools to manage applications, finances, and various reporting tools to make our jobs easier. We have successfull eliminated a huge amount of paperwork. 
+It has tools to manage applications, finances, and various reporting tools to make our jobs easier. We have successfully eliminated a huge amount of paperwork. 
 
 More interesting stuff is still to come here, including instructions on how to use this thing. 
 
