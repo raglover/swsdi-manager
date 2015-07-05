@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
 
-  devise_for :admins, controllers: { sessions: "admin/sessions", registrations: "admin/registrations", 
-    confirmations: "admin/confirmations", passwords: "admin/passwords" }
+  devise_for :admins, controllers: { sessions: "admin/sessions", 
+    confirmations: "admin/confirmations", passwords: "admin/passwords" }, skip: :registrations
+
+  as :admin do
+    get 'admins/edit' => 'admin/registrations#edit', :as => 'edit_admin_registration'    
+    put 'admins/:id' => 'admin/registrations#update', :as => 'admin_registration'
+  end
+
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations: "registrations"}
 
   devise_scope :user do
