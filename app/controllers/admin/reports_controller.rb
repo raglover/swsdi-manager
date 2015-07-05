@@ -28,4 +28,9 @@ class Admin::ReportsController < ApplicationController
                      .where('camp_applications.camper_type = ?', "Commuter")
     authorize :report, :show?
   end
+
+  def registration
+    @events = @camp.events
+    authorize :report, :registration?
+  end
 end

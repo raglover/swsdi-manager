@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <% @events.each do |event| %>
+  <% @apps = event.camp_applications.where(checked_in: false).includes(:user).order("users.last_name") %>  
+  <Worksheet ss:Name="<%= event.name %>">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Name</Data></Cell>
+        <Cell><Data ss:Type="String">T-Shirt</Data></Cell>
+        <Cell><Data ss:Type="String">Camper Type</Data></Cell>
+        <Cell><Data ss:Type="String">Balance Due</Data></Cell>
+        <Cell><Data ss:Type="String">Checked In?</Data></Cell>
+      </Row>
+    <% @apps.each do |app| %>
+    <% tuition = CalculateTuition.new(app) %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= app.user.full_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= app.user.tshirt_size %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= app.camper_type %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= number_to_currency(tuition.current_balance) %></Data></Cell>
+        <Cell><Data ss:Type="String"> </Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+  <% end %>
+</Workbook>

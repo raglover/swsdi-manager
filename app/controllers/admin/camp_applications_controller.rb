@@ -48,7 +48,7 @@ class Admin::CampApplicationsController < ApplicationController
 	def update
 	  respond_to do |format|
       if @camp_app.update(camp_application_params)
-        if @camp_app.is_approved
+        if @camp_app.is_approved && !@camp_app.checked_in
           RegistrationMailer.verification_email(@camp_app.user, @camp_app.camp, @camp_app).deliver_later
         end
         format.html { redirect_to admin_camp_application_path(@camp_app), notice: 'Camp application was successfully updated!' }
@@ -82,7 +82,7 @@ class Admin::CampApplicationsController < ApplicationController
 		def camp_application_params
 			params.require(:camp_application).permit(:interp_type, :camper_type, :event_partner_req, :has_competed, :comments, :roommate_req, :has_laptop, 
 	        	:needs_pickup, :needs_dropoff, :itinerary, :has_allergies, :allergies, :has_dietary_restrictions, :dietary_restrictions, :is_approved, 
-	        	:med_forms, :app_fee, :checkout_form, :incomplete, :missing_info, :years_in_event, :number_of_tournaments,
+	        	:med_forms, :app_fee, :checkout_form, :incomplete, :checked_in, :missing_info, :years_in_event, :number_of_tournaments,
 	        	:camp_id, :user_id, :event_ids => [],
 	        	:debate_records_attributes => [:id, :tournament_name, :prelim_wins, :prelim_losses, :reached_outrounds, 
 	          	:outround_reached, :location, :division, :_destroy], 

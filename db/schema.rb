@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150626015055) do
+ActiveRecord::Schema.define(version: 20150705020829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,7 +101,8 @@ ActiveRecord::Schema.define(version: 20150626015055) do
     t.text     "missing_info"
     t.integer  "years_in_event"
     t.integer  "number_of_tournaments"
-    t.string   "uuid",                     null: false
+    t.string   "uuid",                                     null: false
+    t.boolean  "checked_in",               default: false, null: false
   end
 
   add_index "camp_applications", ["camp_id"], name: "index_camp_applications_on_camp_id", using: :btree
