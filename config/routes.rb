@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get 'reports/status'
     get 'reports/shuttle'
     get 'reports/financial'
+    get 'reports/registration'
 
     resources :camps
     resources :camp_applications, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
