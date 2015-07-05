@@ -9,6 +9,6 @@ jQuery.fn.submitOnCheck = ->
       parseInt(txt, 10) - 1
   this
 
-jQuery ->
+jQuery(".reports.registration").ready ->
   $('.edit_camp_application').submitOnCheck()
   this
