@@ -1,5 +1,6 @@
 class Admin::AdminProfilesController < ApplicationController
 	before_action :authenticate_admin!
+  before_filter :set_camp
 	before_action :set_admin_profile, only: [:edit, :update, :destroy]
 
   def index
