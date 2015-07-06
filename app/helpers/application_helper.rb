@@ -23,6 +23,14 @@ module ApplicationHelper
         end
     end
 
+    def display_admin_avatar(user)
+        if !user.image.nil?
+            image_tag(user.image_url(:thumb))
+        else
+            image_tag(user.default_url, width: 150, height: 150)
+        end
+    end
+
 
 ## A Helper for presenting spirit animal info
 

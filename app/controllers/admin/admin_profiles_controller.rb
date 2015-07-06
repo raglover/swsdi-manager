@@ -2,6 +2,10 @@ class Admin::AdminProfilesController < ApplicationController
 	before_action :authenticate_admin!
 	before_action :set_admin_profile, only: [:edit, :update, :destroy]
 
+  def index
+    @admins = AdminProfile.all.order(:last_name)
+  end
+
 	def new
 		@profile = AdminProfile.new
 		@admin = current_admin
