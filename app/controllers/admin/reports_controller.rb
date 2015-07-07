@@ -9,7 +9,7 @@ class Admin::ReportsController < ApplicationController
                 .group_by{|i| i.school.downcase}
     @schools = schools.sort
     @totals = FinancialReport.new(@camp)
-    @students = @camp.camp_applications
+    @students = @camp.camp_applications.includes(:user).order("users.last_name")
     authorize :report, :financial?
   end
 
