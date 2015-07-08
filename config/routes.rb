@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :camp_applications, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :payments, except: [:show]
     end
-    resources :admin_profiles, only: [:new, :show, :create, :edit, :update, :destroy]
+    resources :admin_profiles
   end
   resources :profiles
   resources :camp_applications do
