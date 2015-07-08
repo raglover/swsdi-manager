@@ -27,7 +27,7 @@ class CampApplicationPolicy
   end
 
   def update?
-    user.super_admin? || user.board_member? || user.slc?
+    true
   end
 
   def destroy?
