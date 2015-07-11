@@ -1,0 +1,21 @@
+<h1><%= @user.full_name %>'s <%= @camp.name %> Experience</h1>
+<p>Hello!</p>
+<p>
+  We've been hard at work at <%= @camp.name %> to provide the best possible experience for <%= @user.first_name %>. We wanted to share with you our thoughts on the work <%= @user.first_name %> has done during their time at <%= @camp.name %>, so that their work can continue throughout the competitive season. 
+</p>
+<p>
+  We are providing an analysis of what we believe are <%= @user.first_name %>'s strengths, areas where there are opportunities for improvement, and some goals that <%= @user.first_name %> has set for the year ahead. 
+</p>
+<h3><%= @user.first_name %>'s Strengths:</h3>
+<p><%= @camp_app.staff_response.strengths %></p>
+<h3><%= @user.first_name %>'s Areas for Continued Improvement:</h3>
+<p><%= @camp_app.staff_response.weaknesses %></p>
+<h3><%= @user.first_name %>'s Goals:</h3>
+<p><%= @camp_app.staff_response.goals %></p>
+<h3>Additional notes from staff:</h3>
+<p><%= @camp_app.staff_response.notes %></p>
+<p>We hope <%= @user.first_name %> has had a great experience at <%= @camp.name %>. We look forward to a successful competitive season for all of our students. Thank you, again, for sending your student to <%= @camp.name %>. As always, if you have any questions, you can reply to this email and we'll get back to you as soon as possible.</p>
+<p>
+Cheers!<br />
+-The <%= @camp.name %> Staff
+</p>
