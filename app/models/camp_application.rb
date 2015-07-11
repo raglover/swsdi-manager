@@ -9,6 +9,7 @@ class CampApplication < ActiveRecord::Base
   belongs_to :user, :foreign_key => 'user_id'
   belongs_to :camp, :foreign_key => 'camp_id'
   has_one :coach_comment, dependent: :destroy
+  has_one :staff_response, dependent: :destroy
   has_many :payments, dependent: :destroy
 
 

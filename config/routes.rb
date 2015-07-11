@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     resources :camps
     resources :camp_applications, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :payments, except: [:show]
+      resources :staff_responses, except: [:index]
+      get 'staff_responses/send_notification/:id', to: 'staff_responses#send_notification'
     end
     resources :admin_profiles
   end
