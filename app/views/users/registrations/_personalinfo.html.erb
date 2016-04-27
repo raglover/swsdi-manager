@@ -19,7 +19,7 @@
     </div>
     <div class="small-4 large-4 columns">
       <%= f.label :grade, "Grade this coming fall" %>
-      <%= f.select :grade, options_for_select([['8th Grade', 8], ['Freshman', 9], ['Sophomore', 10], ['Junior', 11], ['Senior', 12]], f.object.grade || 8) %>
+      <%= f.select :grade, options_for_select([['7th Grade', 7], ['8th Grade', 8], ['Freshman', 9], ['Sophomore', 10], ['Junior', 11], ['Senior', 12]], f.object.grade || 8) %>
     </div>
     <div class="small-4 large-2 columns">
       <%= f.label :tshirt_size %>
