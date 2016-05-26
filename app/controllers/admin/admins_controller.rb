@@ -4,5 +4,6 @@ class Admin::AdminsController < ApplicationController
   end
 
   def show
+    @admins = Admin.all
   end
 end
