@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get 'dashboard/event_facebook/:id', to: 'dashboard#event_facebook'
     get 'admins/show'
     get 'admins/index'
-    delete 'admins/:id' => 'admin/admins#destroy', :as => 'admin_delete'
+    delete 'admins/:id' => 'admins#destroy', :as => 'admin_delete'
     get 'reports/status'
     get 'reports/shuttle'
     get 'reports/financial'
