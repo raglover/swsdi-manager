@@ -4,7 +4,7 @@ class Admin < ActiveRecord::Base
   devise :database_authenticatable, :confirmable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :admin_profile
+  has_one :admin_profile, dependent: :destroy
 
   scope :board, -> {where("role = 'board' OR role = 'super'")}
   scope :counselors, -> {where("role = 'counselor' OR role = 'slc'")}

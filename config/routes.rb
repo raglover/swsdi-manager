@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   as :admin do
     get 'admins/edit' => 'admin/registrations#edit', :as => 'edit_admin_registration'    
     put 'admins/:id' => 'admin/registrations#update', :as => 'admin_registration'
+    delete 'admins/:id' => 'admin/admins#destroy', :as => 'admin_delete'
   end
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations: "registrations"}
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
     get 'dashboard/index'
     get 'dashboard/event_facebook/:id', to: 'dashboard#event_facebook'
     get 'admins/show'
+    get 'admins/index'
     get 'reports/status'
     get 'reports/shuttle'
     get 'reports/financial'
