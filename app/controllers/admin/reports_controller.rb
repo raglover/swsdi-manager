@@ -22,9 +22,11 @@ class Admin::ReportsController < ApplicationController
 
   def status
     @residents = User.with_apps
+                     .where('camp_applications.camp_id = ?', @camp.id)    
                      .where('camp_applications.camper_type = ?', "Resident")
                      .order(:gender, :grade, :school)
     @commuters = User.with_apps
+                     .where('camp_applications.camp_id = ?', @camp.id)
                      .where('camp_applications.camper_type = ?', "Commuter")
     authorize :report, :show?
   end

@@ -2,12 +2,12 @@
   <% if @camp_app.staff_response %>
     <%= link_to "Edit Student Evaluation", edit_admin_camp_application_staff_response_path(@camp_app, @camp_app.staff_response), 
         { class: "button tiny primary" } %>
+    <%= link_to "/admin/camp_applications/#{@camp_app.id}/staff_responses/send_notification/#{@camp_app.staff_response.id}" do %>
+      <div class="button tiny primary">Send Evaluation</div>
+    <% end %>
   <% else %>
     <%= link_to "New Student Evaluation", new_admin_camp_application_staff_response_path(@camp_app), 
         { class: "button tiny primary" } %>
-  <% end %>
-  <%= link_to "/admin/camp_applications/#{@camp_app.id}/staff_responses/send_notification/#{@camp_app.staff_response.id}" do %>
-    <div class="button tiny primary">Send Evaluation</div>
   <% end %>
   <% if @camp_app.staff_response %>
   <dl class="accordion" data-accordion>
