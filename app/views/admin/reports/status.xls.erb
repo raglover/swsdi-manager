@@ -17,6 +17,7 @@
         <Cell><Data ss:Type="String">Arrival Date</Data></Cell>
         <Cell><Data ss:Type="String">Departure Date</Data></Cell>
         <Cell><Data ss:Type="String">T-shirt size</Data></Cell>
+        <Cell><Data ss:Type="String">Date of Birth</Data></Cell>
       </Row>
     <% @residents.each do |student| %>
       <Row>
@@ -32,6 +33,7 @@
           <Cell><Data ss:Type="String"><%= app.departure_date.strftime("%B %d") %></Data></Cell>
         <% end %>
         <Cell><Data ss:Type="String"><%= student.tshirt_size %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.birthday %></Data></Cell>
       </Row>
     <% end %>
     </Table>
@@ -46,6 +48,7 @@
         <Cell><Data ss:Type="String">Arrival Date</Data></Cell>
         <Cell><Data ss:Type="String">Departure Date</Data></Cell>
         <Cell><Data ss:Type="String">T-shirt size</Data></Cell>
+        <Cell><Data ss:Type="String">Date of Birth</Data></Cell>
       </Row>
     <% @commuters.each do |student| %>
       <Row>
@@ -62,6 +65,7 @@
         <Cell><Data ss:Type="String"><%= app.departure_date.strftime("%B %d") %></Data></Cell>
         <% end %>
         <Cell><Data ss:Type="String"><%= student.tshirt_size %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.birthday %></Data></Cell>
       </Row>
     <% end %>
     </Table>
