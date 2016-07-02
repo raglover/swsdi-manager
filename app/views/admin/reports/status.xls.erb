@@ -16,10 +16,10 @@
         <Cell><Data ss:Type="String">Roommate Request</Data></Cell>
         <Cell><Data ss:Type="String">Arrival Date</Data></Cell>
         <Cell><Data ss:Type="String">Departure Date</Data></Cell>
-        <Cell><Data ss:Type="String">Event 1</Data></Cell>
-        <Cell><Data ss:Type="String">Event 2</Data></Cell>
         <Cell><Data ss:Type="String">T-shirt size</Data></Cell>
         <Cell><Data ss:Type="String">Date of Birth</Data></Cell>
+        <Cell><Data ss:Type="String">Event 1</Data></Cell>
+        <Cell><Data ss:Type="String">Event 2</Data></Cell>
       </Row>
     <% @residents.each do |student| %>
       <Row>
@@ -32,11 +32,11 @@
         <Cell><Data ss:Type="String"><%= student.camp_applications.first.roommate_req %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.camp_applications.last.arrival_date.strftime("%B %d") %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.camp_applications.last.departure_date.strftime("%B %d") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.tshirt_size %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.birthday.strftime("%B %d") %></Data></Cell>
         <% student.camp_applications.last.events.each do |event| %>
           <Cell><Data ss:Type="String"><%= event.name %></Data></Cell>
         <% end %>
-        <Cell><Data ss:Type="String"><%= student.tshirt_size %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= student.birthday.strftime("%B %d") %></Data></Cell>
       </Row>
     <% end %>
     </Table>
@@ -47,24 +47,25 @@
         <Cell><Data ss:Type="String">Last Name</Data></Cell>
         <Cell><Data ss:Type="String">First Name</Data></Cell>
         <Cell><Data ss:Type="String">Email</Data></Cell>
-        <Cell><Data ss:Type="String">Event 1</Data></Cell>
-        <Cell><Data ss:Type="String">Event 2</Data></Cell>
         <Cell><Data ss:Type="String">Arrival Date</Data></Cell>
         <Cell><Data ss:Type="String">Departure Date</Data></Cell>
         <Cell><Data ss:Type="String">T-shirt size</Data></Cell>
         <Cell><Data ss:Type="String">Date of Birth</Data></Cell>
+        <Cell><Data ss:Type="String">Event 1</Data></Cell>
+        <Cell><Data ss:Type="String">Event 2</Data></Cell>
       </Row>
     <% @commuters.each do |student| %>
       <Row>
         <Cell><Data ss:Type="String"><%= student.last_name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.first_name %></Data></Cell>
-        <% student.camp_applications.last.events.each do |event| %>
-          <Cell><Data ss:Type="String"><%= event.name %></Data></Cell>
-        <% end %>
+        <Cell><Data ss:Type="String"><%= student.email %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.camp_applications.last.arrival_date.strftime("%B %d") %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.camp_applications.last.departure_date.strftime("%B %d") %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.tshirt_size %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.birthday.strftime("%B %d") %></Data></Cell>
+        <% student.camp_applications.last.events.each do |event| %>
+          <Cell><Data ss:Type="String"><%= event.name %></Data></Cell>
+        <% end %>
       </Row>
     <% end %>
     </Table>
