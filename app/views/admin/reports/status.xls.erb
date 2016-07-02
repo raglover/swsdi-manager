@@ -30,7 +30,7 @@
         <Cell><Data ss:Type="String"><%= student.grade %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.school.titleize %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.camp_applications.first.roommate_req %></Data></Cell>
-        <% student.camp_applications.last.each do |app| %>
+        <% student.camp_applications.last do |app| %>
           <Cell><Data ss:Type="String"><%= app.arrival_date.strftime("%B %d") %></Data></Cell>
           <Cell><Data ss:Type="String"><%= app.departure_date.strftime("%B %d") %></Data></Cell>
           <% app.events.each do |event| %>
@@ -61,7 +61,7 @@
         <Cell><Data ss:Type="String"><%= student.last_name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.first_name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.email %></Data></Cell>
-        <% student.camp_applications.last.each do |app| %>
+        <% student.camp_applications.last do |app| %>
             <% app.events.each do |event| %>
               <Cell><Data ss:Type="String"><%= event.name %></Data></Cell>
             <% end %>
