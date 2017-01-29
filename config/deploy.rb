@@ -24,6 +24,7 @@ set :user, 'deployer'
 set :forward_agent, true
 set :port, '22'
 set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
+set :term_mode, nil
 
 # For system-wide RVM install.
 #   set :rvm_path, '/usr/local/rvm/bin/rvm'

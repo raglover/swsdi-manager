@@ -2,7 +2,9 @@
 ---
 ## Overview
 
-This is an application for handling registration and camp management business for the Southwest Speech and Debate Institute. Right now, it's far from complete, and it isn't very useful yet. I'm hoping to get it that way as soon as possible. 
+This is an application for handling registration and camp management business for the Southwest Speech and Debate Institute. 
+
+It has tools to manage applications, finances, and various reporting tools to make our jobs easier. We have successfully eliminated a huge amount of paperwork. 
 
 More interesting stuff is still to come here, including instructions on how to use this thing. 
 

@@ -9,7 +9,7 @@ class Admin::ReportsController < ApplicationController
                 .group_by{|i| i.school.downcase}
     @schools = schools.sort
     @totals = FinancialReport.new(@camp)
-    @students = @camp.camp_applications
+    @students = @camp.camp_applications.includes(:user).order("users.last_name")
     authorize :report, :financial?
   end
 
@@ -22,10 +22,17 @@ class Admin::ReportsController < ApplicationController
 
   def status
     @residents = User.with_apps
+                     .where('camp_applications.camp_id = ?', @camp.id)    
                      .where('camp_applications.camper_type = ?', "Resident")
                      .order(:gender, :grade, :school)
     @commuters = User.with_apps
+                     .where('camp_applications.camp_id = ?', @camp.id)
                      .where('camp_applications.camper_type = ?', "Commuter")
     authorize :report, :show?
+  end
+
+  def registration
+    @events = @camp.events
+    authorize :report, :registration?
   end
 end

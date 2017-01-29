@@ -1,0 +1,10 @@
+<div class="small-12 large-12 columns">
+  <h2>Student Evaluation for: <%= @camp_app.user.full_name %></h2>
+  <%= simple_form_for [:admin, @camp_app, @response] do |f| %>
+    <%= f.input :strengths, label: "#{@camp_app.user.full_name}'s strengths" %>
+    <%= f.input :weaknesses, label: "#{@camp_app.user.full_name}'s areas for improvement" %>
+    <%= f.input :goals, label: "#{@camp_app.user.full_name}'s goals" %>
+    <%= f.input :notes, label: "Additional notes" %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

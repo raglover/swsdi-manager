@@ -1,0 +1,43 @@
+<%= render 'admin/shared/admin_tools' %>
+<div class="row">
+  <div class="small-12 large-12 columns">
+    <h2>Check-in List</h2>
+    <dl class="accordion" data-accordion >
+    <% @events.each_with_index do |event, index| %>
+    <% @apps = event.camp_applications.where(checked_in: false).includes(:user).order("users.last_name") %>
+    <dd class="accordion-navigation" >
+      <a href="<%= "#panel" + index.to_s %>"<h3><%= event.name %>: <span class="count"><%= @apps.count %></span> outstanding</h3></a>
+      <div id="<%= "panel" + index.to_s %>" class="content"> 
+        <table>
+          <thead>
+            <th>Name</th>
+            <th>T-shirt</th>
+            <th>Camper Type</th>
+            <th>Balance Due</th>
+            <th>Tools</th>
+          </thead>
+          <tbody>
+            <% @apps.each do |app| %>
+              <% tuition = CalculateTuition.new(app) %>
+              <tr>
+                <td><%= app.user.full_name %></td>
+                <td><%= app.user.tshirt_size %></td>
+                <td><%= app.camper_type %></td>
+                <td><%= number_to_currency(tuition.current_balance) %></td>
+                <td>
+                  <%= link_to admin_camp_application_path(app) do %>
+                    <strong><i class="fa fa-eye" data-tooltip title="View App"></i></strong>
+                  <% end %>
+                  <%= simple_form_for [:admin, app], remote: true do |f|%>
+                    <%= f.input :checked_in, label: false, wrapper: false %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </dd>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Confirmed">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Last Name</Data></Cell>
+        <Cell><Data ss:Type="String">First Name</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Parent Email</Data></Cell>
+        <Cell><Data ss:Type="String">Laptop?</Data></Cell>
+      </Row>
+    <% @camp_apps.each do |student| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= student.user.first_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.user.last_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.user.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.user.parent_email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= yes_no(student.has_laptop) %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+  <Worksheet ss:Name="Unconfirmed">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Last Name</Data></Cell>
+        <Cell><Data ss:Type="String">First Name</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Parent Email</Data></Cell>
+      </Row>
+    <% @unconfirmed.each do |student| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= student.user.first_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.user.last_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.user.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.user.parent_email %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

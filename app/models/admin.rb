@@ -1,10 +1,10 @@
 class Admin < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :confirmable, :lockable,
+  devise :database_authenticatable, :confirmable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :admin_profile
+  has_one :admin_profile, dependent: :destroy
 
   scope :board, -> {where("role = 'board' OR role = 'super'")}
   scope :counselors, -> {where("role = 'counselor' OR role = 'slc'")}

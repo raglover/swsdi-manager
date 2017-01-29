@@ -67,10 +67,10 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { host: 'register.swsdi.org' }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { address: 'smtp.mandrillapp.com',
+  config.action_mailer.smtp_settings = { address: 'smtp.sendgrid.net',
                                          port: '587',
-                                         user_name: Rails.application.secrets.mandrill_username,
-                                         password: Rails.application.secrets.mandrill_api_key,
+                                         user_name: Rails.application.secrets.sendgrid_username,
+                                         password: Rails.application.secrets.sendgrid_api_key,
                                          authentication: :login,
                                          domain: 'register.swsdi.org',}
 

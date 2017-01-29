@@ -13,6 +13,7 @@
         <Cell><Data ss:Type="String">Itinerary</Data></Cell>
         <Cell><Data ss:Type="String">Arrival Date</Data></Cell>
         <Cell><Data ss:Type="String">Departure Date</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
         <Cell><Data ss:Type="String">Student Phone</Data></Cell>
         <Cell><Data ss:Type="String">Parent Phone</Data></Cell>
       </Row>
@@ -26,7 +27,9 @@
           <Cell><Data ss:Type="String"><%= app.arrival_date.strftime("%B %d") %></Data></Cell>
           <Cell><Data ss:Type="String"><%= app.departure_date.strftime("%B %d") %></Data></Cell>
         <% end %>
-        <Cell><Data ss:Type="String"><%= display_phone_number(student.phone_number) %></Data></Cell><Cell><Data ss:Type="String"><%= display_phone_number(student.phone_number) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= display_phone_number(student.phone_number) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= display_phone_number(student.phone_number) %></Data></Cell>
       </Row>
     <% end %>
     </Table>

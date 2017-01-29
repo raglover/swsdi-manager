@@ -28,4 +28,9 @@
   <% else %>
     <i class="fa fa-check disabled" data-tooltip title="Pending Approval"></i>
   <% end %>
+  <% if app.checked_in %>
+    <i class="fa fa-heart enabled" data-tooltip title="Checked In!"></i>
+  <% else %>
+    <i class="fa fa-heart-o disabled" data-tooltip title="Not Checked In"></i>
+  <% end %>
 </span>

@@ -1,0 +1,29 @@
+<div class="panel radius small-12 large-12 columns">
+  <% if @camp_app.staff_response %>
+    <%= link_to "Edit Student Evaluation", edit_admin_camp_application_staff_response_path(@camp_app, @camp_app.staff_response), 
+        { class: "button tiny primary" } %>
+    <%= link_to "/admin/camp_applications/#{@camp_app.id}/staff_responses/send_notification/#{@camp_app.staff_response.id}" do %>
+      <div class="button tiny primary">Send Evaluation</div>
+    <% end %>
+  <% else %>
+    <%= link_to "New Student Evaluation", new_admin_camp_application_staff_response_path(@camp_app), 
+        { class: "button tiny primary" } %>
+  <% end %>
+  <% if @camp_app.staff_response %>
+  <dl class="accordion" data-accordion>
+    <dd class="accordion-navigation">
+      <a href="#eval" >Evaluation for <%= @camp_app.user.full_name %></a>
+      <div class="content" id="eval">
+        <h4><%= @camp_app.user.first_name %>'s Strengths</h4>
+        <p><%= @camp_app.staff_response.strengths %></p>
+        <h4><%= @camp_app.user.first_name %>'s Areas to Improve</h4>
+        <p><%= @camp_app.staff_response.weaknesses %></p>
+        <h4><%= @camp_app.user.first_name %>'s Goals</h4>
+        <p><%= @camp_app.staff_response.goals %></p>
+        <h4>Additional Notes</h4>
+        <p><%= @camp_app.staff_response.notes %></p>
+      </div>
+    </dd>
+  </dl>
+  <% end %>
+</div>

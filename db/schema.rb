@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150626015055) do
+ActiveRecord::Schema.define(version: 20150708230435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,7 +101,8 @@ ActiveRecord::Schema.define(version: 20150626015055) do
     t.text     "missing_info"
     t.integer  "years_in_event"
     t.integer  "number_of_tournaments"
-    t.string   "uuid",                     null: false
+    t.string   "uuid",                                     null: false
+    t.boolean  "checked_in",               default: false, null: false
   end
 
   add_index "camp_applications", ["camp_id"], name: "index_camp_applications_on_camp_id", using: :btree
@@ -210,6 +211,16 @@ ActiveRecord::Schema.define(version: 20150626015055) do
     t.integer  "room_num"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "staff_responses", force: :cascade do |t|
+    t.text     "strengths"
+    t.text     "weaknesses"
+    t.text     "goals"
+    t.text     "notes"
+    t.integer  "camp_application_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "tenants", force: :cascade do |t|

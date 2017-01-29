@@ -66,7 +66,12 @@
         <%= f.input :app_fee, label: "Application Fee Recieved" %>
         <%= f.input :incomplete, label: "Application Missing Info" %>
         <%= f.input :is_approved, label: "Application Approved" %>
+        <%= f.input :checked_in, label: "Checked in to Camp" %>
         <%= f.input :missing_info, label: "Which information is missing?" %>
+      </fieldset>
+      <fieldset>
+        <legend>Notes about Camper (Private)</legend>
+        <%= f.input :comments %>
       </fieldset>
     </div>
     <div class="row">
