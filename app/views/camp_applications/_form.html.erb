@@ -54,8 +54,22 @@
       <%= f.input :allergies, wrapper_html: { class: 'small-6 large-6 columns' }, label: "Please list any allergies" %>
       <%= f.input :dietary_restrictions, wrapper_html: { class: 'small-6 large-6 columns' }, label: "Please list any dietary restrictions" %>
     </div>
+    <div class="row">
+	    <div class="small-12 large-12 columns">
+		    <h3>There is an Application Fee of $50.00. Please enter your Credit Card details in the secure form below.</h3>
+	      <div id="payment-form"></div>
+	      <input type="hidden" name="amount" value="50.00">
+	    </div>
+    </div>
     <%= f.hidden_field :camp_id, :value => @camp.id  %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.button :submit %>    
   </fieldset>
 <% end %>
+<script>
+var clientToken = "<%= @token %>";
+
+braintree.setup(clientToken, "dropin", {
+	container: "payment-form"
+});
+</script>
