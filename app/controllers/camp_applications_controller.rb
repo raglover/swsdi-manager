@@ -49,10 +49,20 @@ class CampApplicationsController < ApplicationController
     RegistrationMailer.parent_email(user,camp).deliver_later
     RegistrationMailer.admin_email(user,camp).deliver_later
 
+    
     respond_to do |format|
       if @camp_application.save
-        format.html { redirect_to profile_path(current_user), notice: 'Camp application was successfully completed!' }
-        format.json { render :show, status: :created, location: @camp_application }
+    	      order = {id: @camp_application.id, applicant_id:  @camp_application.user.id, amount: params[:amount]}
+	      if charge_user(order)
+		      @camp_application.update_attribute(:app_fee, true)
+	              format.html { redirect_to profile_path(current_user), notice: 'Camp application was successfully completed!' }
+       		      format.json { render :show, status: :created, location: @camp_application }
+	      else
+		      format.html { redirect_to new_application_payment_camp_application_path(order), warning:
+		      "We have saved your application, but something has gone wrong with processing your credit card.<br/>
+		      Please make whatever changes are necessary, and resubmit."
+		      }
+	      end
       else
         format.html { render :new }
         format.json { render json: @camp_application.errors, status: :unprocessable_entity }
@@ -84,6 +94,24 @@ class CampApplicationsController < ApplicationController
     end
   end
 
+  def new_application_payment
+	  @camp_application = CampApplication.find(params[:id])
+	  @token = Braintree::ClientToken.generate
+  end
+
+  def pay
+	  @camp_application = CampApplication.find(params[:id])
+	  order = {order_id: @camp_application.id, amount: params[:amount]}
+	  transaction = Transaction.new order, params[:payment_method_nonce]
+	  transaction.execute
+	  if transaction.ok?
+		  @camp_application.update_attribute(:app_fee, true)
+		  redirect_to profile_path(current_user), notice: 'Thank you for registering for SWSDI!'
+	  else
+		  render new_application_payment_camp_application_path(order) 
+	  end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_camp_application
@@ -94,10 +122,16 @@ class CampApplicationsController < ApplicationController
     def camp_application_params
       params.require(:camp_application).permit(:interp_type, :camper_type, :event_partner_req, :has_competed, :comments, :roommate_req, :has_laptop, 
         :needs_pickup, :needs_dropoff, :itinerary, :has_allergies, :allergies, :has_dietary_restrictions, :dietary_restrictions, :years_in_event, 
-        :number_of_tournaments, 
+        :number_of_tournaments, :payment_method_nonce, 
         :camp_id, :user_id, :event_ids => [],
         :debate_records_attributes => [:id, :tournament_name, :prelim_wins, :prelim_losses, :reached_outrounds, 
           :outround_reached, :location, :division, :_destroy], 
         :check_out_permissions_attributes => [:id, :first_name, :last_name, :relationship, :phone_num, :_destroy])
+    end
+
+    def charge_user(order)
+	    transaction = Transaction.new(order, params[:payment_method_nonce])
+	    transaction.execute
+	    transaction.ok?
     end
 end

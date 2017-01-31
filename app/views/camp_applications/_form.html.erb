@@ -56,74 +56,20 @@
     </div>
     <div class="row">
 	    <div class="small-12 large-12 columns">
-		    <div id="error-message"></div>
-		    
-		    <label for="card-number">Card Number</label>
-		    <div id="card-number" class="hosted-field"></div>
-
-		    <label for="cvv">CVV Number</label>
-		    <div id="cvv" class="hosted-field"></div>
-
-		    <label for="expiration-date">Expiration Date (MM/YY)</label>
-		    <div id="expiration-date" class="hosted-field"></div>
-
-		    <input type="hidden" name="payment-method-nonce">
-		    <input type="hidden" name="amount" value="50.00">
-		    
+		    <h3>There is an Application Fee of $50.00. Please enter your Credit Card details in the secure form below.</h3>
+	      <div id="payment-form"></div>
+	      <input type="hidden" name="amount" value="50.00">
 	    </div>
     </div>
     <%= f.hidden_field :camp_id, :value => @camp.id  %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.button :submit, disabled: true %>    
+    <%= f.button :submit %>    
   </fieldset>
 <% end %>
-
 <script>
+var clientToken = "<%= @token %>";
 
-var authorization = '<%= @token %>';
-var submit = document.querySelector('input[type="submit"]');
-
-braintree.client.create({
-	authorization: authorization
-}, function (clientErr, clientInstance) {
-	if (clientErr) {
-		return;
-	}
-
-	braintree.hostedFields.create({
-		client: clientInstance,
-		styles: {
-			'input': {
-				'font-size': '14pt'
-			},
-			'input.invalid': {
-				'color' : 'red'
-			},
-			'input.valid': {
-				'color' : 'green'
-			}
-		},
-		fields: {
-			number: {
-				selector: '#card-number',
-				placeholder: '4111 1111 1111 1111'
-			},
-			cvv: {
-				selector: '#cvv',
-				placeholder: '123'
-			},
-			expirationDate: {
-				selector: '#expiration-date',
-				placeholder: '01/2017'
-			}
-		}
-	}, function (hostedFieldsErr, hostedFieldsInstance) {
-		if (hostedFieldsErr) {
-			return;
-		}
-
-		submit.removeAttribute('disabled');
-	});
+braintree.setup(clientToken, "dropin", {
+	container: "payment-form"
 });
 </script>
-

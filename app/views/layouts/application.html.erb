@@ -7,8 +7,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "SWSDI Registration" %></title>
 
     <%= stylesheet_link_tag    "application" %>
-    <script src="https://js.braintreegateway.com/web/3.6.3/js/client.min.js"></script>
-    <script src="https://js.braintreegateway.com/web/3.6.3/js/hosted-fields.min.js"></script>
+    <script src="https://js.braintreegateway.com/js/braintree-2.30.0.min.js"></script>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>

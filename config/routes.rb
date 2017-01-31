@@ -39,6 +39,11 @@ Rails.application.routes.draw do
   resources :profiles
   resources :camp_applications do
     resources :payments, only: [:index]
+    member do
+     get :new_application_payment
+     post :pay
+    end
+ 
   end
   resources :coach_comments, only: [:new, :create]
 
