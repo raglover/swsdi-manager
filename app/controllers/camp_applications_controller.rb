@@ -58,7 +58,7 @@ class CampApplicationsController < ApplicationController
 	              format.html { redirect_to profile_path(current_user), notice: 'Camp application was successfully completed!' }
        		      format.json { render :show, status: :created, location: @camp_application }
 	      else
-		      format.html { redirect_to new_application_payment_camp_application_path(order), warning:
+		      format.html { redirect_to new_application_payment_camp_application_path(order), alert:
 		      "We have saved your application, but something has gone wrong with processing your credit card.<br/>
 		      Please make whatever changes are necessary, and resubmit."
 		      }
