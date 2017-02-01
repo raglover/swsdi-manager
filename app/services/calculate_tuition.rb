@@ -2,8 +2,8 @@ class CalculateTuition
 
   def initialize(camp_app)
     @camp_app = camp_app
-    @max_res_tuition = 1095
-    @max_com_tuition = 880
+    @max_res_tuition = 1245
+    @max_com_tuition = 930
     @airport_fee = 20
     @app_fee = 50
   end
