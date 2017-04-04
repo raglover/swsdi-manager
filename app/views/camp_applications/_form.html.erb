@@ -6,7 +6,7 @@
       <h5 class="small-12 large-12 columns">Please select one two-week event, or up to one event from each of the first and second weeks.</h5>
       <% @sessions.each do |session| %>
         <% events = session.events %>
-        <%= f.association :events, collection: events, as: :check_boxes, wrapper_html: {class: 'small-12 large-4 columns'}, label: session.name+" Events" %>
+	<%= f.association :events, collection: events, as: :check_boxes, wrapper_html: {id: session.shortname, class: 'small-12 large-4 columns'}, label: session.name+" Events" %>
       <% end %>
     </div>
     <div class="row">
