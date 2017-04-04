@@ -27,7 +27,7 @@ class CampApplicationsController < ApplicationController
     @check_outs = @camp_application.check_out_permissions.build
     @camp = Camp.find_by_id( params[:camp_id] )
     @sessions = @camp.camp_sessions.all 
-#    @token = Braintree::ClientToken.generate
+    @token = Braintree::ClientToken.generate
   end
 
   # GET /camp_applications/1/edit
