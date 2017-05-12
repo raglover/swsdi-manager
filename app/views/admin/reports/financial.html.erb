@@ -51,7 +51,7 @@
             <div id="<%= "panel" + index.to_s %>" class="content">
               <ul>
               <% school[1].each do |user| %>
-                <li><%= user.full_name %>'s App Date: <%= user.camp_applications.first.created_at.strftime("%B %d, %Y") %></li>
+                <li><%= user.full_name %>'s App Date: <%= user.camp_applications.where(camp_id: @camp.id).first.created_at.strftime("%B %d, %Y") %></li>
               <% end %>
               </ul>
             </div>

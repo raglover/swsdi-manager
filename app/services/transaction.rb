@@ -19,6 +19,10 @@ class Transaction
 		@result.success?
 	end
 
+    def errors
+        @result.transaction.status
+    end
+
 	private
 
 		attr_reader :order, :nonce
