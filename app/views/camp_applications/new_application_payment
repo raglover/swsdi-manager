@@ -1,0 +1,6 @@
+<div class="row">
+	<div class="small-12 large-12 columns">
+		<%= @camp_application %>
+		<p>The application fee is: <%= params[:amount].to_i.number_to_currency %></p>
+  	</div>
+</div>

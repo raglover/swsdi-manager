@@ -3,6 +3,14 @@
 <%= @user.first_name + " " + @user.last_name %> has submitted a camp application!
 </p>
 <p>
+<%= @user.first_name %> has registered for the following events:
+<ul>
+    <% @app.events.each do |event| %>
+        <li><%= event.name %></li>
+    <% end %>
+</ul>
+</p>
+<p>
 Emails have been generated and sent to the student, their parent or guardian, and
 their coach. These emails include next steps to take, downloads of the relevant
 documents, and a super-friendly message from us!
