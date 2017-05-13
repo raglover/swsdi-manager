@@ -70,7 +70,7 @@ class CampApplication < ActiveRecord::Base
       camp = self.camp
       RegistrationMailer.student_email(user,camp).deliver_later
       RegistrationMailer.parent_email(user,camp).deliver_later
-      RegistrationMailer.admin_email(user,camp).deliver_later
+      RegistrationMailer.admin_email(user,camp,self).deliver_later
     end
 
     def send_coach_email

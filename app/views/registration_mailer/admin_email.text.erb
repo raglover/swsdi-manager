@@ -2,6 +2,12 @@ A new student has registered for SWSDI!
 
 <%= @user.first_name + " " + @user.last_name %> has submitted a camp application!
 
+<%= @user.first_name %> has registered for the following events:
+
+<% @app.events.each do |event| %>
+    * <%= event.name %>
+<% end %>
+
 Emails have been generated and sent to the student, their parent or guardian, and
 their coach. These emails include next steps to take, downloads of the relevant
 documents, and a super-friendly message from us!

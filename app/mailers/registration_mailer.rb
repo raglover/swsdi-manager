@@ -5,6 +5,7 @@ class RegistrationMailer < ActionMailer::Base
 		@user = user
 		@camp = camp
 		@url = 'https://register.swsdi.org/documents/returnpacket2017.pdf'
+        @docurl = 'https://register.swsdi.org/documents/2017Infopacket.pdf'
 		mail(to: @user.email, 
 			subject: "Thank you for registering for #{@camp.name} - Next Steps")
 	end
@@ -13,6 +14,7 @@ class RegistrationMailer < ActionMailer::Base
 		@user = user
 		@camp = camp
 		@url = 'https://register.swsdi.org/documents/returnpacket2017.pdf'
+        @docurl = 'https://register.swsdi.org/documents/2017Infopacket.pdf'
 		mail(to: @user.parent_email, 
 			subject: "Your Student #{@user.first_name} has registered for #{@camp.name} - Next Steps")
 	end
@@ -26,9 +28,10 @@ class RegistrationMailer < ActionMailer::Base
 			subject: "Your Student #{@user.first_name} has registered for #{@camp.name} - Next Steps")
 	end
 
-	def admin_email(user, camp)
+	def admin_email(user, camp, app)
 		@user = user
 		@camp = camp
+        @app = app
 		mail(to: "Susan Seep <susan@swsdi.org>, Richie Glover <richard@swsdi.org>", 
 			subject: "New Application submitted for #{@camp.name} - #{@user.first_name} #{@user.last_name}")
 	end
