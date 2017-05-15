@@ -80,7 +80,7 @@ task :deploy => :environment do
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
-    to :launch do
+    on :launch do
       invoke :'unicorn:restart'
     end
   end
