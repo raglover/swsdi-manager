@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe AdminsController, type: :controller do
+describe Admin::AdminsController, type: :controller do
 
   describe "GET 'index'" do
     it "returns http success" do
