@@ -23,7 +23,7 @@ set :branch, 'master'
 set :user, 'deployer'
 set :forward_agent, true
 set :port, '22'
-set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
+set :unicorn_pid, "home/deployer/swsdi-manager/shared/pids/unicorn.pid"
 set :term_mode, nil
 
 # For system-wide RVM install.
@@ -41,7 +41,7 @@ set :shared_paths, ['config/database.yml', 'log', 'config/secrets.yml', 'public/
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
-  queue %{
+  command %{
     echo "----> Loading environment"
     #{echo_cmd %[source ~/.bashrc]}
   }
@@ -52,20 +52,20 @@ end
 # For Rails apps, we'll make some of the shared paths that are shared between
 # all releases.
 task :setup => :environment do
-  queue! %[mkdir -p "#{deploy_to}/shared/log"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
+  command %[mkdir -p "#{deploy_to}/shared/log"]
+  command %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
 
-  queue! %[mkdir -p "#{deploy_to}/shared/config"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
+  command %[mkdir -p "#{deploy_to}/shared/config"]
+  command %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
 
-  queue! %[touch "#{deploy_to}/shared/config/database.yml"]
-  queue  %[echo "-----> Be sure to edit '#{deploy_to}/shared/config/database.yml'."]
+  command %[touch "#{deploy_to}/shared/config/database.yml"]
+  command %[echo "-----> Be sure to edit '#{deploy_to}/shared/config/database.yml'."]
 
-  queue! %[touch "#{deploy_to}/shared/config/secrets.yml"]
-  queue %[echo "-----> Be sure to edit '#{deploy_to}/shared/config/secrets.yml'."]
+  command %[touch "#{deploy_to}/shared/config/secrets.yml"]
+  command %[echo "-----> Be sure to edit '#{deploy_to}/shared/config/secrets.yml'."]
 
-  queue! %[mkdir -p "#{deploy_to}/shared/pids/"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/pids"]
+  command %[mkdir -p "#{deploy_to}/shared/pids/"]
+  command %[chmod g+rx,u+rwx "#{deploy_to}/shared/pids"]
 end
 
 desc "Deploys the current version to the server."
