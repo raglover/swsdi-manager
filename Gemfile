@@ -43,7 +43,7 @@ group :test, :development do
   gem 'spring-commands-rspec'
   gem 'guard-rspec' 
   gem 'rb-fsevent'
-  gem 'rspec-rails', '~> 3.0.0.rc1'
+  gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda'
   gem 'faker'

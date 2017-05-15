@@ -21,7 +21,7 @@
           <% end %></li>
         <li><%= link_to "Log Out", destroy_admin_session_path, method: :delete %></li>
       <% else %>      
-        <li><%= link_to user_omniauth_authorize_path(:facebook), class: "button tiny" do %>
+        <li><%= link_to user_facebook_omniauth_authorize_path, class: "button tiny" do %>
             <i class="fa fa-facebook-square"></i> Login With Facebook
         <% end %></li>
         <li><%= link_to "Log In", new_user_session_path %></li>
