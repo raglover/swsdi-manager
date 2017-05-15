@@ -23,7 +23,6 @@ set :branch, 'master'
 set :user, 'deployer'
 set :forward_agent, true
 set :port, '22'
-set :unicorn_pid, "home/deployer/swsdi-manager/shared/pids/unicorn.pid"
 set :term_mode, nil
 
 # For system-wide RVM install.
@@ -31,7 +30,8 @@ set :term_mode, nil
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'log', 'config/secrets.yml', 'public/uploads', 'public/documents']
+set :shared_files, ['config/database.yml', 'config/secrets.yml']
+set :shared_dirs, ['log', 'tmp/sockets', 'tmp/pids', 'public/assets', 'vendor/bundle', 'public/uploads', 'public/documents']
 
 # Optional settings:
 #   set :user, 'foobar'    # Username in the server to SSH to.
@@ -63,9 +63,6 @@ task :setup => :environment do
 
   command %[touch "#{deploy_to}/shared/config/secrets.yml"]
   command %[echo "-----> Be sure to edit '#{deploy_to}/shared/config/secrets.yml'."]
-
-  command %[mkdir -p "#{deploy_to}/shared/pids/"]
-  command %[chmod g+rx,u+rwx "#{deploy_to}/shared/pids"]
 end
 
 desc "Deploys the current version to the server."
