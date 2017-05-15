@@ -13,7 +13,7 @@ class PaymentsController < ApplicationController
   def create
     @payment = @camp_app.payments.build(payment_params)
     respond_to do |format|
-      order = {id: @camp_app.id, applicant_id: current_user.id, amount: params[:payment][:amount]}
+      order = {id: @camp_app.id, applicant_id: current_user.id, amount: params[:payment][:amount], first_name: params[:payment][:first_name], last_name: params[:payment][:last_name]}
       transaction = Transaction.new(order, params[:payment_method_nonce])
       transaction.execute
       if transaction.ok?
@@ -34,12 +34,7 @@ class PaymentsController < ApplicationController
     end
 
     def payment_params
-        params.require(:payment).permit(:pmt_type, :note, :amount, :payment_method_nonce)        
+        params.require(:payment).permit(:pmt_type, :note, :amount, :first_name, :last_name, :payment_method_nonce)        
     end
 
-    def charge_user(order)
-        transaction = Transaction.new(order, params[:payment_method_nonce])
-        transaction.execute
-        transaction.ok?
-    end
 end

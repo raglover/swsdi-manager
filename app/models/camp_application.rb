@@ -18,6 +18,8 @@ class CampApplication < ActiveRecord::Base
 
   validate :conditional_debate_presence 
 
+  attr_accessor :first_name, :last_name # For cardholder first and last name - virtual attributes that don't get stored.
+
   def has_competed?
     has_competed == true
   end

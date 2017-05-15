@@ -3,14 +3,14 @@
   <fieldset>
     <legend>Camp Application</legend>
     <div class="row">
-      <h5 class="small-12 large-12 columns">Please select your events (Session A is week 1, Session B is week 2, Session C is both weeks).</h5>
+      <h5 class="small-12 large-12 columns">Please select one two-week event, or up to one event from each of the first and second weeks.</h5>
       <% @sessions.each do |session| %>
         <% events = session.events %>
 	<%= f.association :events, collection: events, as: :check_boxes, wrapper_html: {id: session.shortname, class: 'small-12 large-4 columns'}, label: session.name+" Events" %>
       <% end %>
     </div>
     <div class="row">
-      <%= f.input :interp_type, collection: ['Duo', 'Dramatic', 'Humor', 'POI'], wrapper_html: { class: 'small-3 large-3 columns'}, label: "Interp event (if selected)" %>
+      <%= f.input :interp_type, collection: ['Duo', 'Dramatic', 'Humor'], wrapper_html: { class: 'small-3 large-3 columns'}, label: "Interp event (if selected)" %>
       <%= f.input :has_competed, :as => :select, wrapper_html: { class: 'small-5 large-3 columns' }, label: 'Competed Previously? <i class="fa fa-info-circle" data-tooltip title="Have you competed previously in this event?"></i>'.html_safe %>
       <%= f.input :years_in_event, wrapper_html: { class: 'small-2 large-2 columns'}, label: 'Years in Event? <i class="fa fa-info-circle" data-tooltip title="How many years have you competed in the events you\'re registering for?"></i>'.html_safe %>
       <%= f.input :number_of_tournaments, wrapper_html: { class: 'small-2 large-2 columns'}, label: '# of Tournaments <i class="fa fa-info-circle" data-tooltip title="How many tournaments have you competed in these events?"></i>'.html_safe %>
@@ -58,6 +58,14 @@
 	    <div class="small-12 large-12 columns">
 		    <h4>There is an Application Fee of $50.00. Please enter your Credit Card details in the secure form below.</h4>
         <p>The application fee is non-refundable. It will be credited to your tuition. If you are unable to pay with a credit card at this time, please contact us at <a href="mailto:info@swsdi.org">info@swsdi.org</a>.</p>
+        <div class="row">
+            <div class="small-6 large-6 columns">
+                <%= f.input :first_name, label: "Cardholder First Name", placeholder: "John" %>
+            </div>
+            <div class="small-6 large-6 columns">
+                <%= f.input :last_name, label: "Cardholder Last Name", placeholder: "Smith" %>
+            </div>
+        </div>
 	      <div id="payment-form"></div>
 	      <input type="hidden" name="amount" value="50.00">
 	    </div>

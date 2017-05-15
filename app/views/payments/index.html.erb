@@ -50,13 +50,14 @@
     <%= f.hidden_field :pmt_type, value: 'Credit Card' %>
     <%= f.input :note, label: "Please add any additional notes." %>
     <%= f.hidden_field :amount, value: @tuition.current_balance %>
+    <%= f.input :first_name, label: "Cardholder First Name" %>
+    <%= f.input :last_name, label: "Cardholder Last Name" %>
     <div id="payment-form"></div>
     <%= f.button :submit, wrapper_html: {class: "button"} %>
   <% end %>  
   <%= link_to "Return to Profile", profile_path(current_user), { class: "button small"} %>
 	  <script>
 		var clientToken = "<%= @token %>";
-        console.log (clientToken);
 		braintree.setup(clientToken, "dropin", {
 			container: "payment-form"
 		});

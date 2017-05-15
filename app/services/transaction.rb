@@ -9,6 +9,9 @@ class Transaction
 		@result = Braintree::Transaction.sale(
 			:amount => order[:amount],
 			:payment_method_nonce => nonce,
+            :credit_card => {
+                :cardholder_name => "#{order[:first_name]} #{order[:last_name]}"
+            },
 			:options => {
 				:submit_for_settlement => true
 			}

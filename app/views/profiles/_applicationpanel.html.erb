@@ -28,7 +28,7 @@
           <% end %>        
         </div>
         <div class="small-1 large-1 columns">
-          <%= link_to camp_application_path(application), method: :delete do %>
+          <%= link_to camp_application_path(application), data: { confirm: "Delete this Application: Are you sure?" }, method: :delete do %>
             <i class="fa fa-times-circle has-tip" data-tooltip title="Delete App"></i>
           <% end %>
         </div>

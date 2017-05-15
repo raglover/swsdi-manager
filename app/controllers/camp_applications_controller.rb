@@ -46,7 +46,7 @@ class CampApplicationsController < ApplicationController
     
     respond_to do |format|
       if @camp_application.save
-    	      order = {id: @camp_application.id, applicant_id:  @camp_application.user.id, amount: params[:amount]}
+    	      order = {id: @camp_application.id, applicant_id:  @camp_application.user.id, amount: params[:amount], first_name: params[:camp_application][:first_name], last_name: params[:camp_application][:last_name]}
 	      if charge_user(order)
 		      @camp_application.update_attribute(:app_fee, true)
 	              format.html { redirect_to profile_path(current_user), notice: 'Camp application was successfully completed!' }
@@ -95,7 +95,7 @@ class CampApplicationsController < ApplicationController
 
   def pay
 	  @camp_application = CampApplication.find(params[:id])
-	  order = {order_id: @camp_application.id, amount: params[:amount]}
+	  order = {order_id: @camp_application.id, amount: params[:amount], first_name: params[:first_name], last_name: params[:last_name]}
 	  transaction = Transaction.new order, params[:payment_method_nonce]
 	  transaction.execute
 	  if transaction.ok?
@@ -116,7 +116,7 @@ class CampApplicationsController < ApplicationController
     def camp_application_params
       params.require(:camp_application).permit(:interp_type, :camper_type, :event_partner_req, :has_competed, :comments, :roommate_req, :has_laptop, 
         :needs_pickup, :needs_dropoff, :itinerary, :has_allergies, :allergies, :has_dietary_restrictions, :dietary_restrictions, :years_in_event, 
-        :number_of_tournaments, :payment_method_nonce, 
+        :number_of_tournaments, :first_name, :last_name, :payment_method_nonce, 
         :camp_id, :user_id, :event_ids => [],
         :debate_records_attributes => [:id, :tournament_name, :prelim_wins, :prelim_losses, :reached_outrounds, 
           :outround_reached, :location, :division, :_destroy], 
