@@ -26,6 +26,14 @@ class Transaction
         @result.transaction.status
     end
 
+    def order_id
+        @result.transaction.id
+    end
+
+    def created
+        @result.transaction.created_at
+    end
+
 	private
 
 		attr_reader :order, :nonce

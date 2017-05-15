@@ -48,7 +48,6 @@
   <%= simple_form_for [@camp_app, @new_payment] do |f| %>
     <h3>Pay your tuition balance:</h3>
     <%= f.hidden_field :pmt_type, value: 'Credit Card' %>
-    <%= f.input :note, label: "Please add any additional notes." %>
     <%= f.hidden_field :amount, value: @tuition.current_balance %>
     <div class="row">
         <div class="small-6 large-6 columns">

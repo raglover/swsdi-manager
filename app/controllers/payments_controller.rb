@@ -17,6 +17,7 @@ class PaymentsController < ApplicationController
       transaction = Transaction.new(order, params[:payment_method_nonce])
       transaction.execute
       if transaction.ok?
+          @payment.note = "CC Transaction - TxnID: #{transaction.order_id} at #{transaction.created.to_s}"
           if @payment.save
               format.html { redirect_to profile_path(current_user), notice: 'Thank you for your payment!' }
           else
