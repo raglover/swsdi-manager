@@ -83,6 +83,11 @@ task :deploy => :environment do
   end
 end
 
+desc "Restarts Unicorn"
+task :urestart => :environment do
+    invoke :'unicorn:restart'
+end
+
 # For help in making your deploy script, see the Mina documentation:
 #
 #  - http://nadarei.co/mina
