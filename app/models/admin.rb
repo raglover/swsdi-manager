@@ -10,7 +10,11 @@ class Admin < ActiveRecord::Base
   scope :counselors, -> {where("role = 'counselor' OR role = 'slc'")}
 
   def full_name
-    "#{self.admin_profile.first_name.capitalize} #{self.admin_profile.last_name.capitalize}"
+    if self.admin_profile
+      "#{self.admin_profile.first_name.capitalize} #{self.admin_profile.last_name.capitalize}"
+    else
+      "Name Goes here..."
+    end
   end
 
   def super_admin?
