@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get 'reports/shuttle'
     get 'reports/financial'
     get 'reports/registration'
-    get 'camp_applications/school' => 'camp_applications#index_by_school'
+
     resources :camps
     resources :camp_applications, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       resources :payments, except: [:show]
@@ -33,7 +33,12 @@ Rails.application.routes.draw do
   end
   resources :profiles
   resources :camp_applications do
-    resources :payments, only: [:index]
+    resources :payments, only: [:index, :create]
+    member do
+     get :new_application_payment
+     post :pay
+    end
+ 
   end
   resources :coach_comments, only: [:new, :create]
 

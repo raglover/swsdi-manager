@@ -1,7 +1,7 @@
 class Admin::RegistrationsController < Devise::RegistrationsController
 before_filter :configure_sign_up_params, only: [:create]
 before_filter :configure_account_update_params, only: [:update]
-before_action :authenticate_admin!, only: [:new, :create]
+before_filter :authenticate_admin!
 
   # GET /resource/sign_up
   def new
@@ -41,12 +41,12 @@ before_action :authenticate_admin!, only: [:new, :create]
 
   # You can put the params you want to permit in the empty array.
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) {|a| a.permit(:email, :password, :password_confirmation, :role)}
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :role])
   end
 
   # You can put the params you want to permit in the empty array.
   def configure_account_update_params
-    devise_parameter_sanitizer.for(:account_update) << :attribute
+    devise_parameter_sanitizer.permit(:account_update) << :attribute
   end
 
   # The path used after sign up.

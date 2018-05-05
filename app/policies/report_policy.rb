@@ -9,6 +9,6 @@ class ReportPolicy < Struct.new(:user, :report)
   end
 
   def registration?
-    user.super_admin? || user.board_member?
+    user.super_admin || user.board_member?
   end
 end
