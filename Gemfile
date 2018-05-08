@@ -80,6 +80,7 @@ gem 'carrierwave'
 # Add Sucker Punch for background work
 gem 'sucker_punch', '~> 1.0'
 
-# Add ransack for searching and sorting stuff
+# Add ransack for searching and sorting stuff, and kaminari for pagination
 gem 'ransack'
+gem 'kaminari'
 

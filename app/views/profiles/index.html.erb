@@ -6,6 +6,9 @@
     <%= render 'toolbar' %>
     <%= link_to 'Add Application', "/admin/camp_applications/new?camp_id=#{@camp.id}", class: "button tiny primary" %>
   </div>
+  <div class="small-12 large-12 columns">
+    <%= paginate @users %>
+  </div>
   <% @users.each do |user| %>
     <div class="small-12 large-12 columns">
       <div class="appbox">
@@ -62,4 +65,7 @@
       </div>
     </div>
   <% end %>
+  <div class="small-12 large-12 columns">
+    <%= paginate @users %>
+  </div>
 </div>
