@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708230435) do
+ActiveRecord::Schema.define(version: 20180508122008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20150708230435) do
     t.string   "image"
     t.string   "nickname"
     t.string   "school_affiliation"
-    t.string   "spirit_animal"
+    t.string   "patronus"
     t.datetime "birthday"
     t.string   "phone"
     t.string   "address_line1"
@@ -270,7 +270,7 @@ ActiveRecord::Schema.define(version: 20150708230435) do
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
-    t.text     "spirit_animal"
+    t.text     "patronus"
     t.string   "fb_image"
     t.boolean  "reminder_flag"
   end
