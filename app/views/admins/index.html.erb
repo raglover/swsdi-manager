@@ -1,7 +1,0 @@
-<h1>Current Admins</h1>
-
-<ul>
-<% @admins.each do |admin| %>
-  <li><%= admin.email %>  <%= link_to "Sign Out", destroy_admin_session_path, method: 'delete'  %></li>
-<% end %>
-</ul>

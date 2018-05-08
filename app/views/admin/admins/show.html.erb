@@ -1,7 +1,11 @@
-<h1>Current Admins</h1>
+<div class="row">
 
-<ul>
-<% @admins.each do |admin| %>
-  <li><%= admin.email %>  <%= link_to "Sign Out", destroy_admin_session_path, method: 'delete'  %></li>
-<% end %>
-</ul>
+  <h1>Current Admins: SHOULD NOT SEE</h1>
+
+  <ul>
+  <% @admins.each do |admin| %>
+    <li class="panel"><%= admin.full_name %> | <%= admin.email %> | <% if current_admin.role == "super" %><%= link_to "Delete Admin User", admin_admin_path(admin.id), method: 'delete'  %> <% end %></li>
+  <% end %>
+  </ul>
+
+</div>

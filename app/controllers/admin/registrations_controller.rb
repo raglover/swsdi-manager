@@ -1,7 +1,9 @@
 class Admin::RegistrationsController < Devise::RegistrationsController
-before_filter :configure_sign_up_params, only: [:create]
-before_filter :configure_account_update_params, only: [:update]
-before_filter :authenticate_admin!
+  before_filter :configure_sign_up_params, only: [:create]
+  before_filter :configure_account_update_params, only: [:update]
+  before_action :authorize_super_admin, only: [:new, :create]
+  skip_before_action :require_no_authentication, only: [:new, :create]
+
 
   # GET /resource/sign_up
   def new
@@ -58,4 +60,11 @@ before_filter :authenticate_admin!
   def after_inactive_sign_up_path_for(resource)
     super(resource)
   end
+
+  private
+
+    def authorize_super_admin
+      return unless current_admin && current_admin.super_admin?
+      redirect_to root_path, alert: "Super Admins Only!"
+    end
 end

@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
 
-  devise_for :admins, controllers: { sessions: "admin/sessions", 
-    confirmations: "admin/confirmations", passwords: "admin/passwords", registrations: "admin/registrations" }
+  devise_for :admin, controllers: {registrations: "admin/registrations"}
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations: "registrations"}
 
@@ -15,9 +14,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'dashboard/index'
     get 'dashboard/event_facebook/:id', to: 'dashboard#event_facebook'
-    get 'admins/show'
-    get 'admins/index'
-    delete 'admins/:id' => 'admins#destroy', :as => 'admin_delete'
     get 'reports/status'
     get 'reports/shuttle'
     get 'reports/financial'
@@ -30,6 +26,7 @@ Rails.application.routes.draw do
       get 'staff_responses/send_notification/:id', to: 'staff_responses#send_notification'
     end
     resources :admin_profiles
+    resources :admins, only: [:index, :show, :destroy]
   end
   resources :profiles
   resources :camp_applications do

@@ -9,7 +9,9 @@
         <%= f.input :email, required: true, autofocus: true %>
         <%= f.input :password, required: true %>
         <%= f.input :password_confirmation, required: true %>
-        <%= f.input :role, collection: [["Super Admin","super"],["Board Member","board"],["Counselor","counselor"],["Student Life Coordinator", "slc"]], required: true %>
+        <% if current_admin && current_admin.super_user? %>
+          <%= f.input :role, collection: [["Super Admin","super"],["Board Member","board"],["Counselor","counselor"],["Student Life Coordinator", "slc"]], required: true %>
+        <% end %>
       </div>
 
       <div class="form-actions">
@@ -17,6 +19,6 @@
       </div>
     <% end %>
 
-    <%= render "admins/shared/links" %>
+    <%= render "admin/shared/links" %>
   </div>
 </div>

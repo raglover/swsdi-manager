@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :camp_application do
     user
@@ -15,7 +15,7 @@ FactoryGirl.define do
 
   factory :app_with_records, parent: :camp_application do
     after(:build) do |app|
-        app.debate_records << FactoryGirl.build(:debate_record)
+        app.debate_records << FactoryBot.build(:debate_record)
     end
   end
 
