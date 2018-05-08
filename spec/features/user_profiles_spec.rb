@@ -3,9 +3,9 @@ require 'requests_helper'
 
 describe "UserProfilePage", type: :feature do
   
-  let(:user) { FactoryGirl.create(:complete_user) }
+  let(:user) { FactoryBot.create(:complete_user) }
   before(:each) do
-    FactoryGirl.create(:camp)
+    FactoryBot.create(:camp)
     login_valid(user)
     visit profile_path(user)
   end
@@ -18,7 +18,7 @@ describe "UserProfilePage", type: :feature do
 
     it "displays the user's facebook avatar if oauth provider is facebook" do
       click_on "Log Out"
-      fb_user = FactoryGirl.create(:user, provider: 'facebook', fb_image: 'https://www.facebook.com/thisisanimage')
+      fb_user = FactoryBot.create(:complete_user, provider: 'facebook', fb_image: 'https://www.facebook.com/thisisanimage')
       login_valid fb_user
       visit profile_path(fb_user)
       expect(page.find('#userpanel img')['src']).to have_content('facebook')
@@ -26,7 +26,7 @@ describe "UserProfilePage", type: :feature do
 
     # xit "displays the user's uploaded avatar image if they have one" do
     #   # TODO: Come back and test this with other Carrierwave tests, later on.
-    #   # avatar_user = FactoryGirl.create(:user, image: 'testimage.jpg')
+    #   # avatar_user = FactoryBot.create(:user, image: 'testimage.jpg')
     #   # login_valid avatar_user
     #   # visit profile_path(avatar_user)
     #   # expect(page.find('#userpanel img')['src']).to have_content('testimage.jpg')
@@ -72,7 +72,7 @@ describe "UserProfilePage", type: :feature do
     end
 
     it "does not allow users to view other user profiles" do
-      other_user = FactoryGirl.create(:user)
+      other_user = FactoryBot.create(:user)
       visit profile_path(other_user)
       expect(page).to have_content("You are not authorized to view that resource")
     end

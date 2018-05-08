@@ -1,7 +1,7 @@
 require 'faker'
 
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
     first_name { Faker::Name.first_name}
     last_name { Faker::Name.last_name}
@@ -35,6 +35,10 @@ FactoryGirl.define do
       birthday { 18.years.ago }
     end
 
+    trait :school do
+      school "McClintock High School"
+    end
+
     trait :address do
       address_line1 { Faker::Address.street_address }
       address_line2 { Faker::Address.secondary_address }
@@ -64,7 +68,7 @@ FactoryGirl.define do
       coach_email { Faker::Internet.email }
     end
 
-    factory :complete_user, traits: [:address, :phone_number, :spirit_animal, :parent, 
+    factory :complete_user, traits: [:address, :phone_number, :school, :spirit_animal, :parent, 
               :coach, :sixteen]
     factory :complete_male_user, traits: [:male, :address, :phone_number, :spirit_animal, 
               :parent, :coach, :sixteen]
