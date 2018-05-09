@@ -25,18 +25,18 @@ class ApplicationController < ActionController::Base
 
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:image, :first_name, :last_name, :email, :password, :password_confirmation, 
-                    :nickname, :gender, :phone_number, :birthday, :school, :grade, :tshirt_size, :patronus,
+                    :nickname, :gender, :pronouns, :phone_number, :birthday, :school, :grade, :tshirt_size, :patronus,
                     :address_line1, :address_line2, :city, :state, :zip, :image, :remote_image_url, :image_cache, :fb_image,
                     :parent_first, :parent_last,:parent_phone, :parent_relationship, :parent_email, 
                     :coach_first, :coach_last, :coach_email])
 
       devise_parameter_sanitizer.permit(:account_update, keys: [:image, :first_name, :last_name, :email, :password, :password_confirmation, 
-                    :current_password, :nickname, :gender, :phone_number, :birthday, :school, :grade, :tshirt_size, :patronus,
+                    :current_password, :nickname, :gender, :pronouns, :phone_number, :birthday, :school, :grade, :tshirt_size, :patronus,
                     :address_line1, :address_line2, :city, :state, :zip, :image, :remote_image_url, :image_cache, :fb_image,
                     :parent_first, :parent_last,:parent_phone, :parent_relationship, :parent_email, 
                     :coach_first, :coach_last, :coach_email])
 
-      devise_parameter_sanitizer.permit(:admin_account_update, keys: [:first_name, :last_name, :email, :nickname, :gender, 
+      devise_parameter_sanitizer.permit(:admin_account_update, keys: [:first_name, :last_name, :email, :nickname, :gender, :pronouns, 
                     :phone_number, :birthday, :school, :grade, :tshirt_size, :patronus, :address_line1, :address_line2, :city, 
                     :state, :zip, :parent_first, :parent_last,:parent_phone, :parent_relationship, :parent_email, 
                     :coach_first, :coach_last, :coach_email])

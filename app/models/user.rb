@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :parent_email, presence: true
+  validates :school, presence: true
 
 
   def full_name
