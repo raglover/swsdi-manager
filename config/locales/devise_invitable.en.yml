@@ -17,12 +17,13 @@ en:
         submit_button: "Set my password"
     mailer:
       invitation_instructions:
-        subject: "Invitation instructions"
+        subject: "Welcome to the SWSDI Staff!"
         hello: "Hello %{email}"
-        someone_invited_you: "Someone has invited you to %{url}, you can accept it through the link below."
+        someone_invited_you: "We're glad you're joining us for camp this summer! This is an invitation to set up an account on register.swsdi.org. Please click the link, create a password, and fill in your account profile. The profile should contain a good picture of you. Your picture and bio will appear on the site."
         accept: "Accept invitation"
-        accept_until: "This invitation will be due in %{due_date}."
-        ignore: "If you don't want to accept the invitation, please ignore this email.<br />\nYour account won't be created until you access the link above and set your password."
+        accept_until: "This invitation link will expire on %{due_date}. Please be sure to accept it in a timely fashion."
+        ignore: "If you don't want to accept the invitation, please ignore this email. (Please accept, and don't ignore the email! We need to have you on the site!)<br />\nYour account won't be created until you access the link above and set your password."
+        signature: "Cheers!<br />\n-Richie Glover, and the SWSDI Board"
   time:
     formats:
       devise:

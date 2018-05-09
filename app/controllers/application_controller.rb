@@ -40,6 +40,8 @@ class ApplicationController < ActionController::Base
                     :phone_number, :birthday, :school, :grade, :tshirt_size, :patronus, :address_line1, :address_line2, :city, 
                     :state, :zip, :parent_first, :parent_last,:parent_phone, :parent_relationship, :parent_email, 
                     :coach_first, :coach_last, :coach_email])
+      
+      devise_parameter_sanitizer.permit(:invite, keys: [:email, :role])
     end
 
   private
