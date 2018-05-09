@@ -66,6 +66,7 @@ end
 # Use Devise and Facebook for Authentication
 gem 'devise'
 gem 'omniauth-facebook', '~> 2.0.1'
+gem 'devise_invitable' # To allow admin users to be invited to the system
 
 # Use Pundit for Authorization
 gem 'pundit'

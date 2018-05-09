@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  devise_for :admin, controllers: {registrations: "admin/registrations"}
+  devise_for :admin, controllers: {invitations: "admin/invitations"}
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations: "registrations"}
 
