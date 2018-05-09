@@ -1,4 +1,6 @@
 class Admin::AdminsController < ApplicationController
+  before_filter :set_camp
+
   def index
     @admins = Admin.all
   end

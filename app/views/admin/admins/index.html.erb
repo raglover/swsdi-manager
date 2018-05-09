@@ -1,11 +1,16 @@
+<%= render 'admin/shared/admin_tools' %>
 <div class="row">
 
-  <h1>Current Admins</h1>
+  <h1>Registered Staff Members</h1>
 
-  <ul>
+  <%= link_to "Invite New Admin", new_admin_invitation_path, {class: "button tiny primary"} %>
+
   <% @admins.each do |admin| %>
-    <li class="panel"><%= admin.full_name %> | <%= admin.email %> | role: <%= admin.role %> | <% if current_admin.role == "super" %><%= link_to "Delete Admin User", admin_admin_path(admin.id), method: 'delete'  %> <% end %></li>
+    <div class="panel small-12 large-12 columns">
+    	<div class="row">
+	    	<span class="small-3 large-3 columns"><%= admin.full_name %></span><span class="small-3 large-3 columns"><%= admin.email %></span><span class="small-3 large-3 columns">role: <%= admin.role %></span><span class="small-3 large-3 columns"><% unless admin.role == "super" %> <% if current_admin.role == "super" %><%= link_to admin_admin_path(admin.id), data: {confirm: "Delete this Administrator? Are you sure?" }, method: 'delete' do %><i class="fa fa-times-circle has-tip delete" data-tooltip title="Delete Administrator"></i><% end %><% end %> <% end %></span>
+	    </div>
+    </div>
   <% end %>
-  </ul>
 
 </div>
