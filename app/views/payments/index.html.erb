@@ -45,5 +45,26 @@
       </tr>
     </tbody>
   </table>
-  <%= link_to "Return to Profile", profile_path(current_user), { class: "button" } %>
+  <%= simple_form_for [@camp_app, @new_payment] do |f| %>
+    <h3>Pay your tuition balance:</h3>
+    <%= f.hidden_field :pmt_type, value: 'Credit Card' %>
+    <%= f.hidden_field :amount, value: @tuition.current_balance %>
+    <div class="row">
+        <div class="small-6 large-6 columns">
+            <%= f.input :first_name, label: "Cardholder First Name", placeholder: "John" %>
+        </div>
+        <div class="small-6 large-6 columns">
+            <%= f.input :last_name, label: "Cardholder Last Name", placeholder: "Smith" %>
+        </div>
+    </div>
+    <div id="payment-form"></div>
+    <%= f.button :submit, wrapper_html: {class: "button"} %>
+  <% end %>  
+  <%= link_to "Return to Profile", profile_path(current_user), { class: "button small"} %>
+	  <script>
+		var clientToken = "<%= @token %>";
+		braintree.setup(clientToken, "dropin", {
+			container: "payment-form"
+		});
+	  </script>
 </div>

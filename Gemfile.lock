@@ -59,6 +59,8 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
+    braintree (2.72.0)
+      builder (>= 2.0.0)
     builder (3.2.3)
     callsite (0.0.11)
     carrierwave (1.2.2)
@@ -372,6 +374,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  braintree (~> 2.72.0)
   capybara!
   carrierwave
   coffee-rails (~> 4.0.0)

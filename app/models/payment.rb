@@ -3,4 +3,5 @@ class Payment < ActiveRecord::Base
   validates :amount, presence: true, numericality: true
   validates :pmt_type, presence: true
   validates :note, presence: true
+  attr_accessor :first_name, :last_name # Virtual Attrs for Braintree Txn
 end

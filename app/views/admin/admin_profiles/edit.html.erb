@@ -1,7 +1,8 @@
 <div class="row">
   <h2>Edit Admin Profile</h2>
 
-  <%= form_for(@profile, url: admin_admin_profile_path, html: { multipart: true, method: :put }) do |f| %>
+  <%= simple_form_for(@profile, url: admin_admin_profile_path, html: { multipart: true, method: :put }) do |f| %>
+    <%= f.error :base, class: "alert-box alert" %>
 
       <%= render 'userinfo', :f => f  %>
       <%= render 'personalinfo', :f => f  %>

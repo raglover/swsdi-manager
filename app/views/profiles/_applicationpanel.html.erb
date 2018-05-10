@@ -23,12 +23,12 @@
           <% end %>        
         </div>
         <div class="small-1 large-1 columns">
-          <%= link_to '/documents/returnpacket2015.pdf' do  %>
-            <i class="fa fa-file-pdf-o has-tip" data-tooltip title="Download Information Packet"></i>
+          <%= link_to '/documents/returnpacket2018.pdf' do  %>
+            <i class="fa fa-file-pdf-o has-tip" data-tooltip title="Download Return Packet"></i>
           <% end %>        
         </div>
         <div class="small-1 large-1 columns">
-          <%= link_to camp_application_path(application), method: :delete do %>
+          <%= link_to camp_application_path(application), data: { confirm: "Delete this Application: Are you sure?" }, method: :delete do %>
             <i class="fa fa-times-circle has-tip" data-tooltip title="Delete App"></i>
           <% end %>
         </div>

@@ -71,6 +71,9 @@ gem 'devise_invitable' # To allow admin users to be invited to the system
 # Use Pundit for Authorization
 gem 'pundit'
 
+# Use Braintree for Payment processing
+gem 'braintree', '~> 2.72.0'
+
 # Use SimpleForm to build forms
 gem 'simple_form'
 

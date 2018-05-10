@@ -23,14 +23,15 @@ set :branch, 'master'
 set :user, 'deployer'
 set :forward_agent, true
 set :port, '22'
-set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
+set :term_mode, nil
 
 # For system-wide RVM install.
 #   set :rvm_path, '/usr/local/rvm/bin/rvm'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'log', 'config/secrets.yml', 'public/uploads', 'public/documents']
+set :shared_files, ['config/database.yml', 'config/secrets.yml']
+set :shared_dirs, ['log', 'tmp/sockets', 'tmp/pids', 'public/assets', 'vendor/bundle', 'public/uploads', 'public/documents']
 
 # Optional settings:
 #   set :user, 'foobar'    # Username in the server to SSH to.
@@ -40,7 +41,7 @@ set :shared_paths, ['config/database.yml', 'log', 'config/secrets.yml', 'public/
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
-  queue %{
+  command %{
     echo "----> Loading environment"
     #{echo_cmd %[source ~/.bashrc]}
   }
@@ -51,20 +52,17 @@ end
 # For Rails apps, we'll make some of the shared paths that are shared between
 # all releases.
 task :setup => :environment do
-  queue! %[mkdir -p "#{deploy_to}/shared/log"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
+  command %[mkdir -p "#{deploy_to}/shared/log"]
+  command %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
 
-  queue! %[mkdir -p "#{deploy_to}/shared/config"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
+  command %[mkdir -p "#{deploy_to}/shared/config"]
+  command %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
 
-  queue! %[touch "#{deploy_to}/shared/config/database.yml"]
-  queue  %[echo "-----> Be sure to edit '#{deploy_to}/shared/config/database.yml'."]
+  command %[touch "#{deploy_to}/shared/config/database.yml"]
+  command %[echo "-----> Be sure to edit '#{deploy_to}/shared/config/database.yml'."]
 
-  queue! %[touch "#{deploy_to}/shared/config/secrets.yml"]
-  queue %[echo "-----> Be sure to edit '#{deploy_to}/shared/config/secrets.yml'."]
-
-  queue! %[mkdir -p "#{deploy_to}/shared/pids/"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/pids"]
+  command %[touch "#{deploy_to}/shared/config/secrets.yml"]
+  command %[echo "-----> Be sure to edit '#{deploy_to}/shared/config/secrets.yml'."]
 end
 
 desc "Deploys the current version to the server."
@@ -79,10 +77,15 @@ task :deploy => :environment do
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
-    to :launch do
+    on :launch do
       invoke :'unicorn:restart'
     end
   end
+end
+
+desc "Restarts Unicorn"
+task :urestart => :environment do
+    invoke :'unicorn:restart'
 end
 
 # For help in making your deploy script, see the Mina documentation:
