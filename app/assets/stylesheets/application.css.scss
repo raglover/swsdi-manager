@@ -41,6 +41,10 @@ $purple: #080080;
   padding-top: 20px;
 }
 
+.field_with_hint .hint {
+  font-size: small;
+  font-color: #333;
+}
 
 .remove-fields .fa-times {
   @include text-shadow(5px 5px 0 $black);
