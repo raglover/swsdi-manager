@@ -7,30 +7,42 @@
       <% else %>
         <%= image_tag(@profile.image_url(:thumb)) %>
       <% end %>
-      <%= f.label :image, "Upload an Avatar Image" %>
-      <%= f.file_field :image %>
-      <%= f.label :remote_image_url, "Or add one from a URL" %>
-      <%= f.text_field :remote_image_url %>
+      <%= f.input :image, label: "Upload an Avatar Image" do %>
+        <%= f.file_field :image %>
+      <% end %>
+      <%= f.input :remote_image_url, label: "Or add one from a URL" do %>
+        <%= f.text_field :remote_image_url %>
+      <% end %>
       <%= f.hidden_field :image_cache %>
     </div>
     <div class="small-9 large-9 columns">
       <div class="row">
-        <div class="small-12 large-4 columns">  
-          <%= f.text_field :first_name, placeholder: "First Name" %>
+        <div class="small-12 large-4 columns">
+          <%= f.input :first_name do %>  
+            <%= f.text_field :first_name, placeholder: "First Name" %>
+          <% end %>
         </div>
         <div class="small-12 large-4 columns">
-          <%= f.text_field :last_name, placeholder: "Last Name" %>
+          <%= f.input :last_name do %>
+            <%= f.text_field :last_name, placeholder: "Last Name" %>
+          <% end %>
         </div>
         <div class="small-12 large-4 columns">
-          <%= f.text_field :nickname, placeholder: "Name you prefer to be called" %>
+          <%= f.input :nickname do %>
+            <%= f.text_field :nickname, placeholder: "Name you prefer to be called" %>
+          <% end %>
         </div>
       </div>
       <div class="row">
         <div class="small-12 large-6 columns">
-          <%= f.text_field :school_affiliation, placeholder: "Your School Affiliation" %>
+          <%= f.input :school_affiliation do %>
+            <%= f.text_field :school_affiliation, placeholder: "Your School Affiliation" %>
+          <% end %>
         </div>
         <div class="small-12 large-6 columns">
-          <%= f.text_field :patronus, placeholder: "Your Patronus" %>
+          <%= f.input :patronus do %>
+            <%= f.text_field :patronus, placeholder: "Your Patronus" %>
+          <% end %>
         </div>
       </div>
     </div>
