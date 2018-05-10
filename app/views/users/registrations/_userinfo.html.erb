@@ -32,7 +32,7 @@
           <%= f.email_field :email, placeholder: "Email Address" %>
         </div>
         <div class="small-12 large-6 columns">
-          <%= f.text_field :spirit_animal, placeholder: "Your Spirit Animal" %>
+          <%= f.text_field :patronus, placeholder: "Your Patronus" %>
         </div>
       </div>
       <% if (controller.action_name == "edit" || controller.action_name == "update") && f.object.encrypted_password.present? %>

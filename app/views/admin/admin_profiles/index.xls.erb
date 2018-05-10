@@ -12,7 +12,7 @@
         <Cell><Data ss:Type="String">Phone</Data></Cell>
         <Cell><Data ss:Type="String">Age</Data></Cell>
         <Cell><Data ss:Type="String">Birthday</Data></Cell>
-        <Cell><Data ss:Type="String">Spirit Animal</Data></Cell>
+        <Cell><Data ss:Type="String">Patronus</Data></Cell>
         <Cell><Data ss:Type="String">Mailing Address</Data></Cell>
       </Row>
     <% @admins.each do |admin| %>
@@ -22,7 +22,7 @@
         <Cell><Data ss:Type="String"><%= number_to_phone(admin.phone) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= admin.age %></Data></Cell>
         <Cell><Data ss:Type="String"><%= admin.birthday.strftime("%B %d") %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= spirit_animal(admin) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patronus(admin) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= admin.address_line1 %> <%= admin.address_line2 %> <%= admin.city %>, <%= admin.state %> <%= admin.zip %></Data></Cell>
       </Row>
     <% end %>

@@ -24,5 +24,10 @@
       <li>
         <%= link_to "Staff List", admin_admin_profiles_path, {class: "button tiny primary"} %>
       </li>
+      <% if current_admin.super_admin? %>
+        <li>
+          <%= link_to "Admin Users", admin_admins_path, {class: "button tiny primary"} %>
+        </li>
+      <% end %>
     </ul>
   </div>

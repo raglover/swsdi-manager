@@ -3,8 +3,8 @@
 		<dt>Current Admin:</dd>
     		<%= image_tag(@profile.image_url(:thumb)) %>
 		<dd><%= @profile.full_name %><br /><%= current_admin.email %></dt>
-		<dt>Spirit Animal:</dt>
-		<dd><%= spirit_animal(@profile) %></dd>
+		<dt>Patronus:</dt>
+		<dd><%= patronus(@profile) %></dd>
 		<dt>Birthday:</dt>
 		<dd><%= @profile.birthday.strftime('%b %e, %Y') %></dd>
 		<dt>Phone Number:</dt>
@@ -20,6 +20,6 @@
 		<dt>Last Signed In:</dt>
 		<dd><%= current_admin.last_sign_in_at.strftime('%b %e, %Y %l:%M %p (%Z)')  %></dd>
 	</dl>
-	<%= link_to "Change Password", edit_admin_registration_path, {class: "button tiny primary"} %>
+	<%= link_to "Change Password", edit_admin_password_path, {class: "button tiny primary"} %>
 	<%= link_to "Edit Profile", edit_admin_admin_profile_path(@profile), {class: "button tiny primary"} %>
 </div>

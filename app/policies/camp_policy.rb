@@ -7,7 +7,7 @@ class CampPolicy
   end
 
   def index?
-    true
+    user.super_admin?
   end
 
   def new?

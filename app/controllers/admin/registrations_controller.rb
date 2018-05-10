@@ -1,6 +1,9 @@
 class Admin::RegistrationsController < Devise::RegistrationsController
-before_filter :configure_sign_up_params, only: [:create]
-before_filter :configure_account_update_params, only: [:update]
+  before_filter :configure_sign_up_params, only: [:create]
+  before_filter :configure_account_update_params, only: [:update]
+  before_action :authorize_super_admin, only: [:new, :create]
+  skip_before_action :require_no_authentication, only: [:new, :create]
+
 
   # GET /resource/sign_up
   def new
@@ -40,12 +43,12 @@ before_filter :configure_account_update_params, only: [:update]
 
   # You can put the params you want to permit in the empty array.
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) {|a| a.permit(:email, :password, :password_confirmation, :role)}
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :role])
   end
 
   # You can put the params you want to permit in the empty array.
   def configure_account_update_params
-    devise_parameter_sanitizer.for(:account_update) << :attribute
+    devise_parameter_sanitizer.permit(:account_update) << :attribute
   end
 
   # The path used after sign up.
@@ -57,4 +60,11 @@ before_filter :configure_account_update_params, only: [:update]
   def after_inactive_sign_up_path_for(resource)
     super(resource)
   end
+
+  private
+
+    def authorize_super_admin
+      return unless current_admin && current_admin.super_admin?
+      redirect_to root_path, alert: "Super Admins Only!"
+    end
 end

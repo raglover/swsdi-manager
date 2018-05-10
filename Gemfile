@@ -8,7 +8,7 @@ gem 'web-console', '~>2.0', group: :development
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use Postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '~>0.21'
 
 # Use Unicorn as the production server
 gem 'unicorn'
@@ -40,14 +40,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-# Set up rspec, factorygirl, shoulda, and capybara for testing.
+# Set up rspec, FactoryBot, shoulda, and capybara for testing.
 group :test, :development do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'guard-rspec' 
   gem 'rb-fsevent'
-  gem 'rspec-rails', '~> 3.0.0.rc1'
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_bot_rails'
   gem 'shoulda'
   gem 'faker'
   gem 'capybara', github: 'jnicklas/capybara', branch: 'master' # '2.2.1'
@@ -60,11 +60,13 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'letter_opener'
+  gem 'meta_request'
 end
 
 # Use Devise and Facebook for Authentication
 gem 'devise'
 gem 'omniauth-facebook', '~> 2.0.1'
+gem 'devise_invitable' # To allow admin users to be invited to the system
 
 # Use Pundit for Authorization
 gem 'pundit'
@@ -79,6 +81,7 @@ gem 'carrierwave'
 # Add Sucker Punch for background work
 gem 'sucker_punch', '~> 1.0'
 
-# Add ransack for searching and sorting stuff
+# Add ransack for searching and sorting stuff, and kaminari for pagination
 gem 'ransack'
+gem 'kaminari'
 
