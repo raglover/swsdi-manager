@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :event do 
     name Faker::Lorem.word
@@ -15,7 +15,7 @@ FactoryGirl.define do
 
     events {
       Array(2..5).sample.times.map do
-        FactoryGirl.create(:event)
+        FactoryBot.create(:event)
       end
     }
   end
@@ -27,6 +27,7 @@ FactoryGirl.define do
     end_date 6.weeks.since
     app_start_date 1.week.ago
     app_end_date 3.weeks.since
+    discount_deadline 3.weeks.since
     active true
 
     after(:create) do |camp, evaluator|

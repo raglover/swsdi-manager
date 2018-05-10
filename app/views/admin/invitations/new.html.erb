@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="panel small-6 large-centered columns">
+	<h2><%= t "devise.invitations.new.header" %></h2>
+
+	<%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post} do |f| %>
+	  <%= devise_error_messages! %>
+
+	<% resource.class.invite_key_fields.each do |field| -%>
+	  <%= f.input field %>
+	<% end -%>
+    <% if current_admin && current_admin.super_admin? %>
+ 		<%= f.input :role, collection: [["Super Admin","super"],["Board Member","board"],["Counselor","counselor"],["Student Life Coordinator", "slc"]], required: true %>
+	<% end %>
+	<%= f.button :submit, t("devise.invitations.new.submit_button") %>
+	<% end %>
+  </div>
+</div>

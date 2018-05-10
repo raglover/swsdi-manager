@@ -4,7 +4,7 @@ class Admin::CampsController < ApplicationController
   
   def index
     @camps = Camp.all
-    authorize @camp
+    authorize @camps
   end
 
   def show

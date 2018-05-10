@@ -10,6 +10,10 @@ class CampApplicationPolicy
     user.super_admin? || user.board_member? || user.slc?
   end
 
+  def index_by_school?
+    user.super_admin? || user.board_member? || user.slc?
+  end
+
   def show?
     true
   end

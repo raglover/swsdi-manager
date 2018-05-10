@@ -1,6 +1,8 @@
 <div class="row">
   <h1>New Camp</h1>
-  <%= form_for @camp, url: {action: "create"} do |f| %>
+  <%= simple_form_for @camp, url: {action: "create"} do |f| %>
+    <%= f.error :base, class: "alert-box alert" %>
+
     <%= render 'campinfo', :f => f %>
     <div class="row">
       <%= f.submit "Create Camp", class: "button primary small-6 large-6 columns" %>

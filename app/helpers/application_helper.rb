@@ -32,11 +32,11 @@ module ApplicationHelper
     end
 
 
-## A Helper for presenting spirit animal info
+## A Helper for presenting patronus info
 
-    def spirit_animal(user)
-        if !user.spirit_animal.blank?
-            user.spirit_animal.titleize
+    def patronus(user)
+        if !user.patronus.blank?
+            user.patronus.titleize
         else
             if user == current_user || user == current_admin
                 return "You're Boring!"
