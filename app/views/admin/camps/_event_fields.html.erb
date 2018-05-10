@@ -2,30 +2,36 @@
   <div class="row">
     <div class="row">
       <div class="small-12 large-4 columns">
-        <%= f.label :name, "Event Name" %>
-        <%= f.text_field :name, placeholder: "Event Name" %>
+        <%= f.input :name, label: "Event Name" do %>
+          <%= f.text_field :name, placeholder: "Event Name" %>
+        <% end %>
       </div>
       <div class="small-12 large-4 columns">
-        <%= f.label :description, "Event Description" %>
-        <%= f.text_field :description, placeholder: "Event Description" %>
+        <%= f.input :description, label: "Event Description" do %>
+          <%= f.text_field :description, placeholder: "Event Description" %>
+        <% end %>
       </div>
       <div class="small-12 large-4 columns">
-        <%= f.label :event_type, "Event Type" %>
-        <%= f.select :event_type, options: [["Debate", "debate"], ["Speech", "speech"]] %>
+        <%= f.input :event_type, label: "Event Type" do %>
+          <%= f.select :event_type, options: [["Debate", "debate"], ["Speech", "speech"]] %>
+        <% end %>
       </div>  
     </div>
     <div class="row">
       <div class="small-12 large-4 columns">
-        <%= f.label :camp_session_id, "Camp Session" %>
-        <%= f.collection_select :camp_session_id, @csessions, :id, :name, prompt: true  %>
+        <%= f.input :camp_session_id, label: "Camp Session" do %>
+          <%= f.collection_select :camp_session_id, @csessions, :id, :name, prompt: true  %>
+        <% end %>
       </div>
       <div class="small-12 large-4 columns">
-        <%= f.label :price_resident, "Price for Residents" %>
-        <%= f.number_field :price_resident, in: 600..1300, step: 5  %>
+        <%= f.input :price_resident, label: "Price for Residents" do %>
+          <%= f.number_field :price_resident, in: 600..1300, step: 5  %>
+        <% end %>
       </div>
       <div class="small-12 large-4 columns">
-        <%= f.label :price_commuter, "Price for Commuters" %>
-        <%= f.number_field :price_commuter, in: 600..900, step: 5  %>
+        <%= f.input :price_commuter, label: "Price for Commuters" do %>
+          <%= f.number_field :price_commuter, in: 600..900, step: 5  %>
+        <% end %>
       </div>
     </div>
     <%= f.hidden_field :_destroy %>
