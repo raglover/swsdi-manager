@@ -8,6 +8,10 @@ class ProfilesController < ApplicationController
     @search = User.ransack(params[:q])
     @users = @search.result.includes(:camp_applications).order(:school).page(params[:page])
     authorize @users
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
