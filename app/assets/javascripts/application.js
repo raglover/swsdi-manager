@@ -17,3 +17,9 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+$(function(){ 
+	$("#q_first_name_or_last_name_cont").keyup(function(){
+		$("#user_search").submit();
+	})
+});
