@@ -7,16 +7,24 @@ FactoryBot.define do
     last_name { Faker::Name.last_name}
     email { Faker::Internet.email }
     gender 'Female'
+    pronouns 'she/her'
     parent_email { Faker::Internet.email }
     password '12345678'
     password_confirmation '12345678'
 
     trait :male do
       gender 'Male'
+      pronouns 'he/him'
     end
 
-    trait :unspecified_gender do
-      gender 'Unspecified'
+    trait :trans do
+      gender 'Trans-female'
+      pronouns 'they/them'
+    end
+
+    trait :nonbinary do
+      gender 'nonbinary'
+      pronouns 'other'
     end
 
     trait :fifteen do
@@ -51,8 +59,8 @@ FactoryBot.define do
       phone_number { Faker::PhoneNumber.phone_number }
     end
 
-    trait :spirit_animal do
-      spirit_animal { Faker::Team.creature }
+    trait :patronus do
+      patronus { Faker::Team.creature }
     end
 
     trait :parent do
@@ -68,10 +76,12 @@ FactoryBot.define do
       coach_email { Faker::Internet.email }
     end
 
-    factory :complete_user, traits: [:address, :phone_number, :school, :spirit_animal, :parent, 
+    factory :complete_user, traits: [:address, :phone_number, :school, :patronus, :parent, 
               :coach, :sixteen]
-    factory :complete_male_user, traits: [:male, :address, :phone_number, :spirit_animal, 
+    factory :complete_male_user, traits: [:male, :address, :phone_number, :patronus, 
               :parent, :coach, :sixteen]
+    factory :nonbinary_user, traits: [:address, :phone_number, :school, :patronus, :parent,
+              :coach, :sixteen]
 
   end
 end

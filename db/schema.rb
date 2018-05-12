@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180509022214) do
+ActiveRecord::Schema.define(version: 20180511003256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -216,14 +216,6 @@ ActiveRecord::Schema.define(version: 20180509022214) do
 
   add_index "payments", ["camp_application_id"], name: "index_payments_on_camp_application_id", using: :btree
 
-  create_table "rooms", force: :cascade do |t|
-    t.integer  "camp_id"
-    t.string   "building_name"
-    t.integer  "room_num"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "staff_responses", force: :cascade do |t|
     t.text     "strengths"
     t.text     "weaknesses"
@@ -232,14 +224,6 @@ ActiveRecord::Schema.define(version: 20180509022214) do
     t.integer  "camp_application_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-  end
-
-  create_table "tenants", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "room_id"
-    t.integer  "length_of_stay"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
