@@ -4,9 +4,12 @@
 jQuery.fn.submitOnCheck = ->
   @find('input[type=checkbox]').click ->
     $(this).parents('form').submit()
-    $(this).parents('tr').hide()
-    $(this).parents('dd').find('.count').text (i, txt) ->
-      parseInt(txt, 10) - 1
+    if $(this).is(':checked')
+    	$(this).siblings('label').children('i').removeClass('disabled')
+    	$(this).siblings('label').children('i').addClass('enabled')
+    else if not $(this).is(':checked')
+    	$(this).siblings('label').children('i').removeClass('enabled')
+    	$(this).siblings('label').children('i').addClass('disabled')
   this
 
 jQuery(".reports.registration").ready ->

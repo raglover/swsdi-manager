@@ -8,7 +8,7 @@
     <dd class="accordion-navigation" >
       <a href="<%= "#panel" + index.to_s %>"<h3><%= event.name %>: <span class="count"><%= @apps.count %></span> outstanding</h3></a>
       <div id="<%= "panel" + index.to_s %>" class="content"> 
-        <table>
+        <table class="small-12 large-12 columns">
           <thead>
             <th>Name</th>
             <th>T-shirt</th>
@@ -25,11 +25,72 @@
                 <td><%= app.camper_type %></td>
                 <td><%= number_to_currency(tuition.current_balance) %></td>
                 <td>
-                  <%= link_to admin_camp_application_path(app) do %>
-                    <strong><i class="fa fa-eye" data-tooltip title="View App"></i></strong>
-                  <% end %>
                   <%= simple_form_for [:admin, app], remote: true do |f|%>
-                    <%= f.input :checked_in, label: false, wrapper: false %>
+                  <span class="appstatus">
+                    <%= link_to admin_camp_application_path(app) do %>
+                      <strong><i class="fa fa-eye" data-tooltip title="View App"></i></strong>
+                    <% end %>
+                    <span>
+                      <%= f.check_box :med_forms, label: false %>
+                      <%= f.label :med_forms do %>
+                        <% if :med_forms %>
+                          <i class="fa fa-ambulance enabled" data-tooltip title="Health Form Rec'd."></i>
+                        <% else %>
+                          <i class="fa fa-ambulance disabled" data-tooltip title="Health Form Rec'd."></i>
+                        <% end %>
+                      <% end %>
+                    </span>
+                    <span>
+                      <%= f.check_box :app_fee, label: false  %>
+                      <%= f.label :app_fee do %>
+                        <% if app.app_fee %>
+                          <i class="fa fa-usd enabled" data-tooltip title="App Fee Paid"></i>
+                        <% else %>
+                          <i class="fa fa-usd disabled" data-tooltip title="App Fee Paid"></i>
+                        <% end %>
+                      <% end %>
+                    </span>
+                    <span>
+                      <%= f.check_box :checkout_form, label: false %>
+                      <%= f.label :checkout_form do %>
+                        <% if app.checkout_form %>
+                          <i class="fa fa-file-text enabled" data-tooltip title="Checkout Form Rec'd."></i>
+                        <% else %>
+                          <i class="fa fa-file-text disabled" data-tooltip title="Checkout Form Rec'd."></i>
+                        <% end %>
+                      <% end %>
+                    </span>
+                    <span>
+                      <%= f.check_box :incomplete, label: false %>
+                      <%= f.label :incomplete do %>
+                        <% if app.incomplete %>
+                          <i class="fa fa-pencil-square-o enabled" data-tooltip title="<%= app.missing_info %>"></i>
+                        <% else %>
+                          <i class="fa fa-pencil-square-o disabled" data-tooltip title="Missing Info"></i>
+                        <% end %>  
+                      <% end %>
+                    </span>
+                    <span>
+                      <%= f.check_box :is_approved, label: false %>
+                      <%= f.label :is_approved do %>
+                        <% if app.is_approved %>
+                          <i class="fa fa-check enabled" data-tooltip title="App Approved!"></i>
+                        <% else %>
+                          <i class="fa fa-check disabled" data-tooltip title="App Approved!"></i>
+                        <% end %>
+                      <% end %>
+                    </span>
+                    <span>
+                      <%= f.check_box :checked_in, label: false %>
+                      <%= f.label :checked_in do %>
+                        <% if app.checked_in %>
+                          <i class="fa fa-heart enabled"></i>
+                        <% else %>
+                          <i class="fa fa-heart disabled"></i>
+                        <% end %>
+                      <% end %>
+                    </span>
+                  </span>
                   <% end %>
                 </td>
               </tr>

@@ -110,7 +110,12 @@ $purple: #080080;
     color: $red;
   }
 
+  input[type="checkbox"] {
+    display: none;
+  }
+
 }
+
 
 
 a {
