@@ -25,15 +25,15 @@
                 <td><%= app.camper_type %></td>
                 <td><%= number_to_currency(tuition.current_balance) %></td>
                 <td>
-                  <%= simple_form_for [:admin, app], remote: true do |f|%>
+                  <%= simple_form_for [:admin, app], namespace: app.id, remote: true do |f|%>
                   <span class="appstatus">
                     <%= link_to admin_camp_application_path(app) do %>
                       <strong><i class="fa fa-eye" data-tooltip title="View App"></i></strong>
                     <% end %>
                     <span>
-                      <%= f.check_box :med_forms, label: false %>
+                      <%= f.check_box :med_forms  %>
                       <%= f.label :med_forms do %>
-                        <% if :med_forms %>
+                        <% if app.med_forms %>
                           <i class="fa fa-ambulance enabled" data-tooltip title="Health Form Rec'd."></i>
                         <% else %>
                           <i class="fa fa-ambulance disabled" data-tooltip title="Health Form Rec'd."></i>
@@ -41,7 +41,7 @@
                       <% end %>
                     </span>
                     <span>
-                      <%= f.check_box :app_fee, label: false  %>
+                      <%= f.check_box :app_fee %>
                       <%= f.label :app_fee do %>
                         <% if app.app_fee %>
                           <i class="fa fa-usd enabled" data-tooltip title="App Fee Paid"></i>
@@ -51,7 +51,7 @@
                       <% end %>
                     </span>
                     <span>
-                      <%= f.check_box :checkout_form, label: false %>
+                      <%= f.check_box :checkout_form %>
                       <%= f.label :checkout_form do %>
                         <% if app.checkout_form %>
                           <i class="fa fa-file-text enabled" data-tooltip title="Checkout Form Rec'd."></i>
@@ -61,17 +61,17 @@
                       <% end %>
                     </span>
                     <span>
-                      <%= f.check_box :incomplete, label: false %>
+                      <%= f.check_box :incomplete %>
                       <%= f.label :incomplete do %>
                         <% if app.incomplete %>
                           <i class="fa fa-pencil-square-o enabled" data-tooltip title="<%= app.missing_info %>"></i>
                         <% else %>
-                          <i class="fa fa-pencil-square-o disabled" data-tooltip title="Missing Info"></i>
+                          <i class="fa fa-pencil-square-o disabled" data-tooltip title="No Missing Info"></i>
                         <% end %>  
                       <% end %>
                     </span>
                     <span>
-                      <%= f.check_box :is_approved, label: false %>
+                      <%= f.check_box :is_approved %>
                       <%= f.label :is_approved do %>
                         <% if app.is_approved %>
                           <i class="fa fa-check enabled" data-tooltip title="App Approved!"></i>
@@ -81,7 +81,7 @@
                       <% end %>
                     </span>
                     <span>
-                      <%= f.check_box :checked_in, label: false %>
+                      <%= f.check_box :checked_in %>
                       <%= f.label :checked_in do %>
                         <% if app.checked_in %>
                           <i class="fa fa-heart enabled"></i>

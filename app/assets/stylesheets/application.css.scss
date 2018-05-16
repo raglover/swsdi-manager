@@ -114,6 +114,15 @@ $purple: #080080;
     display: none;
   }
 
+  input[type="checkbox"] + label {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+  div.infotext {
+    display: none;
+  }
+
 }
 
 
