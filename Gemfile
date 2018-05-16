@@ -33,7 +33,10 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
+
+gem 'webpacker', '~> 3.5'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -53,6 +56,7 @@ group :test, :development do
   gem 'capybara', github: 'jnicklas/capybara', branch: 'master' # '2.2.1'
   gem 'launchy'
   gem 'railroady'
+  gem 'puma'
 end
 
 group :development do
