@@ -2,11 +2,6 @@ class CampApplicationsController < ApplicationController
   before_action :set_camp_application, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index]
   
-  # GET /camp_applications
-  # GET /camp_applications.json
-  def index
-    @camp_applications = CampApplication.all
-  end
 
   # GET /camp_applications/1
   # GET /camp_applications/1.json
