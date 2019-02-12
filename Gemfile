@@ -8,7 +8,7 @@ gem 'web-console', '~>2.0', group: :development
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use Postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '~>0.20'
 
 # Use Unicorn as the production server
 gem 'unicorn'
@@ -40,6 +40,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Set up rspec, factorygirl, shoulda, and capybara for testing.
 group :test, :development do
   gem 'spring'
+  gem 'rb-readline'
   gem 'spring-commands-rspec'
   gem 'guard-rspec' 
   gem 'rb-fsevent'
