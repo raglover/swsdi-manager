@@ -1,11 +1,15 @@
 <fieldset>
   <legend>Personal Information</legend>
   <div class="row">
-    <div class="small-12 large-3 columns">
+    <div class="small-12 large-4 columns">
       <%= f.label :gender %>
-      <%= f.select :gender, options_for_select([['Female', 'female'], ['Male', 'male']], f.object.gender || 'female'), placeholder: "Gender" %>
+      <%= f.select :gender, options_for_select([['Female', 'female'], ['Male', 'male'], ['Trans-Female', 'tfemale'], ['Trans-Male', 'tmale'], ['Non-binary', 'nonbinary'], ['Agender', 'agender']], f.object.gender || 'female'), placeholder: "Gender" %>
     </div>
-    <div class="small-12 large-3 columns">
+    <div class="small-12 large-4 columns">
+      <%= f.label :pronouns %>
+      <%= f.select :pronouns, options_for_select([['She/Her', 'she/her'], ['He/Him', 'he/him'], ['They/Them', 'they/them'], ['Other', 'other']], f.object.pronouns || 'none'), placeholder: "Preferred Pronouns" %>
+    </div>
+    <div class="small-12 large-4 columns">
       <%= f.label :phone_number %>
       <%= f.text_field :phone_number, placeholder: "Phone Number" %>
     </div>

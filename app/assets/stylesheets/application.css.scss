@@ -41,6 +41,10 @@ $purple: #080080;
   padding-top: 20px;
 }
 
+.field_with_hint .hint {
+  font-size: small;
+  font-color: #333;
+}
 
 .remove-fields .fa-times {
   @include text-shadow(5px 5px 0 $black);
@@ -110,7 +114,21 @@ $purple: #080080;
     color: $red;
   }
 
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  input[type="checkbox"] + label {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+  div.infotext {
+    display: none;
+  }
+
 }
+
 
 
 a {

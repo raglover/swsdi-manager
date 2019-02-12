@@ -17,7 +17,7 @@
         <Cell><Data ss:Type="String">Events</Data></Cell>
         <Cell><Data ss:Type="String">Partner Req.</Data></Cell>
         <Cell><Data ss:Type="String">Experience</Data></Cell>
-        <Cell><Data ss:Type="String">Sprit Animal</Data></Cell>
+        <Cell><Data ss:Type="String">Patronus</Data></Cell>
         <Cell><Data ss:Type="String">Residency</Data></Cell>
         <Cell><Data ss:Type="String">Phone Number</Data></Cell>
         <Cell><Data ss:Type="String">Arrival Date</Data></Cell>
@@ -35,7 +35,7 @@
         <Cell><Data ss:Type="String"><%student.events.each do |event| %><%= event.name %>, <% end %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.event_partner_req %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= student.years_in_event %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= spirit_animal(student.user) %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= patronus(student.user) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.camper_type %></Data></Cell>
         <Cell><Data ss:Type="String"><%= number_to_phone(student.user.phone_number) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.arrival_date.strftime("%B %d") %></Data></Cell>

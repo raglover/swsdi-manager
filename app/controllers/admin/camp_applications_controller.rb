@@ -1,14 +1,20 @@
 class Admin::CampApplicationsController < ApplicationController
 	before_action :authenticate_admin!
   before_filter :set_up_camp_app, only: [:edit, :update]
-  before_filter :set_camp, only: [:index, :show]
+  before_filter :set_camp, only: [:index, :index_by_school, :show]
 
 	def index
-		@camp_apps = @camp.camp_applications.where(med_forms: true).includes(:user).order("users.last_name")
-    @unconfirmed = @camp.camp_applications.where("med_forms = false OR med_forms IS null").includes(:user).order("users.last_name")
+		@camp_apps = @camp.camp_applications.where(is_approved: true).includes(:user).order("users.last_name")
+    @unconfirmed = @camp.camp_applications.where("is_approved = false OR is_approved IS null").includes(:user).order("users.last_name")
     @index_page = true
     authorize @camp_apps
 	end
+
+  def index_by_school
+    @search = @camp.camp_applications.includes(:user).ransack(params[:q])
+    @camp_apps = @search.result.order("users.school")
+    authorize @camp_apps
+  end
 
   def new
     @users = User.all

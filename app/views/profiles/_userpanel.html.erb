@@ -8,12 +8,13 @@
         <ul id="userinfo" class="inline-list">
           <li><i class="fa fa-comment-o has-tip" data-tooltip title="Prefers to be called"></i>: <%= !@user.nickname ? @user.first_name.capitalize : @user.nickname.capitalize %></li>
           <li><span class="has-tip" data-tooltip title="Gender"><i class="fa fa-female"></i><i class="fa fa-male"></i></span>: <%= @user.gender.capitalize %></li>
+          <li><span class="has-tip" data-tooltip title="Preferred Pronouns"><i class="fa fa-comments-o"></i></span>: <% if @user.pronouns %><%= @user.pronouns.capitalize %><% else %> None <% end %></li>
           <li><i class="fa fa-calendar has-tip" data-tooltip title="Grade in Fall"></i>: <%= @user.grade %>th Grade</li>
         </ul>
         <ul id="userinfo2" class="inline-list"> 
           <li><i class="fa fa-gift has-tip" data-tooltip title="Birthday!"></i>: <% if (!@user.birthday.nil?) %> <%= @user.birthday.strftime("%B %d, %Y") %> <% else %> None Listed<% end %></li>
           <li><i class="fa fa-text-height has-tip" data-tooltip title="T-shirt Size"></i>: <%= @user.tshirt_size.upcase %></li>
-          <li><strong><i class="fa fa-linux has-tip" data-tooltip title="Spirit Animals are Awesome"></i></strong>: <%= spirit_animal(@user) %></li>
+          <li><strong><i class="fa fa-linux has-tip" data-tooltip title="Expecto Patronum!"></i></strong>: <%= patronus(@user) %></li>
         </ul>          
       </div> 
   </div>

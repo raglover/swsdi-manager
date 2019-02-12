@@ -1,11 +1,11 @@
 class Admin::AdminProfilesController < ApplicationController
 	before_action :authenticate_admin!
-  before_filter :set_camp
+  	before_filter :set_camp
 	before_action :set_admin_profile, only: [:edit, :update, :destroy]
 
-  def index
-    @admins = AdminProfile.all.order(:last_name)
-  end
+  	def index
+    	@admins = AdminProfile.all.order(:last_name)
+  	end
 
 	def new
 		@profile = AdminProfile.new
@@ -56,7 +56,7 @@ class Admin::AdminProfilesController < ApplicationController
 
 		def admin_profile_params
 			params.require(:admin_profile).permit(:image, :first_name, :last_name,
-				:nickname, :bio, :admin_id, :school_affiliation, :spirit_animal,
+				:nickname, :bio, :admin_id, :school_affiliation, :patronus,
 				:birthday, :phone, :address_line1, :address_line2, :city, :state,
 				:zip)
 		end

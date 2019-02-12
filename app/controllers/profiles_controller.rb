@@ -6,8 +6,12 @@ class ProfilesController < ApplicationController
   def index
     @camp = Camp.where(active: true).first
     @search = User.ransack(params[:q])
-    @users = @search.result.includes(:camp_applications).order(:school)
+    @users = @search.result.includes(:camp_applications).order(:school).page(params[:page])
     authorize @users
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

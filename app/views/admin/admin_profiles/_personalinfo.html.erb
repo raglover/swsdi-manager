@@ -2,32 +2,44 @@
   <legend>Personal Information</legend>
   <div class="row">
     <div class="small-12 large-6 columns">
-      <%= f.label :phone %>
-      <%= f.text_field :phone, placeholder: "Phone Number" %>
+      <%= f.input :phone do %>
+        <%= f.text_field :phone, placeholder: "Phone Number" %>
+      <% end %>
     </div>
     <div class="small-12 large-6 columns">
-      <%= f.label :birthday %>
-      <%= date_select :admin_profile, :birthday, {default: @profile.birthday, start_year: 1950, end_year: 2005, order: [:month, :day, :year]}, {:class => "small-4 large-4 columns"} %>
+      <%= f.input :birthday do %>
+        <%= date_select :admin_profile, :birthday, {default: @profile.birthday, start_year: 1950, end_year: 2005, order: [:month, :day, :year]}, {:class => "small-4 large-4 columns"} %>
+      <% end %>
     </div>
     <div class="small-12 large-12 columns">
-      <%= f.label :address_line1, "Address" %>
-      <%= f.text_field :address_line1, placeholder: "Address Line 1" %>
+      <%= f.input :address_line1, label: "Address" do %>
+        <%= f.text_field :address_line1, placeholder: "Address Line 1" %>
+      <% end %>
     </div>
     <div class="small-12 large-12 columns">
-      <%= f.text_field :address_line2, placeholder: "Address Line 2" %>
+      <%= f.input :address_line2, label: false do %>
+        <%= f.text_field :address_line2, placeholder: "Address Line 2" %>
+      <% end %>
     </div>
     <div class="small-6 large-6 columns">
-      <%= f.text_field :city, placeholder: "City" %>
+      <%= f.input :city, label: false do %>
+        <%= f.text_field :city, placeholder: "City" %>
+      <% end %>
     </div>
     <div class="small-3 large-3 columns">
-      <%= f.select :state, options_for_select(us_states, f.object.state || 'AL') %>
+      <%= f.input :state, label: false do %>
+        <%= f.select :state, options_for_select(us_states, f.object.state || 'AL') %>
+      <% end %>
     </div>
     <div class="small-3 large-3 columns">
-      <%= f.text_field :zip, placeholder: "Zip Code" %>
+      <%= f.input :zip, label: false do %>
+        <%= f.text_field :zip, placeholder: "Zip Code" %>
+      <% end %>
     </div>
     <div class="small-12 large-12 columns">
-      <%= f.label :bio, "A Short Biography" %>
-      <%= f.text_area :bio, placeholder: "Your Biography" %>
+      <%= f.input :bio, label: "A Short Biography - Goes on 'About Us' page." do %>
+        <%= f.text_area :bio, placeholder: "Your Biography" %>
+      <% end %>
     </div>
   </div>
 </fieldset>
