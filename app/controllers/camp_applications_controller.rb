@@ -111,7 +111,7 @@ class CampApplicationsController < ApplicationController
     def camp_application_params
       params.require(:camp_application).permit(:interp_type, :camper_type, :event_partner_req, :has_competed, :comments, :roommate_req, :has_laptop, 
         :needs_pickup, :needs_dropoff, :itinerary, :has_allergies, :allergies, :has_dietary_restrictions, :dietary_restrictions, :years_in_event, 
-        :number_of_tournaments, :first_name, :last_name, :payment_method_nonce, 
+        :number_of_tournaments, :first_name, :last_name, :referer_name, :payment_method_nonce, 
         :camp_id, :user_id, :event_ids => [],
         :debate_records_attributes => [:id, :tournament_name, :prelim_wins, :prelim_losses, :reached_outrounds, 
           :outround_reached, :location, :division, :_destroy], 
