@@ -33,7 +33,7 @@
         <Cell><Data ss:Type="String"><%= student.camp_applications.last.arrival_date.strftime("%B %d") %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.camp_applications.last.departure_date.strftime("%B %d") %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.tshirt_size %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= student.birthday.strftime("%B %d") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.birthday.strftime("%B %d, %Y") %></Data></Cell>
         <% student.camp_applications.last.events.each do |event| %>
           <Cell><Data ss:Type="String"><%= event.name %></Data></Cell>
         <% end %>
@@ -62,7 +62,7 @@
         <Cell><Data ss:Type="String"><%= student.camp_applications.last.arrival_date.strftime("%B %d") %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.camp_applications.last.departure_date.strftime("%B %d") %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.tshirt_size %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= student.birthday.strftime("%B %d") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.birthday.strftime("%B %d, %Y") %></Data></Cell>
         <% student.camp_applications.last.events.each do |event| %>
           <Cell><Data ss:Type="String"><%= event.name %></Data></Cell>
         <% end %>
