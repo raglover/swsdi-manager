@@ -53,7 +53,7 @@ group :test, :development do
   gem 'factory_bot_rails'
   gem 'shoulda'
   gem 'faker'
-  gem 'capybara', github: 'jnicklas/capybara', branch: 'master' # '2.2.1'
+  #gem 'capybara', github: 'jnicklas/capybara', branch: 'master' # '2.2.1'
   gem 'launchy'
   gem 'railroady'
   gem 'puma'
