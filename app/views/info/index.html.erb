@@ -9,14 +9,7 @@
         <%= link_to new_user_registration_path, class: "button large radius" do %>
             <i class="fa fa-trophy"></i> Begin Registration!
         <% end %>
-        
-        OR
-
-        <%= link_to user_facebook_omniauth_authorize_path, class: "button large radius" do %>
-              <i class="fa fa-facebook-square"></i> Sign Up With Facebook
-        <% end %>
       </p>
-      <p><small><strong>Note* Using Facebook to sign up will NOT allow us to make posts for you, etc. It just allows us to use Facebook as a login mechanism (no need for a password, yay!), and grabs some basic information (Your name, your birthday, your email address, your gender, and your profile picture) to use to help build your user profile. We do not share this information with ANYBODY, nor do we plan to. Ever.</strong></small></p>
     <% else %>
       <h1>This app needs to be setup!</h1>
     <% end %>
