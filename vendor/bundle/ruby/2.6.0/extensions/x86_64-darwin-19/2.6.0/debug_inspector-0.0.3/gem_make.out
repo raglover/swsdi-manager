@@ -1,0 +1,15 @@
+current directory: /Users/richardglover/src/swsdi-manager/vendor/bundle/ruby/2.6.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+/Users/richardglover/.rbenv/versions/2.6.0/bin/ruby -I /Users/richardglover/.rbenv/versions/2.6.0/lib/ruby/2.6.0 -r ./siteconf20200120-33482-1g3sswj.rb extconf.rb
+creating Makefile
+
+current directory: /Users/richardglover/src/swsdi-manager/vendor/bundle/ruby/2.6.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" clean
+
+current directory: /Users/richardglover/src/swsdi-manager/vendor/bundle/ruby/2.6.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.bundle
+
+current directory: /Users/richardglover/src/swsdi-manager/vendor/bundle/ruby/2.6.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" install
+/usr/local/bin/ginstall -c -m 0755 debug_inspector.bundle ./.gem.20200120-33482-1yq3h4k
