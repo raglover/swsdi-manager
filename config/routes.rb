@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :admin, controllers: {invitations: "admin/invitations"}
 
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks", registrations: "registrations"}
+  devise_for :users, controllers: {registrations: "registrations"}
 
   devise_scope :user do
     get 'admin-edit/:id', controller: 'registrations', action: 'admin_edit', as: 'admin_user_edit'

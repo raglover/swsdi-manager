@@ -1,5 +1,6 @@
 <div class="row">
   <div class="panel">
+      <%= image_tag "biglogo.png", class: "left biglogo" %>
     <% if @camp %>
       <h1>Welcome to Registration for <%= @camp.name %></h1>
       <h3><%= @camp.start_date.strftime("%B %d") %> - <%= @camp.end_date.strftime("%B %d, %Y") %></h3>
