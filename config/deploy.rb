@@ -83,6 +83,10 @@ task :deploy do
   run(:local){ say 'done' }
 end
 
+desc "Restarts Unicorn"
+task :urestart => :remote_environment do
+    invoke :'unicorn:restart'
+end
 # For help in making your deploy script, see the Mina documentation:
 #
 #  - https://github.com/mina-deploy/mina/tree/master/docs
