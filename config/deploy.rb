@@ -14,7 +14,7 @@ require 'mina/unicorn'
 set :application_name, 'swsdi-manager'
 set :domain, 'register.swsdi.org'
 set :deploy_to, '/home/deployer/swsdi-manager'
-set :repository, 'git://github.com:raglover/swsdi-manager.git'
+set :repository, 'git://github.com/raglover/swsdi-manager.git'
 set :branch, 'master'
 set :user, 'deployer'
 set :forward_agent, true
