@@ -39,7 +39,7 @@ $('#C').find('input:checkbox').change ->
     $('#D').find('input:checkbox').prop('disabled', false)
 
 $('#D').find('input:checkbox').change ->
-  if #(this).prop('checked')
+  if $(this).prop('checked')
     $('#A').find('input:checkbox').prop('disabled', true)
     $('#B').find('input:checkbox').prop('disabled', true)
     $('#C').find('input:checkbox').prop('disabled', true)
