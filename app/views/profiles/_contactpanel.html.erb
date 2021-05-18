@@ -58,12 +58,12 @@
             <td><%= number_to_currency(@tuition.airport_fee) %></td>
           </tr>
         <% end %>
-        <% if @camp_app.app_fee %>
-          <tr>
+        <%# if @camp_app.app_fee %>
+          <!--<tr>
             <td><strong>App Fee Paid</strong></td>
             <td>-<%= number_to_currency(50) %></td>
-          </tr>
-        <% end %>
+          </tr>-->
+        <%# end %>
         <% @payments.each do |pmt| %>
           <tr>
             <td><strong><%= pmt.pmt_type %></strong></td>
@@ -80,7 +80,7 @@
         </tr>
       </tbody>
     </table>
-    <%= link_to "View Detail", camp_application_payments_path(@camp_app), {class: "button tiny primary"} %>
+    <%= link_to "View Detail/Make Payment", camp_application_payments_path(@camp_app), {class: "button tiny primary"} %>
     </div>
     <% else %>
       <div class="row">
