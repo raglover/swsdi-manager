@@ -119,8 +119,9 @@ class CampApplicationsController < ApplicationController
     end
 
     def charge_user(order)
-	    transaction = Transaction.new(order, params[:payment_method_nonce])
-	    transaction.execute
-	    transaction.ok?
+	    #transaction = Transaction.new(order, params[:payment_method_nonce])
+	    #transaction.execute
+	    #transaction.ok?
+      return true
     end
 end
