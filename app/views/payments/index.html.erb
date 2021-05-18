@@ -19,13 +19,13 @@
           <td><%= number_to_currency(@tuition.airport_fee) %></td>
         </tr>
       <% end %>
-      <#% if @camp_app.app_fee %>
+      <%# if @camp_app.app_fee %>
         <!--<tr>
           <td><strong>App Fee Paid</strong></td>
           <td></td>
           <td>-<%= number_to_currency(50) %></td>
         </tr>-->
-      <#% end %>
+      <%# end %>
       <% @payments.each do |pmt| %>
         <tr>
           <td><strong><%= pmt.pmt_type %></strong></td>
@@ -46,7 +46,7 @@
     </tbody>
   </table>
   <div class="row">
-    <div class="small-12 large-12 columns">
+    <div class="small-12 large-12 columns appbox">
       <h3>Pay Your Tuition Bill</h3>
       <p>This year, for tuition payments, we will be using ASU's QuickPay system. If you wish to pay with a credit card, use the "Pay Now with CC" button below. If you wish to pay by Check or P.O., please make checks payable to "ASU Forensics" and mail them to:</p>
       <p>ASU Forensics<br />c/o Adam Symonds<br />Arizona State University<br />Hugh Downs School of Human Communication<br />P.O. Box 871205<br />Tempe, AZ 85287</p>
