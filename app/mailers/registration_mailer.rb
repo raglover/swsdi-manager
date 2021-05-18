@@ -32,7 +32,7 @@ class RegistrationMailer < ActionMailer::Base
 		@user = user
 		@camp = camp
         @app = app
-        mail(to: "Richie Glover <richard@swsdi.org>, Adam Symonds <adam@swsdi.org>, Izak Dunn <izak@swsdi.org>", 
+        mail(to: "Richie Glover <richard@swsdi.org>, Adam Symonds <adam@swsdi.org>", 
 			subject: "New Application submitted for #{@camp.name} - #{@user.first_name} #{@user.last_name}")
 	end
 

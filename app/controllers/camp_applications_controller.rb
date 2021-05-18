@@ -43,9 +43,9 @@ class CampApplicationsController < ApplicationController
       if @camp_application.save
     	      order = {id: @camp_application.id, applicant_id:  @camp_application.user.id, amount: params[:amount], first_name: params[:camp_application][:first_name], last_name: params[:camp_application][:last_name]}
 	      if charge_user(order)
-		      @camp_application.update_attribute(:app_fee, true)
-	              format.html { redirect_to profile_path(current_user), notice: 'Camp application was successfully completed!' }
-       		      format.json { render :show, status: :created, location: @camp_application }
+		      #@camp_application.update_attribute(:app_fee, true)
+	         format.html { redirect_to profile_path(current_user), notice: 'Camp application was successfully completed!' }
+       		 format.json { render :show, status: :created, location: @camp_application }
 	      else
 		      format.html { redirect_to new_application_payment_camp_application_path(order), alert:
 		      "We have saved your application, but something has gone wrong with processing your credit card.<br/>
