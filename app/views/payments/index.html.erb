@@ -19,13 +19,13 @@
           <td><%= number_to_currency(@tuition.airport_fee) %></td>
         </tr>
       <% end %>
-      <% if @camp_app.app_fee %>
-        <tr>
+      <#% if @camp_app.app_fee %>
+        <!--<tr>
           <td><strong>App Fee Paid</strong></td>
           <td></td>
           <td>-<%= number_to_currency(50) %></td>
-        </tr>
-      <% end %>
+        </tr>-->
+      <#% end %>
       <% @payments.each do |pmt| %>
         <tr>
           <td><strong><%= pmt.pmt_type %></strong></td>
@@ -45,7 +45,17 @@
       </tr>
     </tbody>
   </table>
-  <%= simple_form_for [@camp_app, @new_payment] do |f| %>
+  <div class="row">
+    <div class="small-12 large-12 columns">
+      <h3>Pay Your Tuition Bill</h3>
+      <p>This year, for tuition payments, we will be using ASU's QuickPay system. If you wish to pay with a credit card, use the "Pay Now with CC" button below. If you wish to pay by Check or P.O., please make checks payable to "ASU Forensics" and mail them to:</p>
+      <p>ASU Forensics<br />c/o Adam Symonds<br />Arizona State University<br />Hugh Downs School of Human Communication<br />P.O. Box 871205<br />Tempe, AZ 85287</p>
+      <p>Please note: Your payment will not be immediately reflected in your balance due on this page. We will reconcile payments as they come in.</p>
+      <%= link_to "Pay Now with CC", 'https://eiseverywhere.com/swsd2021', { class: "button"} %>
+      <%= link_to "Return to Profile", profile_path(current_user), { class: "button small"} %>
+    </div>
+  </div>
+  <!--<%= simple_form_for [@camp_app, @new_payment] do |f| %>
     <h3>Pay your tuition balance:</h3>
     <%= f.hidden_field :pmt_type, value: 'Credit Card' %>
     <div class="row">
@@ -76,5 +86,5 @@
 		braintree.setup(clientToken, "dropin", {
 			container: "payment-form"
 		});
-	  </script>
+	  </script>-->
 </div>
