@@ -38,9 +38,9 @@ class Camp < ActiveRecord::Base
 
   private
     def start_date_in_future
-      unless self.start_date >= Time.zone.now
-        errors.add(:start_date, "Must be a future date.")
-      end
+      # unless self.start_date >= Time.zone.now
+      #   errors.add(:start_date, "Must be a future date.")
+      # end
     end
 
     def end_date_after_or_equal_start_date
