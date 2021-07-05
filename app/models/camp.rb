@@ -49,11 +49,11 @@ class Camp < ActiveRecord::Base
       end
     end
 
-    # def application_starts_before_camp
+    def application_starts_before_camp
     #   unless self.app_start_date < self.start_date && self.app_end_date <= self.start_date
     #     errors.add(:app_start_date, "Application process must be prior to camp.")
     #   end 
-    # end
+    end
 
     def application_closes_after_open
       unless self.app_end_date > self.app_start_date
