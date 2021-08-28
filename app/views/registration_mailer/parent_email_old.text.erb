@@ -1,0 +1,61 @@
+Hello <%= @user.parent_first  %>,
+
+Your student, <%= @user.first_name %>, has registered to come to
+<%= @camp.name %> this coming summer. Hopefully this email doesn't
+come as a complete surprise! 
+
+In order to complete the application process, we need some things
+from you. 
+
+**BE SURE TO CAREFULLY READ THIS EMAIL!** 
+
+Important next steps to complete your student's application:
+------------------------------------------------------------
+
+Please download the document packet at <%= @url %>
+this packet contains important information, and some documents 
+that require signatures. 
+
+Please fill out those documents, and sign them. They include a
+signed list of permissions for who can check your student out of
+camp, and our standard medical release form so that we can get
+treatment for your student if they become ill at camp. 
+
+When you have finished filling out the forms, please scan them
+and email to packets@swsdi.org
+
+If you are unable to scan the documents, please paper clip (no staples!) them
+together and return them via US Mail to the address below:
+
+Adam Symonds
+Arizona State University
+Hugh Downs School
+P.O. Box 871205
+Tempe, AZ 85287
+
+When we have recieved your forms we will
+verify your student's registration is complete. We will send an 
+email to notify you that the registration is verified.
+
+We will also let you know if there is missing, or incomplete 
+information that we require from you, so that you are able to
+provide that information as needed.
+
+Please Note: Your student is ALREADY ACCEPTED for camp. We are planning
+to have them, and they will be included in our numbers for planning purposes.
+
+We would also like you to download an information packet at:
+<%= @docurl %>
+
+This packet contains important information about camp, logistics, etc.
+It should help answer many of your questions.
+
+If you have any questions, please send an email to info@swsdi.org
+and one of our staff members will be delighted to help you.
+
+We would like to thank you for sending <%= @user.first_name %> to
+<%= @camp.name %>. We look forward to seeing <%= @user.first_name %>
+this summer!
+
+Cheers,
+The SWSD @ ASU Staff

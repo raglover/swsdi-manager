@@ -4,8 +4,9 @@ class RegistrationMailer < ActionMailer::Base
 	def student_email(user, camp)
 		@user = user
 		@camp = camp
-		@url = 'https://register.swsdi.org/documents/returnpacket.pdf'
-        @docurl = 'https://register.swsdi.org/documents/infopacket.pdf'
+		@pay_url = 'https://eiseverywhere.com/swsd2021'
+		#@url = 'https://register.swsdi.org/documents/returnpacket.pdf'
+     #   @docurl = 'https://register.swsdi.org/documents/infopacket.pdf'
 		mail(to: @user.email, 
 			subject: "Thank you for registering for #{@camp.name} - Next Steps")
 	end
@@ -13,8 +14,9 @@ class RegistrationMailer < ActionMailer::Base
 	def parent_email(user, camp)
 		@user = user
 		@camp = camp
-		@url = 'https://register.swsdi.org/documents/returnpacket.pdf'
-        @docurl = 'https://register.swsdi.org/documents/infopacket.pdf'
+		@pay_url = 'https://eiseverywhere.com/swsd2021'
+		#@url = 'https://register.swsdi.org/documents/returnpacket.pdf'
+     #   @docurl = 'https://register.swsdi.org/documents/infopacket.pdf'
 		mail(to: @user.parent_email, 
 			subject: "Your Student #{@user.first_name} has registered for #{@camp.name} - Next Steps")
 	end

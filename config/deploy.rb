@@ -80,7 +80,7 @@ task :deploy do
       invoke :'unicorn:restart'
     end
   end
-  run(:local){ say 'done' }
+  run(:local)
 end
 
 desc "Restarts Unicorn"
