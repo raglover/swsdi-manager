@@ -4,7 +4,7 @@ class RegistrationMailer < ActionMailer::Base
 	def student_email(user, camp)
 		@user = user
 		@camp = camp
-		@pay_url = 'https://eiseverywhere.com/swsd2021'
+		@pay_url = 'https://na.eventscloud.com/swsd2022'
 		#@url = 'https://register.swsdi.org/documents/returnpacket.pdf'
      #   @docurl = 'https://register.swsdi.org/documents/infopacket.pdf'
 		mail(to: @user.email, 
@@ -14,7 +14,7 @@ class RegistrationMailer < ActionMailer::Base
 	def parent_email(user, camp)
 		@user = user
 		@camp = camp
-		@pay_url = 'https://eiseverywhere.com/swsd2021'
+		@pay_url = 'https://na.eventscloud.com/swsd2022'
 		#@url = 'https://register.swsdi.org/documents/returnpacket.pdf'
      #   @docurl = 'https://register.swsdi.org/documents/infopacket.pdf'
 		mail(to: @user.parent_email, 
