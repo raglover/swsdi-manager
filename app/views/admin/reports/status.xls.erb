@@ -20,6 +20,8 @@
         <Cell><Data ss:Type="String">Date of Birth</Data></Cell>
         <Cell><Data ss:Type="String">Event 1</Data></Cell>
         <Cell><Data ss:Type="String">Event 2</Data></Cell>
+        <Cell><Data ss:Type="String">Allergies</Data></Cell>
+        <Cell><Data ss:Type="String">Diet</Data></Cell>
       </Row>
     <% @residents.each do |student| %>
       <Row>
@@ -37,6 +39,8 @@
         <% student.camp_applications.last.events.each do |event| %>
           <Cell><Data ss:Type="String"><%= event.name %></Data></Cell>
         <% end %>
+        <Cell><Data ss:Type="String"><%= student.camp_applications.last.allergies %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.camp_applications.last.dietary_restrictions %></Data></Cell>
       </Row>
     <% end %>
     </Table>
@@ -53,6 +57,8 @@
         <Cell><Data ss:Type="String">Date of Birth</Data></Cell>
         <Cell><Data ss:Type="String">Event 1</Data></Cell>
         <Cell><Data ss:Type="String">Event 2</Data></Cell>
+        <Cell><Data ss:Type="String">Allergies</Data></Cell>
+        <Cell><Data ss:Type="String">Diet</Data></Cell>
       </Row>
     <% @commuters.each do |student| %>
       <Row>
@@ -66,6 +72,8 @@
         <% student.camp_applications.last.events.each do |event| %>
           <Cell><Data ss:Type="String"><%= event.name %></Data></Cell>
         <% end %>
+        <Cell><Data ss:Type="String"><%= student.camp_applications.last.allergies %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.camp_applications.last.dietary_restrictions %></Data></Cell>
       </Row>
     <% end %>
     </Table>
