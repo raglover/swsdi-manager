@@ -35,4 +35,9 @@ class Admin::ReportsController < ApplicationController
     @events = @camp.events
     authorize :report, :registration?
   end
+
+  def nametags
+    @students = User.with_apps
+    authorize :report, :financial?
+  end
 end
