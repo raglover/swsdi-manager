@@ -18,7 +18,11 @@
     <% @students.each do |student| %>
       <Row>
         <Cell><Data ss:Type="String"><%= student.last_name.titleize %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= student.nickname.titleize %></Data></Cell>
+        <% if @student.nickname %>
+          <Cell><Data ss:Type="String"><%= student.nickname.titleize %></Data></Cell>
+        <% else %>
+          <Cell><Data ss:Type="String"><%= student.first_name.titleize %></Data></Cell>
+        <% end %>
         <Cell><Data ss:Type="String"><%= student.pronouns %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.grade %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.school.titleize %></Data></Cell>
