@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Nametag Info">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Last Name</Data></Cell>
+        <Cell><Data ss:Type="String">Preferred Name</Data></Cell>
+        <Cell><Data ss:Type="String">Pronouns</Data></Cell>
+        <Cell><Data ss:Type="String">Grade</Data></Cell>
+        <Cell><Data ss:Type="String">School</Data></Cell>
+        <Cell><Data ss:Type="String">Event 1</Data></Cell>
+        <Cell><Data ss:Type="String">Event 2</Data></Cell>
+      </Row>
+    <% @students.each do |student| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= student.last_name.titleize %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.nickname.titleize %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.pronouns %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.grade %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.school.titleize %></Data></Cell>
+        <% student.camp_applications.last.events.each do |event| %>
+          <Cell><Data ss:Type="String"><%= event.name %></Data></Cell>
+        <% end %>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet> 
+</Workbook>
