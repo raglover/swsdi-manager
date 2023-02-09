@@ -38,6 +38,7 @@ class Admin::ReportsController < ApplicationController
 
   def nametags
     @students = User.with_apps.where('camp_applications.camp_id = ?', @camp.id)
+    @staff = Admin.all
     authorize :report, :financial?
   end
 end
