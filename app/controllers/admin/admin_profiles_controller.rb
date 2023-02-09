@@ -56,7 +56,7 @@ class Admin::AdminProfilesController < ApplicationController
 
 		def admin_profile_params
 			params.require(:admin_profile).permit(:image, :first_name, :last_name,
-				:nickname, :bio, :admin_id, :school_affiliation, :patronus,
+				:nickname, :bio, :admin_id, :school_affiliation,
 				:birthday, :phone, :address_line1, :address_line2, :city, :state,
 				:zip)
 		end

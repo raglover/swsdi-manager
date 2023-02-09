@@ -36,9 +36,6 @@
           </div>
           <div class="row">
             <div class="small-6 large-6 columns">
-              <p><i class="fa fa-linux has-tip" data-tooltip title="Expecto Patronum!"></i>: <%= patronus(user) %></p>
-            </div>
-            <div class="small-6 large-6 columns">
               <% if user.needs_reminding? %>
                 <p><%= link_to controller: "profiles", action: "send_reminder_email", id: user.id  do%>
                     <i class="fa fa-envelope-o" data-tooltip title="Send Reminder Email"></i>
