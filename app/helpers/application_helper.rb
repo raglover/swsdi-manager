@@ -32,9 +32,9 @@ module ApplicationHelper
     end
 
 
-## A Helper for presenting patronus info
+## A Helper for presenting stupid TERF info (Deprecated - 2/9/22 - RG - JK Rowling is a TERF)
 
-    def patronus(user)
+    def terf(user)
         if !user.patronus.blank?
             user.patronus.titleize
         else

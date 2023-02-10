@@ -3,8 +3,6 @@
 		<dt>Current Admin:</dd>
     		<%= image_tag(@profile.image_url(:thumb)) %>
 		<dd><%= @profile.full_name %><br /><%= current_admin.email %></dt>
-		<dt>Patronus:</dt>
-		<dd><%= patronus(@profile) %></dd>
 		<dt>Birthday:</dt>
 		<dd><%= @profile.birthday.strftime('%b %e, %Y') %></dd>
 		<dt>Phone Number:</dt>
