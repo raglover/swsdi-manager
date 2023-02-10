@@ -14,6 +14,7 @@ $gray: #808080;
 $green: #008000;
 $blue: #00f;
 $purple: #080080;
+$gold: #ffd700;
 
 
 .bg {
@@ -44,6 +45,11 @@ $purple: #080080;
 .field_with_hint .hint {
   font-size: small;
   font-color: #333;
+}
+
+.new_camp_application .edit_camp_application {
+  background-color: $gold;
+  padding: 10px;
 }
 
 .remove-fields .fa-times {
