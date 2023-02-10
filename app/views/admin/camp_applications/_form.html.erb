@@ -20,7 +20,7 @@
       <% end %>
     </div>
   <div class="row">
-      <%= f.input :interp_type, collection: ['Duo', 'Dramatic', 'Humor'], wrapper_html: { class: 'small-3 large-3 columns'}, label: "Interp event (if selected)" %>
+      <%= f.input :interp_type, collection: ['Duo', 'Dramatic', 'Humor', 'POI', 'Prose', 'Poetry', 'Oratory', 'Informative', 'Extemp'], wrapper_html: { class: 'small-3 large-3 columns'}, label: "Primary Speech Event (if selected)" %>
       <%= f.input :has_competed, :as => :select, wrapper_html: { class: 'small-5 large-3 columns' }, label: 'Competed Previously? <i class="fa fa-info-circle" data-tooltip title="Have you competed previously in this event?"></i>'.html_safe %>
       <%= f.input :years_in_event, wrapper_html: { class: 'small-2 large-2 columns'}, label: 'Years in Event? <i class="fa fa-info-circle" data-tooltip title="How many years have you competed in the events you\'re registering for?"></i>'.html_safe %>
       <%= f.input :number_of_tournaments, wrapper_html: { class: 'small-2 large-2 columns'}, label: '# of Tournaments <i class="fa fa-info-circle" data-tooltip title="How many tournaments have you competed in these events?"></i>'.html_safe %>
@@ -40,11 +40,6 @@
           <%= link_to_add_fields "Add Tournament", f, :debate_records  %>
         </fieldset>
       </div>
-    </div>
-    <div class="row">
-      <%= f.input :needs_pickup, :as => :select, wrapper_html: { class: 'small-6 large-6 columns' }, label: "Will you need to be picked up from the airport?" %>
-      <%= f.input :needs_dropoff, :as => :select, wrapper_html: { class: 'small-6 large-6 columns' }, label: "Will you need to be dropped off at the airport?" %>
-      <%= f.input :itinerary, wrapper_html: { class: 'small-12 large-12 columns' }, label: "Please provide an itinerary for your travel." %>
     </div>
     <div class="row">
       <div class="small-12 large-12 columns">
