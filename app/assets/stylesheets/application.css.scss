@@ -47,7 +47,12 @@ $gold: #ffd700;
   font-color: #333;
 }
 
-.new_camp_application .edit_camp_application {
+form.new_camp_application {
+  background-color: $gold;
+  padding: 10px;
+}
+
+form.edit_camp_application {
   background-color: $gold;
   padding: 10px;
 }
