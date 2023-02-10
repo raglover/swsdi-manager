@@ -3,9 +3,7 @@
   <dl class="small-12 large-6 columns">
     <% @camp_app.events.each do |event| %>
       <dt>Events:</dt><dd><%= event.name %></dd>
-      <% if event.name == "Interp" %>
-        <dt>Interp Type:</dt><dd><%= @camp_app.interp_type %></dd>
-      <% end %>
+      <dt>Primary Speech Event:</dt><dd><%= @camp_app.interp_type %></dd>
     <%  end  %>
     <dt>Camper Type:</dt><dd><%= @camp_app.camper_type  %></dd>
     <dt>Competed Before?</dt><dd><%= yes_no(@camp_app.has_competed)  %></dd>

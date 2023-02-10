@@ -10,7 +10,7 @@
       <% end %>
     </div>
     <div class="row">
-      <%= f.input :interp_type, collection: ['Duo', 'Dramatic', 'Humor', 'POI', 'Prose', 'Poetry'], wrapper_html: { class: 'small-3 large-3 columns'}, label: "Interp event (if selected)" %>
+      <%= f.input :interp_type, collection: ['Duo', 'Dramatic', 'Humor', 'POI', 'Prose', 'Poetry', 'Oratory', 'Informative', 'Extemp'], wrapper_html: { class: 'small-3 large-3 columns'}, label: "Primary Speech Event (if selected)" %>
       <%= f.input :has_competed, :as => :select, wrapper_html: { class: 'small-5 large-3 columns' }, label: 'Competed Previously? <i class="fa fa-info-circle" data-tooltip title="Have you competed previously in this event?"></i>'.html_safe %>
       <%= f.input :years_in_event, wrapper_html: { class: 'small-2 large-2 columns'}, label: 'Years in Event? <i class="fa fa-info-circle" data-tooltip title="How many years have you competed in the events you\'re registering for?"></i>'.html_safe %>
       <%= f.input :number_of_tournaments, wrapper_html: { class: 'small-2 large-2 columns'}, label: '# of Tournaments <i class="fa fa-info-circle" data-tooltip title="How many tournaments have you competed in these events?"></i>'.html_safe %>
