@@ -14,6 +14,8 @@
         <ul id="userinfo2" class="inline-list"> 
           <li><i class="fa fa-gift has-tip" data-tooltip title="Birthday!"></i>: <% if (!@user.birthday.nil?) %> <%= @user.birthday.strftime("%B %d, %Y") %> <% else %> None Listed<% end %></li>
           <li><i class="fa fa-text-height has-tip" data-tooltip title="T-shirt Size"></i>: <%= @user.tshirt_size.upcase %></li>
+          <li><i class="fa fa-music has-tip" data-tooltip title="Favorite Musical Artist"></i>: <%= @user.music.blank? ? "None" : @user.music.titleize %></li>
+          <li><i class="fa fa-ticket has-tip" data-tooltip title="Other Talents"></i>: <%= @user.talents.blank? ? "None Listed" : @user.talents.titleize %></li>
         </ul> 
         <ul id="userinfo3" class="inline-list">
           <li>UUID: <%= @camp_app.uuid %></li>
