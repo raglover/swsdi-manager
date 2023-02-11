@@ -75,7 +75,7 @@ module ApplicationHelper
     end
 
     def check_for_content(content)
-        if !content || content == ""
+        if content.blank?
             return "None"
         else
             return content
