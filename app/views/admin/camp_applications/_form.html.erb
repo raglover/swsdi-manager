@@ -16,19 +16,21 @@
       <h5 class="small-12 large-12 columns">Please select one two-week event.</h5>
       <% @sessions.each do |session| %>
         <% events = session.events %>
-        <%= f.association :events, collection: events, as: :check_boxes, wrapper_html: {class: 'small-12 large-12 columns'}, label: session.name+" Events" %>
+        <%= f.association :events, collection: events, as: :radio_buttons, wrapper_html: {class: 'small-12 large-12 columns'}, label: session.name %>
       <% end %>
     </div>
-  <div class="row">
-      <%= f.input :interp_type, collection: ['Duo', 'Dramatic', 'Humor', 'POI', 'Prose', 'Poetry', 'Oratory', 'Informative', 'Extemp'], wrapper_html: { class: 'small-3 large-3 columns'}, label: "Primary Speech Event (if selected)" %>
-      <%= f.input :has_competed, :as => :select, wrapper_html: { class: 'small-5 large-3 columns' }, label: 'Competed Previously? <i class="fa fa-info-circle" data-tooltip title="Have you competed previously in this event?"></i>'.html_safe %>
-      <%= f.input :years_in_event, wrapper_html: { class: 'small-2 large-2 columns'}, label: 'Years in Event? <i class="fa fa-info-circle" data-tooltip title="How many years have you competed in the events you\'re registering for?"></i>'.html_safe %>
-      <%= f.input :number_of_tournaments, wrapper_html: { class: 'small-2 large-2 columns'}, label: '# of Tournaments <i class="fa fa-info-circle" data-tooltip title="How many tournaments have you competed in these events?"></i>'.html_safe %>
-      <%= f.input :has_laptop, :as => :select, wrapper_html: { class: 'small-4 large-2 columns' }, label: "Have a Laptop?" %>
-      <%= f.input :event_partner_req, wrapper_html: { class: 'small-4 large-4 columns' }, label: "Partner Preference (if necessary)" %>
-      <%= f.input :camper_type, collection: ['Resident', 'Commuter'], wrapper_html: {class: "small-4 large-4 columns"}, label: "Resident or Commuter?" %>
-      <%= f.input :roommate_req, wrapper_html: { class: 'small-4 large-4 columns' }, label: 'Roommate Preference (optional) <i class="fa fa-info-circle" data-tooltip title="Both students must select each other. No guarantee roomate requests will be honored."></i>'.html_safe %>
-    </div>      
+    <div class="row">
+      <%= f.input :interp_type, collection: ['Duo', 'Dramatic', 'Humor', 'POI', 'Prose', 'Poetry', 'Oratory', 'Informative', 'Extemp'], wrapper_html: { class: 'small-6 large-4 columns'}, label: 'Primary Speech Event <i class="fa fa-info-circle" data-tooltip title="If you chose Speech, pick your primary focus"></i>'.html_safe %>
+      <%= f.input :speech_minor, collection: ['Duo', 'Dramatic', 'Humor', 'POI', 'Prose', 'Poetry', 'Oratory', 'Informative', 'Extemp'], wrapper_html: { class: 'small-6 large-4 columns'}, label: 'Secondary Speech Event <i class="fa fa-info-circle" data-tooltip title="If you chose Speech, pick your secondary focus"></i>'.html_safe %>
+      <%= f.input :has_competed, :as => :select, wrapper_html: { class: 'small-6 large-4 columns' }, label: 'Competed Previously? <i class="fa fa-info-circle" data-tooltip title="Have you competed previously in this event?"></i>'.html_safe %>
+      <%= f.input :years_in_event, wrapper_html: { class: 'small-6 large-2 columns'}, label: 'Years in Event? <i class="fa fa-info-circle" data-tooltip title="How many years have you competed in the events you\'re registering for?"></i>'.html_safe %>
+      <%= f.input :number_of_tournaments, wrapper_html: { class: 'small-6 large-2 columns'}, label: '# of Tournaments <i class="fa fa-info-circle" data-tooltip title="How many tournaments have you competed in these events?"></i>'.html_safe %>
+      <%#= f.input :has_laptop, :as => :select, wrapper_html: { class: 'small-4 large-2 columns' }, label: "Have a Laptop?" %>
+      <%= f.input :event_partner_req, wrapper_html: { class: 'small-6 large-4 columns' }, label: 'Partner Preference <i class="fa fa-info-circle" data-tooltip title="If you are doing PF, Policy or Duo, who do you want to partner with?"></i>'.html_safe %>
+      <%= f.input :camper_type, collection: ['Resident', 'Commuter'], wrapper_html: {class: "small-6 large-4 columns"}, label: 'Resident or Commuter? <i class="fa fa-info-circle" data-tooltip title="Resident means staying in dorms. Commuter means being picked up and dropped off each day."></i>'.html_safe %>
+      <%= f.input :roommate_req, wrapper_html: { class: 'small-6 large-6 columns' }, label: 'Roommate Preference (opt) <i class="fa fa-info-circle" data-tooltip title="Both students must select each other. No guarantee roomate requests will be honored."></i>'.html_safe %>
+      <%= f.input :referer_name, wrapper_html: { class: 'small-12 large-6 columns' }, label: 'Who recommended camp?' %>
+    </div> 
     <div class="row">
       <div class="small-12 large-12 columns">
         <fieldset>
