@@ -22,7 +22,7 @@ class CampApplicationsController < ApplicationController
     @check_outs = @camp_application.check_out_permissions.build
     @camp = Camp.find_by_id( params[:camp_id] )
     @sessions = @camp.camp_sessions.all 
-    @token = Braintree::ClientToken.generate
+    #@token = Braintree::ClientToken.generate
   end
 
   # GET /camp_applications/1/edit
@@ -109,7 +109,7 @@ class CampApplicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def camp_application_params
-      params.require(:camp_application).permit(:interp_type, :camper_type, :event_partner_req, :has_competed, :comments, :roommate_req, :has_laptop, 
+      params.require(:camp_application).permit(:interp_type, :speech_minor, :camper_type, :event_partner_req, :has_competed, :comments, :roommate_req, :has_laptop, 
         :needs_pickup, :needs_dropoff, :itinerary, :has_allergies, :allergies, :has_dietary_restrictions, :dietary_restrictions, :years_in_event, 
         :number_of_tournaments, :first_name, :last_name, :referer_name, :payment_method_nonce, 
         :camp_id, :user_id, :event_ids => [],

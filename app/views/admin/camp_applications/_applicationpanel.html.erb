@@ -3,21 +3,18 @@
   <dl class="small-12 large-6 columns">
     <% @camp_app.events.each do |event| %>
       <dt>Events:</dt><dd><%= event.name %></dd>
-      <dt>Primary Speech Event:</dt><dd><%= @camp_app.interp_type %></dd>
+      <dt>Primary Speech Event:</dt><dd><%= @camp_app.interp_type.empty? ? "None" : @camp_app.interp_type   %></dd>
+      <dt>Secondary Speech Event:</dt><dd><%= @camp_app.speech_minor.empty? ? "None" : @camp_app.speech_minor %></dd>
     <%  end  %>
     <dt>Camper Type:</dt><dd><%= @camp_app.camper_type  %></dd>
     <dt>Competed Before?</dt><dd><%= yes_no(@camp_app.has_competed)  %></dd>
     <dt>Experience:</dt>
       <dd><%= @camp_app.years_in_event %> Years in Event<br />
           <%= @camp_app.number_of_tournaments %> Tournaments Attended</dd>
-    <dt>Has Laptop?</dt><dd><%= yes_no(@camp_app.has_laptop)  %></dd>
-    <!--<dt>Partner Request:</dt><dd><%#= check_for_content(@camp_app.event_partner_req.titleize)  %></dd>
-    <dt>Roommate Request:</dt><dd><%#= check_for_content(@camp_app.roommate_req.titleize)  %></dd>-->
+    <dt>Partner Request:</dt><dd><%= check_for_content(@camp_app.event_partner_req.titleize)  %></dd>
+    <dt>Roommate Request:</dt><dd><%= check_for_content(@camp_app.roommate_req.titleize)  %></dd>
   </dl>
   <dl class="small-12 large-6 columns">
-    <!--<dt>Airport Pickup?</dt><dd><%#= yes_no(@camp_app.needs_pickup)  %></dd>
-    <dt>Airport Dropoff?</dt><dd><%#= yes_no(@camp_app.needs_dropoff)  %></dd>
-    <dt>Itinerary:</dt><dd><%#= check_for_content(@camp_app.itinerary)  %></dd>-->
     <dt>Allergies?</dt><dd><%= yes_no(@camp_app.has_allergies)  %></dd>
     <% if @camp_app.has_allergies %>
       <dt>Allergy Information:</dt><dd><%= @camp_app.allergies  %></dd>

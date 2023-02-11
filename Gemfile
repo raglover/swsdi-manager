@@ -8,7 +8,7 @@ gem 'web-console', '~>2.0', group: :development
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use Postgresql as the database for Active Record
-gem 'pg', '~>0.21'
+gem 'pg', '0.21.0'
 
 # Use Unicorn as the production server
 gem 'unicorn'
@@ -56,7 +56,7 @@ group :test, :development do
   #gem 'capybara', github: 'jnicklas/capybara', branch: 'master' # '2.2.1'
   gem 'launchy'
   gem 'railroady'
-  gem 'puma'
+  gem 'puma', '5.0'
 end
 
 group :development do
