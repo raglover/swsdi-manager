@@ -28,18 +28,18 @@ class ApplicationController < ActionController::Base
                     :nickname, :gender, :pronouns, :phone_number, :birthday, :school, :grade, :tshirt_size,
                     :address_line1, :address_line2, :city, :state, :zip, :image, :remote_image_url, :image_cache, :fb_image,
                     :parent_first, :parent_last,:parent_phone, :parent_relationship, :parent_email, 
-                    :coach_first, :coach_last, :coach_email])
+                    :coach_first, :coach_last, :coach_email, :talents, :music])
 
       devise_parameter_sanitizer.permit(:account_update, keys: [:image, :first_name, :last_name, :email, :password, :password_confirmation, 
                     :current_password, :nickname, :gender, :pronouns, :phone_number, :birthday, :school, :grade, :tshirt_size,
                     :address_line1, :address_line2, :city, :state, :zip, :image, :remote_image_url, :image_cache, :fb_image,
                     :parent_first, :parent_last,:parent_phone, :parent_relationship, :parent_email, 
-                    :coach_first, :coach_last, :coach_email])
+                    :coach_first, :coach_last, :coach_email, :talents, :music])
 
       devise_parameter_sanitizer.permit(:admin_account_update, keys: [:first_name, :last_name, :email, :nickname, :gender, :pronouns, 
                     :phone_number, :birthday, :school, :grade, :tshirt_size, :address_line1, :address_line2, :city, 
                     :state, :zip, :parent_first, :parent_last,:parent_phone, :parent_relationship, :parent_email, 
-                    :coach_first, :coach_last, :coach_email])
+                    :coach_first, :coach_last, :coach_email, :talents, :music])
       
       devise_parameter_sanitizer.permit(:invite, keys: [:email, :role])
     end

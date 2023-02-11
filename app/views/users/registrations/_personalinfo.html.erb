@@ -29,6 +29,14 @@
       <%= f.label :tshirt_size %>
       <%= f.select :tshirt_size, options_for_select([['Small', 'sm'], ['Medium', 'med'], ['Large', 'lg'], ['XLarge', 'xl'], ['XXL', '2xl'], ['3XL', '3xl']], f.object.tshirt_size || 'sm'), placeholder: "T-shirt Size" %>
     </div>
+    <div class="small-4 large-3 columns">
+      <%= f.label :music, "Your Favorite Musical Artist" %>
+      <%= f.text_field :music, placeholder: "Favorite Artist" %>
+    </div>
+    <div class="small-4 large-3 columns">
+      <%= f.label :talents, "What are your non-S&D related talents?" %>
+      <%= f.text_field :talents, placeholder: "e.g. Cello, Cross Country, etc." %>
+    </div>
     <div class="small-12 large-12 columns">
       <%= f.label :address_line1, "Address" %>
       <%= f.text_field :address_line1, placeholder: "Address Line 1" %>
