@@ -3,8 +3,8 @@
 	<div class="panel small-12 large-12 columns">
 		<dl class="small-12 large-6 columns">
 			<dt>Events:</dt><dd><%= @camp_application.events.first.name %></dd>
-			<dt>Primary Speech Event:</dt><dd><%= @camp_application.interp_type.empty? ? "None" : @camp_application.interp_type %>
-			<dt>Secondary Speech Event:</dt><dd><%= @camp_application.speech_minor.empty? ? "None" : @camp_application.speech_minor %>
+			<dt>Primary Speech Event:</dt><dd><%= @camp_application.interp_type.blank? ? "None" : @camp_application.interp_type %>
+			<dt>Secondary Speech Event:</dt><dd><%= @camp_application.speech_minor.blank? ? "None" : @camp_application.speech_minor %>
 			<dt>Camper Type:</dt><dd><%= @camp_application.camper_type  %></dd>
 			<dt>Competed Before?</dt><dd><%= yes_no(@camp_application.has_competed)  %></dd>
 			<dt>Experience:</dt>

@@ -3,8 +3,8 @@
   <dl class="small-12 large-6 columns">
     <% @camp_app.events.each do |event| %>
       <dt>Events:</dt><dd><%= event.name %></dd>
-      <dt>Primary Speech Event:</dt><dd><%= @camp_app.interp_type.empty? ? "None" : @camp_app.interp_type   %></dd>
-      <dt>Secondary Speech Event:</dt><dd><%= @camp_app.speech_minor.empty? ? "None" : @camp_app.speech_minor %></dd>
+      <dt>Primary Speech Event:</dt><dd><%= @camp_app.interp_type.blank? ? "None" : @camp_app.interp_type   %></dd>
+      <dt>Secondary Speech Event:</dt><dd><%= @camp_app.speech_minor.blank? ? "None" : @camp_app.speech_minor %></dd>
     <%  end  %>
     <dt>Camper Type:</dt><dd><%= @camp_app.camper_type  %></dd>
     <dt>Competed Before?</dt><dd><%= yes_no(@camp_app.has_competed)  %></dd>
