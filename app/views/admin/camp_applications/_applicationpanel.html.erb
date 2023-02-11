@@ -11,8 +11,8 @@
     <dt>Experience:</dt>
       <dd><%= @camp_app.years_in_event %> Years in Event<br />
           <%= @camp_app.number_of_tournaments %> Tournaments Attended</dd>
-    <dt>Partner Request:</dt><dd><%= check_for_content(@camp_app.event_partner_req.titleize)  %></dd>
-    <dt>Roommate Request:</dt><dd><%= check_for_content(@camp_app.roommate_req.titleize)  %></dd>
+    <dt>Partner Request:</dt><dd><%= check_for_content(@camp_app.event_partner_req)  %></dd>
+    <dt>Roommate Request:</dt><dd><%= check_for_content(@camp_app.roommate_req)  %></dd>
   </dl>
   <dl class="small-12 large-6 columns">
     <dt>Allergies?</dt><dd><%= yes_no(@camp_app.has_allergies)  %></dd>

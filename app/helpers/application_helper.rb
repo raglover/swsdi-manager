@@ -78,7 +78,7 @@ module ApplicationHelper
         if content.blank?
             return "None"
         else
-            return content
+            return content.titleize
         end
     end
 
