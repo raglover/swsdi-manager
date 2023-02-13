@@ -2,6 +2,7 @@
 <div class="row">
   <div class="small-12 large-12 columns">
     <h2>Check-in List</h2>
+    <p><%= link_to '<i class="fa fa-file-excel-o"> Download as XLS</i>'.html_safe, admin_reports_registration_path('xls') %></p>
     <dl class="accordion" data-accordion >
     <% @events.each_with_index do |event, index| %>
     <% @apps = event.camp_applications.where(checked_in: false).includes(:user).order("users.last_name") %>

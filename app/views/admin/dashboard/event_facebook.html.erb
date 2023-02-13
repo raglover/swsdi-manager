@@ -2,6 +2,7 @@
 <div id="facebook" class="row">
   <div class="small-12 large-12 columns panel">
     <h2>Applicants for <%= @event.name %></h2>
+    <p><%= link_to '<i class="fa fa-file-excel-o"> Download as XLS</i>'.html_safe, admin_path(@event.id, 'xls') %></p>
     <hr />
     <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
       <% @apps.each do |app| %>

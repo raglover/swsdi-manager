@@ -3,6 +3,7 @@
   <div class="panel small-12 large-6 columns" data-equalizer-watch >
     <h3>Financial Reporting:</h3>
     <p>These numbers are best estimates. Please reconcile properly with the bank statement.</p>
+    <p><%= link_to '<i class="fa fa-file-excel-o"> Download as XLS</i>'.html_safe, admin_reports_financial_path('xls') %></p>
     <dl>
       <dt>Total Tutition and Fees:</dt>
       <dd><%= number_to_currency(@totals.total_owed) %></dd>

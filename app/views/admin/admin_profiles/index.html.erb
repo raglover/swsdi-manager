@@ -1,6 +1,7 @@
 <%= render 'admin/shared/admin_tools' %>
 <div class="row">
   <h2>Staff List</h2>
+  <p><%= link_to '<i class="fa fa-file-excel-o"> Download as XLS</i>'.html_safe, admin_admin_profiles_path('xls') %></p>
   <% @admins.each do |admin| %>
   <div class="small-12 large-12 columns panel">
     <div class="small-1 large-1 columns">

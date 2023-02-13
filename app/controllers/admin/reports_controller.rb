@@ -13,12 +13,12 @@ class Admin::ReportsController < ApplicationController
     authorize :report, :financial?
   end
 
-  def shuttle
-    @students = User.with_apps
-                    .where('camp_applications.camp_id = ?', @camp.id)
-                    .where('camp_applications.needs_pickup = ? OR camp_applications.needs_dropoff = ?', true, true)
-    authorize :report, :show?
-  end
+  # def shuttle
+  #   @students = User.with_apps
+  #                   .where('camp_applications.camp_id = ?', @camp.id)
+  #                   .where('camp_applications.needs_pickup = ? OR camp_applications.needs_dropoff = ?', true, true)
+  #   authorize :report, :show?
+  # end
 
   def status
     @residents = User.with_apps

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get 'dashboard/index'
     get 'dashboard/event_facebook/:id', to: 'dashboard#event_facebook'
     get 'reports/status'
-    get 'reports/shuttle'
+    # get 'reports/shuttle'
     get 'reports/financial'
     get 'reports/registration'
     get 'reports/nametags'
