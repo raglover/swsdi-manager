@@ -4,7 +4,7 @@
   xmlns:x="urn:schemas-microsoft-com:office:excel"
   xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
   xmlns:html="http://www.w3.org/TR/REC-html40">
-  <Worksheet ss:Name="Nametag Info">
+  <Worksheet ss:Name="Student Nametag Info">
     <Table>
       <Row>
         <Cell><Data ss:Type="String">Last Name</Data></Cell>
@@ -12,8 +12,7 @@
         <Cell><Data ss:Type="String">Pronouns</Data></Cell>
         <Cell><Data ss:Type="String">Grade</Data></Cell>
         <Cell><Data ss:Type="String">School</Data></Cell>
-        <Cell><Data ss:Type="String">Event 1</Data></Cell>
-        <Cell><Data ss:Type="String">Event 2</Data></Cell>
+        <Cell><Data ss:Type="String">Event</Data></Cell>
       </Row>
     <% @students.each do |student| %>
       <Row>
@@ -28,5 +27,25 @@
       </Row>
     <% end %>
     </Table>
-  </Worksheet> 
+  </Worksheet>
+  <Worksheet ss:Name="Staff Nametag Info">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Last Name</Data></Cell>
+        <Cell><Data ss:Type="String">Preferred Name</Data></Cell>
+        <Cell><Data ss:Type="String">Pronouns</Data></Cell>
+        <Cell><Data ss:Type="String">School</Data></Cell>
+        <Cell><Data ss:Type="String">Role/Event</Data></Cell>
+      </Row>
+    <% @staff.each do |staff| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= staff.admin_profile.last_name.capitalize %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= staff.admin_profile.pref_first_name.capitalize %></Data></Cell>
+        <Cell><Data ss:Type="String">(<%= staff.admin_profile.pronouns %>)</Data></Cell>
+        <Cell><Data ss:Type="String"><%= staff.admin_profile.school_affiliation.titleize %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= staff.admin_profile.jobs %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>  
 </Workbook>

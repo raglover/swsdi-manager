@@ -34,9 +34,21 @@
         </div>
       </div>
       <div class="row">
-        <div class="small-12 large-6 columns">
+        <div class="small-6 large-6 columns">
+          <%= f.input :pronouns, label: "Preferred Pronouns" do %>
+            <%= f.text_field :pronouns, placeholder: "e.g. 'She/Her', 'They/Them', 'He/Him'" %>
+          <% end %>
+        </div>
+        <div class="small-6 large-6 columns">
           <%= f.input :school_affiliation do %>
             <%= f.text_field :school_affiliation, placeholder: "Your School Affiliation" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 large-12 columns">
+          <%= f.input :jobs, label: "Your Role/Event" do %>
+            <%= f.select :jobs, collection: [["Speech", "Speech"], ["Policy","Policy"], ["Public Forum","Public Forum"], ["Lincoln Douglas","Lincoln Douglas"], ["Student Life Coordinator","Student Life Coordinator"], ["Administrator","Administrator"]] %>
           <% end %>
         </div>
       </div>

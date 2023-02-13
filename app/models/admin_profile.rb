@@ -14,7 +14,7 @@ class AdminProfile < ActiveRecord::Base
 	validates :zip, presence: true
 	validates :phone, presence: true
 
- 	def full_name
+ 		def full_name
     	"#{self.pref_first_name} #{self.last_name}"
   	end
 
