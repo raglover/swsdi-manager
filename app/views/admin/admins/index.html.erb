@@ -8,7 +8,7 @@
   <% @admins.each do |admin| %>
     <div class="panel small-12 large-12 columns">
     	<div class="row">
-	    	<span class="small-3 large-3 columns"><%= admin.full_name %></span><span class="small-3 large-3 columns"><%= admin.email %></span><span class="small-3 large-3 columns">role: <%= admin.role %></span><span class="small-3 large-3 columns"><% unless admin.role == "super" %> <% if current_admin.role == "super" %><%= link_to admin_admin_path(admin.id), data: {confirm: "Delete this Administrator? Are you sure?" }, method: 'delete' do %><i class="fa fa-times-circle has-tip delete" data-tooltip title="Delete Administrator"></i><% end %><% end %> <% end %></span>
+	    	<span class="small-3 large-3 columns"><%= admin.full_name %></span><span class="small-3 large-3 columns"><%= admin.email %></span><span class="small-3 large-3 columns"><%= simple_form_for admin, url: admin_admin_path(admin.id) do |f| %> <%= f.input :role, collection: ["board", "counselor", "slc", "super"], label: false %> <%= f.button :submit, class: "button tiny" %> <% end %></span><span class="small-3 large-3 columns"><% unless admin.role == "super" %> <% if current_admin.role == "super" %><%= link_to admin_admin_path(admin.id), data: {confirm: "Delete this Administrator? Are you sure?" }, method: 'delete' do %><i class="fa fa-times-circle has-tip delete" data-tooltip title="Delete Administrator"></i><% end %><% end %> <% end %></span>
 	    </div>
     </div>
   <% end %>
