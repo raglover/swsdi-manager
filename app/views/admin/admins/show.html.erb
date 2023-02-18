@@ -4,7 +4,8 @@
 
   <ul>
   <% @admins.each do |admin| %>
-    <li class="panel"><%= admin.full_name %> | <%= admin.email %> | <% if current_admin.role == "super" %><%= link_to "Delete Admin User", admin_admin_path(admin.id), method: 'delete'  %> <% end %></li>
+    <li class="panel">
+      <%= admin.full_name %> | <%= admin.email %> | <%= simple_form_for admin, novalidate: true do |f| %> <%= f.input :role, collection: ["administrator", "board", "counselor", "slc". "super"] %> <%= f.submit %> <% end %> | <% if current_admin.role == "super" %><%= link_to "Delete Admin User", admin_admin_path(admin.id), method: 'delete'  %> <% end %></li>
   <% end %>
   </ul>
 

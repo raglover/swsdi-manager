@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       get 'staff_responses/send_notification/:id', to: 'staff_responses#send_notification'
     end
     resources :admin_profiles
-    resources :admins, only: [:index, :show, :destroy]
+    resources :admins, only: [:index, :show, :edit, :update, :destroy]
   end
   resources :profiles
   resources :camp_applications do

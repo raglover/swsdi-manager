@@ -51,18 +51,17 @@
         <% end %>
       <% end %>
     </span>
-    <% if (app.needs_pickup || app.needs_dropoff) %>
-    <i class="fa fa-plane enabled" data-tooltip title="Airport Trip"></i>
-  <% end %>
-    <% if app.checked_in %>
-      <i class="fa fa-heart enabled" data-tooltip title="Checked In!"></i>
-    <% else %>
-      <i class="fa fa-heart-o disabled" data-tooltip title="Not Checked In"></i>
-    <% end %>
-    <div class="infotext">
-      <%= f.input :missing_info, label: false, class: "disabled" %>
-      <%= f.button :submit, class: "button tiny" %>
-    </div>
+    <span>
+      <% if app.checked_in %>
+        <i class="fa fa-heart enabled" data-tooltip title="Checked In!"></i>
+      <% else %>
+        <i class="fa fa-heart-o disabled" data-tooltip title="Not Checked In"></i>
+      <% end %>
+      <div class="infotext">
+        <%= f.input :missing_info, label: false, class: "disabled" %>
+        <%= f.button :submit, class: "button tiny" %>
+      </div>
+    </span>
   </span>
   <% end %>
 </div>
