@@ -52,40 +52,8 @@
       <p>ASU Forensics<br />c/o Adam Symonds<br />Arizona State University<br />Hugh Downs School of Human Communication<br />P.O. Box 871205<br />Tempe, AZ 85287</p>
       <p>Please note: Your payment will not be immediately reflected in your balance due on this page. We will reconcile payments as they come in.</p>
       <p>Also, if you have scholarships to claim, please email <%= mail_to 'richard+finaid@swsdi.org' %> with the information listed in the notice above to recieve an ID Code for the discount to be applied at checkout. If you do NOT apply an ID code for a scholarship at checkout, it may take a substantial amount of time to have any additional money refunded. Please make sure to claim scholarships BEFORE submitting a payment.</p>
-      <%= link_to "Pay Now with CC", 'https://na.eventscloud.com/swsd2022', { class: "button"} %>
+      <%= link_to "Pay Now with CC", 'https://na.eventscloud.com/swsdi23', { class: "button"} %>
       <%= link_to "Return to Profile", profile_path(current_user), { class: "button small"} %>
     </div>
   </div>
-  <!--<%= simple_form_for [@camp_app, @new_payment] do |f| %>
-    <h3>Pay your tuition balance:</h3>
-    <%= f.hidden_field :pmt_type, value: 'Credit Card' %>
-    <div class="row">
-        <div class="small-3 large-3 columns">
-            <%= f.input :first_name, label: "Cardholder First Name", placeholder: "John" %>
-        </div>
-        <div class="small-3 large-3 columns">
-            <%= f.input :last_name, label: "Cardholder Last Name", placeholder: "Smith" %>
-        </div>
-        <div class="small-3 large-3 columns">
-            <%= f.input :amount, label: "Payment Amount", hint: "You can pay the total, or any other amount (in whole dollars)" %>
-        </div>
-    </div>
-    <div class="row">
-      <div class="small-12 large-12 columns">
-        <div id="payment-form"></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="small-12 large-12 columns">
-        <%= f.button :submit, wrapper_html: {class: "button"} %>
-      </div>
-    </div>
-  <% end %>  
-  <%= link_to "Return to Profile", profile_path(current_user), { class: "button small"} %>
-	  <script>
-		var clientToken = "<%= @token %>";
-		braintree.setup(clientToken, "dropin", {
-			container: "payment-form"
-		});
-	  </script>-->
 </div>
