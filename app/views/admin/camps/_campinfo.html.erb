@@ -34,6 +34,11 @@
         <%= f.date_select :discount_deadline, {order: [:month, :day, :year]}, {:class => "small-4 large-4 columns"}  %>
       <% end %>
     </div>
+    <div class="small-12 large-6 columns">
+      <%= f.input :quikpay_url, label: "Stova/QuikPay URL" do %>
+        <%= f.text_field :quikpay_url, placeholder: "https://na.eventscloud.com/swsdi20xx" %>
+      <% end %>
+    </div>
     <div class="small-12 large-12 columns">
       <%= f.fields_for :camp_sessions do |builder| %>
         <%= render 'camp_session_fields', f: builder  %>

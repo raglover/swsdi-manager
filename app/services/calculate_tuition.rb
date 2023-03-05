@@ -2,14 +2,9 @@ class CalculateTuition
 
   def initialize(camp_app)
     @camp_app = camp_app
-    @max_res_tuition = 1345
-    @max_com_tuition = 980
-    @airport_fee = 20
+    @max_res_tuition = 1395
+    @max_com_tuition = 1030
     @app_fee = 0
-  end
-
-  def airport_fee
-    @airport_fee
   end
 
   def financial_aid
@@ -71,9 +66,6 @@ class CalculateTuition
 
     def fees_owed
       fees = 0
-      if @camp_app.needs_pickup || @camp_app.needs_dropoff
-        fees += @airport_fee
-      end
       return fees
     end
 

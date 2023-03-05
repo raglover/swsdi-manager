@@ -7,7 +7,6 @@ class PaymentsController < ApplicationController
     @payments = @camp_app.payments
     @tuition = CalculateTuition.new(@camp_app)
     @new_payment = @camp_app.payments.build
-    @token = Braintree::ClientToken.generate
   end
 
   def create
