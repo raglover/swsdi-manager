@@ -1,0 +1,15 @@
+<tr id="record_<%= @scholarship.id %>">
+  <td><%= @scholarship.user.full_name %></td>
+  <td><%= link_to @scholarship.state + ' ' + @scholarship.tournament, @scholarship.url %></td>
+  <td><%= @scholarship.event %></td>
+  <td><%= @scholarship.round %></td>
+  <td><%= @scholarship.place %></td>
+  <td><%= @scholarship.transfer %></td>
+  <td><%= link_to @scholarship.donor_name, "mailto:#{@scholarship.donor_email}" %></td>
+  <% if @scholarship.approved? %>
+    <td><%= link_to '<i class="fa fa-thumbs-o-up enabled" data-tooltip title="Approved"></i>'.html_safe, toggle_approval_scholarship_path(@scholarship), remote: true, method: :patch %></td>
+  <% else %>
+    <td><%= link_to '<i class="fa fa-thumbs-o-down" data-tooltip title="Needs Approval"></i>'.html_safe, toggle_approval_scholarship_path(scholarship), remote: true, method: :patch %></td>
+  <% end %>
+  <td><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, @scholarship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

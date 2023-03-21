@@ -1,0 +1,32 @@
+<%= simple_form_for(@scholarship) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <% if action_name == 'new' %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :camp_application_id, :value => @camp_app.id %>
+    <% else %>
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :camp_application_id %>
+    <%end %>
+    
+    <%= f.input :tournament, collection: {'HDSHC Invitational': 'hdshc', 'State Championship Tournament': 'state'}, label: 'Tournament' %>
+    <%= f.input :state, collection: us_states, label: 'Which State Tournament?' %>
+    <%= f.input :url, label: 'URL For Results page <i class="fa fa-info-circle" data-tooltip title="Copy the URL from Tabroom.com or Speechwire for the tournament results"></i>'.html_safe%>
+    <%= f.input :round, collection: outrounds, label: 'Which round did you (or the donor) advance to?'.html_safe  %>
+    <%= f.input :event, label: 'Which event? <i class="fa fa-info-circle" data-tooltip title="Specify the event for verification"></i>'.html_safe %>
+    <%= f.input :place, collection: ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th'], label: 'Your place (if you made Finals)' %>
+    <%= f.input :transfer, label: 'Is this a transfer?' %>
+    <div id="xfer">
+      <%= f.input :donor_name, label: 'Name of Scholarship Donor' %>
+      <%= f.input :donor_email, label: 'Donor email address (for verification)' %>
+    </div>
+    <% if current_admin %>
+      <%= f.input :approved %>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <%= f.button :submit %>
+  </div>
+<% end %>

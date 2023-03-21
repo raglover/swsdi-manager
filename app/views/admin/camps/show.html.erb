@@ -13,6 +13,7 @@
           <li><strong><i class="fa fa-inbox"></i> Application Start Date:</strong> <%= !@camp.app_start_date.nil? ? @camp.app_start_date.strftime("%B %d, %Y") : "None" %></li>
           <li><strong><i class="fa fa-inbox"></i> Application End Date:</strong> <%= !@camp.app_end_date.nil? ? @camp.app_end_date.strftime("%B %d, %Y") : "None" %></li>
           <li><strong><i class="fa fa-money"></i> Team Discount Deadline:</strong> <%= !@camp.discount_deadline.nil? ? @camp.discount_deadline.strftime("%B %d, %Y") : "None" %></li>
+          <li><strong><i class="fa fa-money"></i> QuikPay URL:</strong> <%= !@camp.quikpay_url.blank? ? @camp.quikpay_url : "None Yet!" %></li>
           <li>
             <% if @camp.active %>
               <strong><i class="fa fa-check-circle"></i> Active Camp</strong>

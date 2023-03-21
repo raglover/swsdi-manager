@@ -1,0 +1,14 @@
+<div class="row">
+  <h1>Claim A Scholarship</h1>
+
+  <p>Please submit the following form to claim a scholarship from either the HDSHC Invitational at ASU,
+  or from your State Tournament. In the Tournament field, <strong>PLEASE Use the name of the tournament as
+  it appears on Tabroom.com or Speechwire.</strong>. This is so that we can verify these scholarships and
+  approve them.</p>
+  <p>If your scholarship is a gift/transfer from another student, please check the "Transfer" box and include
+  that student's name and email address so that we can verify the transfer before approving it.</p>
+  <div class="panel small-12 large-12 columns">
+    <%= render 'form' %>
+    <%= link_to 'Back to Profile', profile_path(current_user), class: 'button tiny'  %>
+  </div>
+</div>

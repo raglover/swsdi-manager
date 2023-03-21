@@ -5,7 +5,7 @@ class FinancialReport
   def initialize(camp)
     @camp = camp
     @apps = @camp.camp_applications
-    @app_fee = 50
+    @app_fee = 0
   end
 
   def total_owed

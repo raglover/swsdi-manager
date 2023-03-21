@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20230213045736) do
+ActiveRecord::Schema.define(version: 20230321084639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 20230213045736) do
     t.datetime "updated_at"
     t.boolean  "active"
     t.datetime "discount_deadline"
+    t.string   "quikpay_url"
   end
 
   create_table "check_out_permissions", force: :cascade do |t|
@@ -220,6 +221,26 @@ ActiveRecord::Schema.define(version: 20230213045736) do
 
   add_index "payments", ["camp_application_id"], name: "index_payments_on_camp_application_id", using: :btree
 
+  create_table "scholarships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "tournament"
+    t.string   "round"
+    t.string   "place"
+    t.boolean  "transfer"
+    t.string   "donor_name"
+    t.string   "donor_email"
+    t.boolean  "approved"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "camp_application_id"
+    t.string   "event"
+    t.string   "url"
+    t.string   "state"
+    t.integer  "payment_id"
+  end
+
+  add_index "scholarships", ["user_id"], name: "index_scholarships_on_user_id", using: :btree
+
   create_table "staff_responses", force: :cascade do |t|
     t.text     "strengths"
     t.text     "weaknesses"
@@ -280,4 +301,5 @@ ActiveRecord::Schema.define(version: 20230213045736) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "scholarships", "users"
 end

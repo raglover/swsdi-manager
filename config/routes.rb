@@ -30,6 +30,11 @@ Rails.application.routes.draw do
     resources :admins, only: [:index, :show, :edit, :update, :destroy]
   end
   resources :profiles
+  resources :scholarships, only: [:index, :new, :edit, :create, :update, :destroy] do
+    member do
+      patch 'toggle_approval'
+    end
+  end
   resources :camp_applications do
     resources :payments, only: [:index, :create]
     member do
