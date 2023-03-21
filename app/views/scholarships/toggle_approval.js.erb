@@ -1,0 +1,8 @@
+$("#record_<%= @scholarship.id%>").toggleClass("complete");
+<% if @scholarship.approved %>
+  $("#unapproved_table").find("#record_<%= @scholarship.id %>").remove();
+  $("#approved_table").append("<%= j(render @scholarship) %>");
+<% else %>
+  $("#approved_table").find("#record_<%= @scholarship.id %>").remove();
+  $("#unapproved_table").append("<%= j(render @scholarship) %>");
+<% end %>

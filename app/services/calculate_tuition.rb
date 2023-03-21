@@ -2,6 +2,7 @@ class CalculateTuition
 
   def initialize(camp_app)
     @camp_app = camp_app
+    #TODO: Make these editable/settable at the Camp level.
     @max_res_tuition = 1395
     @max_com_tuition = 1030
     @app_fee = 0
@@ -80,7 +81,7 @@ class CalculateTuition
     def subtract_payments(balance)
       payments = @camp_app.payments.pluck(:amount)
       total_pmt = payments.reduce(0.0){|sum, value| sum + value}
-      balance =  balance ? balance - total_pmt : 0
+      balance =  balance && balance - total_pmt >= 0 ? balance - total_pmt : 0
       return balance
     end
 

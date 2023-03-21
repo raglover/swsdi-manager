@@ -11,6 +11,7 @@ class CampApplication < ActiveRecord::Base
   has_one :coach_comment, dependent: :destroy
   has_one :staff_response, dependent: :destroy
   has_many :payments, dependent: :destroy
+  has_many :scholarships, dependent: :destroy
 
 
   accepts_nested_attributes_for :debate_records, allow_destroy: true

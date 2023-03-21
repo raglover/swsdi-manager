@@ -12,18 +12,18 @@
         <td></td>
         <td><%= number_to_currency(@tuition.base_tuition) %></td>
       </tr>
-      <% if @camp_app.needs_pickup || @camp_app.needs_dropoff %>
-        <tr>
+      <%# if @camp_app.needs_pickup || @camp_app.needs_dropoff %>
+        <!--tr>
           <td><strong>Airport Fee</strong></td>
           <td></td>
-          <td><%= number_to_currency(@tuition.airport_fee) %></td>
-        </tr>
-      <% end %>
+          <td><%#= number_to_currency(@tuition.airport_fee) %></td>
+        </tr -->
+      <%# end %>
       <%# if @camp_app.app_fee %>
         <!--<tr>
           <td><strong>App Fee Paid</strong></td>
           <td></td>
-          <td>-<%= number_to_currency(50) %></td>
+          <td>-<%#= number_to_currency(50) %></td>
         </tr>-->
       <%# end %>
       <% @payments.each do |pmt| %>
@@ -51,7 +51,7 @@
       <p>For tuition payments, we will be using ASU's QuickPay system. If you wish to pay with a credit card, use the "Pay Now with CC" button below. If you wish to pay by Check or P.O., please make checks payable to "ASU Forensics" and mail them to:</p>
       <p>ASU Forensics<br />c/o Adam Symonds<br />Arizona State University<br />Hugh Downs School of Human Communication<br />P.O. Box 871205<br />Tempe, AZ 85287</p>
       <p>Please note: Your payment will not be immediately reflected in your balance due on this page. We will reconcile payments as they come in.</p>
-      <p>Before you pay, please claim any scholarships! Use the <%= link_to "Scholarship Claim Form", scholarship_claim_path(current_user) %> to claim any scholarships you may be due. Once you have claimed your scholarship, it will be reviewed and a discount code will be sent to you for use on the quikpay system.</p>
+      <p>Before you pay, please claim any scholarships! Use the <%= link_to "Scholarship Claim Form", new_scholarship_path(current_user) %> to claim any scholarships you may be due. Once you have claimed your scholarship, it will be reviewed and a discount code will be sent to you for use on the quikpay system.</p>
       <% if !@camp.quikpay_url.blank? %>
         <%= link_to "Pay Now with CC", @camp.quikpay_url, { class: "button"} %>
       <% else %>
