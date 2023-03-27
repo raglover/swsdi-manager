@@ -37,7 +37,7 @@ class FinancialReport
   def total_financial_aid
     payments = []
     @apps.each do |app|
-      pmts = app.payments.where(pmt_type: "Financial Aid")
+      pmts = app.payments.where(pmt_type: ["Financial Aid", "Scholarship"])
       pmts.each do |pmt|
         payments << pmt.amount
       end
