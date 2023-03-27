@@ -15,14 +15,7 @@
         <td><%= number_to_currency(@tuition.base_tuition) %></td>
         <td></td>
       </tr>
-      <% if @camp_app.needs_pickup || @camp_app.needs_dropoff %>
-        <tr>
-          <td><strong>Airport Fee</strong></td>
-          <td></td>
-          <td><%= number_to_currency(@tuition.airport_fee) %></td>
-          <td></td>
-        </tr>
-      <% end %>
+
       <% if @camp_app.app_fee %>
         <tr>
           <td><strong>App Fee Paid</strong></td>
