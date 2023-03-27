@@ -9,12 +9,12 @@ class CalculateTuition
   end
 
   def financial_aid
-    finaid = @camp_app.payments.where(pmt_type: "Financial Aid").pluck(:amount)
+    finaid = @camp_app.payments.where(pmt_type: ["Financial Aid", "Scholarship"]).pluck(:amount)
     finaid.reduce(0){|sum, val| sum + val}
   end
 
   def total_paid
-    paid = @camp_app.payments.where.not(pmt_type: "Financial Aid").pluck(:amount)
+    paid = @camp_app.payments.where.not(pmt_type: ["Financial Aid", "Scholarship"]).pluck(:amount)
     if @camp_app.app_fee
       paid << @app_fee
     end
