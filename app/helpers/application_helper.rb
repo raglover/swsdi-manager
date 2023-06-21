@@ -58,9 +58,9 @@ module ApplicationHelper
 
     def experience_level(app)
         if app.has_competed
-            return "Clinic"
+            return "Experienced"
         else
-            return "Lab"
+            return "Novice"
         end
     end
 
