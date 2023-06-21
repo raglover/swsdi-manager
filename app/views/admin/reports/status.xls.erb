@@ -18,10 +18,10 @@
         <Cell><Data ss:Type="String">Departure Date</Data></Cell>
         <Cell><Data ss:Type="String">T-shirt size</Data></Cell>
         <Cell><Data ss:Type="String">Date of Birth</Data></Cell>
-        <Cell><Data ss:Type="String">Event 1</Data></Cell>
-        <Cell><Data ss:Type="String">Event 2</Data></Cell>
+        <Cell><Data ss:Type="String">Event</Data></Cell>
         <Cell><Data ss:Type="String">Allergies</Data></Cell>
         <Cell><Data ss:Type="String">Diet</Data></Cell>
+        <Cell><Data ss:Type="String">Created Time</Data></Cell>
       </Row>
     <% @residents.each do |student| %>
       <Row>
@@ -41,6 +41,7 @@
         <% end %>
         <Cell><Data ss:Type="String"><%= student.camp_applications.last.allergies %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.camp_applications.last.dietary_restrictions %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.camp_applications.last.created_at %></Data></Cell>
       </Row>
     <% end %>
     </Table>
@@ -55,10 +56,10 @@
         <Cell><Data ss:Type="String">Departure Date</Data></Cell>
         <Cell><Data ss:Type="String">T-shirt size</Data></Cell>
         <Cell><Data ss:Type="String">Date of Birth</Data></Cell>
-        <Cell><Data ss:Type="String">Event 1</Data></Cell>
-        <Cell><Data ss:Type="String">Event 2</Data></Cell>
+        <Cell><Data ss:Type="String">Event</Data></Cell>
         <Cell><Data ss:Type="String">Allergies</Data></Cell>
         <Cell><Data ss:Type="String">Diet</Data></Cell>
+        <Cell><Data ss:Type="String">Created</Data></Cell>
       </Row>
     <% @commuters.each do |student| %>
       <Row>
@@ -74,6 +75,7 @@
         <% end %>
         <Cell><Data ss:Type="String"><%= student.camp_applications.last.allergies %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.camp_applications.last.dietary_restrictions %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.camp_applications.last.created_at %></Data></Cell>
       </Row>
     <% end %>
     </Table>
