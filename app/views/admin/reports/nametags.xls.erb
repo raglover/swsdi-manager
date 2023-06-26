@@ -38,13 +38,15 @@
         <Cell><Data ss:Type="String">Role/Event</Data></Cell>
       </Row>
     <% @staff.each do |staff| %>
-      <Row>
-        <Cell><Data ss:Type="String"><%= staff.admin_profile.last_name.capitalize %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= staff.admin_profile.pref_first_name.capitalize %></Data></Cell>
-        <Cell><Data ss:Type="String">(<%= staff.admin_profile.pronouns %>)</Data></Cell>
-        <Cell><Data ss:Type="String"><%= staff.admin_profile.school_affiliation.titleize %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= staff.admin_profile.jobs %></Data></Cell>
-      </Row>
+      <% if staff.admin_profile %>
+        <Row>
+          <Cell><Data ss:Type="String"><%= staff.admin_profile.last_name.capitalize %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= staff.admin_profile.pref_first_name.capitalize %></Data></Cell>
+          <Cell><Data ss:Type="String">(<%= staff.admin_profile.pronouns %>)</Data></Cell>
+          <Cell><Data ss:Type="String"><%= staff.admin_profile.school_affiliation.titleize %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= staff.admin_profile.jobs %></Data></Cell>
+        </Row>
+      <% end %>
     <% end %>
     </Table>
   </Worksheet>  
