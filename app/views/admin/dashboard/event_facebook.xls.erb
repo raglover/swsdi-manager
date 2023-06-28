@@ -15,6 +15,8 @@
         <Cell><Data ss:Type="String">Age</Data></Cell>
         <Cell><Data ss:Type="String">Gender</Data></Cell>
         <Cell><Data ss:Type="String">Events</Data></Cell>
+        <Cell><Data ss:Type="String">Speech Major</Data></Cell>
+        <Cell><Data ss:Type="String">Speech Minor</Data></Cell>
         <Cell><Data ss:Type="String">Partner Req.</Data></Cell>
         <Cell><Data ss:Type="String">Experience</Data></Cell>
         <Cell><Data ss:Type="String">Residency</Data></Cell>
@@ -31,7 +33,9 @@
         <Cell><Data ss:Type="String"><%= student.user.school.titleize %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= student.user.age %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.user.gender %></Data></Cell>
-        <Cell><Data ss:Type="String"><%student.events.each do |event| %><%= event.name %>, <% end %></Data></Cell>
+        <Cell><Data ss:Type="String"><% student.events.each do |event| %><%= event.name %>, <% end %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.interp_type %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= student.speech_minor %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.event_partner_req %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= student.years_in_event %></Data></Cell>
         <Cell><Data ss:Type="String"><%= student.camper_type %></Data></Cell>
