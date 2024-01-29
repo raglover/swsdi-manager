@@ -3,9 +3,9 @@ class CalculateTuition
   def initialize(camp_app)
     @camp_app = camp_app
     #TODO: Make these editable/settable at the Camp level.
-    @max_res_tuition = 1395
-    @max_com_tuition = 1030
-    @app_fee = 0
+    @max_res_tuition = 1895
+    @max_com_tuition = 1450
+    @app_fee = 100
   end
 
   def financial_aid
