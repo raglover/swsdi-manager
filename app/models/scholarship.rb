@@ -27,18 +27,25 @@ class Scholarship < ActiveRecord::Base
 
     def create_finaid_payment
       camp_app = self.camp_application
-      pmt = camp_app.payments.create(pmt_type: 'Scholarship', note: "Scholarship for #{self.tournament} #{ self.transfer ? 'From: ' + self.donor_name : ''}", amount: scholarship_amt_due)
-      pmt.save!
-      update_column(:payment_id, pmt.id)
+      amt = scholarship_amt_due
+      if CalculateTuition.new(self.camp_application).max_scholarship_limit_allowed(amt)
+        pmt = camp_app.payments.create(pmt_type: 'Scholarship', note: "Scholarship for #{self.tournament} #{ self.transfer ? 'From: ' + self.donor_name : ''}", amount: amt)
+        pmt.save!
+        update_column(:payment_id, pmt.id)
+      else
+        pmt = camp_app.payments.create(pmt_type: 'Scholarship', note: "Scholarship for #{self.tournament} #{ self.transfer ? 'From: ' + self.donor_name : ''} - Scholarship Limit Reached.", amount: 0.0)
+        pmt.save!
+        update_column(:payment_id, pmt.id)
+      end
     end
 
     def scholarship_amt_due
       scholarship_pct = 0
       if self.tournament == 'hdshc'
         if self.round == "Finals"
-          scholarship_pct = 0.5
+          scholarship_pct = 0.30
         else
-          scholarship_pct = 0.33
+          scholarship_pct = 0.15
         end
       else
         if self.place == "1st"
@@ -49,7 +56,6 @@ class Scholarship < ActiveRecord::Base
           scholarship_pct = 0.1
         end
       end
-
       tuition = CalculateTuition.new(self.camp_application).base_tuition
       amt_due = tuition * scholarship_pct
       return amt_due

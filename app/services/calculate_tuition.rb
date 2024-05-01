@@ -13,6 +13,26 @@ class CalculateTuition
     finaid.reduce(0){|sum, val| sum + val}
   end
 
+  def max_scholarship_limit_allowed(new_scholarship)
+    scholarship_amt = @camp_app.payments.where(pmt_type: ["Scholarship"]).pluck(:amount)
+    scholarship_total = (scholarship_amt.reduce(0){|sum, val| sum + val} + new_scholarship)
+    if @camp_app.camper_type == "Resident"
+      if scholarship_total < (@max_res_tuition * 0.6)
+        return true
+      else 
+        return false
+      end
+    elsif @camp_app.camper_type == "Commuter"
+      if scholarship_total < (@max_com_tuition * 0.6)
+        return true
+      else
+        return false
+      end
+    else
+      return false
+    end
+  end
+
   def total_paid
     paid = @camp_app.payments.where.not(pmt_type: ["Financial Aid", "Scholarship"]).pluck(:amount)
     if @camp_app.app_fee
