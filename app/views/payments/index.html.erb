@@ -9,7 +9,12 @@
     <tbody>
       <tr>
         <td><strong>Base Tuition Cost</strong></td>
-        <td></td>
+        <td><% if @camp_app.breakfast %>
+              <%= @camp_app.camper_type + " Tuition with Breakfast."%>
+            <% else %>
+              <%= @camp_app.camper_type + " Tuition without Breakfast"%>
+            <% end %>
+        </td>
         <td><%= number_to_currency(@tuition.base_tuition) %></td>
       </tr>
       <%# if @camp_app.needs_pickup || @camp_app.needs_dropoff %>

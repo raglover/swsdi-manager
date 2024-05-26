@@ -7,6 +7,7 @@
       <dt>Secondary Speech Event:</dt><dd><%= @camp_app.speech_minor.blank? ? "None" : @camp_app.speech_minor %></dd>
     <%  end  %>
     <dt>Camper Type:</dt><dd><%= @camp_app.camper_type  %></dd>
+    <dt>Breakfast:</dt><dd><%= yes_no(@camp_app.breakfast)  %></dd>
     <dt>Competed Before?</dt><dd><%= yes_no(@camp_app.has_competed)  %></dd>
     <dt>Experience:</dt>
       <dd><%= @camp_app.years_in_event %> Years in Event<br />

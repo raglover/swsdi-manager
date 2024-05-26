@@ -6,6 +6,7 @@ class CalculateTuition
     @max_res_tuition = 1995
     @max_com_tuition = 1550
     @app_fee = 100
+    @breakfast_fee = 150
   end
 
   def financial_aid
@@ -51,9 +52,9 @@ class CalculateTuition
 
   def total_owed
     if @camp_app.camper_type == "Resident"
-      return (res_base_cost + fees_owed)
+      return (res_base_cost)
     elsif @camp_app.camper_type == "Commuter"
-      return (com_base_cost + fees_owed)
+      return (com_base_cost)
     end
   end
 
@@ -69,9 +70,9 @@ class CalculateTuition
       eventfees = @camp_app.events.pluck(:price_resident)
       event_cost = eventfees.reduce(0){|sum, value| sum + value}
       if event_cost > @max_res_tuition
-        return @max_res_tuition
+        return @max_res_tuition + fees_owed
       else
-        return event_cost
+        return event_cost + fees_owed
       end
     end
 
@@ -79,14 +80,17 @@ class CalculateTuition
       eventfees = @camp_app.events.pluck(:price_commuter)
       event_cost = eventfees.reduce(0){|sum, value| sum + value}
       if event_cost > @max_com_tuition
-        return @max_com_tuition
+        return @max_com_tuition + fees_owed
       else
-        return event_cost
+        return event_cost + fees_owed
       end
     end
 
     def fees_owed
       fees = 0
+      if @camp_app.breakfast
+        fees += @breakfast_fee
+      end
       return fees
     end
 
