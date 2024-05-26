@@ -86,7 +86,7 @@ class Admin::CampApplicationsController < ApplicationController
     end
 
 		def camp_application_params
-			params.require(:camp_application).permit(:interp_type, :speech_minor, :camper_type, :event_partner_req, :has_competed, :comments, :roommate_req, :has_laptop, 
+			params.require(:camp_application).permit(:interp_type, :speech_minor, :camper_type, :breakfast, :event_partner_req, :has_competed, :comments, :roommate_req, :has_laptop, 
 	        	:needs_pickup, :needs_dropoff, :itinerary, :has_allergies, :allergies, :has_dietary_restrictions, :dietary_restrictions, :is_approved, 
 	        	:med_forms, :app_fee, :checkout_form, :incomplete, :checked_in, :missing_info, :years_in_event, :number_of_tournaments,
 	        	:camp_id, :user_id, :event_ids => [],
