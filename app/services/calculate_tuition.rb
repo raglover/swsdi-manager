@@ -18,13 +18,13 @@ class CalculateTuition
     scholarship_amt = @camp_app.payments.where(pmt_type: ["Scholarship"]).pluck(:amount)
     scholarship_total = (scholarship_amt.reduce(0){|sum, val| sum + val} + new_scholarship)
     if @camp_app.camper_type == "Resident"
-      if scholarship_total < (@max_res_tuition * 0.6)
+      if scholarship_total <= (@max_res_tuition * 0.6)
         return true
       else 
         return false
       end
     elsif @camp_app.camper_type == "Commuter"
-      if scholarship_total < (@max_com_tuition * 0.6)
+      if scholarship_total <= (@max_com_tuition * 0.6)
         return true
       else
         return false
