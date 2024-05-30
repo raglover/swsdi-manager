@@ -5,8 +5,8 @@ class RegistrationMailer < ActionMailer::Base
 		@user = user
 		@camp = camp
 		@pay_url = 'https://na.eventscloud.com/swsd2022'
-		#@url = 'https://register.swsdi.org/documents/returnpacket.pdf'
-     #   @docurl = 'https://register.swsdi.org/documents/infopacket.pdf'
+		@url = 'https://register.swsdi.org/documents/returnpacket24.pdf'
+    @docurl = 'https://register.swsdi.org/documents/infopacket24.pdf'
 		mail(to: @user.email, 
 			subject: "Thank you for registering for #{@camp.name} - Next Steps")
 	end
@@ -15,8 +15,8 @@ class RegistrationMailer < ActionMailer::Base
 		@user = user
 		@camp = camp
 		@pay_url = 'https://na.eventscloud.com/swsd2022'
-		#@url = 'https://register.swsdi.org/documents/returnpacket.pdf'
-     #   @docurl = 'https://register.swsdi.org/documents/infopacket.pdf'
+		@url = 'https://register.swsdi.org/documents/returnpacket24.pdf'
+    @docurl = 'https://register.swsdi.org/documents/infopacket24.pdf'
 		mail(to: @user.parent_email, 
 			subject: "Your Student #{@user.first_name} has registered for #{@camp.name} - Next Steps")
 	end

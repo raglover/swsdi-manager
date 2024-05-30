@@ -5,6 +5,7 @@
       <h1>Welcome to Registration for <%= @camp.name %></h1>
       <h3><%= @camp.start_date.strftime("%B %d") %> - <%= @camp.end_date.strftime("%B %d, %Y") %></h3>
       <h4>at <%= @camp.location %></h4>
+      <strong>Residential Applications are Closed as of 5/29/24. Commuter applications are still being accepted.</strong>
       <p>Registration closes on <%= @camp.app_end_date.strftime("%B %d, %Y") %>, so be sure to reserve your spot! We look forward to having you.</p>
       <p>
         <%= link_to new_user_registration_path, class: "button large radius" do %>
