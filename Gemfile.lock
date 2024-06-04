@@ -43,6 +43,7 @@ GEM
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
+    bigdecimal (1.4.4)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     braintree (2.72.0)
@@ -347,6 +348,7 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
+  bigdecimal (= 1.4.4)
   binding_of_caller
   braintree (~> 2.72.0)
   carrierwave

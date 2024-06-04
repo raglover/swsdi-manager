@@ -8,7 +8,7 @@ class ScholarshipsController < ApplicationController
   # GET /scholarships
   # GET /scholarships.json
   def index
-    @approved_scholarships = Scholarship.joins(:camp_application).where(camp_applications: {camp_id: @camp.id}, approved: true)
+    @approved_scholarships = Scholarship.recently_approved.joins(:camp_application).where(camp_applications: {camp_id: @camp.id}, approved: true)
     @unapproved_scholarships = Scholarship.joins(:camp_application).where(camp_applications: { camp_id: @camp.id }).where('approved = ? OR approved IS NULL', false)
 
   end

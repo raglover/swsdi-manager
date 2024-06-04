@@ -8,6 +8,7 @@ class Scholarship < ActiveRecord::Base
   after_update :create_finaid_payment, if: :approval_given?
   after_update :remove_finaid_payment, if: :approval_removed?
 
+  scope :recently_approved, -> { where(approved: true).order(updated_at: :desc) }
 
   private
 

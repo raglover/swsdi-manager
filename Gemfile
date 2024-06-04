@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.11'
 gem 'responders', '~> 2.0'
 gem 'web-console', '~>2.0', group: :development
+gem 'bigdecimal', '1.4.4'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use Postgresql as the database for Active Record
