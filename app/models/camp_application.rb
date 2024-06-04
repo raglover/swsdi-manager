@@ -13,6 +13,7 @@ class CampApplication < ActiveRecord::Base
   has_many :payments, dependent: :destroy
   has_many :scholarships, dependent: :destroy
 
+  scope :by_camp, -> (camp_id) { where(camp_id: camp_id) }
 
   accepts_nested_attributes_for :debate_records, allow_destroy: true
   accepts_nested_attributes_for :check_out_permissions, allow_destroy: true

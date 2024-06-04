@@ -29,13 +29,19 @@
     <table>
       <tr>
         <th>Name</th>
-        <th>Events</th>
+        <th>Gender</th>
+        <th>Grade</th>
+        <th>School</th>
+        <th>Event</th>
         <th>Registration Date</th>
       </tr>
       <% @commuters.each do |commuter| %>
         <tr>
           <td><%= mail_to commuter.email, commuter.full_name %></td>
-          <% commuter.camp_applications.each do |app| %>
+          <td><%= commuter.gender %></td>
+          <td><%= commuter.grade %></td>
+          <td><%= commuter.school.titleize %></td>
+          <% commuter.camp_applications.by_camp(@camp.id).each do |app| %>
             <td>
               <% app.events.each do |event| %>
                 <%= event.name %>
