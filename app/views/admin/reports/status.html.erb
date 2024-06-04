@@ -11,6 +11,7 @@
         <th>Grade</th>
         <th>School</th>
         <th>Roommate Request</th>
+        <th>Application Date</th>
       </tr>
       <% @residents.each do |resident| %>
         <tr>
@@ -19,6 +20,7 @@
           <td><%= resident.grade %></td>
           <td><%= resident.school.titleize %></td>
           <td><%= resident.camp_applications.first.roommate_req %></td>
+          <td><%= resident.camp_applications.first.created_at.strftime("%B %d") %>
         </tr>
       <% end %>
     </table>
@@ -28,8 +30,7 @@
       <tr>
         <th>Name</th>
         <th>Events</th>
-        <th>Arrival Date</th>
-        <th>Departure Date </th>
+        <th>Registration Date</th>
       </tr>
       <% @commuters.each do |commuter| %>
         <tr>
@@ -40,8 +41,7 @@
                 <%= event.name %>
               <% end %>
             </td>
-            <td><%#= app.arrival_date.strftime("%B %d") %></td>
-            <td><%#= app.departure_date.strftime("%B %d") %></td>
+            <td><%= app.created_at.strftime("%B %d") %></td>
           <% end %>
         </tr>
       <% end %>
