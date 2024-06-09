@@ -48,7 +48,7 @@ describe Camp do
     #this should probably be refactored too. And it should probably check the "active" flag too.
     open_camp = FactoryBot.create(:camp)
     closed_camp1 = FactoryBot.create(:camp, app_start_date: 1.week.since )
-    closed_camp2 = FactoryBot.create(:camp, app_end_date: 1.week.ago )
+    closed_camp2 = FactoryBot.create(:camp, app_end_date: 1.day.ago )
     expect(Camp.registration_open).to include(open_camp)
     expect(Camp.registration_open).not_to include(closed_camp1)
     expect(Camp.registration_open).not_to include(closed_camp2)

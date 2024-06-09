@@ -1,5 +1,5 @@
 class CheckOutPermission < ActiveRecord::Base
 
-  belongs_to :registration
+  belongs_to :camp_application
 
 end

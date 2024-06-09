@@ -41,3 +41,5 @@ config.codekit
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+docker-compose.yml
+Dockerfile

@@ -38,9 +38,9 @@ class Camp < ActiveRecord::Base
 
   private
     def start_date_in_future
-      # unless self.start_date >= Time.zone.now
-      #   errors.add(:start_date, "Must be a future date.")
-      # end
+      unless self.start_date >= Time.zone.now
+        errors.add(:start_date, "Must be a future date.")
+      end
     end
 
     def end_date_after_or_equal_start_date
@@ -50,9 +50,9 @@ class Camp < ActiveRecord::Base
     end
 
     def application_starts_before_camp
-    #   unless self.app_start_date < self.start_date && self.app_end_date <= self.start_date
-    #     errors.add(:app_start_date, "Application process must be prior to camp.")
-    #   end 
+      unless self.app_start_date < self.start_date && self.app_end_date <= self.start_date
+        errors.add(:app_start_date, "Application process must be prior to camp.")
+      end 
     end
 
     def application_closes_after_open

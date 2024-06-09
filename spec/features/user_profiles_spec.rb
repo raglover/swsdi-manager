@@ -53,11 +53,11 @@ describe "UserProfilePage", type: :feature do
 
     it "allows users to edit their own profile information" do
       click_link "Edit My Profile"
-      fill_in "Your Spirit Animal", with: ""
+      fill_in "Your Favorite Musical Artist", with: "Taylor Swift"
       within 'form#edit_user' do
         click_on('Update')
       end
-      expect(page).to have_content("You're Boring!")
+      expect(page).to have_content("Taylor Swift")
     end
 
     it "allows normal users to change their own password" do
@@ -72,7 +72,7 @@ describe "UserProfilePage", type: :feature do
     end
 
     it "does not allow users to view other user profiles" do
-      other_user = FactoryBot.create(:user)
+      other_user = FactoryBot.create(:complete_user)
       visit profile_path(other_user)
       expect(page).to have_content("You are not authorized to view that resource")
     end
@@ -82,8 +82,8 @@ describe "UserProfilePage", type: :feature do
         first(:link, "Apply").click
         first(".check_boxes").click
         select 'Yes', from: "Competed Previously"
-        select 'Yes', from: "Have a Laptop"
-        select 'Resident', from: "Resident or Commuter"
+        select 'Yes', from: "Include Breakfast?"
+        select 'Commuter', from: "Resident (Deadline passed) or Commuter?"
         fill_in 'Roommate Preference', with: "#{Faker::Name.name}"
         fill_in 'Tournament name', with: "Jim Fountain Classic"
         fill_in 'Location', with: "McClintock High School"
@@ -92,8 +92,6 @@ describe "UserProfilePage", type: :feature do
         fill_in 'L', with: 1
         select "Yes", from: "Outrounds"
         select "Finals", from: "Latest"
-        select "No", from: "from the airport"
-        select "No", from: "at the airport"
         fill_in "First name", with: "#{Faker::Name.first_name}"
         fill_in "Last name", with: "#{Faker::Name.last_name}"
         fill_in "Relationship", with: "Mother"
@@ -113,7 +111,7 @@ describe "UserProfilePage", type: :feature do
 
      it "allows users to edit their own registrations" do  
         click_on "edit"
-        select "No", from: "Have a Laptop"
+        select "No", from: "Include Breakfast?"
         click_button "Update Camp application"
         expect(page).to have_content("Camp application was successfully updated!")
       end

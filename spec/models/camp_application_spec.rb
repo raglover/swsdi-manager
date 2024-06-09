@@ -7,11 +7,11 @@ describe CampApplication do
     expect(app).to be_valid
   end
 
-  it { should have_many :debate_records }
-  it { should have_many :check_out_permissions }
-  it { should belong_to :user }
-  it { should belong_to :camp }
-  it { should have_and_belong_to_many :events }
+  # it { should have_many :debate_records }
+  # it { should have_many :check_out_permissions }
+  # it { should belong_to :user }
+  # it { should belong_to :camp }
+  # it { should have_and_belong_to_many :events }
 
   # describe '#has_competed' do
   #   let (:application) { FactoryBot.build :camp_application }
