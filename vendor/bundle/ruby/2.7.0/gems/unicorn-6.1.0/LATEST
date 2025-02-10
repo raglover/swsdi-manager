@@ -1,0 +1,24 @@
+=== unicorn 6.0.0 - no more recycling Rack env / 2021-03-17 06:38 UTC
+
+  This release allocates a new Rack `env' hash for every request.
+  This is done for safety with internally-(thread|event)-using Rack
+  apps which expect to use `env' after the normal Rack response is
+  complete, but without relying on rack.hijack[1].  Thanks to
+  Dirkjan Bussink <d.bussink@gmail.com> for the patch:
+
+    https://yhbt.net/unicorn-public/66A68DD8-83EF-4C7A-80E8-3F1F7AB31670@github.com/
+
+  The major version is bumped since:
+
+  1) there are performance regressions for some simple Rack apps
+
+  2) unsupported 3rd-party monkey patches which previously
+     relied on this behavior may be broken (our version of
+     OobGC was).
+
+  The test suite is also more reliable on multi-core systems
+  and Ruby 3.x.
+
+  [1] thread from 2017 around rack.hijack safety:
+      https://yhbt.net/unicorn-public/CAAtdryPG3nLuyo0jxfYW1YHu1Q+ZpkLkd4KdWC8vA46B5haZxw@mail.gmail.com/
+
